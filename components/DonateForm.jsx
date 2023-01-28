@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import { Bounce, Fade, Slide } from "react-awesome-reveal";
 import { motion } from "framer-motion";
 import styles from "../styles/Donate-form.module.css";
 
@@ -86,12 +85,12 @@ const DonateForm = () => {
             4000
           </motion.button>
         </motion.div>
-        <Slide left>
+
           <h2>OR</h2>
-        </Slide>
+       
         <form action="POST" className={styles.form}>
           <div className={styles.top__layer}>
-            <Fade cascade direction="top">
+      
               <motion.div
                 initial={{
                   x: -100,
@@ -152,7 +151,7 @@ const DonateForm = () => {
                 <label htmlFor="number">Number*</label>
                 <input type="text" id="number" placeholder="Card Number" />
               </motion.div>
-            </Fade>
+           
           </div>
           <motion.div
             transition={{ staggerChildren: 0.3 }}
