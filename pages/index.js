@@ -13,13 +13,13 @@ export default function Home() {
     <div className={styles.container}>
       <main className={styles.main}>
         <Navbar />
-        <Banner />
+        {/* <Banner />
         <InfoCard />
         <About />
         <Services />
         <Gallery />
         <Contact />
-        <Footer />
+        <Footer /> */}
       </main>
     </div>
   );

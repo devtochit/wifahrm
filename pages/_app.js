@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps, router }) {
   return (
     <>
       <Head>
-        <title>Kenneth Landing Page</title>
+        <title>WiFarm</title>
         <meta name="description" content="A landing page for farm products" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
