@@ -89,7 +89,7 @@ const InfoCard = () => {
           />
           <div className={styles.rhs__content}>
             <motion.p variants={textVariants}>
-              At Kenneth’s Hybrid Foundation we only ensure the harvestation of
+              At WiFahrm we only ensure the harvestation of
               quality produce as we understand the major role agriculture plays
               in our lives.
             </motion.p>

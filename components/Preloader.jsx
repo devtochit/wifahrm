@@ -76,7 +76,7 @@ const Preloader = () => {
         </div>
       </div>
       <div ref={headingRef} className={styles.heading}>
-        <h1 ref={textRef}>Kenneth Hybrid Foundation</h1>
+        <h1 ref={textRef}> Wifahrm</h1>
       </div>
     </div>
   );

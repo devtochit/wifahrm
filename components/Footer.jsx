@@ -69,13 +69,11 @@ const Footer = () => {
             height={100}
           />
           <motion.h1 variants={textVariants}>
-            Kenneth&apos;s <br />
-            <span>
-              Hybrid <br /> Foundation
-            </span>
+          WiFahrm&apos;s <br />
+         
           </motion.h1>
           <motion.p variants={textVariants}>
-            Kenneth’s Hybrid Foundation promises the best of agricultural
+          WiFahrm promises the best of agricultural
             produce and quality livestock.
           </motion.p>
           <motion.div variants={textVariants} className={styles.icon__ctn}>

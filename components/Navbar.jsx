@@ -23,14 +23,8 @@ const Navbar = () => {
               height={100}
             />
           </span>
-          <span>
-            <Image
-              src="/svgs/logo-text.svg"
-              alt="logo_text"
-              className={styles.logo__text}
-              width={100}
-              height={100}
-            />
+          <span className={styles.logo__text}>
+            WiFahrm
           </span>
         </div>
 
@@ -46,7 +40,7 @@ const Navbar = () => {
                     height={20}
                   />
                 </span>
-                helpkennethhf.gmail.com
+                Wifahrm.gmail.com
               </div>
               <div className={styles.contact__icon}>
                 <span>

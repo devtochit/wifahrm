@@ -56,7 +56,7 @@ const Banner = () => {
                   animate={{ opacity: 1, translateY: 0 }}
                   transition={{ duration: 1 }}
                 >
-                  At Kenneth’s Hybrid <br /> Foundation, we only <br /> yield
+                  At WiFahrm , we only <br /> yield
                   the best of <br /> produce
                   <span>.</span>
                 </motion.h1>
