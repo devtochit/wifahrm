@@ -1,0 +1,72 @@
+/* Import Montserrat font from google */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: "Montserrat", sans-serif;
+  background-color: #f0f0f0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.preloader {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.preloader__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0f0f0f;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.percent {
+  color: #fff;
+}
+
+.bar {
+  width: 60%;
+  margin-top: 20px;
+}
+
+.bar__confirm {
+  width: 1%;
+  padding: 1px 0px;
+  background-color: #fff;
+}
+
+.heading {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  background-color: gray;
+}
+
+.heading h1 {
+  text-transform: uppercase;
+  opacity: 0;
+  font-size: 40px;
+}
