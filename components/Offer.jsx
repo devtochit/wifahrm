@@ -134,11 +134,10 @@ const Offer = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>Fruits</motion.h3>
+              <motion.h3 variants={textVariants}>Farm management</motion.h3>
               <motion.p variants={textVariants}>
-                Through the nation our fruits are known to be top quality, We
-                are known to produce only the best of fruits.
-              </motion.p>
+              You own the farm, we manage it for you  
+                       </motion.p>
             </motion.div>
           </motion.div>
           <motion.div
@@ -157,11 +156,9 @@ const Offer = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>Crops</motion.h3>
+              <motion.h3 variants={textVariants}> Farm land ownership</motion.h3>
               <p>
-                With careful cultivation and regular weeding and aslo
-                application of fine agricutlural methods, our crops are the
-                best.
+              Own a farm space remotely and cultivate any crop you want on it.
               </p>
             </motion.div>
           </motion.div>
@@ -181,10 +178,9 @@ const Offer = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>Cattle</motion.h3>
+              <motion.h3 variants={textVariants}>Ownership</motion.h3>
               <motion.p variants={textVariants}>
-                Our cattle farm houses the best of breeds found in the nation.
-                Serveral of our customers can attest to the fact.
+              Own a farm space remotely and cultivate any crop you want on it.
               </motion.p>
             </motion.div>
           </motion.div>
@@ -204,14 +200,14 @@ const Offer = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>Diary Products</motion.h3>
+              <motion.h3 variants={textVariants}> Daily earning from farming</motion.h3>
               <motion.p variants={textVariants}>
                 Well bred animals will always produce excellent by products and
                 as such our diary products are of top quality.
               </motion.p>
             </motion.div>
           </motion.div>
-          <motion.div
+          {/* <motion.div
             initial="offscreen"
             whileInView="onscreen"
             transition={{ staggerChildren: 0.5 }}
@@ -227,14 +223,15 @@ const Offer = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>Poultry</motion.h3>
+              <motion.h3 variants={textVariants}></motion.h3>
               <motion.p variants={textVariants}>
                 With world class poultry breeding programs we are known to
                 produce the best of poultry products.
               </motion.p>
             </motion.div>
           </motion.div>
-          <motion.div
+           */}
+          {/* <motion.div
             initial="offscreen"
             whileInView="onscreen"
             transition={{ staggerChildren: 0.5 }}
@@ -250,14 +247,15 @@ const Offer = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>Flowers</motion.h3>
+              <motion.h3 variants={textVariants}></motion.h3>
               <motion.p variants={textVariants}>
                 We are known for the best horticultural practices and methods in
                 the land. We produce the best of flowers.
               </motion.p>
             </motion.div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
+        
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
@@ -279,6 +277,7 @@ const Offer = () => {
             />
             <h1>A Tour of Our Facilities</h1>
           </div>
+
         </motion.div>
       </motion.div>
     </div>

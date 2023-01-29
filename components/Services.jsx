@@ -93,11 +93,10 @@ const Services = () => {
               className={styles.card__text}
             >
               <motion.h3 variants={textVariants}>
-                Fresh Crops & Fruits
+              Farm management
               </motion.h3>
               <motion.p variants={textVariants}>
-                Our fruits underego top notch processing to yield the nationwide
-                quality it has.
+              You own the farm, we manage it for you  
               </motion.p>
             </motion.div>
             <div className={styles.card__img}>
@@ -118,10 +117,9 @@ const Services = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>Quality Livestock</motion.h3>
+              <motion.h3 variants={textVariants}>Farm land ownership</motion.h3>
               <motion.p variants={textVariants}>
-                Nation wide we are known for the production of healthy
-                livestock.
+              Own a farm space remotely and cultivate any crop you want on it.
               </motion.p>
             </motion.div>
             <div className={styles.card__img}>
@@ -142,10 +140,10 @@ const Services = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>Quality Poultry</motion.h3>
+              <motion.h3 variants={textVariants}>Ownership</motion.h3>
               <motion.p variants={textVariants}>
-                Our poultry farms are top notch in areas of hygiene and
-                products.
+              Own a farm space remotely and cultivate any crop you want on it.
+
               </motion.p>
             </motion.div>
             <div className={styles.card__img}>

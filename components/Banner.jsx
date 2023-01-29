@@ -56,8 +56,8 @@ const Banner = () => {
                   animate={{ opacity: 1, translateY: 0 }}
                   transition={{ duration: 1 }}
                 >
-                  At WiFahrm , we only <br /> yield
-                  the best of <br /> produce
+                  Own a piece of farmland for the <br/>
+                  lowest price ever
                   <span>.</span>
                 </motion.h1>
               )}
@@ -67,8 +67,9 @@ const Banner = () => {
                   animate={{ opacity: 1, translateY: 0 }}
                   transition={{ duration: 1 }}
                 >
-                  As we have proven over <br /> the years, we are <br />
-                  determined to <br /> revolutionize <br /> agriculture
+                 Experience Farming <br/>
+                from the comfort of your home
+
                   <span>.</span>
                 </motion.h1>
               )}
@@ -78,9 +79,8 @@ const Banner = () => {
                   animate={{ opacity: 1, translateX: 0 }}
                   transition={{ duration: 1 }}
                 >
-                  We have completely <br /> changed the services <br /> rendered
-                  by agriculture. <br /> We offer the best of <br /> services
-                  and products<span>.</span>
+                   Earn daily interests on your farm
+                 <span>.</span>
                 </motion.h1>
               )}
             </motion.div>

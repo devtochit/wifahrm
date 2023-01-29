@@ -166,7 +166,7 @@ const About = () => {
                 height={128}
                 alt="fresh_produce"
               />
-              <motion.h1 variants={textVariants}>4130</motion.h1>
+              <motion.h1 variants={textVariants}>5</motion.h1>
               <motion.p variants={textVariants}>Fresh Produce</motion.p>
             </motion.div>
             <motion.div
@@ -182,7 +182,7 @@ const About = () => {
                 height={128}
                 alt="diary_cow"
               />
-              <motion.h1 variants={textVariants}>13000</motion.h1>
+              <motion.h1 variants={textVariants}>5</motion.h1>
               <motion.p variants={textVariants}>Farm Animals</motion.p>
             </motion.div>
           </motion.div>

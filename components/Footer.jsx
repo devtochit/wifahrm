@@ -176,9 +176,10 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Crops and Fruits</a>
+                <a>Farm Management</a>
               </Link>
             </motion.div>
+
             <motion.div variants={textVariants} className={styles.link}>
               <span>
                 <Image
@@ -189,9 +190,10 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Livestock</a>
+                <a>Farm land ownership</a>
               </Link>
             </motion.div>
+
             <motion.div variants={textVariants} className={styles.link}>
               <span>
                 <Image
@@ -202,9 +204,25 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Poultry</a>
+                <a>Daily earning from farming</a>
               </Link>
             </motion.div>
+            
+            <motion.div variants={textVariants} className={styles.link}>
+              <span>
+                <Image
+                  src="/svgs/ic-arrow-white.svg"
+                  alt="arrow_white"
+                  width={11}
+                  height={11}
+                />
+              </span>
+              <Link href="#">
+                <a>Ownership</a>
+              </Link>
+            </motion.div>
+            
+
           </motion.div>
         </motion.div>
 
