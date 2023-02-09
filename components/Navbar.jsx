@@ -136,10 +136,17 @@ const Navbar = () => {
                   <a>Contact</a>
                 </Link>
               </li>
-              <Link href="/donate">
+              <Link href="/signup">
                 <a>
                   <button type="button" className={styles.donate}>
-                    Donate
+                    Sign In
+                  </button>
+                </a>
+              </Link>
+              <Link href="/signup">
+                <a>
+                  <button type="button" className={styles.donate}>
+                    Sign up
                   </button>
                 </a>
               </Link>

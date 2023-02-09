@@ -97,3 +97,27 @@
   position: fixed;
   top: 0;
 }
+
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    width: 90%;
+  }
+  
+  .inner {
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .card__one,
+  .card__two {
+    height: auto;
+    width: 100%;
+  }
+  
+  .card__one__image {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,42 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .formGroup {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .submitBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: green;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .submitBtn:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+  }
+  

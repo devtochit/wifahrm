@@ -1,6 +1,6 @@
 import React from "react";
 import DonateBanner from "../components/DonateBanner";
-import DonateForm from "../components/DonateForm";
+import DonateForm from "../components/SignForm";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 

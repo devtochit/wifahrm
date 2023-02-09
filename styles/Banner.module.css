@@ -99,3 +99,22 @@
   color: #fff !important;
   transition: all 0.3s ease-in-out;
 }
+
+@media (max-width: 767px) {
+  .wrapper {
+    height: auto;
+  }
+
+  .inner {
+    width: 90%;
+  }
+
+  .lhs h1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .rhs .numbering {
+    margin: 3em auto;
+  }
+}

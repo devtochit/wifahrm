@@ -158,3 +158,51 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 2em;
 }
+
+@media only screen and (max-width: 768px) {
+  .inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .logo__text {
+    text-align: center;
+    margin-top: 40px;
+    font-size: larger;
+    font-weight: 900;
+    color: #017d3f;
+  }
+
+  .nav__content {
+    flex-direction: column;
+  }
+
+  .top,
+  .bottom,
+  .contact__details,
+  .icon__ctn,
+  .links__ctn {
+    display: flex;
+    align-items: center;
+  }
+
+  .top,
+  .contact__details {
+    justify-content: space-between;
+  }
+
+  .bottom {
+    width: 100%;
+  }
+
+  .links__ctn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0.5em 0;
+  }
+}
