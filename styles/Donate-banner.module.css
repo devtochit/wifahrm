@@ -27,3 +27,18 @@
   width: 100%;
   margin-left: auto;
 }
+
+@media (max-width: 767px) {
+  .wrapper {
+    flex-wrap: wrap;
+  }
+
+  .wrapper h1 {
+    font-size: 26px;
+    line-height: 26px;
+  }
+
+  .img__ctn {
+    width: 50%;
+  }
+}

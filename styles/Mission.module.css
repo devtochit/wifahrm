@@ -93,3 +93,46 @@
   line-height: 44px;
   color: #ffffff;
 }
+
+@media only screen and (max-width: 767px) {
+  .header {
+    width: 100%;
+    padding: 1em;
+  }
+
+  .vision__ctn {
+    padding: 1em;
+    width: 187px;
+  }
+
+  .vision__ctn h4 {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .vision__ctn header {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .vision__ctn h1 {
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .vision__ctn p {
+    font-size: 12px;
+    line-height: 16px;
+    width: inherit;
+  }
+
+  .large__img__ctn {
+    height: auto;
+    margin-top: 1em;
+  }
+
+  .absolute h1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}

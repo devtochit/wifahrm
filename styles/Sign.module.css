@@ -61,3 +61,23 @@
     border-radius: 5px;
     cursor: pointer;
     }
+    @media only screen and (max-width: 768px) {
+      .container {
+      height: auto;
+      padding: 10px;
+      }
+      
+      .title {
+      font-size: 10px;
+      }
+      
+      .form {
+      width: 100%;
+      padding: 10px;
+      }
+      
+      .field, .submitBtn, .switchBtn {
+      width: 100%;
+      font-size: 10px;
+      }
+      }

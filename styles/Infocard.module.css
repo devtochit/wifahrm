@@ -106,18 +106,22 @@
   .inner {
     width: 100%;
     flex-direction: column;
+    margin-left: 23px;
+      margin-top: 100px;
   }
   
   .card__one,
   .card__two {
     height: auto;
     width: 100%;
+    flex-direction: column
   }
   
   .card__one__image {
-    width: 80%;
+    width: 86%;
     height: auto;
     margin: 0 auto;
     border-radius: 10px;
+    margin-top: 14px;
   }
 }

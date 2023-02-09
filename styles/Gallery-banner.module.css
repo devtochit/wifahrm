@@ -86,3 +86,47 @@
   color: #fff !important;
   transition: all 0.3s ease-in-out;
 }
+
+@media only screen and (max-width: 768px) {
+  .inner {
+    width: 90%;
+  }
+
+  .lhs h1 {
+    font-size: 40px;
+    line-height: 51px;
+  }
+
+  .learn__ctn button {
+    width: 140px;
+    height: 50px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .watch__ctn p {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .inner {
+    width: 95%;
+  }
+
+  .lhs h1 {
+    font-size: 30px;
+    line-height: 41px;
+  }
+
+  .learn__ctn button {
+    width: 120px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .watch__ctn p {
+    font-size: 12px;
+  }
+}

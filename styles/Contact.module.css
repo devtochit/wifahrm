@@ -178,3 +178,54 @@
 .inputs__ctn button:hover {
   transform: scale(1.1);
 }
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    margin-top: 2em;
+  }
+
+  .header h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .lemon__ctn {
+    width: 90%;
+  }
+
+  .icon__ctn {
+    width: 70%;
+  }
+
+  .contact__ctn {
+    height: auto;
+    width: auto;
+  }
+
+  .lhs h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .rhs {
+    padding: 1em;
+  }
+
+  .form header h1 {
+    font-size: 24px;
+  }
+
+  .inputs__ctn input,
+  .inputs__ctn textarea {
+    height: 40px;
+    padding: 0.5em;
+  }
+
+  .inputs__ctn button {
+    width: 120px;
+    height: 48px;
+    padding: 10px 16px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}

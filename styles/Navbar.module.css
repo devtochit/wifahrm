@@ -160,10 +160,18 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .logo__img{
+    display: none;
+  }
+  .logo__img{
+    margin-top: 100;
+  }
+
   .inner {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1em;
+    
   }
 
   .logo__text {
@@ -186,7 +194,10 @@
     display: flex;
     align-items: center;
   }
+.contact__details{
+  display: none;
 
+}
   .top,
   .contact__details {
     justify-content: space-between;
@@ -198,11 +209,7 @@
 
   .links__ctn {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0;
-    margin: 0.5em 0;
+    display: none;
+    
   }
 }

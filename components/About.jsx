@@ -73,13 +73,13 @@ const About = () => {
         className={styles.about__inner}
       >
         <div
-          initial="offscreen"
-          whileInView="onscreen"
-          transition={{ staggerChildren: 0.5 }}
+          // initial="offscreen"
+          // whileInView="onscreen"
+          // transition={{ staggerChildren: 0.5 }}
           className={styles.about__banner}
         >
           <motion.img
-            variants={bannerVariants}
+            // variants={bannerVariants}
             src="/images/about-banner.png"
             alt="about_banner"
             className={styles.main__img}
@@ -102,9 +102,9 @@ const About = () => {
               className={styles.absolute__third}
             />
           </div>
-        </div>
+        </div> 
 
-        <motion.div
+        {/* <motion.div
           initial="offscreen"
           whileInView="onscreen"
           transition={{ staggerChildren: 0.5 }}
@@ -117,6 +117,7 @@ const About = () => {
           >
             ABOUT
           </motion.h4>
+
           <header>
             <Image
               src="/svgs/ic-lemon.svg"
@@ -136,8 +137,9 @@ const About = () => {
               height={20}
               alt="lemon"
             />
-          </header>
-          <motion.h1 variants={textVariants}>Who We Are</motion.h1>
+          </header> */}
+
+        {/* <motion.h1 variants={textVariants}>Who We Are</motion.h1>
           <motion.p variants={textVariants}>
             For decades we have dedicated ourselves to the production of quality
             produce. We are known around the country for the excellent servces
@@ -207,9 +209,10 @@ const About = () => {
               <motion.button variants={textVariants} type="button">
                 Learn More
               </motion.button>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </motion.div> */}
+
+        {/* </motion.div> */}
+        {/* </motion.div> */}
       </motion.div>
     </div>
   );

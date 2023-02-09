@@ -54,6 +54,8 @@ const Navbar = () => {
                 +222-234-0413
               </div>
             </div>
+
+
             <div className={styles.icon__ctn}>
               <div className={styles.icons}>
                 <Image
@@ -143,10 +145,10 @@ const Navbar = () => {
                   </button>
                 </a>
               </Link>
-              <Link href="/signup">
+              <Link href="/choosecrop">
                 <a>
                   <button type="button" className={styles.donate}>
-                    Sign up
+                  ChooseCrop
                   </button>
                 </a>
               </Link>

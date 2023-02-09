@@ -13,13 +13,17 @@ export default function Home() {
     <div className={styles.container}>
       <main className={styles.main}>
         <Navbar />
-        {/* <Banner /> */}
-        {/* <InfoCard /> */}
+        <Banner />
+        <div style={{ position: 'relative' }}>
+          <InfoCard />
+        </div>
         {/* <About /> */}
-        {/* <Services /> */}
-        {/* <Gallery /> */}
-        {/* <Contact /> */}
-        {/* <Footer />  */}
+        <Services />
+        <Gallery />
+           <div style={{padding:10}}> 
+             <Contact />
+             </div>
+        <Footer /> 
       </main>
     </div>
   );

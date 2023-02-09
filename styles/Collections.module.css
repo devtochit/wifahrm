@@ -36,3 +36,40 @@
 .middle img:nth-child(2) {
   grid-column: -1 / 2;
 }
+
+
+@media only screen and (max-width: 767px) {
+.wrapper {
+width: 100%;
+margin: 2em 0;
+}
+
+.inner {
+width: 90%;
+}
+
+.top,
+.middle {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1em;
+margin-bottom: 1em;
+height: auto;
+width: 100%;
+}
+
+.top > img,
+.middle > img,
+.bottom img {
+width: 80%;
+height: auto;
+object-fit: cover;
+border-radius: 12px;
+}
+
+.top img:nth-child(1),
+.middle img:nth-child(2) {
+width: 100%;
+}
+}

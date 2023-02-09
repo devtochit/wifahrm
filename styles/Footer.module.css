@@ -101,3 +101,41 @@
 .link a:hover::after {
   width: 100%;
 }
+
+@media only screen and (max-width: 720px) {
+  .wrapper {
+  height: auto;
+  }
+  
+  .inner {
+  width: 90%;
+  grid-template-columns: 1fr;
+  }
+  
+  .footer__logo h1 {
+  font-size: 28px;
+  line-height: 36px;
+  }
+  
+  .footer__logo h1 span {
+  font-size: 18px;
+  line-height: 22px;
+  }
+  
+  .footer__logo p {
+  font-size: 14px;
+  line-height: 18px;
+  }
+  
+  .company h1,
+  .services__ctn h1,
+  .contact__ctn h1 {
+  font-size: 28px;
+  line-height: 36px;
+  }
+  
+  .link a {
+  font-size: 14px;
+  line-height: 18px;
+  }
+}  

@@ -14,7 +14,10 @@ const about = () => {
         <Navbar />
         <Banner />
         <div className={styles.about__inner}>
+          <div style={{ position: 'relative' }}>
           <AboutLite />
+
+          </div>
           <Mission />
           <Stats />
         </div>

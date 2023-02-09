@@ -97,3 +97,39 @@
   z-index: 2;
   left: 60%;
 }
+
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    margin-top: 10em;
+  }
+
+  .header h4 {
+    font-size: 10px;
+    line-height: 13px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  .card__text h3 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .card__text p {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .card {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .card__ctn {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+}

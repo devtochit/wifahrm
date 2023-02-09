@@ -71,3 +71,40 @@
 .right {
   flex: 1.5;
 }
+
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    margin-top: 2em;
+  }
+  .header h4 {
+    font-size: 10px;
+    line-height: 12px;
+  }
+  .header h1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .lemon__ctn {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .grid__ctn {
+    flex-direction: column;
+  }
+  .img__top,
+  .img__bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+  .img__top img,
+  .img__bottom img {
+    height: 40vh;
+  }
+  .right {
+    flex: unset;
+    width: 100%;
+    text-align: center;
+  }
+}
