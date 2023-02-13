@@ -3,33 +3,63 @@ import {useState} from "react";
 import { motion } from "framer-motion";
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import styles from '../styles/Sign.module.css'
+import { useDispatch } from "react-redux";
+import { RegisterUser } from "../redux/services/registration";
 
-const SignUp = () => {
-    const [isSignUp, setIsSignUp] = useState(true)
 
-    const handleSubmit = values => {
+
+const SignUpNoW = () => {
+    const dispatch = useDispatch();
+
+    const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+        // const { email, userFirstName, userLastName, userName, userPassword } = values;
+        // await dispatch(RegisterUser({ data: { email, userFirstName, userLastName, userName, userPassword } }));
         console.log(values)
-        // your submit logic here
-    }
+        setSubmitting(false);
+        resetForm()
+    };
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>{isSignUp ? 'Sign Up' : 'Sign In'}</h1>
+            <h1 className={styles.title}></h1>
             <Formik
-                initialValues={{ email: '', password: '' }}
-                validate={values => {
-                    const errors = {}
+                initialValues={{
+                    email: '',
+                    phone: '',
+                    userFirstName: '',
+                    userLastName: '',
+                    userName: '',
+                    userPassword: '',
+                    confirmPassword: '',
+
+                }}
+                validate={(values) => {
+                    const errors = {};
                     if (!values.email) {
-                        errors.email = 'Required'
+                        errors.email = 'Required';
                     } else if (
                         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
                     ) {
-                        errors.email = 'Invalid email address'
+                        errors.email = 'Invalid email address';
                     }
-                    if (!values.password) {
-                        errors.password = 'Required'
+                    if (!values.userFirstName) {
+                        errors.userFirstName = 'Required';
                     }
-                    return errors
+                    if (!values.userLastName) {
+                        errors.userLastName = 'Required';
+                    }
+                    if (!values.userName) {
+                        errors.userName = 'Required';
+                    }
+                    if (!values.userPassword) {
+                        errors.userPassword = 'Required';
+                    }
+                    if (!values.confirmPassword) {
+                        errors.confirmPassword = 'Required';
+                    } else if (values.userPassword !== values.confirmPassword) {
+                        errors.confirmPassword = 'Password does not match';
+                    }
+                    return errors;
                 }}
                 onSubmit={handleSubmit}
             >
@@ -48,285 +78,91 @@ const SignUp = () => {
                         />
                         <Field
                             className={styles.field}
-                            type="password"
-                            name="password"
-                            placeholder="Password"
+                            type="phone"
+                            name="phone"
+                            placeholder="Phone number"
                         />
                         <ErrorMessage
                             className={styles.error}
-                            name="password"
+                            name="phone"
+                            component="div"
+                        />
+                        <Field
+                            className={styles.field}
+                            type="text"
+                            name="userFirstName"
+                            placeholder="First Name"
+                        />
+                        <ErrorMessage
+                            className={styles.error}
+                            name="userFirstName"
+                            component="div"
+                        />
+
+                        <Field
+                            className={styles.field}
+                            type="text"
+                            name="userLastName"
+                            placeholder="Last Name"
+                        />
+                        <ErrorMessage
+                            className={styles.error}
+                            name="userLastName"
+                            component="div"
+                        />
+                        <Field
+                            className={styles.field}
+                            type="text"
+                            name="userName"
+                            placeholder="Username"
+
+                        />
+                        <ErrorMessage
+                            className={styles.error}
+                            name="userName"
+                            component="div"
+                        />
+                        <Field
+                            className={styles.field}
+                            type="password"
+                            name="userPassword"
+                            placeholder="Password"
+
+                        />
+                        <ErrorMessage
+                            className={styles.error}
+                            name="userPassword"
+                            component="div"
+                        />
+                        <Field
+                            className={styles.field}
+                            type="password"
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+
+                        />
+                        <ErrorMessage
+                            className={styles.error}
+                            name="confirmPassword"
                             component="div"
                         />
                         <button
-                            className={styles.submitBtn}
+                            className={styles.button}
                             type="submit"
                             disabled={isSubmitting}
                         >
-                            {isSignUp ? 'Sign Up' : 'Sign In'}
-                        </button>
-                        <button
-                            className={styles.switchBtn}
-                            type="button"
-                            onClick={() => setIsSignUp(!isSignUp)}
-                        >
-                            Switch to {isSignUp ? 'Sign In' : 'Sign Up'}
+                            Submit
                         </button>
                     </Form>
                 )}
             </Formik>
         </div>
+    );
+};
 
-    )
-}
-
-export default SignUp
-
+export default SignUpNoW;
 
 
-// const SignForm = () => {
-//   const textVariants = {
-//     offscreen: {
-//       opacity: 0,
-//       y: -100,
-//       transition: {
-//         type: "tween",
-//         bounce: 0.4,
-//         ease: "easeIn",
-//         duration: 1,
-//       },
-//     },
-//     onscreen: {
-//       opacity: 1,
-//       y: 0,
-//       transition: {
-//         type: "tween",
-//         bounce: 0.4,
-//         ease: "easeOut",
-//         duration: 1,
-//       },
-//     },
-//   };
-//   return (
-//     <div className={styles.wrapper}>
-//       <motion.div
-//         initial="offscreen"
-//         whileInView="onscreen"
-//         transition={{ staggerChildren: 0.5 }}
-//         className={styles.inner}
-//       >
-//         <motion.h1 variants={textVariants}>Choose an amount</motion.h1>
 
-//         <motion.div
-//           transition={{ staggerChildren: 0.5 }}
-//           className={styles.buttons__ctn}
-//         >
-//           <motion.button variants={textVariants} type="button">
-//             <span>
-//               <Image
-//                 src="/svgs/ic-naira.svg"
-//                 height={16}
-//                 width={20}
-//                 alt="naira_symbol"
-//               />
-//             </span>
-//             1000
-//           </motion.button>
-//           <motion.button variants={textVariants} type="button">
-//             <span>
-//               <Image
-//                 src="/svgs/ic-naira.svg"
-//                 height={16}
-//                 width={20}
-//                 alt="naira_symbol"
-//               />
-//             </span>
-//             2000
-//           </motion.button>
-//           <motion.button variants={textVariants} type="button">
-//             <span>
-//               <Image
-//                 src="/svgs/ic-naira.svg"
-//                 height={16}
-//                 width={20}
-//                 alt="naira_symbol"
-//               />
-//             </span>
-//             3000
-//           </motion.button>
-//           <motion.button variants={textVariants} type="button">
-//             <span>
-//               <Image
-//                 src="/svgs/ic-naira.svg"
-//                 height={16}
-//                 width={20}
-//                 alt="naira_symbol"
-//               />
-//             </span>
-//             4000
-//           </motion.button>
-//         </motion.div>
 
-//           <h2>OR</h2>
-       
-//         <form action="POST" className={styles.form}>
-//           <div className={styles.top__layer}>
-      
-//               <motion.div
-//                 initial={{
-//                   x: -100,
-//                   opacity: 0,
-//                   transition: {
-//                     duration: 1,
-//                   },
-//                 }}
-//                 whileInView={{
-//                   x: 0,
-//                   opacity: 1,
-//                   transition: {
-//                     duration: 1,
-//                   },
-//                 }}
-//                 className={styles.amount}
-//               >
-//                 <label htmlFor="amount">Amount*</label>
-//                 <input type="text" id="amount" placeholder="Enter Amount" />
-//               </motion.div>
-//               <motion.div
-//                 initial={{
-//                   x: -100,
-//                   opacity: 0,
-//                   transition: {
-//                     duration: 1,
-//                   },
-//                 }}
-//                 whileInView={{
-//                   x: 0,
-//                   opacity: 1,
-//                   transition: {
-//                     duration: 1,
-//                   },
-//                 }}
-//                 className={styles.amount}
-//               >
-//                 <label htmlFor="name">Name*</label>
-//                 <input type="text" id="name" placeholder="Name on Card" />
-//               </motion.div>
-//               <motion.div
-//                 initial={{
-//                   x: -100,
-//                   opacity: 0,
-//                   transition: {
-//                     duration: 1,
-//                   },
-//                 }}
-//                 whileInView={{
-//                   x: 0,
-//                   opacity: 1,
-//                   transition: {
-//                     duration: 1,
-//                   },
-//                 }}
-//                 className={styles.amount}
-//               >
-//                 <label htmlFor="number">Number*</label>
-//                 <input type="text" id="number" placeholder="Card Number" />
-//               </motion.div>
-           
-//           </div>
-//           <motion.div
-//             transition={{ staggerChildren: 0.3 }}
-//             className={styles.bottom__layer}
-//           >
-//             <motion.div
-//               initial={{
-//                 y: -100,
-//                 opacity: 0,
-//                 transition: {
-//                   duration: 1,
-//                 },
-//               }}
-//               whileInView={{
-//                 y: 0,
-//                 opacity: 1,
-//                 transition: {
-//                   duration: 1,
-//                 },
-//               }}
-//               className={styles.amount}
-//             >
-//               <label htmlFor="cvc">CVC*</label>
-//               <input type="text" id="cvc" placeholder="CVC" />
-//             </motion.div>
-//             <motion.div
-//               initial={{
-//                 y: -100,
-//                 opacity: 0,
-//                 scale: 0.5,
-//                 transition: {
-//                   duration: 1,
-//                 },
-//               }}
-//               whileInView={{
-//                 y: 0,
-//                 opacity: 1,
-//                 scale: 1,
-//                 transition: {
-//                   duration: 1,
-//                 },
-//               }}
-//               className={styles.amount}
-//             >
-//               <label htmlFor="date">Exp Date</label>
-//               <input type="text" id="date" placeholder="MM/YY" />
-//             </motion.div>
-//             <motion.div
-//               initial={{
-//                 y: -100,
-//                 opacity: 0,
-//                 scale: 0.5,
-//                 transition: {
-//                   duration: 1,
-//                 },
-//               }}
-//               whileInView={{
-//                 y: 0,
-//                 opacity: 1,
-//                 scale: 1,
-//                 transition: {
-//                   duration: 1,
-//                 },
-//               }}
-//               className={styles.amount}
-//             >
-//               <label htmlFor="number">Postal code</label>
-//               <input type="text" id="number" placeholder="Zip Code" />
-//             </motion.div>
-//           </motion.div>
-//           <motion.button
-//             initial={{
-//               y: -100,
-//               opacity: 0,
-//               scale: 0.5,
-//               transition: {
-//                 duration: 1,
-//               },
-//             }}
-//             whileInView={{
-//               y: 0,
-//               opacity: 1,
-//               scale: 1,
-//               transition: {
-//                 duration: 1,
-//               },
-//             }}
-//             type="submit"
-//           >
-//             Donate
-//           </motion.button>
-//         </form>
-//       </motion.div>
-//     </div>
-//   );
-// };
 
-// export default SignForm;
