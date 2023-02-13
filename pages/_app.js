@@ -3,6 +3,11 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import Preloader from "../components/Preloader";
 import { useEffect, useState } from "react";
+import { Provider, useStore } from "react-redux";
+import { store } from "../redux/store";
+
+
+
 
 function MyApp({ Component, pageProps, router }) {
   // set a timeout for the preloader to show
@@ -14,7 +19,10 @@ function MyApp({ Component, pageProps, router }) {
     }, 6000);
   }, []);
 
+  // const fstore = useStore(store);
+
   return (
+
     <>
       <Head>
         <title>WiFahrm</title>
@@ -31,7 +39,11 @@ function MyApp({ Component, pageProps, router }) {
             initial={{ opacity: 0.4, transform: "scale(0.9)" }}
             animate={{ opacity: 1, transform: "scale(1)" }}
           >
+
+              <Provider store={store}>
             <Component {...pageProps} />
+              </Provider>
+
           </motion.div>
         )
       }
