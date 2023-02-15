@@ -60,7 +60,7 @@ const Login = () => {
             
             <Form action="" className="mx-auto mt-8 mb-0 max-w-md space-y-4">
             <div>
-              <label for="email" className="sr-only text-lg"> Username</label>
+              <label htmlFor="email" className="sr-only text-lg"> Username</label>
                              <div className="relative">
                             <Field
 
@@ -95,7 +95,7 @@ const Login = () => {
             </div>
       
             <div>
-              <label for="password" className="sr-only text-lg">Password</label>
+              <label htmlFor="password" className="sr-only text-lg">Password</label>
               <div className="relative">
            
                                              <Field

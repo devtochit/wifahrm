@@ -93,7 +93,7 @@ const SignUpNoW = () => {
 
                             <Form action="" className="mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl">
                                 <div className="relative mt-1">
-                                    <label for="email" className="sr-only text-lg"> Email</label>
+                                    <label htmlFor="email" className="sr-only text-lg"> Email</label>
                                     <div className="relative">
                                         <Field
 
@@ -110,7 +110,7 @@ const SignUpNoW = () => {
                                 </div>
 
                                 <div>
-                                    <label for="phoneNumber" className="sr-only text-lg"> Phone number </label>
+                                    <label htmlFor="phoneNumber" className="sr-only text-lg"> Phone number </label>
                                     <div className="relative mt-1">
 
                                         <Field
@@ -129,7 +129,7 @@ const SignUpNoW = () => {
                                 </div>
 
                                 <div className="relative mt-1">
-                                    <label for="userFirstName" className="sr-only text-lg">First Name</label>
+                                    <label htmlFor="userFirstName" className="sr-only text-lg">First Name</label>
                                     <div className="relative">
                                         <Field
 
@@ -146,7 +146,7 @@ const SignUpNoW = () => {
                                 </div>
 
                                 <div className="relative mt-1">
-                                    <label for="userLastName" className="sr-only text-lg"> Last Name </label>
+                                    <label htmlFor="userLastName" className="sr-only text-lg"> Last Name </label>
                                     <div className="relative">
 
                                         <Field
@@ -163,7 +163,7 @@ const SignUpNoW = () => {
                                 </div>
 
                                 <div className="relative mt-1">
-                                    <label for="userName" className="sr-only text-lg"> Username </label>
+                                    <label htmlFor="userName" className="sr-only text-lg"> Username </label>
                                     <div className="relative">
 
                                         <Field
@@ -181,7 +181,7 @@ const SignUpNoW = () => {
 
 
                                 <div className="relative mt-1">
-                                    <label for="password" className="sr-only text-lg">Password</label>
+                                    <label htmlFor="password" className="sr-only text-lg">Password</label>
                                     <div className="relative">
 
                                         <Field
@@ -198,7 +198,7 @@ const SignUpNoW = () => {
                                 </div>
                                 
                                 <div className="relative mt-1">
-                                    <label for="confirmPassword" className="sr-only text-lg">Password</label>
+                                    <label htmlFor="confirmPassword" className="sr-only text-lg">Password</label>
                                     <div className="relative">
 
                                         <Field
