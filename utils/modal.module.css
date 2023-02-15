@@ -1,0 +1,43 @@
+/* styles.module.css */
+
+.modal-wrapper {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.modal {
+  display: flex;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal-close-button {
+  color: #ffffff;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  place-self: end;
+}
+
+.modal-body {
+  padding: 0.5rem;
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .modal {
+    width: 600px;
+  }
+}
+

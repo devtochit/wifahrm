@@ -5,6 +5,7 @@ import Preloader from "../components/Preloader";
 import { useEffect, useState } from "react";
 import { Provider, useStore } from "react-redux";
 import { store } from "../redux/store";
+import "../styles/global.css";
 
 
 
@@ -16,7 +17,7 @@ function MyApp({ Component, pageProps, router }) {
   useEffect(() => {
     setTimeout(() => {
       setShowPreloader(false);
-    }, 6000);
+    }, 1000);
   }, []);
 
   // const fstore = useStore(store);

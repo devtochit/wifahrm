@@ -7,10 +7,16 @@ export const loginSlice = createSlice({
     user: {},
     details: {},
     isLogging: "",
+    showModal: true, 
   },
   reducers: {
     setUserDetails: (state, action) => {},
-  
+    setShowModal: (state, action) => {
+      state.showModal = true;
+    },
+    setCloseModal: (state, action) => {
+      state.showModal = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -21,6 +27,8 @@ export const loginSlice = createSlice({
         state.isLogging = "succeeded";
         state.user = action.payload;
         state.isLogging = "";
+        state.showModal = true;
+    
       })
       .addCase(LoginUser.rejected, (state, action) => {
         state.isLogging = "failed";
@@ -31,5 +39,5 @@ export const loginSlice = createSlice({
 });
 
 const { reducer, actions } = loginSlice;
-export const { setUserDetails } = actions;
+export const { setUserDetails, setShowModal,setCloseModal } = actions;
 export default reducer;

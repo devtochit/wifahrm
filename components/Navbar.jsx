@@ -145,10 +145,10 @@ const Navbar = () => {
                   </button>
                 </a>
               </Link>
-              <Link href="/choosecrop">
+              <Link href="/Login">
                 <a>
                   <button type="button" className={styles.donate}>
-                  ChooseCrop
+                    Login
                   </button>
                 </a>
               </Link>

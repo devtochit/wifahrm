@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "../slice/messagesSlice";
 
 const LoginURL = (data) => {
-  return axios.post(`/auth/login`, data);
+  return axios.post(`https://8080-sirhillsdev-wifarmapi-vir98dyz6ui.ws-eu86.gitpod.io/auth/login`, data);
 };
 
 export const LoginUser = createAsyncThunk(
@@ -14,7 +14,7 @@ export const LoginUser = createAsyncThunk(
       thunkAPI.dispatch(setMessage(response.data.message));
 
       localStorage.setItem("token", JSON.stringify(response.data.accessToken));
-      router.push("/login");
+      // router.push("/login");
       return response.data;
     } catch (error) {
       console.log(error);

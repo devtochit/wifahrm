@@ -8,7 +8,7 @@ const donate = () => {
   return (
     <div>
       <Navbar />
-      <DonateBanner />
+      {/* <DonateBanner /> */}
       <DonateForm />
       <Footer />
     </div>

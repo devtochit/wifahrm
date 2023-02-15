@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "../slice/messagesSlice";
 
 const RegisterURL = (data) => {
-  return axios.post(`/auth/register`, data);
+  return axios.post(`https://8080-sirhillsdev-wifarmapi-vir98dyz6ui.ws-eu86.gitpod.io/api/registration/registerNewUser`, data);
 };
 
 export const RegisterUser = createAsyncThunk(

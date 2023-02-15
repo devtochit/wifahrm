@@ -6,8 +6,6 @@ import styles from '../styles/Sign.module.css'
 import { useDispatch,useSelector } from "react-redux";
 import { LoginUser } from "../redux/services/login";
 import { setShowModal,setCloseModal } from "../redux/slice/loginSlice";
-import Link from "next/link";
-
 
 
 
@@ -214,6 +212,12 @@ const SignUpNoW = () => {
                                     </div>
                                 </div>
 
+
+
+
+          
+
+
                                 <div className="flex  flex-col gap-10 items-center justify-between">
 
                                 <button
@@ -225,8 +229,7 @@ const SignUpNoW = () => {
 
       <p class="text-center text-2xl text-gray-500">
         No account?
-        <Link className="underline" href="/Login" >Sign In </Link>
-       
+        <a className="underline" href="">Sign In</a>
       </p>
 
 

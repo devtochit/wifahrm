@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .ds-btn {
+        --btn-text-case: none;
+        --rounded-btn: 0.6875em;
+    }
+
+    .ds-btn-pastel {
+        @apply ds-btn-ghost;
+    }
+
+    .ds-btn-pastel:hover,
+    .ds-btn-pastel.ds-btn-active,
+    .ds-btn-pastel.active {
+        /* @apply bg-base-200 dark: bg-base-content/10 text-primary dark:text-current; */
+    }
+
+    .ds-table-dark :where(tbody th, tbody td) {
+        /* @apply dark: bg-neutral/50 */
+    }
+}
+
+@layer utilities {
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+}
+
+/* Scroll thumb styles */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    /* @apply bg-primary/50 dark: bg-neutral; */
+    background-clip: content-box;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:active {
+    /* @apply bg-primary/70 dark: bg-neutral; */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    /* @apply bg-primary/70 dark: bg-neutral; */
+}
+
+/* Scroll track styles (Background) */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-track:hover,
+::-webkit-scrollbar-track:active {
+    /* @apply bg-primary/10 dark: bg-neutral/20; */
+}
