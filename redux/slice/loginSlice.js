@@ -7,7 +7,7 @@ export const loginSlice = createSlice({
     user: {},
     details: {},
     isLogging: "",
-    showModal: true, 
+    showModal: false, 
   },
   reducers: {
     setUserDetails: (state, action) => {},
