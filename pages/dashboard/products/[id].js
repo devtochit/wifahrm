@@ -7,12 +7,10 @@ export default function cropDetails({ crop }) {
     <>
       <div key={crop.id} className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-5xl lg:px-8 pb-8 ">
         <div className="flex flex-col lg:flex-row bg-[#f7f7f7] rounded-lg overflow-hidden ">
-          {/* Product Image */}
           <div className="bg-[#EFE9D9] flex items-center basis-1/2 p-2">
             <Image className="w-full" src={crop.imageSrc} alt={crop.name} />
           </div>
 
-          {/* Product Details */}
           <div className="mt-6 pl-8 pr-8 pb-8 basis-1/2">
             <h1 className="text-[#1a1a1a] mb-2 font-fraunces font-normal text-4xl leading-none">
               {crop.name}
@@ -26,21 +24,21 @@ export default function cropDetails({ crop }) {
             <p className="text-[#1a1a1a] pb-6 text-sm leading-6">
               Slim, classic Italian made wallet made to go the distance.
               Features the ability to hold 3 cards in a compact, vegetable
-              tanned case. Il Bussetto's rich history of impeccably handcrafted
+              tanned case. Il Bussetto rich history of impeccably handcrafted
               leather goods culminates in an incredible assortment of functional
               wallets and cardholders.
             </p>
             <p className="text-[#1a1a1a] pb-6 text-sm leading-6">
               Slim, classic Italian made wallet made to go the distance.
               Features the ability to hold 3 cards in a compact, vegetable
-              tanned case. Il Bussetto's rich history of impeccably handcrafted
+              tanned case. Il Bussetto rich history of impeccably handcrafted
               leather goods culminates in an incredible assortment of functional
               wallets and cardholders.
             </p>
             <p className="text-[#1a1a1a] pb-6 text-sm leading-6">
               Slim, classic Italian made wallet made to go the distance.
               Features the ability to hold 3 cards in a compact, vegetable
-              tanned case. Il Bussetto's rich history of impeccably handcrafted
+              tanned case. Il Bussetto rich history of impeccably handcrafted
               leather goods culminates in an incredible assortment of functional
               wallets and cardholders.
             </p>

@@ -47,7 +47,7 @@ export default function cropDetails({ farms }) {
             <p className="text-[#1a1a1a] pb-6 text-sm leading-6">
               Slim, classic Italian made wallet made to go the distance.
               Features the ability to hold 3 cards in a compact, vegetable
-              tanned case. Il Bussetto's rich history of impeccably handcrafted
+              tanned case. Il  rich history of impeccably handcrafted
               leather goods culminates in an incredible assortment of functional
               wallets and cardholders.
             </p>
