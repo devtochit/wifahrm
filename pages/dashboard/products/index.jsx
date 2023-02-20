@@ -29,7 +29,7 @@ const product = ()=> (
      { 
       CropData.map((product,index)=>(
       
-<Link k href={`/dashboard/products/${product.id}`}> 
+   <Link key={index}  href={`/dashboard/products/${product.id}`}> 
     <a> 
     <ProductCard
     key={index}
