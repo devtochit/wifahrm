@@ -2,10 +2,9 @@ import { More } from 'iconsax-react'
 import { useEffect } from 'react'
 import NotFound from '../../components/NotFound'
 import Loading from '../../components/Loading'
-
 import { useAxios } from '../../hooks/useAxios'
-
 import { currencyFormatter } from '../../utils'
+import Image from 'next/image'
 
 const headers = ['No', 'ID', 'Name', 'Sold', 'Income', 'Status']
 
@@ -35,7 +34,7 @@ function Table({ headers, body }) {
 								<div className="flex items-center space-x-3">
 									<div className="ds-avatar">
 										<div className="ds-mask ds-mask-squircle w-12 h-12">
-											<img src={row.image} alt={row.name} />
+											<Image src={row.image} alt={row.name} />
 										</div>
 									</div>
 									<div className="">{`${row.name}`}</div>

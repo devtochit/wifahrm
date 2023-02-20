@@ -27,11 +27,12 @@ const product = ()=> (
 
      <div className="w-full h-full flex flex-row items-center justify-center lg:px-32  py-4 gap-5 flex-wrap">
      { 
-      CropData.map((product)=>(
+      CropData.map((product,index)=>(
       
 <Link k href={`/dashboard/products/${product.id}`}> 
     <a> 
     <ProductCard
+    key={index}
           product={product}
             />
     </a>

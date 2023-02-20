@@ -5,7 +5,7 @@ export default function cropDetails({ crop }) {
   return (
     <Layout>
     <>
-      <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-5xl lg:px-8 pb-8 ">
+      <div key={crop.id} className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-5xl lg:px-8 pb-8 ">
         <div className="flex flex-col lg:flex-row bg-[#f7f7f7] rounded-lg overflow-hidden ">
           {/* Product Image */}
           <div className="bg-[#EFE9D9] flex items-center basis-1/2 p-2">

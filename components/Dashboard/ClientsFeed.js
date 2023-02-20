@@ -2,20 +2,21 @@ import { More } from 'iconsax-react'
 import { useEffect } from 'react'
 import NotFound from '../../components/NotFound'
 import Loading from '../../components/Loading'
-
 import { useAxios } from '../../hooks/useAxios'
+import Image from 'next/image'
+import Link from 'next/link'
 
 function FeedItem({ item, now }) {
 	return (
-		<a href="/#" className="flex flex-wrap items-center ds-btn-pastel">
+		<Link href="/#" className="flex flex-wrap items-center ds-btn-pastel">
 			<div className="ds-avatar">
 				<div className="ds-mask ds-mask-squircle w-10 h-10">
-					<img src={item.image} alt={item.name} />
+					<Image src={item.image} alt={item.name} />
 				</div>
 			</div>
 			<span className="flex-1 ml-1 truncate">{item.name}</span>
 			{now && <span className="ds-badge ds-badge-sm ds-badge-info">New</span>}
-		</a>
+		</Link>
 	)
 }
 

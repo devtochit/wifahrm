@@ -18,10 +18,11 @@ function createcrops() {
     <Button price={'ADD Farm'}/>
 		</div>
     <div className="w-full h-full flex flex-row items-center justify-center lg:px-32  py-4 gap-5 flex-wrap">
-        {farm.map((farms) => (
+        {farm.map((farms,index) => (
             <Link k href={`/dashboard/createfarm/${farms.id}`}> 
             <a>
             <FarmerCard
+            key={index}
             farm={farms} />
           </a> 
           </Link > 
