@@ -37,10 +37,10 @@ const Dashboard = ()=> (
 							<BarChart />
 						</div>
 					</div>
-					<BestSellers />
+					{/* <BestSellers /> */}
 				</div>
 					<div className="lg:max-w-[18rem]">
-					<ClientsFeed />
+					{/* <ClientsFeed /> */}
 				</div> 
 			</div> 
 		</div>

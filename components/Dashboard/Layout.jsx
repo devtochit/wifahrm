@@ -44,7 +44,7 @@ const Layout = ({ children, authenticated = false }) => {
           <Sidebar collapsed={collapsed} ref={sidebarRef} />
           <div className='w-full overflow-y-hidden'>
             <Toolbar toggleCollapsed={toggleCollapsed} ref={toggleRef} />
-            <main className='w-screen sm:w-auto py-6 px-6 sm:px-12'>
+            <main className="w-screen sm:w-auto sm:px-12 lg:py-6 lg:px-6">
               {children}
             </main>
             <Footer />
