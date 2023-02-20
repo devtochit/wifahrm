@@ -14,13 +14,13 @@ export default function Home() {
       <main className={styles.main}>
         <Navbar />
         <Banner />
-        <div style={{ position: 'relative' }}>
+        <div style={{ }}>
           <InfoCard />
         </div>
         {/* <About /> */}
         <Services />
         <Gallery />
-           <div style={{padding:10}}> 
+           <div> 
              <Contact />
              </div>
         <Footer /> 

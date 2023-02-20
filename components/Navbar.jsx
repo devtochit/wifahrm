@@ -1,10 +1,38 @@
-import React from "react";
+import React,{useState} from "react";
 import styles from "../styles/Navbar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import { AiOutlineClose } from "react-icons/ai";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaPinterest,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
+
 
 const Navbar = () => {
+
+  const [nav, setNav] = useState(false);
+  const handleNav = () => setNav(!nav);
+  const closeNav = () => setNav(nav);
+
+  const [color, setColor] = useState(false);
+  const changeColor = () => {
+    if (window.scrollY >= 100) {
+      setColor(true);
+    } else {
+      setColor(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeColor);
+
+
+
   const { pathname } = useRouter();
   return (
     <div
@@ -15,13 +43,13 @@ const Navbar = () => {
       <div className={styles.inner}>
         <div className={styles.logo__ctn}>
           <span>
-            <Image
+            {/* <Image
               src="/svgs/logo-img.svg"
               alt="logo_image"
               className={styles.logo__img}
-              width={100}
-              height={100}
-            />
+              width={50}
+              height={50}
+            /> */}
           </span>
           <span className={styles.logo__text}>
             WiFahrm
@@ -154,10 +182,68 @@ const Navbar = () => {
               </Link>
             </ul>
           </div>
+
+    <div name="home" className={styles.navbar}>
+      <div className={styles.hamburger} onClick={handleNav}>
+        {!nav ? (
+          <HiOutlineMenuAlt4 className={styles.icon} />
+        ) : (
+          <AiOutlineClose style={{ color: "#000" }} className={styles.icon}/>
+        )}
+      </div>
+
+      <div className={nav ? `${styles.mobilemenu } ${styles.active}` : `${styles.mobilemenu}`}>
+        <ul className={styles.mobilenav}>
+        <Link href="/signup">
+        <li>
+                  <button type="button" className={styles.donate}>
+                    Sign In
+                  </button>
+                  </li>
+              </Link>
+          
+              <Link href="/Login">
+              <li>
+                  <button type="button" className={styles.donate}>
+                    Login
+                  </button>
+                  </li>
+              </Link>
+          <Link href="/">
+            <li>Home</li>
+          </Link>
+          <Link href="/about" onClick={handleNav}>
+            <li>About</li>
+          </Link>
+          <Link href="/services" onClick={handleNav}>
+            <li>Services</li>
+          </Link>
+
+          <Link href="/contact"  onClick={handleNav}>
+            <li>Contact</li>
+          </Link>
+        </ul>
+
+        <div className={styles.mobilemenubottom}>
+          <div className={styles.socialicons }>
+          <FaFacebook className={styles.icon} />
+            <FaInstagram className={styles.icon} />
+            <FaTwitter className={styles.icon} />
+            <FaPinterest className={styles.icon} />
+            <FaYoutube className={styles.icon} />
+          </div>
+        </div>
+        </div>
         </div>
       </div>
     </div>
+ </div>
+
   );
-};
+}
+
+
+
+        
 
 export default Navbar;

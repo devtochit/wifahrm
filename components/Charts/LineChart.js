@@ -16,7 +16,7 @@ import { data } from './data/productSales'
 
 const colors = {
 	black: '#edf8f7',
-	accent: '#3366FF',
+	accent: '#d6f3e6',
 	darkAccent: '#46BAAD',
 }
 
@@ -182,7 +182,7 @@ function LineChart({ data, height, width }) {
 					key={Math.random()}
 					top={tooltipTop}
 					left={tooltipLeft}
-					className="!p-5 !rounded-xl min-w-[50] !text-neutral-content !bg-neutral dark:!bg-neutral/90"
+					className="!p-5 !rounded-xl min-w-[50]  !text-neutral-content !bg-neutral dark:!bg-neutral/90"
 				>
 					<div>
 						<span>{`Day ${getXValue(tooltipData)}: `}</span>

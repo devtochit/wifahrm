@@ -107,20 +107,20 @@ const Contact = () => {
           <motion.div
             initial="offscreen"
             whileInView="onscreen"
-            transition={{ staggerChildren: 0.5 }}
+            // transition={{ staggerChildren: 0.5 }}
             className={styles.rhs}
           >
             <motion.form
               initial="offscreen"
               whileInView="onscreen"
-              transition={{ staggerChildren: 0.5 }}
+              // transition={{ staggerChildren: 0.5 }}
               action="POST"
               className={styles.form}
             >
               <motion.header
                 initial="offscreen"
                 whileInView="onscreen"
-                transition={{ staggerChildren: 0.5 }}
+                // transition={{ staggerChildren: 0.5 }}
               >
                 <motion.h1 variants={textVariants}>Send A Message</motion.h1>
                 <motion.p variants={textVariants}>
@@ -131,10 +131,10 @@ const Contact = () => {
               <motion.div
                 initial="offscreen"
                 whileInView="onscreen"
-                transition={{ staggerChildren: 0.5 }}
+                // transition={{ staggerChildren: 0.5 }}
                 className={styles.inputs__ctn}
               >
-                <motion.input
+                {/* <motion.input
                   variants={textVariants}
                   type="text"
                   name="name"
@@ -159,7 +159,7 @@ const Contact = () => {
 
                 <motion.button variants={textVariants} type="submit">
                   Send A Message
-                </motion.button>
+                </motion.button> */}
               </motion.div>
             </motion.form>
           </motion.div>

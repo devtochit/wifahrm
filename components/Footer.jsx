@@ -57,7 +57,7 @@ const Footer = () => {
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
-          transition={{ staggerChildren: 0.5 }}
+          // transition={{ staggerChildren: 0.5 }}
           className={styles.footer__logo}
         >
           <motion.img
@@ -114,14 +114,14 @@ const Footer = () => {
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
-          transition={{ staggerChildren: 0.5 }}
+          // transition={{ staggerChildren: 0.5 }}
           className={styles.company}
         >
           <motion.h1 variants={textVariants}>Company</motion.h1>
           <motion.div
             initial="offscreen"
             whileInView="onscreen"
-            transition={{ staggerChildren: 0.5 }}
+            // transition={{ staggerChildren: 0.5 }}
             className={styles.lists}
           >
             <motion.div variants={textVariants} className={styles.link}>
@@ -156,7 +156,7 @@ const Footer = () => {
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
-          transition={{ staggerChildren: 0.5 }}
+          // transition={{ staggerChildren: 0.5 }}
           className={styles.services__ctn}
         >
           <motion.h1 variants={textVariants}>Services</motion.h1>
@@ -229,7 +229,7 @@ const Footer = () => {
         <motion.div
           initial="offscreen"
           whileInView="onscreen"
-          transition={{ staggerChildren: 0.5 }}
+          // transition={{ staggerChildren: 0.5 }}
           className={styles.contact__ctn}
         >
           <motion.h1 variants={textVariants}>Contact</motion.h1>

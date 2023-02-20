@@ -17,10 +17,10 @@ function QuickAction() {
 		<div className="flex-1">
 			<h2 className="text-lg font-bold mb-3">Quick Actions</h2>
 			<div className="flex flex-wrap flex-1 gap-4 justify-between">
-				<Action icon={<MoneySend variant="TwoTone" className="w-8 h-8" />}>Accounts</Action>
-				<Action icon={<ChartCircle variant="TwoTone" className="w-8 h-8" />}>Analysis</Action>
-				<Action icon={<TaskSquare variant="TwoTone" className="w-8 h-8" />}>Task</Action>
-				<Action icon={<ReceiptEdit variant="TwoTone" className="w-8 h-8" />}>Invoice</Action>
+				<Action icon={<MoneySend variant="Bold"color='#37D67A' className="w-8 h-8" />}>Accounts</Action>
+				<Action icon={<ChartCircle variant="Bold"color='#37D67A' className="w-8 h-8" />}>Analysis</Action>
+				<Action icon={<TaskSquare variant="Bold" color='#37D67A'className="w-8 h-8" />}>Task</Action>
+				<Action icon={<ReceiptEdit variant="Bold"color='#37D67A' className="w-8 h-8" />}>Invoice</Action>
 			</div>
 		</div>
 	)

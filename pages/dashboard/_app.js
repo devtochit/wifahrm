@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Layout from '../../components/AdminLayout/index'
+import Layout from '../../components/Dashboard/Layout'
 
 
 const App = ({ Component, pageProps }) => {
@@ -10,7 +10,9 @@ const App = ({ Component, pageProps }) => {
 
  
   <> 
+  <Layout>
     <Component {...pageProps} />;
+    </Layout>
   </>
    )
 };

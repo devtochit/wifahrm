@@ -1,6 +1,5 @@
 // import Link from 'next/link';
 // import { useRouter } from 'next/router';
-// import { Category2, Tag2, People, UserSquare, LogoutCurve, Moon, Sun1, Add } from 'iconsax-react';
 // import { useDarkMode } from '../DarkMode';
 // import { useAuth } from '../../hooks/useAuth';
 // import { ReactComponent as LogoSvg } from '../../assets/brand/logo.svg';

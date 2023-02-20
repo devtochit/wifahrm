@@ -7,6 +7,8 @@ import { useDispatch,useSelector } from "react-redux";
 import { LoginUser } from "../redux/services/login";
 import { setShowModal,setCloseModal } from "../redux/slice/loginSlice";
 import LoginModal from "../components/LoginModal";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 
 
@@ -27,6 +29,8 @@ const Login = () => {
 
       
     return (
+      <>  
+            <Navbar />
         <section className="relative flex flex-wrap lg:h-screen lg:items-center">
         <div className="w-full px-4 py-12 sm:px-6 gap-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
             <div className="mx-auto max-w-lg text-center">
@@ -171,6 +175,8 @@ const Login = () => {
   {showModal && <LoginModal  />}
 
         </section>
+        <Footer />
+      </>
         
     );
 };
