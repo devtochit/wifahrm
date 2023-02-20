@@ -23,7 +23,8 @@ function createcrops() {
             <a>
             <FarmerCard
             key={index}
-            farm={farms} />
+            farm={farms}
+             />
           </a> 
           </Link > 
           ))}
