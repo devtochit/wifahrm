@@ -223,21 +223,18 @@ const SignUpNoW = () => {
         Sign in
       </button>
 
-      <p className="text-center text-2xl text-gray-500">
+      <p className="text-center text-base text-gray-500">
         No account?
-        <Link className="underline" href="/Login" >Sign In </Link>
-       
+        <Link className="underline text-lg font-bold ml-10" href="/Login" >
+            <a className="underline text-base ml-2">  
+            Sign In 
+             </a>
+            </Link>
       </p>
-
-
-
-                                    
-                                </div>
-                            </Form>
-                        );
-                    }}
-            </Formik>
-
+     </div>
+     </Form>
+        )}}
+     </Formik>
         </div>
         </div>
         

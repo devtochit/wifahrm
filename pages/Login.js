@@ -9,7 +9,7 @@ import { setShowModal,setCloseModal } from "../redux/slice/loginSlice";
 import LoginModal from "../components/LoginModal";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
+import Link from "next/link";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -145,31 +145,34 @@ const Login = () => {
 
 
             <div className="flex items-center justify-between">
-        <p className=" text-gray-500 text-lg">
+        <p className=" text-gray-500 text-base">
           No account?
-          <a href="#" className="underline text-xl">Sign up</a>
+          <Link  href="/signup" >
+            <a className="underline text-base ml-2" >   
+            Sign Up
+            </a>
+            </Link>
         </p>
 
         <button
           type="submit"
           className="ml-3 inline-block rounded-lg bg-[#017d3f] px-5 py-3  font-medium text-white text-lg"
-          disabled={isSubmitting}
-
-        >
+          disabled={isSubmitting}>
           Sign in
         </button>
+
       </div>
-                    </Form>
+     </Form>
                 )}
             </Formik>
 
         </div>
         <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
-    <Image
+    {/* <Image
       alt="Welcome"
       src="https://images.unsplash.com/photo-1630450202872-e0829c9d6172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
       className="absolute inset-0 h-full w-full object-cover"
-    />
+    /> */}
   </div>
   {showModal && <LoginModal  />}
 
