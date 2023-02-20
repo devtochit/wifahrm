@@ -23,14 +23,6 @@ export default function cropDetails({ crop }) {
             </p>
             <hr className="h-px my-4 bg-[#ddd] border-0 dark:bg-[#ddd]"></hr>
 
-            {/* Add to Cart Button */}
-            {/* <div className="grid place-items-center mb-10">
-              <Button price={product.price} />
-              <span className="text-sm text-gray-600 mt-2">
-                Free US Shipping $120+
-              </span>
-            </div> */}
-
             <p className="text-[#1a1a1a] pb-6 text-sm leading-6">
               Slim, classic Italian made wallet made to go the distance.
               Features the ability to hold 3 cards in a compact, vegetable
@@ -56,7 +48,6 @@ export default function cropDetails({ crop }) {
         </div>
       </div>
     </>
-
     </Layout>
   )
 }
