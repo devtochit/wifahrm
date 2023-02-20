@@ -97,10 +97,10 @@ const SignUpNoW = () => {
                                     <div className="relative">
                                         <Field
 
-                                            className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12  text-sm shadow-sm"
+                                            className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12 text-base text-black shadow-sm"
                                             type="text"
-                                            name="email"
-                                            placeholder="email" />
+                                            name="Email"
+                                            placeholder="Email" />
 
                                         <ErrorMessage
                                             className=" text-error mt-1 text-lg"
@@ -146,11 +146,11 @@ const SignUpNoW = () => {
                                 </div>
 
                                 <div className="relative mt-1">
-                                    <label htmlFor="userLastName" className="sr-only text-lg"> Last Name </label>
+                                    <label htmlFor="userLastName" className="sr-only text-slate-900  text-lg"> Last Name </label>
                                     <div className="relative">
 
                                         <Field
-                                            className="w-full  border-gray-200 bg-white  rounded-lg p-4 pr-12 text-sm shadow-sm"
+                                            className="w-full  border-gray-200 bg-white text-slate-900  rounded-lg p-4 pr-12 text-sm shadow-sm"
                                             type="text"
                                             name="userLastName"
                                             placeholder="Last Name" />
@@ -167,7 +167,7 @@ const SignUpNoW = () => {
                                     <div className="relative">
 
                                         <Field
-                                            className="w-full  border-gray-200 bg-white  rounded-lg p-4 pr-12 text-sm shadow-sm"
+                                            className="w-full  border-gray-200 bg-white text-slate-900  rounded-lg p-4 pr-12 text-sm shadow-sm"
                                             type="text"
                                             name="userName"
                                             placeholder="Username" />
@@ -185,7 +185,7 @@ const SignUpNoW = () => {
                                     <div className="relative">
 
                                         <Field
-                                            className="w-full  border-gray-200 bg-white  rounded-lg p-4 pr-12 text-sm shadow-sm"
+                                            className="w-full   border-gray-200 bg-white text-slate-900  rounded-lg p-4 pr-12 text-sm shadow-sm"
                                             type="password"
                                             name="userPassword"
                                             placeholder="Password" />
@@ -202,7 +202,7 @@ const SignUpNoW = () => {
                                     <div className="relative">
 
                                         <Field
-                                            className="w-full  border-gray-200 bg-white  rounded-lg p-4 pr-12 text-sm shadow-sm"
+                                            className="w-full  border-gray-200 bg-white text-black rounded-lg p-4 pr-12 text-sm shadow-sm"
                                             type="password"
                                             name="confirmPassword"
                                             placeholder="Confirm Password" />
