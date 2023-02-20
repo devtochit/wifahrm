@@ -34,7 +34,7 @@ function Table({ headers, body }) {
 								<div className="flex items-center space-x-3">
 									<div className="ds-avatar">
 										<div className="ds-mask ds-mask-squircle w-12 h-12">
-											<Image src={row.image} alt={row.name} />
+											<Image src={row.image} alt={row.name}   layout='fill' />
 										</div>
 									</div>
 									<div className="">{`${row.name}`}</div>
