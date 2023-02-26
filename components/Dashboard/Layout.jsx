@@ -8,7 +8,7 @@ import Toolbar from '../Dashboard/Toolbar'
 
 
 
-const Layout = ({ children, authenticated = false }) => {
+const Layout = ({children}) => {
   const [collapsed, setCollapsed] = useState(false)
 
   const toggleRef = useRef(null)

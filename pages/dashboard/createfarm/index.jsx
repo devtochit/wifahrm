@@ -26,12 +26,22 @@ function CreateCrops() {
       </div>
       <div className='w-full h-full flex flex-row items-center justify-center lg:px-32 py-4 gap-5 flex-wrap'>
         {farm.map((farm, index) => (
+          
           <Link key={index} href={`/dashboard/createfarm/${farm.id}`}>
+
             <a>
-              <FarmerCard key={index} farm={farm} />
+
+              <FarmerCard 
+               key={index}
+               farm={farm} 
+               />
+
             </a>
+
           </Link>
-        ))}
+        ))
+        }
+
         {showModal && 
         <FarmForm 
         handleModalToggle={handleModalToggle}
