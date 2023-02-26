@@ -13,6 +13,7 @@ export default function CropDetails({ farms }) {
   const handleModalToggle = () => {
     setShowModal(prevShowModal => !prevShowModal);
   };
+  
   return (
     <Layout>
     <>

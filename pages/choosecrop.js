@@ -7,9 +7,10 @@ import Details from "../components/steps/Details";
 import Payment from "../components/steps/Payment";
 import Final from "../components/steps/Final";
 
-function choosecrop() {
-  const [currentStep, setCurrentStep] = useState(1);
+function Choosecrop() {
 
+  const [currentStep, setCurrentStep] = useState(1);
+  
   const steps = [
     "Account Information",
     "Personal Details",
@@ -62,4 +63,4 @@ function choosecrop() {
   );
 }
 
-export default choosecrop;
+export default Choosecrop;
