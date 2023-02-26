@@ -48,7 +48,7 @@ module.exports = {
 		prefix: 'ds-',
 		themes: [
 			{
-				light: {
+				dark: {
 					...daisyThemes['[data-theme=winter]'],
 					primary: '#017d3f',
 					'primary-focus': '#2E5CE6',
@@ -58,7 +58,7 @@ module.exports = {
 					error: '#FF7575',
 					'--navbar-padding': defaultTheme.spacing['1'],
 				},
-				dark: {
+				light: {
 					...daisyThemes['[data-theme=night]'],
 					'--navbar-padding': defaultTheme.spacing['1'],
 				},

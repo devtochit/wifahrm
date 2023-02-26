@@ -1,71 +1,65 @@
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import Select from 'react-select';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import styles from '../styles/ChooseCrops.module.css';
-import React, { useState } from 'react'
+import { useState } from "react";
+import Stepper from "../components/Stepper";
+import StepperControl from "../components/StepperControl";
+import { UseContextProvider } from "../contexts/StepperContext";
+import Account from "../components/steps/Account";
+import Details from "../components/steps/Details";
+import Payment from "../components/steps/Payment";
+import Final from "../components/steps/Final";
 
-const MultiStepForm = () => {
-  const [step, setStep] = useState(1);
-  const [crop, setCrop] = useState('');
-  const [rigs, setRigs] = useState({});
+function choosecrop() {
+  const [currentStep, setCurrentStep] = useState(1);
 
-  const handleNextStep = values => {
-    setStep(step + 1);
-    setCrop(values.crop);
+  const steps = [
+    "Account Information",
+    "Personal Details",
+    "Payment",
+    "Complete",
+  ];
+
+  const displayStep = (step) => {
+    switch (step) {
+      case 1:
+        return <Account />;
+      case 2:
+        return <Details />;
+      case 3:
+        return <Payment />;
+      case 4:
+        return <Final />;
+      default:
+    }
   };
 
-  const handleSubmit = values => {
-    setRigs({ ...rigs, [crop]: values.numRigs });
+  const handleClick = (direction) => {
+    let newStep = currentStep;
+
+    direction === "next" ? newStep++ : newStep--;
+    // check if steps are within bounds
+    newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
   };
 
   return (
-    <Formik
-      initialValues={{
-        crop: '',
-        numRigs: 0
-      }}
-      validationSchema={Yup.object({
-        crop: Yup.string().required('Please select a crop'),
-        numRigs: Yup.number().required('Please select the number of rigs')
-      })}
-      onSubmit={step === 1 ? handleNextStep : handleSubmit}
-    >
-      {({ errors, touched }) => (
-        <Form>
-          {step === 1 && (
-            <>
-              <Field name="crop" as="select">
-                <option value="">Select a crop</option>
-                <option value="wheat">Wheat</option>
-                <option value="corn">Corn</option>
-                <option value="soybean">Soybean</option>
-              </Field>
-              {errors.crop && touched.crop && (
-                <div className="error">{errors.crop}</div>
-              )}
-              <button type="submit">Next</button>
-            </>
-          )}
-          {step === 2 && (
-            <>
-              <Field name="numRigs" as="select">
-                <option value="">Select the number of rigs</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </Field>
-              {errors.numRigs && touched.numRigs && (
-                <div className="error">{errors.numRigs}</div>
-              )}
-              <button type="submit">Submit</button>
-            </>
-          )}
-        </Form>
-      )}
-    </Formik>
-  );
-};
+    <div className="mx-auto rounded-2xl bg-white flex items-center flex-col justify-items-center pb-2 shadow-xl mt-24 md:w-1/2">
+      {/* Stepper */}
+      <div className="horizontal container mt-5 ">
+        <Stepper steps={steps} currentStep={currentStep} />
 
-export default MultiStepForm;
+        <div className="my-10 p-10  ">
+          <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
+        </div>
+      </div>
+
+      {/* navigation button */}
+      {currentStep !== steps.length && (
+        <StepperControl
+          handleClick={handleClick}
+          currentStep={currentStep}
+          steps={steps}
+        />
+      )}
+    </div>
+  );
+}
+
+export default choosecrop;

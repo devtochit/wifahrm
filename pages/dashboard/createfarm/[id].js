@@ -2,13 +2,22 @@ import { farm } from '../../../utils/data'
 import Layout from '../../../components/Dashboard/Layout'
 import Image from 'next/image'
 import Button from '../../../components/Button'
-
+import FarmCrop from '../../../components/Farmcrop'
+import React, { useState } from 'react';
 
 
 export default function cropDetails({ farms }) {
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModalToggle = () => {
+    setShowModal(prevShowModal => !prevShowModal);
+  };
   return (
     <Layout>
     <>
+    <div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded' >
+
       <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-5xl lg:px-8 pb-8 ">
         <div className="flex flex-col lg:flex-row bg-[#f7f7f7] rounded-lg overflow-hidden ">
           {/* Product Image */}
@@ -52,7 +61,7 @@ export default function cropDetails({ farms }) {
               wallets and cardholders.
             </p>
             <hr className="h-px my-4 bg-[#ddd] border-0 dark:bg-[#ddd]"></hr>
-            <Button price={'ADD Crops'}/>
+            <Button price={'ADD Crops'} onClick={handleModalToggle} />
               <span className="text-sm text-gray-600 mt-2">
                 Free US Shipping $120+
               </span>
@@ -62,6 +71,12 @@ export default function cropDetails({ farms }) {
           </div>
 
         </div>
+      </div>
+      {showModal && 
+        <FarmCrop 
+        handleModalToggle={handleModalToggle}
+        showModal={showModal }
+          />}
       </div>
     </>
 

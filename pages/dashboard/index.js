@@ -37,9 +37,9 @@ const Dashboard = ()=> (
 							<BarChart />
 						</div>
 					</div>
-					{/* <BestSellers /> */}
+					<BestSellers />
 				</div>
-					<div className="lg:max-w-[18rem]">
+					<div className="">
 					{/* <ClientsFeed /> */}
 				</div> 
 			</div> 

@@ -11,6 +11,7 @@ import Link from 'next/link';
 
 const product = ()=> (
   <Layout >
+    
     <div className="navbar  flex flex-row justify-end px-12">
 		<div className="dropdown dropdown-start w-80 ">
 			<Select

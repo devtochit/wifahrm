@@ -17,7 +17,7 @@ const Sales = [...Array(10).keys()].map(i => getRandomNumber(80, 360))
 function Table({ headers, body }) {
 	return (
 		<div className="overflow-x-auto w-full">
-			<table className="ds-table ds-table-zebra bg-[#d6f3e6] ds-table-compact  w-full">
+			<table className="ds-table ds-table-zebra  ds-table-compact  w-full">
 				<thead>
 					<tr>
 						{headers?.map((heading, id) => (
@@ -76,7 +76,7 @@ function BestSellers() {
 					<More variant="TwoTone" />
 				</span>
 			</div>
-			<div className="min-h-16 bg-[#d6f3e6]">
+			<div className="min-h-16 ">
 				{loading && <Loading />}
 				{!loading && error && <NotFound error={error} />}
 				{!loading && !error && products?.data ? <Table headers={headers} body={products.data} /> : null}

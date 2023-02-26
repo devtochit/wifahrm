@@ -8,18 +8,16 @@ import Link from 'next/link'
 
 function FeedItem({ item, now }) {
 	return (
-		<Link href="/" className="flex flex-wrap items-center ds-btn-pastel">
-        <a>
-<div className="ds-avatar">
+		<Link href="" className="flex flex-wrap items-center ds-btn-pastel">
+			<div className="ds-avatar">
 				<div className="ds-mask ds-mask-squircle w-10 h-10">
 					<Image src={item.image} alt={item.name}
-					  layout='fill'
+					
 					/>
 				</div>
 			</div>
 			<span className="flex-1 ml-1 truncate">{item.name}</span>
 			{now && <span className="ds-badge ds-badge-sm ds-badge-info">New</span>}
-            </a>
 		</Link>
 	)
 }
