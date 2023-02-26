@@ -6,7 +6,7 @@ import FarmCrop from '../../../components/Farmcrop'
 import React, { useState } from 'react';
 
 
-export default function cropDetails({ farms }) {
+export default function CropDetails({ farms }) {
 
   const [showModal, setShowModal] = useState(false);
 

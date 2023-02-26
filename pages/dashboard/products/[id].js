@@ -1,9 +1,11 @@
 import { CropData } from '../../../utils/data'
 import Layout from '../../../components/Dashboard/Layout'
 import Image from 'next/image'
-export default function cropDetails({ crop }) {
+
+export default function CropDetails({ crop }) {
   return (
     <Layout>
+
     <>
     <div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded' >
       <div key={crop.id} className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-5xl lg:px-8 pb-8 ">
