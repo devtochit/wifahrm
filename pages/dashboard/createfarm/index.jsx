@@ -21,9 +21,15 @@ function CreateCrops() {
         <title>Dashboard</title>
       </Head>
       <h1 className='text-xl font-bold pb-4'>Dashboard</h1>
+      {showModal && 
+        <FarmForm 
+        handleModalToggle={handleModalToggle}
+        showModal={showModal }
+          />}
       <div className='flex flex-row justify-end px-12'>
         <Button price={'ADD Farm'} onClick={handleModalToggle} />
       </div>
+      
       <div className='w-full h-full flex flex-row items-center justify-center lg:px-32 py-4 gap-5 flex-wrap'>
         {farm.map((farm, index) => (
           
@@ -42,11 +48,7 @@ function CreateCrops() {
         ))
         }
 
-        {showModal && 
-        <FarmForm 
-        handleModalToggle={handleModalToggle}
-        showModal={showModal }
-          />}
+
       </div>
     </Layout>
   );

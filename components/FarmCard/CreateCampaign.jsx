@@ -1,6 +1,5 @@
-import { ethers } from "ethers";
+
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {money} from '../assets';
 import { CustomButton,FormField,Loader } from "../components";
 import { useStateContext } from "../context/index";

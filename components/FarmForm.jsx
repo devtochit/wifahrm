@@ -32,51 +32,36 @@ function FarmForm({showModal,handleModalToggle }) {
       dolores deleniti inventore quaerat mollitia?
     </p>
                     <Formik
-                    initialValues={{
-                        email: '',
-                        phoneNumber: '',
-                        userFirstName: '',
-                        userLastName: '',
-                        userName: '',
-                        userPassword: '',
-                        confirmPassword: '',
-
-                    }}
-                    validate={(values) => {
-                        const errors = {};
-                        if (!values.email) {
-                            errors.email = 'Required';
-                        } else if (
-                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                        ) {
-                            errors.email = 'Invalid email address';
-                        }
-                        if (!values.userFirstName) {
-                            errors.userFirstName = 'Required';
-                        }
-                        if (!values.userLastName) {
-                            errors.userLastName = 'Required';
-                        }
-                        if (!values.userName) {
-                            errors.userName = 'Required';
-                        }
-                        if (!values.phoneNumber) {
-                            errors.phoneNumber = 'Required';
-                        }
-                        if (!values.userPassword) {
-                            errors.userPassword = 'Required';
-                        }
-                        if (!values.confirmPassword) {
-                            errors.confirmPassword = 'Required';
-                        } else if (values.userPassword !== values.confirmPassword) {
-                            errors.confirmPassword = 'Password does not match';
-                        }
-                        return errors;
-                    }}
-                    onSubmit={handleSubmit}
-                    >
+                initialValues={{
+                    amountPlanted: '',
+                    cropCategory: '',
+                    cropName: '',
+                    harvestDate: '',
+                    plantDate: '',
+                    price: '',
+                }}
+                validationSchema={Yup.object({
+                    amountPlanted: Yup.number()
+                    .required('Required')
+                    .min(1, 'Must be at least 1'),
+                    cropCategory: Yup.string().required('Required'),
+                    cropName: Yup.string().required('Required'),
+                    harvestDate: Yup.date().required('Required'),
+                    plantDate: Yup.date().required('Required'),
+                    price: Yup.number().required('Required').min(0, 'Must be at least 0'),
+                })}
+                onSubmit={(values, { setSubmitting }) => {
+                    setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2));
+                    setSubmitting(false);
+                    }, 400);
+                }}
+  >
+                    
                 {({ isSubmitting }) => {
                         return (
+
+                            
 
                             <Form action="" className="mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl">
                                 <div className="relative mt-1">
@@ -99,19 +84,15 @@ function FarmForm({showModal,handleModalToggle }) {
                                 <div>
                                     <label htmlFor="phoneNumber" className="sr-only text-lg"> Phone number </label>
                                     <div className="relative mt-1">
-
                                         <Field
                                             className="w-full  border-gray-200 bg-white  rounded-lg p-4 pr-12 text-sm shadow-sm"
                                             type="phone"
                                             name="phoneNumber"
                                             placeholder="Phone number" />
-
                                         <ErrorMessage
                                             className=" text-error mt-1 text-lg"
                                             name="phoneNumber"
                                             component="div" />
-
-
                                     </div>
                                 </div>
 
@@ -224,3 +205,9 @@ function FarmForm({showModal,handleModalToggle }) {
 }
 
 export default FarmForm
+
+
+
+
+
+

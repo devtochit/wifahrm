@@ -5,7 +5,7 @@ import Dropdown from './Dropdown'
 import Theme from './Theme'
 
 const Toolbar = forwardRef(({ toggleCollapsed }, toggleRef) => (
-  <nav className='flex justify-between w-screen sm:w-auto p-6'>
+  <nav className='flex sticky top-0 justify-between w-screen sm:w-auto p-6'>
     <button
       ref={toggleRef}
       aria-label='Toggle sidebar'
