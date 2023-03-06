@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "../../apiActions";
-import { AppDispatch } from "../../configureStore";
 
 import {
 retrieveUserDetails,
 storeUserDetails,
-} from " ";
+} from "../../../utils/helperFunctions/userDataHandlers";
 
 const initialState = {
 userData: "",
@@ -56,7 +55,7 @@ registrationReceived: (state, action) => {
 },
 registrationRequestFailed: (state, action) => {
   state.loading = false;
-  state.error = action.payload.response.data.message.error;
+  // state.error = action.payload.response.data.message.error;
 },
 },
 });
@@ -69,22 +68,11 @@ logUserOut,
 registrationRequested,
 registrationReceived,
 registrationRequestFailed,
-} = loginSlice.actions;
+} = AuthenticationSlice.actions;
 
 export default AuthenticationSlice.reducer;
 
-export const login = (loginDetails) => (dispatch) => {
-dispatch(
-apiCallBegan({
-url:  "auth/login/",
-method: "post",
-data: loginDetails,
-onStart: loginRequested.type,
-onSuccess: loginReceived.type,
-onError: loginRequestFailed.type,
-})
-);
-};
+
 
 export const logout = () => (dispatch, getState) => {
 dispatch(logUserOut());
@@ -122,7 +110,7 @@ export const RegisterUser =
 (registrationDetails) => (dispatch) => {
 dispatch(
 apiCallBegan({
-url: "api/registration/registerNewUser/",
+  url: "api/registration/registerNewUser",
 method: "post",
 data: registrationDetails,
 onStart: registrationRequested.type,

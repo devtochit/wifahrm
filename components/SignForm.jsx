@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import styles from '../styles/Sign.module.css'
 import { useDispatch,useSelector } from "react-redux";
-import { LoginUser } from "../redux/services/login";
-import { setShowModal,setCloseModal } from "../redux/slice/loginSlice";
+import { RegisterUser } from "../redux/slice/auth/AuthenticationSlice";
+// import { setShowModal,setCloseModal } from "../redux/slice/loginSlice";
 import Link from "next/link";
 
 
@@ -13,12 +13,12 @@ import Link from "next/link";
 
 const SignUpNoW = () => {
     const dispatch = useDispatch();
-    const showModal = useSelector((state) => state.login.showModal);
+    // const showModal = useSelector((state) => state.login.showModal);
 
 
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-         const { userName,  userPassword } = values;
-         await dispatch(LoginUser({ data: { userName, userPassword } }));
+        const { confirmPassword, email, phoneNumber, userFirstName, userName, userPassword } = values;
+        await dispatch(RegisterUser({ confirmPassword, email, phoneNumber, userFirstName, userName, userPassword }));
         console.log(values)
         setSubmitting(false);
         resetForm()
@@ -96,10 +96,9 @@ const SignUpNoW = () => {
                                     <label htmlFor="email" className="sr-only text-lg"> Email</label>
                                     <div className="relative">
                                         <Field
-
                                             className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12 text-base text-black shadow-sm"
                                             type="text"
-                                            name="Email"
+                                            name="email"
                                             placeholder="Email" />
 
                                         <ErrorMessage
@@ -216,7 +215,8 @@ const SignUpNoW = () => {
 
                                 <div className="flex  flex-col gap-10 items-center justify-between">
 
-                                <button
+                                    <button
+                                        disabled={isSubmitting}
         type="submit"
         className="block w-full rounded-lg  bg-[#017d3f] px-5 py-3 text-sm font-medium text-white"
       >

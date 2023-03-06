@@ -36,7 +36,7 @@ const api =
                     // Default
 
                     dispatch(actions.apiCallSuccess(response.data));
-                    // console.log("res: ", response);
+                    console.log("res: ", response);
                     // Specific
                     if (onSuccess) {
                         dispatch({ type: onSuccess, payload: response.data });
