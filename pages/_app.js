@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import Preloader from "../components/Preloader";
 import { useEffect, useState } from "react";
 import { Provider, useStore } from "react-redux";
-import { store } from "../redux/store";
+import store, { persistor } from './store/configureStore'
+import { PersistGate } from "redux-persist/integration/react";
 import "../styles/global.css";
 
 
@@ -41,9 +42,12 @@ function MyApp({ Component, pageProps, router }) {
             animate={{ opacity: 1, transform: "scale(1)" }}
           >
 
-              <Provider store={store}>
-            <Component {...pageProps} />
-              </Provider>
+            <Provider store={store}>
+              <PersistGate loading={null} persistor={persistor}>
+                <Component {...pageProps} />
+              </PersistGate>
+
+            </Provider>
 
           </motion.div>
         )
