@@ -2,9 +2,9 @@ import Head from "next/head";
 import { useSelector } from "react-redux";
 import Layout from "../../components/Dashboard/Layout";
 import { selectBasketItems, selectBasketTotal } from "../../redux/slice/Crop/cropSlice";
-import Currency from "react-currency-formatter";
 import { useRouter } from "next/router";
 import { useState,useEffect } from "react";
+import { currencyFormatter } from "../../utils";
 
 function Success() {
   const items = useSelector(selectBasketItems);
@@ -75,7 +75,7 @@ function Success() {
               <div className="flex justify-between py-4 text-xl font-semibold">
                 <h4>Total</h4>
                 <h4>
-                  <Currency quantity={basketTotal} currency="NGN" />
+                  {currencyFormatter(basketTotal)}
                 </h4>
               </div>
             </div>

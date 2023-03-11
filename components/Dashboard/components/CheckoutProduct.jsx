@@ -1,10 +1,9 @@
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import Image from "next/image";
-import Currency from "react-currency-formatter";
 import { removeFromBasket } from "../../../redux/slice/Crop/cropSlice";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-
+import { currencyFormatter } from "../../../utils/index";
 
 
 function CheckoutProduct({ id, items }) {
@@ -47,10 +46,8 @@ function CheckoutProduct({ id, items }) {
         </div>
         <div className="flex flex-col items-end space-y-4">
           <h4 className="text-xl font-semibold lg:text-2xl">
-            <Currency
-              quantity={items.reduce((total, item) => total + item.amount, 0)}
-              currency="NGN"
-            />
+          {currencyFormatter(basketTotal)}
+
           </h4>
           <button
             onClick={removeItemFromBasket}

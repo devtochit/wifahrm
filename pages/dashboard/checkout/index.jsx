@@ -2,14 +2,13 @@ import Head from "next/head";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Currency from "react-currency-formatter";
 import { useSelector } from "react-redux";
 import Button from "../../../components/Dashboard/components/Button";
 import { selectBasketItems, selectBasketTotal } from "../../../redux/slice/Crop/cropSlice";
 import CheckoutProduct from "../../../components/Dashboard/components/CheckoutProduct";
 import Layout from "../../../components/Dashboard/Layout";
 import { usePaystackPayment } from "react-paystack";
-const currencyFormatter = require('currency-formatter');
+import { currencyFormatter } from "../../../utils";
 
 
 function Checkout() {
@@ -123,7 +122,7 @@ const handleSubmit = (e) => {
                   <div className="flex justify-between">
                     <p>Subtotal</p>
                     <p>
-                      <Currency quantity={basketTotal} currency="NGN" />
+                  {currencyFormatter(basketTotal)}
                     </p>
                   </div>
                   <div className="flex justify-between">
@@ -145,7 +144,7 @@ const handleSubmit = (e) => {
                 <div className="flex justify-between pt-4 text-xl font-semibold">
                   <h4>Total</h4>
                   <h4>
-                    <Currency quantity={basketTotal} currency="NGN" />
+                  {currencyFormatter(basketTotal)}
                   </h4>
                 </div>
               </div>
@@ -174,7 +173,7 @@ const handleSubmit = (e) => {
                     <h4 className="mb-4 flex flex-col text-xl font-semibold">
                       Pay in full
                       <span>
-                        <Currency quantity={basketTotal} currency="NGN" />
+                    {currencyFormatter(basketTotal)}
                       </span>
                     </h4>
 
