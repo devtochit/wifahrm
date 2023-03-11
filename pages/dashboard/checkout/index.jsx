@@ -36,10 +36,10 @@ function Checkout() {
     
       <main className="mx-auto max-w-5xl pb-24">
         <div className="px-5">
-          <h1 className="my-4 text-3xl font-semibold lg:text-4xl">
+          <h1 className="my-4 text-3xl font-semibold lg:text-5xl">
             {items.length > 0 ? "Review your bag." : "You have not added any crop to plant ."}
           </h1>
-          <p className="my-4">Free delivery and free returns.</p>
+          <p className="my-4 text-lg">Free delivery and free returns.</p>
 
           {items.length === 0 && (
             <Button
