@@ -14,7 +14,6 @@ const CropSlice = createSlice({
     addToBasket: (state, action) => {
       const id = uuidv4(); // generate a unique id using uuid
       state.items = [...state.items, { ...action.payload, id }];
-      console.log(state.items);
     },
 
     removeFromBasket: (state, action) => {

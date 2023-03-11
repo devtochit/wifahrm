@@ -8,10 +8,17 @@ import Button from "../../../components/Dashboard/components/Button";
 import { selectBasketItems, selectBasketTotal } from "../../../redux/slice/Crop/cropSlice";
 import CheckoutProduct from "../../../components/Dashboard/components/CheckoutProduct";
 import Layout from "../../../components/Dashboard/Layout";
+import { usePaystackPayment } from "react-paystack";
+
 
 function Checkout() {
   const items = useSelector(selectBasketItems);
   const basketTotal = useSelector(selectBasketTotal);
+  const {userData} = useSelector((state) => state.authReducers.Authentication);
+
+  const publicKey = 'pk_test_640d50dd050ee5699907f210fd4fc6463f021d89';
+
+
   const router = useRouter();
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState({});
   const [loading, setLoading] = useState(false);
@@ -21,9 +28,65 @@ function Checkout() {
       (results[item.id] = results[item.id] || []).push(item);
       return results;
     }, {});
-
     setGroupedItemsInBasket(groupedItems);
   }, [items]);
+
+    const config = {
+      // reference: (new Date()).getTime().toString(),
+      email: 'uzomaesse@gmail.com',
+      amount: basketTotal * 100,
+      publicKey: publicKey,
+      embedOptions: {
+        width: 1000,
+        height: 1000
+      },
+      metadata: {
+        cardItem: groupedItemsInBasket,
+        userId: 1
+      }
+    };
+
+// Initialize the payment using the Paystack payment gateway
+const initializePayment = usePaystackPayment(config);
+
+// Define the functions to handle successful and cancelled payments
+const onSuccess = (reference) => {
+  router.push("/dashboard/success");
+
+  // Use the Paystack API to retrieve the metadata associated with the payment
+  // fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
+  //   headers: {
+  //     Authorization: `Bearer ${'sk_test_6fc36fbe4814c6ffd3f12a8816be2337e8decb9a'}`
+  //   }
+  // })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     const metadata = data.data.metadata;
+  //     const cardItem = metadata.cardItem;
+  //     const userId = metadata.userId;
+  //     // Do something with the card item and user ID
+  //     alert(`Payment successful with reference: ${reference}. Card item: ${cardItem}. User ID: ${userId}`);
+
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //     alert('An error occurred while verifying payment');
+  //   });
+};
+
+
+const onClose = () => {
+  alert('Payment cancelled');
+};
+
+// Define the function to handle form submissions
+const handleSubmit = (e) => {
+  e.preventDefault();
+  // Initiate the payment process
+  initializePayment(onSuccess, onClose);
+};
+
+
 
 
   return (
@@ -121,7 +184,7 @@ function Checkout() {
                       loading={loading}
                       title="Check Out"
                       width="w-full"
-                    //   onClick={createCheckoutSession}
+                      onClick={handleSubmit}
                     />
                   </div>
                 </div>

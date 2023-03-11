@@ -7,7 +7,7 @@ storeUserDetails,
 } from "../../../utils/helperFunctions/userDataHandlers";
 
 const initialState = {
-userData: "",
+  userData: {},
 validationData: "",
 loading: false,
 isLoggedIn: false,
@@ -27,16 +27,17 @@ state.loading = true;
 },
 
 loginReceived: (state, action) => {
-    state.loading = false;
-    state.isLoggedIn = true;
-    storeUserDetails(JSON.stringify(action.payload));
-    state.userData = JSON.stringify(action.payload);
-    localStorage.setItem("userDetails", JSON.stringify(action.payload));
-  },
+  console.log("Payload received:", action.payload);
+  state.loading = false;
+  state.isLoggedIn = true;
+  storeUserDetails(JSON.stringify(action.payload));
+  state.userData = action.payload.data.user;
+  localStorage.setItem("userDetails", JSON.stringify(action.payload));
+},
+
 loginRequestFailed: (state, action) => {
   state.loading = false;
   state.error = action.payload.response.data.error;
-
 },
 logUserOut: (state) => {
   state.loading = false;
