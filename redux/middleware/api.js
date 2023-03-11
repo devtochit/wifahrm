@@ -23,17 +23,16 @@ const api =
                 try {
                     const response = await axios.request({
                         method,
-                        baseURL: "https://web-production-d5b0.up.railway.app/",
+                        baseURL: "https://wifarmapi-production.up.railway.app/",
                         url,
                         params: params,
                         data,
                         headers: {
-                            "content-type": "application/json",
+                            // "content-type": "application/json",
                             Authorization: extraheaders,
                         },
                     });
 
-                    // Default
 
                     dispatch(actions.apiCallSuccess(response.data));
                     console.log("res: ", response);

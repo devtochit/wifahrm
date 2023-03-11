@@ -4,7 +4,7 @@ import { Moon, Sun } from './icons'
 
 
 const Theme = ({ className }) => {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
 
   const didMountRef = useRef(false)
 
@@ -14,7 +14,7 @@ const Theme = ({ className }) => {
       (!('darkMode' in localStorage) &&
         window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
-      setDarkMode(true)
+      setDarkMode(false)
     }
   }, [])
 

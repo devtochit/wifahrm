@@ -9,23 +9,22 @@ function FarmerCard({ farm }) {
 			<figure className="px-2 pt-2">
 				<Image src={farm.imageSrc} alt={farm.name} className="rounded-xl" />
 			</figure>
-           {farm.crops.map((crop,index) => (
-			<div key={index} className="ds-card-body bg-slate-100 gap-1 p-6">
+         
+			<div  className="ds-card-body bg-slate-100 gap-1 p-6">
             <h2 className="ds-card-title mb-2 leading-tight   text-black">{farm.name}</h2>
             <p className="flex justify-between items-center">
                 <span className=" text-black"> Crops List: </span>
-                <span className=" text-black">{crop.amountPlanted}</span>
+                <span className=" text-black">{farm.amountPlanted}</span>
             </p>
             <p className="flex justify-between items-center">
                 <span className=" text-black">dailyInterestRate:</span>
-                <span className=" text-black">{crop.dailyInterestRate}</span>
+                <span className=" text-black">{farm.dailyInterestRate}</span>
             </p>
             <p className="flex justify-between items-center text-lg">
                 <span className="font-medium text-black">Havested date:</span>
-                <span className="font-medium  text-black">{crop.harvestDate}</span>
+                <span className="font-medium  text-black">{farm.harvestDate}</span>
             </p>
         </div>
-))}
    </div>
 		</>
 

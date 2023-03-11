@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Layout from '../../components/Dashboard/Layout'
+import { Toaster } from "react-hot-toast";
 
 
 const App = ({ Component, pageProps }) => {
@@ -11,6 +12,7 @@ const App = ({ Component, pageProps }) => {
  
   <> 
   <Layout>
+  <Toaster />
     <Component {...pageProps} />;
     </Layout>
   </>

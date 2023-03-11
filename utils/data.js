@@ -187,29 +187,109 @@ export   const farm = [
     name: "Farm A",
     location: "123 Main St.",
     imageSrc : F1,
-    crops: cropsList
+    // crops: cropsList
+    amountPlanted: 10,
+    cropActualDuration: 14,
+    cropCategory: "Vegetables",
+    cropEstimatedDuration: 14,
+    cropId: 1,
+    cropName: "Tomatoes",
+    dailyInterestRate: 0.1,
+    estimatedYeildRate: 0.8,
+    farms: ["Farm A"],
+    cropName: "2023-02-",
+    harvested: false,
+    monthlyInterestRate: 0.05,
+    plantDate: "2023-02-1",
+    planted: true,
+    price: 5.0
   },
   {
     id : 2,
     name: "Farm c",
     location: "123 Main St.",
     imageSrc : F1,
-    crops: cropsList
+    // crops: cropsList
+    amountPlanted: 10,
+    cropActualDuration: 14,
+    cropCategory: "Vegetables",
+    cropEstimatedDuration: 14,
+    cropId: 1,
+    cropName: "Tomatoes",
+    dailyInterestRate: 0.1,
+    estimatedYeildRate: 0.8,
+    farms: ["Farm A"],
+    harvestDate: "2023-02-",
+    harvested: false,
+    monthlyInterestRate: 0.05,
+    plantDate: "2023-02-1",
+    planted: true,
+    price: 5.0
   },
   {
     id : 3,
     name: "Farm b",
     location: "123 Main St.",
     imageSrc : F1,
-    crops: cropsList
+    // crops: cropsList
+    amountPlanted: 10,
+    cropActualDuration: 14,
+    cropCategory: "Vegetables",
+    cropEstimatedDuration: 14,
+    cropId: 1,
+    cropName: "Tomatoes",
+    dailyInterestRate: 0.1,
+    estimatedYeildRate: 0.8,
+    farms: ["Farm A"],
+    harvestDate: "2023-02-",
+    harvested: false,
+    monthlyInterestRate: 0.05,
+    plantDate: "2023-02-1",
+    planted: true,
+    price: 5.0
   },
   {
     id : 4,
     name: "Farm b",
     location: "123 Main St.",
     imageSrc : F1,
-    crops: cropsList
+    // crops: cropsList
+    amountPlanted: 10,
+    cropActualDuration: 14,
+    cropCategory: "Vegetables",
+    cropEstimatedDuration: 14,
+    cropId: 1,
+    cropName: "Tomatoes",
+    dailyInterestRate: 0.1,
+    estimatedYeildRate: 0.8,
+    farms: ["Farm A"],
+    harvestDate: "2023-02-",
+    harvested: false,
+    monthlyInterestRate: 0.05,
+    plantDate: "2023-02-1",
+    planted: true,
+    price: 5.0
   }
 
 ];
+
+export const cultivateCrop = [
+    {
+        "accruedAmount": 1500.50,
+        "available": true,
+        "cropCategory": ["Vegetables", "Fruits", "Herbs", "Grains", "Nuts", "Spices", "Flowers", "Mushrooms", "Beans", "Roots"],
+        "cropEstimatedDuration": 90.5,
+        "cropName": "Tomatoes",
+        "cropPrice": 2.99,
+        "dailyInterestRate": 0.005,
+        "datePlanted": "2022-06-15T10:30:00Z",
+        "id": 12345,
+        "imageUrl": "https://example.com/tomatoes.jpg",
+        "lifeCycleYieldRate": 0.8,
+        "monthlyInterestRate": 0.15,
+        "planted": true,
+        "squareMeters": 10.5
+      }
+      
+]
   

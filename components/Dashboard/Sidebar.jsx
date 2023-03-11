@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { Category2, Tag2, People, UserSquare, LogoutCurve, Moon, Sun1, Add } from 'iconsax-react';
 import Link from 'next/link'
-
+import SidebarNew from './components/sidebar/sidebar';
 import { Feather } from './icons'
 
 
@@ -13,7 +13,9 @@ const Sidebar = forwardRef(
         collapsed ? 'ml-0 sm:-ml-64' : '-ml-64 sm:ml-0'
       } transition-spacing motion-reduce:transition-none duration-300 sm:duration-500 ease-in-out`}
     >
-      <Link href='/' aria-label='Go to the dashboard' passHref>
+
+<SidebarNew/>
+      {/* <Link href='/' aria-label='Go to the dashboard' passHref>
         <div className='flex space-x-3 justify-center text-xl font-bold'>
           <Feather width={28} height={28} />
           <span> Wifahrm</span>
@@ -58,7 +60,7 @@ const Sidebar = forwardRef(
     <button className="inline-block mt-32 text-base items-start  px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0">
           Log Out
         </button>
-  </nav>
+  </nav> */}
 </nav>
 
 

@@ -94,7 +94,7 @@ export const login = (loginDetails) => (dispatch) => {
     console.log("loginDetails", loginDetails);
     dispatch(
       apiCallBegan({
-        url: "auth/login/",
+        url: "auth/login",
         method: "post",
         data: loginDetails,
         onStart: loginRequested.type,
@@ -107,12 +107,13 @@ export const login = (loginDetails) => (dispatch) => {
 
 
 export const RegisterUser =
-(registrationDetails) => (dispatch) => {
+(values) => (dispatch) => {
+  console.log(' registration data',values )
 dispatch(
 apiCallBegan({
-  url: "api/registration/registerNewUser",
+  url: "api/registration/registerNewUser/",
 method: "post",
-data: registrationDetails,
+data: values,
 onStart: registrationRequested.type,
 onSuccess: registrationReceived.type,
 onError: registrationRequestFailed.type,

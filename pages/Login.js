@@ -4,21 +4,37 @@ import { motion } from "framer-motion";
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import styles from '../styles/Sign.module.css'
 import { useDispatch,useSelector } from "react-redux";
-import { LoginUser } from "../redux/services/login";
-import { setShowModal,setCloseModal } from "../redux/slice/loginSlice";
-import LoginModal from "../components/LoginModal";
+import { useRouter } from "next/router";
+// import LoginModal from "../components/LoginModal";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
+import { login } from "../redux/slice/auth/AuthenticationSlice";
 
 const Login = () => {
     const dispatch = useDispatch();
-    const showModal = useSelector((state) => state.login.showModal);
+    const router = useRouter()
+    const {loading,isLoggedIn,userData} = useSelector((state) => state.authReducers.Authentication);
+    console.log( isLoggedIn)
+        console.log( userData)
 
+
+    useEffect(() => {
+      if (userData || isLoggedIn) {
+        router.push("/dashboard");
+      }
+    }, [router, userData, dispatch, ]);
+  
+    // useEffect(() => {
+    //   if (status == AuthStatus.Error) {
+    //     dispatch(reset());
+    //   }
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [router]);
 
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
          const { userName,  userPassword } = values;
-         await dispatch(LoginUser({ data: { userName, userPassword } }));
+         await dispatch(login(values));
         console.log(values)
         setSubmitting(false);
         resetForm()
@@ -175,8 +191,7 @@ const Login = () => {
       layout='fill' 
     />
   </div>
-  {showModal && <LoginModal  />}
-
+       {/* {showModal && <LoginModal  />} */}
         </section>
         <Footer />
       </>

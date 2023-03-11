@@ -17,9 +17,9 @@ const SignUpNoW = () => {
 
 
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-        const { confirmPassword, email, phoneNumber, userFirstName, userName, userPassword } = values;
-        await dispatch(RegisterUser({ confirmPassword, email, phoneNumber, userFirstName, userName, userPassword }));
-        console.log(values)
+        const { confirmPassword, email, phoneNumber, firstName, userName, password } = values;
+        await dispatch(RegisterUser({email,firstName,userName,password,phoneNumber,userName}));
+        // console.log(values)
         setSubmitting(false);
         resetForm()
     };
@@ -38,20 +38,14 @@ const SignUpNoW = () => {
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati sunt
       dolores deleniti inventore quaerat mollitia?
     </p>
-
-
-
-          
-
-
                     <Formik
                     initialValues={{
                         email: '',
                         phoneNumber: '',
-                        userFirstName: '',
-                        userLastName: '',
+                        firstName: '',
+                        lastName: '',
                         userName: '',
-                        userPassword: '',
+                        password: '',
                         confirmPassword: '',
 
                     }}
@@ -64,11 +58,11 @@ const SignUpNoW = () => {
                         ) {
                             errors.email = 'Invalid email address';
                         }
-                        if (!values.userFirstName) {
-                            errors.userFirstName = 'Required';
+                        if (!values.firstName) {
+                            errors.firstName = 'Required';
                         }
-                        if (!values.userLastName) {
-                            errors.userLastName = 'Required';
+                        if (!values.lastName) {
+                            errors.lastName = 'Required';
                         }
                         if (!values.userName) {
                             errors.userName = 'Required';
@@ -76,12 +70,12 @@ const SignUpNoW = () => {
                         if (!values.phoneNumber) {
                             errors.phoneNumber = 'Required';
                         }
-                        if (!values.userPassword) {
-                            errors.userPassword = 'Required';
+                        if (!values.password) {
+                            errors.password = 'Required';
                         }
                         if (!values.confirmPassword) {
                             errors.confirmPassword = 'Required';
-                        } else if (values.userPassword !== values.confirmPassword) {
+                        } else if (values.password !== values.confirmPassword) {
                             errors.confirmPassword = 'Password does not match';
                         }
                         return errors;
@@ -128,35 +122,35 @@ const SignUpNoW = () => {
                                 </div>
 
                                 <div className="relative mt-1">
-                                    <label htmlFor="userFirstName" className="sr-only text-lg">First Name</label>
+                                    <label htmlFor="firstName" className="sr-only text-lg">First Name</label>
                                     <div className="relative">
                                         <Field
 
                                             className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12  text-sm shadow-sm"
                                             type="text"
-                                            name="userFirstName"
+                                            name="firstName"
                                             placeholder="First Name" />
 
                                         <ErrorMessage
                                             className=" text-error mt-1 text-lg"
-                                            name="userFirstName"
+                                            name="firstName"
                                             component="div" />
                                     </div>
                                 </div>
 
                                 <div className="relative mt-1">
-                                    <label htmlFor="userLastName" className="sr-only text-slate-900  text-lg"> Last Name </label>
+                                    <label htmlFor="lastName" className="sr-only text-slate-900  text-lg"> Last Name </label>
                                     <div className="relative">
 
                                         <Field
                                             className="w-full  border-gray-200 bg-white text-slate-900  rounded-lg p-4 pr-12 text-sm shadow-sm"
                                             type="text"
-                                            name="userLastName"
+                                            name="lastName"
                                             placeholder="Last Name" />
 
                                         <ErrorMessage
                                             className="text-lg text-error mt-1"
-                                            name="userLastName"
+                                            name="lastName"
                                             component="div" />
                                     </div>
                                 </div>
@@ -186,12 +180,12 @@ const SignUpNoW = () => {
                                         <Field
                                             className="w-full   border-gray-200 bg-white text-slate-900  rounded-lg p-4 pr-12 text-sm shadow-sm"
                                             type="password"
-                                            name="userPassword"
+                                            name="password"
                                             placeholder="Password" />
 
                                         <ErrorMessage
                                             className="text-lg text-error mt-1"
-                                            name="userPassword"
+                                            name="password"
                                             component="div" />
                                     </div>
                                 </div>
