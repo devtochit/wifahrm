@@ -9,13 +9,14 @@ import { selectBasketItems, selectBasketTotal } from "../../../redux/slice/Crop/
 import CheckoutProduct from "../../../components/Dashboard/components/CheckoutProduct";
 import Layout from "../../../components/Dashboard/Layout";
 import { usePaystackPayment } from "react-paystack";
+const currencyFormatter = require('currency-formatter');
 
 
 function Checkout() {
   const items = useSelector(selectBasketItems);
   const basketTotal = useSelector(selectBasketTotal);
   const {userData} = useSelector((state) => state.authReducers.Authentication);
-
+  const formattedBasketTotal = currencyFormatter.format(basketTotal, { code: 'NGN', locale: 'en-NG' });
   const publicKey = 'pk_test_640d50dd050ee5699907f210fd4fc6463f021d89';
 
 
@@ -46,10 +47,8 @@ function Checkout() {
       }
     };
 
-// Initialize the payment using the Paystack payment gateway
 const initializePayment = usePaystackPayment(config);
 
-// Define the functions to handle successful and cancelled payments
 const onSuccess = (reference) => {
   router.push("/dashboard/success");
 
