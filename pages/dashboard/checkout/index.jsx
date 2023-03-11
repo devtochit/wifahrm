@@ -15,7 +15,6 @@ function Checkout() {
   const items = useSelector(selectBasketItems);
   const basketTotal = useSelector(selectBasketTotal);
   const {userData} = useSelector((state) => state.authReducers.Authentication);
-  const formattedBasketTotal = currencyFormatter.format(basketTotal, { code: 'NGN', locale: 'en-NG' });
   const publicKey = 'pk_test_640d50dd050ee5699907f210fd4fc6463f021d89';
 
 

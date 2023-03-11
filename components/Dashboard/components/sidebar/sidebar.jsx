@@ -1,4 +1,3 @@
-import {  Settings, User, Users, Tag } from "react-feather";
 import { Home,Wind2,Tree, AddSquare, ReceiptItem } from 'iconsax-react';
 
 import Link from "next/link";
@@ -20,21 +19,21 @@ const Sidebar = () => {
       path: "/dashboard/products",
       icon: <Tree size={32} color="#37d67a" variant="TwoTone"/>,
     },
-    settings: {
-      title: "Create",
-      path: "/dashboard/createfarm",
-      icon: <Wind2 size={26} color="#37d67a" variant="TwoTone"/>,
-    },
+    // settings: {
+    //   title: "Create",
+    //   path: "/dashboard/createfarm",
+    //   icon: <Wind2 size={26} color="#37d67a" variant="TwoTone"/>,
+    // },
     users: {
       title: "Cultivate ",
       path: "/dashboard/cultivatecrop",
       icon: <AddSquare size={32}  color="#37d67a" variant="TwoTone"/>,
     },
-    products: {
-      title: "Checkout",
-      path: "/dashboard/checkout",
-      icon: <ReceiptItem size={32}  color="#37d67a" variant="TwoTone"/>,
-    },
+    // products: {
+    //   title: "Checkout",
+    //   path: "/dashboard/checkout",
+    //   icon: <ReceiptItem size={32}  color="#37d67a" variant="TwoTone"/>,
+    // },
   };
 
   const setTitle = (title) => {

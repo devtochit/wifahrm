@@ -46,7 +46,7 @@ function CheckoutProduct({ id, items }) {
         </div>
         <div className="flex flex-col items-end space-y-4">
           <h4 className="text-xl font-semibold lg:text-2xl">
-          {currencyFormatter(basketTotal)}
+          {currencyFormatter( items[0].amount )}
 
           </h4>
           <button
