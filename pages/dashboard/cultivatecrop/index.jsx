@@ -93,7 +93,7 @@ const  CultivateCrops = ()=>{
         const handleSubmit = async (values, { setSubmitting, resetForm }) => {
       dispatch(addToBasket(values));
       toast.success(`${values.name} added to basket`, { position: "top-center", });
-            console.log(values)
+            // console.log(values)
             setSubmitting(false);
             resetForm()
         };

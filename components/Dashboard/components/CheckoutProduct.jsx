@@ -12,7 +12,7 @@ function CheckoutProduct({ id, items }) {
   const dispatch = useDispatch();
 
   const removeItemFromBasket = () => {
-    dispatch(removeFromBasket({ id }));
+    dispatch(removeFromBasket({ items[0].id}));
 
     toast.error(`${items[0].name} removed from basket`, {
       position: "top-center",

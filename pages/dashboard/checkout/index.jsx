@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Button from "../../../components/Dashboard/components/Button";
-import { selectBasketItems, selectBasketTotal } from "../../../redux/slice/Crop/cropSlice";
-import CheckoutProduct from "../../../components/Dashboard/components/CheckoutProduct";
+import { selectBasketItems, selectBasketTotal,plusItem,minusItem } from "../../../redux/slice/Crop/cropSlice";
+import CheckoutProduct from "../../../components/Dashboard/components/BasketProduct";
 import Layout from "../../../components/Dashboard/Layout";
 import { usePaystackPayment } from "react-paystack";
 import { currencyFormatter } from "../../../utils";
@@ -97,7 +97,7 @@ const handleSubmit = (e) => {
       <main className="mx-auto max-w-5xl pb-24">
         <div className="px-5">
           <h1 className="my-4 text-3xl font-semibold lg:text-5xl">
-            {items.length > 0 ? "Review your bag." : "You have not added any crop to plant ."}
+            {/* {items.length > 0 ? "Review your bag." : "You have not added any crop to plant ."} */}
           </h1>
           <p className="my-4 text-lg">Free delivery and free returns.</p>
 
@@ -109,12 +109,13 @@ const handleSubmit = (e) => {
           )}
         </div>
 
-        {items.length > 0 && (
+        {
+        items.length > 0 && (
           <div className="mx-5 md:mx-8">
             {Object.entries(groupedItemsInBasket).map(([key, items]) => (
               <CheckoutProduct key={key} items={items} id={key} />
             ))}
-
+       
             <div className="my-12 mt-6 ml-auto max-w-3xl">
               <div className="divide-y divide-gray-300">
                 <div className="pb-4">
@@ -143,7 +144,7 @@ const handleSubmit = (e) => {
                 <div className="flex justify-between pt-4 text-xl font-semibold">
                   <h4>Total</h4>
                   <h4>
-                  {currencyFormatter(basketTotal)}
+                  {/* {currencyFormatter(basketTotal)} */}
                   </h4>
                 </div>
               </div>
@@ -161,14 +162,14 @@ const handleSubmit = (e) => {
                         $283.16/mo. at 0% APR<sup className="-top-1">◊</sup>
                       </span> */}
                     </h4>
-                    <Button title="Check Out with Apple Card Monthly Installments" />
-                    <p className="mt-2 max-w-[240px] text-[13px]">
+                    {/* <Button title="Check Out with Apple Card Monthly Installments" /> */}
+                    {/* <p className="mt-2 max-w-[240px] text-[13px]">
                       $0.00 due today, which includes applicable full-price
                       items, down payments, shipping, and taxes.
-                    </p>
+                    </p> */}
                   </div>
 
-                  <div className="flex flex-1 flex-col items-center space-y-8 rounded-xl bg-gray-200 p-8 py-12 md:order-2">
+                  {/* <div className="flex flex-1 flex-col items-center space-y-8 rounded-xl bg-gray-200 p-8 py-12 md:order-2">
                     <h4 className="mb-4 flex flex-col text-xl font-semibold">
                       Pay in full
                       <span>
@@ -183,12 +184,18 @@ const handleSubmit = (e) => {
                       width="w-full"
                       onClick={handleSubmit}
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
+              
             </div>
+
+
+            
           </div>
         )}
+
+        
       </main>
     </div>
     </Layout>

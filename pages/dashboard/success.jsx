@@ -1,12 +1,13 @@
 import Head from "next/head";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/Dashboard/Layout";
-import { selectBasketItems, selectBasketTotal } from "../../redux/slice/Crop/cropSlice";
+import { selectBasketItems, selectBasketTotal,deleteFromBasket } from "../../redux/slice/Crop/cropSlice";
 import { useRouter } from "next/router";
 import { useState,useEffect } from "react";
 import { currencyFormatter } from "../../utils";
 
 function Success() {
+  const dispatch = useDispatch();
   const items = useSelector(selectBasketItems);
   const basketTotal = useSelector(selectBasketTotal);
   const {userData} = useSelector((state) => state.authReducers.Authentication);
@@ -18,13 +19,10 @@ function Success() {
     router.push("/dashboard");
     return null;
   }
-  // useEffect(() => {
-  //   const groupedItems = items.reduce((results, item) => {
-  //     (results[item.id] = results[item.id] || []).push(item);
-  //     return results;
-  //   }, {});
-  //   setGroupedItemsInBasket(groupedItems);
-  // }, [items]);
+  
+  useEffect(() => {
+    dispatch(deleteFromBasket());
+  }, []);
 
   return (
     <Layout>
