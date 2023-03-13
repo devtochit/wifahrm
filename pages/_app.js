@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Preloader from "../components/Preloader";
 import { useEffect, useState } from "react";
 import { Provider, useStore } from "react-redux";
-import store,{persistor} from '../redux/configureStore'
+import store, { persistor } from '../redux/configureStore'
 import { PersistGate } from "redux-persist/integration/react";
 import "../styles/global.css";
 import { Toaster } from "react-hot-toast";
@@ -44,10 +44,10 @@ function MyApp({ Component, pageProps, router }) {
           >
 
             <Provider store={store}>
-              <PersistGate loading={null} persistor={persistor}>
+              {/* <PersistGate loading={null} persistor={persistor}> */}
               <Toaster />
-                <Component {...pageProps} />
-              </PersistGate>
+              <Component {...pageProps} />
+              {/* </PersistGate> */}
 
             </Provider>
 

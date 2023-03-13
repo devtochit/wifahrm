@@ -19,10 +19,10 @@ function Success() {
     router.push("/dashboard");
     return null;
   }
-  
-  useEffect(() => {
-    dispatch(deleteFromBasket());
-  }, []);
+
+  // useEffect(() => {
+  //   dispatch(deleteFromBasket());
+  // }, []);
 
   return (
     <Layout>

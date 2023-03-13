@@ -18,7 +18,7 @@ function BasketProduct({ items, id }) {
     });
   };
   const minusCrop =()=>{
-    if (items.quantity > 1) dispatch(minusItem(id));
+    if (items[0].quantity > 1) dispatch(minusItem({id}));
   }
   const AddCrop =()=>{
     dispatch(plusItem(id))

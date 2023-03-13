@@ -29,17 +29,25 @@ const CropSlice = createSlice({
     addToBasket: (state, action) => {
       const id = uuidv4(); // generate a unique id using uuid
       state.items = addItemToCart(state.items, action.payload, id);
-      console.log(state.items) 
+      console.log(state.items)
     },
     deleteFromBasket: (state, action) => {
       state.items = [];
     },
     plusItem: (state, action) => {
-      state.items[action.payload].quantity += 1;
-      console.log(state.items[action.payload].quantity)
+      const item = state.items.find(item => item.id === action.payload);
+      if (item) {
+        item.amount += 1;
+        console.log(item.quantity);
+      }
     },
+
     minusItem: (state, action) => {
-      state.items[action.payload].quantity -= 1;
+      const item = state.items.find(item => item.id === action.payload);
+      if (item) {
+        item.amount -= 1;
+        console.log(item.quantity);
+      }
     },
     removeFromBasket: (state, action) => {
       const index = state.items.findIndex(
@@ -70,18 +78,18 @@ export const {
   setCropAmount,
   addToBasket,
   minusItem,
-  plusItem
+  plusItem,
   removeFromBasket,
   deleteFromBasket,
 } = CropSlice.actions;
 
-export const selectBasketItems = (state) =>  state.cropReducers.CropSlice.items
+export const selectBasketItems = (state) => state.cropReducers.CropSlice.items
 
 export const selectBasketItemsWithId = (state, id) => {
   return state.cropReducers.CropSlice.items.filter((item) => item.id === id);
 };
 
-export const selectBasketTotal = (state) =>  state.cropReducers.CropSlice.items.reduce((total, item) => (total += item. amount), 0);
+export const selectBasketTotal = (state) => state.cropReducers.CropSlice.items.reduce((total, item) => (total += item.amount), 0);
 
 
 // export const selectBasketTotal = (state) => {
