@@ -19,11 +19,11 @@ const Login = () => {
         console.log( userData)
 
 
-    useEffect(() => {
-      if (userData || isLoggedIn) {
-        router.push("/dashboard");
-      }
-    }, [router, userData, dispatch, ]);
+    // useEffect(() => {
+    //   if (userData || isLoggedIn) {
+    //     router.push("/dashboard");
+    //   }
+    // }, [router, userData, dispatch, ]);
   
     // useEffect(() => {
     //   if (status == AuthStatus.Error) {
@@ -38,6 +38,7 @@ const Login = () => {
         console.log(values)
         setSubmitting(false);
         resetForm()
+
     };
 
       

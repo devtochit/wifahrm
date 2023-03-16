@@ -37,7 +37,7 @@ loginReceived: (state, action) => {
 
 loginRequestFailed: (state, action) => {
   state.loading = false;
-  state.error = action.payload.response.data.error;
+  // state.error = action.payload.response.userData.error;
 },
 logUserOut: (state) => {
   state.loading = false;
@@ -56,7 +56,7 @@ registrationReceived: (state, action) => {
 },
 registrationRequestFailed: (state, action) => {
   state.loading = false;
-  // state.error = action.payload.response.data.message.error;
+  state.error = action.payload.response.userData.message.error;
 },
 },
 });

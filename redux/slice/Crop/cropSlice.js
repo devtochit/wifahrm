@@ -70,7 +70,7 @@ export const {
   setCropAmount,
   addToBasket,
   minusItem,
-  plusItem
+  plusItem,
   removeFromBasket,
   deleteFromBasket,
 } = CropSlice.actions;

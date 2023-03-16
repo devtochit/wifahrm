@@ -44,10 +44,10 @@ function MyApp({ Component, pageProps, router }) {
           >
 
             <Provider store={store}>
-              <PersistGate loading={null} persistor={persistor}>
+              {/* <PersistGate loading={null} persistor={persistor}> */}
               <Toaster />
                 <Component {...pageProps} />
-              </PersistGate>
+              {/* </PersistGate> */}
 
             </Provider>
 

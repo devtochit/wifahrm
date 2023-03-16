@@ -5,11 +5,26 @@ import { CropData } from '../../../utils/data'
 import ProductCard from '../../../components/ProductCard'
 import Select from "react-select";
 import Link from 'next/link';
+import { getMarketData } from '../../../redux/slice/marketplace/marketplaceSlice';
+import { useEffect } from 'react';
+import { useDispatch,useSelector } from "react-redux";
 
 
+const product = ()=> { 
+    // const { isLoggedIn } = useAppSelector((state) => state.authReducers.login);
+  // const { userData, loading } = useSelector( (state) => state.profileReducers.getProfileSlice);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // if (isLoggedIn) {
+    // }
+    dispatch(getMarketData());
+
+  }, []);
+
+  return(
 
 
-const product = ()=> (
   <Layout >
     
     <div className="navbar  flex flex-row justify-end px-12">
@@ -43,6 +58,6 @@ const product = ()=> (
     </div>
 
   </Layout>
-)
+)}
 
 export default product
