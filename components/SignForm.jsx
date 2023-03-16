@@ -26,7 +26,7 @@ const SignUpNoW = () => {
 
 
 
-      
+
     return (
 <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
   <div className="mx-auto max-w-lg">
@@ -189,7 +189,7 @@ const SignUpNoW = () => {
                                             component="div" />
                                     </div>
                                 </div>
-                                
+
                                 <div className="relative mt-1">
                                     <label htmlFor="confirmPassword" className="sr-only text-lg">Password</label>
                                     <div className="relative">
@@ -220,9 +220,7 @@ const SignUpNoW = () => {
       <p className="text-center text-base text-gray-500">
         No account?
         <Link className="underline text-lg font-bold ml-10" href="/Login" >
-            <a className="underline text-base ml-2">  
-            Sign In 
-             </a>
+            Sign In
             </Link>
       </p>
      </div>
@@ -231,7 +229,7 @@ const SignUpNoW = () => {
      </Formik>
         </div>
         </div>
-        
+
     );
 };
 

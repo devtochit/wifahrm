@@ -5,47 +5,48 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import styles from '../styles/Sign.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-// import LoginModal from "../components/LoginModal";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
-import { login } from "../redux/slice/auth/AuthenticationSlice";
+// import { login } from "../redux/slice/auth/AuthenticationSlice";
+import { signIn } from 'next-auth/react';
+
 
 const Login = () => {
-    const dispatch = useDispatch();
-    const router = useRouter()
-    const {loading,isLoggedIn,userData} = useSelector((state) => state.authReducers.Authentication);
-    console.log( isLoggedIn)
-        console.log( userData)
+  const dispatch = useDispatch();
+  const router = useRouter()
+  const { loading, isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
+  console.log(isLoggedIn)
+  console.log(userData)
 
 
-    // useEffect(() => {
-    //   if (userData || isLoggedIn) {
-    //     router.push("/dashboard");
-    //   }
-    // }, [router, userData, dispatch, ]);
-  
-    // useEffect(() => {
-    //   if (status == AuthStatus.Error) {
-    //     dispatch(reset());
-    //   }
-    //   // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [router]);
+  // useEffect(() => {
+  //   if (userData || isLoggedIn) {
+  //     router.push("/dashboard");
+  //   }
+  // }, [router, userData, dispatch, ]);
 
-    const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-         const { userName,  userPassword } = values;
-         await dispatch(login(values));
-        console.log(values)
-        setSubmitting(false);
-        resetForm()
+  // useEffect(() => {
+  //   if (status == AuthStatus.Error) {
+  //     dispatch(reset());
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [router]);
 
-    };
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    const { userName, userPassword } = values;
+    await dispatch(login(values));
+    console.log(values)
+    setSubmitting(false);
+    resetForm()
 
-      
-    return (
-      <>  
-        <Navbar />
-        <section className="relative flex flex-wrap lg:h-screen lg:items-center">
+  };
+
+
+  return (
+    <>
+      <Navbar />
+      <section className="relative flex flex-wrap lg:h-screen lg:items-center">
         <div className="w-full px-4 py-12 sm:px-6 gap-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-lg text-center">
             <h1 className="text-2xl font-bold sm:text-3xl">Get started today!</h1>
@@ -162,10 +163,10 @@ const Login = () => {
                 <div className="flex items-center justify-between">
                   <p className=" text-gray-500 text-base">
                     No account?
-                    <Link href="/signup" >
-                      <a className="underline text-base ml-2" >
-                        Sign Up
-                      </a>
+                    <Link href="/signup" className="underline text-base ml-2" >
+
+                      Sign Up
+
                     </Link>
                   </p>
 

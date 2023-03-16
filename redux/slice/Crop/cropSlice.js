@@ -38,17 +38,16 @@ const CropSlice = createSlice({
       const item = state.items.find(item => item.id === action.payload);
       if (item) {
         item.amount += 1;
-        console.log(item.quantity);
       }
     },
 
-    minusItem: (state, action) => {
-      const item = state.items.find(item => item.id === action.payload);
-      if (item) {
-        item.amount -= 1;
-        console.log(item.quantity);
-      }
-    },
+    //     minusItem: (state, action) => {
+    //       const item = state.items.find(item => item.id === action.payload);
+    //       if (...item) {
+    //         item.amount -= 1;
+    // console.log(item.amount);
+    //       }
+    //     },
     removeFromBasket: (state, action) => {
       const index = state.items.findIndex(
         (item) => item.id === action.payload.id

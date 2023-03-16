@@ -127,7 +127,7 @@ const Navbar = () => {
                 }`}
               >
                 <Link href="/">
-                  <a>Home</a>
+                Home
                 </Link>
               </li>
               <li
@@ -136,7 +136,7 @@ const Navbar = () => {
                 }`}
               >
                 <Link href="/about">
-                  <a>About</a>
+                  About
                 </Link>
               </li>
               <li
@@ -145,7 +145,7 @@ const Navbar = () => {
                 }`}
               >
                 <Link href="/services">
-                  <a>Services</a>
+                Services
                 </Link>
               </li>
               <li
@@ -154,7 +154,7 @@ const Navbar = () => {
                 }`}
               >
                 <Link href="/gallery">
-                  <a>Gallery</a>
+                  Gallery
                 </Link>
               </li>
               <li
@@ -163,22 +163,22 @@ const Navbar = () => {
                 }`}
               >
                 <Link href="/contact">
-                  <a>Contact</a>
+                  Contact
                 </Link>
               </li>
               <Link href="/signup">
-                <a>
+
                   <button type="button" className={styles.donate}>
                     Sign In
                   </button>
-                </a>
+
               </Link>
               <Link href="/Login">
-                <a>
+
                   <button type="button" className={styles.donate}>
                     Login
                   </button>
-                </a>
+
               </Link>
             </ul>
           </div>
@@ -201,7 +201,7 @@ const Navbar = () => {
                   </button>
                   </li>
               </Link>
-          
+
               <Link href="/Login">
               <li>
                   <button type="button" className={styles.donate}>
@@ -244,6 +244,6 @@ const Navbar = () => {
 
 
 
-        
+
 
 export default Navbar;
