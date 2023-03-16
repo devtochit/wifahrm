@@ -70,7 +70,7 @@ const Footer = () => {
           />
           <motion.h1 variants={textVariants}>
           WiFahrm&apos;s <br />
-         
+
           </motion.h1>
           <motion.p variants={textVariants}>
           WiFahrm promises the best of agricultural
@@ -134,7 +134,7 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>About Us</a>
+              About Us
               </Link>
             </motion.div>
             <motion.div variants={textVariants} className={styles.link}>
@@ -147,7 +147,7 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Mission Statement</a>
+              Mission Statement
               </Link>
             </motion.div>
           </motion.div>
@@ -176,7 +176,7 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Farm Management</a>
+                Farm Management
               </Link>
             </motion.div>
 
@@ -190,7 +190,7 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Farm land ownership</a>
+                Farm land ownership
               </Link>
             </motion.div>
 
@@ -204,10 +204,10 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Daily earning from farming</a>
+          Daily earning from farming
               </Link>
             </motion.div>
-            
+
             <motion.div variants={textVariants} className={styles.link}>
               <span>
                 <Image
@@ -218,10 +218,10 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Ownership</a>
+              Ownership
               </Link>
             </motion.div>
-            
+
 
           </motion.div>
         </motion.div>
@@ -249,7 +249,7 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>FAQ</a>
+                FAQ
               </Link>
             </motion.div>
             <motion.div variants={textVariants} className={styles.link}>
@@ -262,7 +262,7 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Support</a>
+              Support
               </Link>
             </motion.div>
             <motion.div variants={textVariants} className={styles.link}>
@@ -275,7 +275,7 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Privacy Policy</a>
+                Privacy Policy
               </Link>
             </motion.div>
             <motion.div variants={textVariants} className={styles.link}>
@@ -288,7 +288,7 @@ const Footer = () => {
                 />
               </span>
               <Link href="#">
-                <a>Terms and Conditions</a>
+              Terms and Conditions
               </Link>
             </motion.div>
           </motion.div>

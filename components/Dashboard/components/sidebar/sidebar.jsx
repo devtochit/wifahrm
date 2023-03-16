@@ -55,8 +55,8 @@ const Sidebar = () => {
       <div className="h-screen hidden xs:flex w-28 lg:w-56 px-6 flex-col items-center justify-between sticky top-0">
         <div className="w-full">
           <div className="h-20 text-xl font-extrabold flex items-center justify-center">
-            <Link href={items.home.path}>
-              <a className="hover:text-accent text-green-900 font-extrabold text-2xl"> Wifahrm</a>
+            <Link href={items.home.path} className="hover:text-accent text-green-900 font-extrabold text-2xl">
+               Wifahrm
             </Link>
           </div>
           <div className="pt-3 space-y-2">
