@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
-// import { login } from "../redux/slice/auth/AuthenticationSlice";
+import { login } from "../redux/slice/auth/AuthenticationSlice";
 import { signIn } from 'next-auth/react';
 
 
@@ -16,31 +16,45 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter()
   const { loading, isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
-  console.log(isLoggedIn)
-  console.log(userData)
+ 
 
+  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  //   const { userName, userPassword } = values;
+  //   try {
+  //     const result = await signIn('credentials', {
+  //       username: userName,
+  //       userPassword: userPassword,
+  //       redirect: false,
+  //       callbackUrl: 'http://localhost:3000/dashboar'
 
-  // useEffect(() => {
-  //   if (userData || isLoggedIn) {
-  //     router.push("/dashboard");
+  //     });
+  
+  //     if (result?.error) {
+  //       // handle login error
+  //       console.error(result.error);
+  //     } else {
+  //       // login successful
+  //       console.log(result);
+      
+  //     }
+  //   } catch (error) {
+  //     // handle any other errors
+  //     console.error(error);
   //   }
-  // }, [router, userData, dispatch, ]);
-
-  // useEffect(() => {
-  //   if (status == AuthStatus.Error) {
-  //     dispatch(reset());
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [router]);
-
+  //   setSubmitting(false);
+  //   resetForm();
+  // };
+  
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    const { userName, userPassword } = values;
-    await dispatch(login(values));
+    const { userName,  userPassword } = values;
+    await dispatch(login({ userName, userPassword } ));
     console.log(values)
     setSubmitting(false);
     resetForm()
+};
 
-  };
+
+
 
 
   return (

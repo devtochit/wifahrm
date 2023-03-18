@@ -5,7 +5,7 @@ import { apiCallBegan } from "../../apiActions";
 import { retrieveUserDetails } from "../../../utils/helperFunctions/userDataHandlers";
 
 const initialState = {
-  userData: null,
+  MarketData: null,
   loading: false,
 };
 
@@ -18,8 +18,8 @@ const getMarketSlice = createSlice({
     },
     getMarketReceived: (state, action) => {
       state.loading = false;
-      state.userData = action.payload;
-      console.log( state.userData)
+      state.MarketData = action.payload;
+      console.log( state.MarketData)
     },
     getMarketRequestFailed: (state, action) => {
       state.loading = false;

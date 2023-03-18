@@ -1,32 +1,41 @@
-export default {
-    providers: [
-        {
-            id: 'custom',
-            name: 'Custom',
-            type: 'credentials',
-            credentials: {
-                email: { label: "Email", type: "email" },
-                password: { label: "Password", type: "password" }
-            },
-            authorize: async (credentials) => {
-                // Call your backend API to perform authentication
-                const response = await fetch('/api/auth/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(credentials)
-                });
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-                // If authentication is successful, return the user data
-                if (response.ok) {
-                    const data = await response.json();
-                    return data.user;
-                }
+const PrivateRoute = ({ children }) => {
+  const router = useRouter();
+  const isLoggedIn = useSelector(state => state.Authentication.isLoggedIn);
 
-                // If authentication fails, throw an error
-                const error = new Error('Authentication failed');
-                error.status = response.status;
-                throw error;
-            }
-        }
-    ]
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.push('/login'); // Redirect to login page if not logged in
+    }
+  }, [isLoggedIn, router]);
+
+  return (
+    <>
+      {isLoggedIn && children} {/* Render children only if logged in */}
+    </>
+  );
 };
+
+export default PrivateRoute;
+
+export async function getServerSideProps(context) {
+  // Implement your authentication logic here.
+  // If user is not authenticated, redirect to login page.
+  const isLoggedIn = true; // Replace with actual authentication logic
+  
+  if (!isLoggedIn) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {}, // Pass necessary props to the component here if required.
+  };
+}

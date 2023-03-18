@@ -12,15 +12,15 @@ import { useDispatch,useSelector } from "react-redux";
 
 const product = ()=> { 
     // const { isLoggedIn } = useAppSelector((state) => state.authReducers.login);
-  // const { userData, loading } = useSelector( (state) => state.profileReducers.getProfileSlice);
+  const { MarketData, loading } = useSelector( (state) => state.marketReducers.getMarketSlice);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // if (isLoggedIn) {
+    // if (!isLoggedIn) {
     // }
     dispatch(getMarketData());
 
-  }, []);
+  }, [dispatch]);
 
   return(
 
@@ -44,16 +44,14 @@ const product = ()=> {
      <div className="w-full h-full flex flex-row items-center justify-center lg:px-32  py-4 gap-5 flex-wrap">
      { 
       CropData.map((product,index)=>(
-      
    <Link key={index}  href={`/dashboard/products/${product.id}`}> 
-    <a> 
-    <ProductCard
-    key={index}
-          product={product}
-            />
-    </a>
+  
+    <ProductCard key={index} product={product}/>
+   
     </Link>
-          ))}
+          ))
+          
+          }
             </div> 
     </div>
 

@@ -2,6 +2,7 @@ import { currencyFormatter } from '../utils'
 import Image from 'next/image'
 
 function ProductCard({ product }) {
+	console.log('inside product card',product)
 	return (
 <>       
 
