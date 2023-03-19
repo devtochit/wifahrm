@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState ,Fragment} from "react";
 import { useSelector } from "react-redux";
 import Button from "../../../components/Dashboard/components/Button";
 import { selectBasketItems, selectBasketTotal,plusItem,minusItem } from "../../../redux/slice/Crop/cropSlice";
@@ -9,10 +9,12 @@ import CheckoutProduct from "../../../components/Dashboard/components/BasketProd
 import Layout from "../../../components/Dashboard/Layout";
 import { usePaystackPayment } from "react-paystack";
 import { currencyFormatter } from "../../../utils";
-
+import Image from "next/image";
+import { NumberFormat } from "react-number-format";
 
 function Checkout() {
   const items = useSelector(selectBasketItems);
+  console.log(items)
   const basketTotal = useSelector(selectBasketTotal);
   const {userData} = useSelector((state) => state.authReducers.Authentication);
   const publicKey = 'pk_test_640d50dd050ee5699907f210fd4fc6463f021d89';
@@ -85,119 +87,163 @@ const handleSubmit = (e) => {
 
 
 
-
   return (
-    <Layout> 
-    <div className="min-h-screen overflow-hidden bg-[#E7ECEE]">
-      <Head>
-        <title>cultivate crops</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-    
-      <main className="mx-auto max-w-5xl pb-24">
-        <div className="px-5">
-          <h1 className="my-4 text-3xl font-semibold lg:text-5xl">
-            {/* {items.length > 0 ? "Review your bag." : "You have not added any crop to plant ."} */}
-          </h1>
-          <p className="my-4 text-lg">Free delivery and free returns.</p>
+    <Layout>
 
-          {items.length === 0 && (
-            <Button
-              title="Continue Shopping"
-              onClick={() => router.push("/dashboard")}
-            />
-          )}
-        </div>
+<Head>
+  <title>wifarhm |checkout </title>
+</Head>
+<div className="w-full min-h-screen relative bg-cusgray pb-10">
 
-        {
-        items.length > 0 && (
+  <div className="max-w-6xl mx-auto  px-5">
+    <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-x-4">
+      <div className="md:col-span-2 md:mr-5">
+        <div className="">
+          <div className="shadow-lg rounded-xl bg-cusblack text-white px-5 py-3">
+            <h1 className="font-semibold text-lg md:text-xl mb-1">
+            plant any crop from the confort of your phone
+            </h1>
+            {/* <p className="text-xs mb-1 text-gray-100">
+              Non member receive free-shipping for purchases Rp 1,500,000
+              or more
+            </p> */}
+          </div>
+          <div className="rounded-xl bg-white px-5 pt-5 mt-5 shadow-lg overflow-hidden">
+            <p>Your Basket ({items.length})</p>
+            <div className="pt-5 pb-2">
+
+
+          {items.length > 0 && (
           <div className="mx-5 md:mx-8">
             {Object.entries(groupedItemsInBasket).map(([key, items]) => (
+                   <React.Fragment key={key}>
               <CheckoutProduct key={key} items={items} id={key} />
+              </React.Fragment>
             ))}
-       
-            <div className="my-12 mt-6 ml-auto max-w-3xl">
-              <div className="divide-y divide-gray-300">
-                <div className="pb-4">
-                  <div className="flex justify-between">
-                    <p>Subtotal</p>
-                    <p>
-                  {currencyFormatter(basketTotal)}
-                    </p>
-                  </div>
-                  <div className="flex justify-between">
-                    <p>Shipping</p>
-                    <p>FREE</p>
-                  </div>
-                  <div className="flex justify-between">
-                    <div className="flex flex-col gap-x-1 lg:flex-row">
-                      Estimated tax for:{" "}
-                      <p className="flex cursor-pointer items-end text-blue-500 hover:underline">
-                        Enter zip code
-                        <ChevronDownIcon className="h-6 w-6" />
-                      </p>
-                    </div>
-                    <p>$ -</p>
-                  </div>
-                </div>
-
-                <div className="flex justify-between pt-4 text-xl font-semibold">
-                  <h4>Total</h4>
-                  <h4>
-                  {/* {currencyFormatter(basketTotal)} */}
-                  </h4>
-                </div>
-              </div>
-
-              <div className="my-14 space-y-4">
-                <h4 className="text-xl font-semibold">
-                  How would you like to check out?
-                </h4>
-                <div className="flex flex-col gap-4 md:flex-row">
-                  <div className="order-2 flex flex-1 flex-col items-center rounded-xl bg-gray-200 p-8 py-12 text-center">
-                    <h4 className="mb-4 flex flex-col text-xl font-semibold">
-                      <span>safe payment</span>
-                      <span> use any card of your choice</span>
-                      {/* <span>
-                        $283.16/mo. at 0% APR<sup className="-top-1">◊</sup>
-                      </span> */}
-                    </h4>
-                    {/* <Button title="Check Out with Apple Card Monthly Installments" /> */}
-                    {/* <p className="mt-2 max-w-[240px] text-[13px]">
-                      $0.00 due today, which includes applicable full-price
-                      items, down payments, shipping, and taxes.
-                    </p> */}
-                  </div>
-
-                  {/* <div className="flex flex-1 flex-col items-center space-y-8 rounded-xl bg-gray-200 p-8 py-12 md:order-2">
-                    <h4 className="mb-4 flex flex-col text-xl font-semibold">
-                      Pay in full
-                      <span>
-                    {currencyFormatter(basketTotal)}
-                      </span>
-                    </h4>
-
-                    <Button
-                      noIcon
-                      loading={loading}
-                      title="Check Out"
-                      width="w-full"
-                      onClick={handleSubmit}
-                    />
-                  </div> */}
-                </div>
-              </div>
-              
-            </div>
-
-
-            
           </div>
         )}
 
-        
-      </main>
+
+              {items.length === 0 && (
+                <div className="text-gray-400 text-sm mb-10 flex  flex-col items-center  gap-10">
+                  {/* <Image
+                    className="md:w-1/3 object-cover w-full"
+                    src="https://i.ibb.co/hWZhd6F/empty-cart-4a7779da-Convert-Image.png"
+                    alt=""
+                  /> */}
+                  <p className="text-center  ">
+                    Your basket is empty,
+                    <br />
+                  </p>
+                  <Button  title="Continue Shopping" onClick={() => router.push("/dashboard")} />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-10 md:mt-0 col-span-1">
+        <div className="rounded-xl bg-white shadow-lg py-6 px-5">
+          <h1 className="text-cusblack font-bold text-md">SUMMARY</h1>
+          <div className="px-4 py-3 text-xs font-medium flex place-items-center text-gray-400 border border-gray-200 rounded-md my-4">
+            <svg
+              className="w-5 h-5 mr-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z"
+              />
+            </svg>
+            DO YOU HAVE PROMO CODE?
+          </div>
+
+          <div className="text-sm pt-1 font-semibold pb-2 border-b border-cusblack flex justify-between place-items-center">
+            <p className="">SUBTOTAL</p>
+
+            {currencyFormatter(items.cropPrice * items.quantity)}
+
+          </div>
+
+          <div className="my-3 border-b border-cusblack pb-2">
+            {/* {items.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex justify-between place-items-center text-sm mb-1"
+              >
+                <p className="pr-3">{item.name}</p>
+                <NumberFormat
+                  value={item.price * item.quantity}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"Rp"}
+                  renderText={(value, props) => <p {...props}>{value}</p>}
+                />
+              </div>
+            ))} */}
+            <div className="flex justify-between place-items-center text-sm mb-1">
+              <p>TAX</p>
+              <p>FREE</p>
+            </div>
+          </div>
+
+          <div className="flex justify-between place-items-center font-semibold">
+            <p>TOTAL</p>
+            {/* <NumberFormat
+              value={items.reduce(
+                (val, item) => val + item.price * item.quantity,
+                0
+              )}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"Rp"}
+              renderText={(value, props) => <p {...props}>{value}</p>}
+            />
+          </div> */}
+
+          {/* <button
+            disabled={!items.length}
+            onClick={createCheckoutSession}
+            className="py-2 px-3 disabled:cursor-not-allowed text-white w-full mt-6 rounded-lg bg-cusblack "
+          >
+            {!loading ? (
+              <span className="flex justify-center place-items-center">
+                CHECKOUT
+                <svg
+                  className="ml-2 w-4 h-4 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
+                </svg>
+              </span>
+            ) : (
+              <img
+                className="w-6 h-6 mx-auto"
+                src="https://i.ibb.co/pL1TJSg/Rolling-1s-200px-2.gif"
+                alt=""
+              />
+            )}
+          </button> */}
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+</div>
     </Layout>
   );
 }
