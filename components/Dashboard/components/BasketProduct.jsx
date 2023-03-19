@@ -1,28 +1,34 @@
 import React from "react";
 import NumberFormat from "react-number-format";
 import { useDispatch } from "react-redux";
-import { removeFromBasket, plusItem, minusItem } from "../../../redux/slice/Crop/cropSlice";
+import { removeFromBasket, updateQuantity, minusQuantity } from "../../../redux/slice/Crop/cropSlice";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { currencyFormatter } from "../../../utils";
 
 function BasketProduct({ items, id }) {
   console.log('hey im inside backetpr',id)
   const dispatch = useDispatch();
 
   const removeItemFromBasket = () => {
-    dispatch(removeFromBasket({ id }));
-
-    toast.error(`${items[0].name} removed from basket`, {
+    dispatch(removeFromBasket({ id:items[0].id}));
+    toast.error(`${items[0].cropName} removed from basket`, {
       position: "top-center",
     });
   };
-  const minusCrop =()=>{
-    if (items[0].quantity > 1) dispatch(minusItem({id}));
-  }
-  const AddCrop =()=>{
-    dispatch(plusItem(id))
-  }
+
+  const minusCrop = () => {
+    if (items[0].quantity > 1)     dispatch(minusQuantity({id:items[0].id,quantity:items[0].quantity}));
+
+  };
+
+  const AddCrop = () => {
+    dispatch(updateQuantity({id:items[0].id,quantity:items[0].quantity}));
+  };
+
+
+
   return (
     <div
       className="product md:flex justify-between mb-6"
@@ -41,34 +47,35 @@ function BasketProduct({ items, id }) {
             />
           </motion.div>
           <div className="ml-3 flex flex-col text-black justify-between py-2">
-            <p className="font-medium ">{items[0].name}</p>
+            <p className="font-medium ">{items[0].cropName}</p>
             <ul className="text-xs md:text-sm leading-relaxed text-black">
               <li>ID: {items[0].id}</li>
-              <li>Amount: {items[0].amount}</li>
-              <li>Category: {items[0].category}</li>
+              <li>Amount: {items[0].cropPrice}</li>
+              <li>Category: {items[0].cropCategory}</li>
               <li>Quantity: {items[0].quantity}</li>
-              <li>Amount: {items[0].amount }</li>
+              {/* <li>Amount: {items[0J].amount }</li> */}
             </ul>
           </div>
         </div>
       </Link>
       <div className="flex flex-col justify-between py-1">
         {/* <NumberFormat
-          value={items.price}
+          value={items.cropPrice}
           className="font-semibold text-cusblack text-right"
-          displayType={"text"}
+          displayType={"number"}
           thousandSeparator={true}
-          prefix={"Rp"}
+          prefix={"NGN"}
           renderText={(value, props) => (
             <h1 className="font-semibold text-cusblack text-right" {...props}>
               {value}
             </h1>
           )}
         /> */}
+             {currencyFormatter(items[0].cropPrice)}
         <div className="flex ml-auto text-cusblack mt-1 md:mt-0">
           <button
             onClick={minusCrop}
-            className="border border-cusblack active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100"
+            className="border-2  border-black active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100"
           >
             <svg
               className="w-4 h-4"
@@ -87,7 +94,7 @@ function BasketProduct({ items, id }) {
           </button>
           <button
             onClick={AddCrop}
-            className="border border-cusblack active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100 mx-1"
+            className="border-2 border-black active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100 mx-1"
           >
             <svg
               className="w-4 h-4"
@@ -106,7 +113,7 @@ function BasketProduct({ items, id }) {
           </button>
           <button
             onClick={removeItemFromBasket}
-            className="border border-cusblack active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100 text-xs px-2 font-medium"
+            className="border-2 border-black active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100 text-xs px-2 font-medium"
           >
             REMOVE
           </button>

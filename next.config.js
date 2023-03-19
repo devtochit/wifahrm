@@ -6,7 +6,8 @@ const nextConfig = {
     domains: [
       'images.unsplash.com',
       'placeimg.com',
-  ], //your-external-link-hostname
+      'https://i.ibb.co'
+    ], //your-external-link-hostname
   },
 
 }

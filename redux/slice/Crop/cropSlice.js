@@ -5,11 +5,10 @@ const initialState = {
   items: [],
 };
 
-export const addItemToCart = (cartItems, cartItemToAdd, id) => {
+export const addItemToCart = (cartItems, cartItemToAdd,) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToAdd.id
   );
-
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
       cartItem.id === cartItemToAdd.id
@@ -18,7 +17,7 @@ export const addItemToCart = (cartItems, cartItemToAdd, id) => {
     );
   }
 
-  return [...cartItems, { ...cartItemToAdd, quantity: 1, id }];
+  return [...cartItems, { ...cartItemToAdd, quantity: 1, }];
 };
 
 const CropSlice = createSlice({
@@ -27,46 +26,38 @@ const CropSlice = createSlice({
 
   reducers: {
     addToBasket: (state, action) => {
-      const id = uuidv4(); // generate a unique id using uuid
-      state.items = addItemToCart(state.items, action.payload, id);
-      console.log(state.items)
+      state.items = addItemToCart(state.items, action.payload,);
+      console.log('inside cropslice', state.items)
     },
     deleteFromBasket: (state, action) => {
       state.items = [];
     },
-    plusItem: (state, action) => {
-      const item = state.items.find(item => item.id === action.payload);
-      if (item) {
-        item.amount += 1;
+    updateQuantity: (state, action) => {
+      const { id, quantity } = action.payload;
+      // console.log({ id, quantity })
+      const index = state.items.findIndex((item) => item.id === id);
+      if (index >= 0) {
+        state.items[index].quantity += 1
+      } else {
+        console.log(`Can't update quantity of product (id: ${id}) as it's not in basket!`);
       }
     },
 
-    //     minusItem: (state, action) => {
-    //       const item = state.items.find(item => item.id === action.payload);
-    //       if (...item) {
-    //         item.amount -= 1;
-    // console.log(item.amount);
-    //       }
-    //     },
-    removeFromBasket: (state, action) => {
-      const index = state.items.findIndex(
-        (item) => item.id === action.payload.id
-      );
-
-      let newBasket = state.items.filter((item) => item.id !== action.payload.id);
-
+    minusQuantity: (state, action) => {
+      const { id, quantity } = action.payload;
+      // console.log({ id, quantity })
+      const index = state.items.findIndex((item) => item.id === id);
       if (index >= 0) {
-        newBasket.splice(index, 1);
+        state.items[index].quantity -= 1
       } else {
-        console.log(
-          `Cant remove product (id: ${action.payload.id}) as its not in basket!`
-        );
+        console.log(`Can't update quantity of product (id: ${id}) as it's not in basket!`);
       }
+    },
 
-      return {
-        ...state,
-        items: newBasket,
-      };
+    removeFromBasket: (state, action) => {
+      console.log(action.payload)
+      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      console.log(state.items)
     },
   },
 });
@@ -76,8 +67,8 @@ export const {
   setCropName,
   setCropAmount,
   addToBasket,
-  minusItem,
-  plusItem,
+  minusQuantity,
+  updateQuantity,
   removeFromBasket,
   deleteFromBasket,
 } = CropSlice.actions;
