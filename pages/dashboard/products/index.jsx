@@ -10,15 +10,14 @@ import toast from 'react-hot-toast';
 import { addToBasket } from '../../../redux/slice/Crop/cropSlice';
 import Basket from '../../../components/Dashboard/components/bracket';
 import { CropData } from '../../../utils/data';
-import { data } from 'autoprefixer';
-CropData
+
 const Product = () => {
-  const { MarketData, loading } = useSelector((state) => state.marketReducers.getMarketSlice);
+  const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getMarketData());
-  }, [dispatch]);
+  }, []);
 
   const handleSubmit = (event, values) => {
     dispatch(addToBasket(values));
@@ -35,6 +34,7 @@ const Product = () => {
             isMulti
           />
         </div>
+
       </div>
       <h1 className="text-xl font-bold pb-4">Products</h1>
       <div className="w-full min-h-main p-4 sm:p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded">
@@ -42,8 +42,9 @@ const Product = () => {
           <p>Loading...</p>
         ) : (
           <div className="w-full h-full flex flex-row items-center justify-center lg:px-32  py-4 gap-5 flex-wrap">
-        {/* <Link key={index} href={`/dashboard/products/${product.id}`}></Link> */ }
-            {MarketData?.data.map((product) => (
+
+            {data.map((product,index) => (
+                <Link key={index} href={`/dashboard/products/${product.id}`}>
               <ProductCard
                 key={product.id}
                 cropCategory={product.cropCategory}
@@ -52,6 +53,7 @@ const Product = () => {
                 datePlanted={product.datePlanted}
                 handleSubmit={(event) => handleSubmit(event, product)}
               />
+              </Link>
             ))}
           </div>
         )}

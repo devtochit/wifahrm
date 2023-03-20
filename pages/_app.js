@@ -27,27 +27,21 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, router }) {
         <meta name="description" content="A landing page for farm products" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {
-        // show the preloader if it's true
-        showPreloader ? (
-          <Preloader />
-        ) : (
-          <motion.div
-            key={router.route}
-            initial={{ opacity: 0.4, transform: "scale(0.9)" }}
-            animate={{ opacity: 1, transform: "scale(1)" }}
-          >
-            <Provider store={store}>
-              {/* <PersistGate loading={null} persistor={persistor}> */}
-              <Toaster />
-              <SessionProvider session={session}>
-                <Component {...pageProps} />
-              </SessionProvider>
-              {/* </PersistGate> */}
-            </Provider>
-          </motion.div>
-        )
-      }
+      {/* {  showPreloader ? (  <Preloader />) : () } */}
+      <motion.div
+        key={router.route}
+        initial={{ opacity: 0.4, transform: "scale(0.9)" }}
+        animate={{ opacity: 1, transform: "scale(1)" }}
+      >
+        <Provider store={store}>
+          {/* <PersistGate loading={null} persistor={persistor}> */}
+          <Toaster />
+          <SessionProvider session={session}>
+            <Component {...pageProps} />
+          </SessionProvider>
+          {/* </PersistGate> */}
+        </Provider>
+      </motion.div>
     </>
   );
 }
