@@ -6,10 +6,10 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 module.exports = {
 	darkMode: 'class',
 	content: ['./src/**/*.{js,ts,jsx,tsx}',
-  "./pages/**/*.{js,ts,jsx,tsx}",
-  "./dashboard/**/*.{js,ts,jsx,tsx}",
-  "./components/**/*.{js,ts,jsx,tsx}",
-],
+		"./pages/**/*.{js,ts,jsx,tsx}",
+		"./dashboard/**/*.{js,ts,jsx,tsx}",
+		"./components/**/*.{js,ts,jsx,tsx}",
+	],
 	plugins: [require('daisyui')],
 	theme: {
 		container: {
@@ -22,25 +22,36 @@ module.exports = {
 			screens: {
 				xs: '530px',
 			},
+			fontFamily: {
+				sans: ["Poppins", "sans-serif"],
+			},
+			colors: {
+				cusgray: {
+					DEFAULT: "#F2F5F6",
+				},
+				cusblack: {
+					DEFAULT: "#383838",
+				},
+			},
 			transitionProperty: {
 				spacing: 'margin, padding',
 				dropdown: 'opacity, transform'
-			  },
-			  animation: {
+			},
+			animation: {
 				beat: 'beat 1s ease-out infinite'
-			  },
-			  keyframes: {
+			},
+			keyframes: {
 				beat: {
-				  '0%, 100%': { transform: 'scale(1)' },
-				  '25%': { transform: 'scale(1.2)' }
+					'0%, 100%': { transform: 'scale(1)' },
+					'25%': { transform: 'scale(1.2)' }
 				}
-			  },
-			  minHeight: {
+			},
+			minHeight: {
 				main: 'calc(100vh - 228px)'
-			  },
-			  fontFamily: {
+			},
+			fontFamily: {
 				sans: ['var(--font-inter)', ...fontFamily.sans]
-			  }
+			}
 		},
 	},
 	daisyui: {

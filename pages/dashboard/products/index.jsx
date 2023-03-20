@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Layout from '../../../components/Dashboard/Layout';
 import ProductCard from '../../../components/FarmCard/FarmCard';
 import Select from 'react-select';
@@ -8,25 +7,26 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { addToBasket } from '../../../redux/slice/Crop/cropSlice';
-import Basket from '../../../components/Dashboard/components/bracket';
-import { CropData } from '../../../utils/data';
+
 
 const Product = () => {
   const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
+  console.log(data)
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('useEffect called');
     dispatch(getMarketData());
   }, []);
 
-  const handleSubmit = (event, values) => {
+  const handleSubmit = (values) => {
     dispatch(addToBasket(values));
     toast.success(`${values.cropName} added to basket`, { position: 'top-center' });
   };
 
   return (
     <Layout>
-      <Basket />
+
       <div className="navbar  flex flex-row justify-end px-12">
         <div className="dropdown dropdown-start w-80 ">
           <Select
@@ -43,7 +43,7 @@ const Product = () => {
         ) : (
           <div className="w-full h-full flex flex-row items-center justify-center lg:px-32  py-4 gap-5 flex-wrap">
 
-            {data.map((product,index) => (
+            {data && data.map((product,index) => (
                 <Link key={index} href={`/dashboard/products/${product.id}`}>
               <ProductCard
                 key={product.id}

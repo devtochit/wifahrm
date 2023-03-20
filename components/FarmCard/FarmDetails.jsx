@@ -1,52 +1,52 @@
 import React, { useState, useEffect } from 'react'
-// import { CountBox, CustomButton, Loader } from '../';
  import CountBox from '../FarmCard/Countbox'
  import CustomButton from '../FarmCard/CustomButton'
 import { calculateBarPercentage, daysLeft } from '../../utils';
 import Image from 'next/image';
-const CropDetails = ({imageSrc,havDate,price,Due,description }) => {
+import { CropData } from '../../utils/data'
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [amount, setAmount] = useState('');
-    const [donators, setDonators] = useState([]);
 
-    const remainingDays = daysLeft(havDate);
+const CropDetails = ({cropCategory,cropName,cropPrice,cropEstimatedDuration,dailyInterestRate,datePlanted,lifeCycleYieldRate,monthlyInterestRate }) => {
 
-    
+
+    const remainingDays = daysLeft(datePlanted);
+
+
 
 
 
 
     return (
         <div>
-            {/* {isLoading && <Loader />} */}
 
-            <div className="w-full flex md:flex-row flex-col mt-10 gap-[30px]">
+            <div className="w-full flex md:flex-row flex-col  gap-[30px]">
                 <div className="flex-1 flex-col ">
-                    <Image src={imageSrc}  layout='intrinsic' height={900} alt="campaign" className="w-full  bg-slate-100  object-cover rounded-xl" />
+                    <Image src={CropData[0].imageSrc}   alt="campaign" className="w-[100%]  bg-slate-100  object-cover rounded-xl" />
                     <div className="relative w-full h-[5px] bg-[#3a3a43] mt-2">
-                        <div className="absolute h-full bg-[#4acd8d]" style={{ width: `${calculateBarPercentage(price, havDate)}%`, maxWidth: '100%' }}>
+                        <div className="absolute h-full bg-[#4acd8d]" style={{ width: `${calculateBarPercentage(cropEstimatedDuration, datePlanted)}%`, maxWidth: '100%' }}>
                         </div>
                     </div>
                 </div>
 
                 <div className="flex md:w-[150px] w-full flex-wrap justify-between gap-[30px]">
                     <CountBox title="Days Left" value={remainingDays} />
-                    <CountBox title={`Crops generated `} value={havDate} />
-                    <CountBox title=" Valuation" value={Due} />  
+                    <CountBox title={`Crops generated `} value={cropEstimatedDuration} />
+                    <CountBox title=" Valuation" value={dailyInterestRate} />
                 </div>
             </div>
             <div className="mt-[60px] flex lg:flex-row flex-col gap-5">
             <div className="flex-[2] flex flex-col gap-[40px]">
-    <div>
-    <h4 className="font-epilogue font-semibold text-[20px] text-black uppercase  dark:text-white dark:">Farm</h4>
+           <div>
+
+
+    <h4 className="font-epilogue font-semibold text-[20px] text-black uppercase  dark:text-white dark:">{cropCategory}</h4>
     <div className="mt-[20px] flex flex-row items-center flex-wrap gap-[14px]">
         <div className="w-[52px]  h-[52px] flex items-center justify-center rounded-full bg-[#2c2f32] cursor-pointer">
-            {/* <img src={thirdweb} alt="user" className="w-[60%] h-[60%] object-contain" /> */}
+            <Image src={CropData[5].imageSrc}  alt="user" className="w-[60%] h-[60%] object-contain" />
         </div>
         <div>
-            <h4 className="font-epilogue font-semibold text-[14px] text-black break-all dark:text-white"> hey </h4>
-            <p className="mt-[4px] font-epilogue font-normal text-[12px] text-black  dark:text-[#808191] ">10 Campaigns</p>
+            <h4 className="font-epilogue font-semibold text-[14px] text-black break-all dark:text-white"> {cropName} </h4>
+            <p className="mt-[4px] font-epilogue font-normal text-[12px] text-black  dark:text-[#808191] ">{cropPrice}</p>
         </div>
     </div>
 </div>
@@ -55,7 +55,7 @@ const CropDetails = ({imageSrc,havDate,price,Due,description }) => {
     <h4 className="font-epilogue font-semibold text-[18px] text-black uppercase  dark:text-white"> More Details</h4>
 
     <div className="mt-[20px]">
-        <p className="font-epilogue font-normal text-[16px] text-black  dark:text-[#808191]  leading-[26px] text-justify">{description}</p>
+        <p className="font-epilogue font-normal text-[16px] text-black  dark:text-[#808191]  leading-[26px] text-justify"> description </p>
     </div>
 </div>
 
@@ -106,7 +106,7 @@ const CropDetails = ({imageSrc,havDate,price,Due,description }) => {
 </div>
 </div>  */}
           </div>
-          
+
       </div>
   )
 }

@@ -8,7 +8,6 @@ import Button from "../../components/Dashboard/components/Button";
 
 function FundCard({ cropCategory, cropName, cropPrice, datePlanted, dailyInterestRate,handleSubmit,product }) {
     const remainingDays = daysLeft(datePlanted)
-     console.log(CropData[0].imageSrc)
     return (
         <div className='sm:w-[288px] w-full rounded-[15px] shadow-2xl  cursor-pointer'>
          <Image src={CropData[5].imageSrc}/>
@@ -33,7 +32,7 @@ function FundCard({ cropCategory, cropName, cropPrice, datePlanted, dailyInteres
                     </div>
                 </div>
 
-                <div className="flex items-center mt-[20px] gap-[12px]">
+                {/* <div className="flex items-center mt-[20px] gap-[12px]">
                     <Button
                     noIcon
                     // loading={loading}
@@ -43,7 +42,7 @@ function FundCard({ cropCategory, cropName, cropPrice, datePlanted, dailyInteres
                   />
 
 
-                </div>
+                </div> */}
 
             </div>
         </div>

@@ -18,7 +18,7 @@ const getMarketSlice = createSlice({
     getMarketReceived: (state, action) => {
       state.loading = false;
       state.MarketData = action.payload;
-      console.log('inside state market', state.MarketData)
+      // console.log('inside state market', state.MarketData)
     },
     getMarketRequestFailed: (state, action) => {
       state.loading = false;
