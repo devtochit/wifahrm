@@ -14,9 +14,9 @@ const Dashboard = ()=> (
     <Head>
       <title> Dashboard</title>
     </Head>
-    <h1 className='text-xl font-bold pb-4'>Dashboard</h1>
+    <h1 className='text-xl font-bold mt-20 pb-4'>Dashboard</h1>
     
-    <div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded' >
+    <div className='w-full min-h-main mt-20 p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded' >
 			 <StatsBoard /> 
 			 <div className="grid lg:grid-cols-[1fr_auto] my-12 gap-y-12 gap-x-8">
 				<div className="lg:col-start-2">
