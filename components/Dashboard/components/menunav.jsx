@@ -32,22 +32,22 @@ function MenuNav({ handleOpen, isOpen }) {
         </button>
 </div>
         <ul className="w-full">
-          <Link href="/">
+          <Link href="/dashboard">
             <li className="mb-2 hover:underline mx-4 rounded-xl cursor-pointer">
               Home
             </li>
           </Link>
-          <Link href="/shop">
+          <Link href="/dashboard/products">
             <li className="mb-2 hover:underline mx-4 rounded-xl cursor-pointer">
               Shop
             </li>
           </Link>
-          <Link href="/ourstore">
+          <Link href="/dashboard/cultivatecrop">
             <li className="mb-2 hover:underline mx-4 rounded-xl cursor-pointer">
               About
             </li>
           </Link>
-          <Link href="/ourstore">
+          <Link href="/dashboard">
             <li className="mb-2 hover:underline mx-4 rounded-xl cursor-pointer">
               Our Store
             </li>
