@@ -10,7 +10,7 @@ function MenuNav({ handleOpen, isOpen }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className={`${!isOpen ? `hidden` : `flex`} w-full h-screen absolute top-0 bg-gray-700 bg-opacity-30`}>
+      className={`${!isOpen ? `hidden` : `flex`} w-[89%] h-screen absolute top-0 bg-gray-700 bg-opacity-30`}>
       <div className="text-center  relative leading-loose flex place-items-center text-md text-cusblack w-52 h-screen bg-white">
 <div className="">
 <button onClick={handleOpen} className="absolute  top-0 right-0 m-5">
@@ -34,17 +34,17 @@ function MenuNav({ handleOpen, isOpen }) {
         <ul className="w-full">
           <Link href="/dashboard">
             <li className="mb-2 hover:underline mx-4 rounded-xl cursor-pointer">
-              Home
+              dashbaord
             </li>
           </Link>
           <Link href="/dashboard/products">
             <li className="mb-2 hover:underline mx-4 rounded-xl cursor-pointer">
-              Shop
+              Marketplace
             </li>
           </Link>
           <Link href="/dashboard/cultivatecrop">
             <li className="mb-2 hover:underline mx-4 rounded-xl cursor-pointer">
-              About
+              cultivate Crop
             </li>
           </Link>
           <Link href="/dashboard">
