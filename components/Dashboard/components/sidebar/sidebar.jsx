@@ -48,7 +48,7 @@ const Sidebar = () => {
         break;
       }
     }
-  }, [router.pathname]);
+  },);
 
   return (
     <>

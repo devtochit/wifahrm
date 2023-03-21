@@ -21,7 +21,7 @@ export default function CropDetails() {
   useEffect(() => {
     console.log('useEffect called');
     dispatch(getMarketData());
-  }, []);
+  }, [dispatch]);
 
   const handleSubmit = (values) => {
     console.log("added basket",values)

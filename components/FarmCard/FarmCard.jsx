@@ -11,7 +11,7 @@ function FundCard({ cropCategory, cropName, cropPrice, datePlanted, dailyInteres
     const remainingDays = daysLeft(datePlanted)
     return (
         <div className='sm:w-[288px] w-full rounded-[15px] shadow-2xl  cursor-pointer'>
-         <Image src={CropData[5].imageSrc}/>
+         <Image src={CropData[5].imageSrc} alt='image'/>
             <div className="flex flex-col p-4">
                 <div className="flex flex-row items-center mb-[13px]">
                     <p className="ml-[12px] mt-[2px] font-epilogue font-bold  text-[16px] "> {cropCategory} </p>

@@ -21,7 +21,7 @@ const Login = () => {
     if (isLoggedIn) {
       router.push("/dashboard");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn,router]);
 
 
   

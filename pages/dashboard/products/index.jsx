@@ -17,7 +17,7 @@ const Product = () => {
   useEffect(() => {
     console.log('useEffect called');
     dispatch(getMarketData());
-  }, []);
+  }, [dispatch]);
 
   const handleSubmit = (values) => {
     dispatch(addToBasket(values));
