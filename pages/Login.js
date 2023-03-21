@@ -25,16 +25,16 @@ const Login = () => {
 
 
   
-  const handleSubmit = async (values, e,{ setSubmitting, resetForm }) => {
-    e.preventDefault();
-    const { userName,  userPassword } = values;
-    await dispatch(login({ userName, userPassword } ));
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    event.preventDefault();
+    const { userName, userPassword } = values;
+    await dispatch(login({ userName, userPassword }));
     // router.push("/dashboard");
-
+  
     setSubmitting(false);
-    resetForm()
-};
-
+    resetForm();
+  };
+  
 
 
 if (isLoggedIn) {
