@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
-import Layout from "../../components/Dashboard/Layout";
-import { selectBasketItems, selectBasketTotal,deleteFromBasket } from "../../redux/slice/Crop/cropSlice";
+import Layout from "../../../components/Dashboard/Layout";
+import { selectBasketItems, selectBasketTotal,deleteFromBasket } from "../../../redux/slice/Crop/cropSlice";
 import { useRouter } from "next/router";
 import { useState,useEffect } from "react";
-import { currencyFormatter } from "../../utils";
+import { currencyFormatter } from "../../../utils";
 
 function Success() {
   const dispatch = useDispatch();
@@ -15,14 +15,23 @@ function Success() {
 
   const router = useRouter();
 
+
+  useEffect(() => {
+    function handleDelete() {
+      dispatch(deleteFromBasket());
+    }
+
+    handleDelete();
+  }, [dispatch])
+
   if (items.length === 0) {
-    router.push("/dashboard");
+    // Only use router on the client-side
+    if (typeof window !== 'undefined') {
+      router.push("/dashboard");
+    }
     return null;
   }
 
-  // useEffect(() => {
-  //   dispatch(deleteFromBasket());
-  // }, []);
 
   return (
     <Layout>
