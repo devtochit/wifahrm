@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { calculateBarPercentage, daysLeft } from '../../utils';
 import Image from 'next/image';
 import { CropData } from '../../utils/data'
+import { currencyFormatter } from "../../../utils";
 
 
 const CropDetails = ({cropCategory,cropName,cropPrice,cropEstimatedDuration,dailyInterestRate,datePlanted,lifeCycleYieldRate,monthlyInterestRate }) => {
@@ -46,7 +47,7 @@ const CropDetails = ({cropCategory,cropName,cropPrice,cropEstimatedDuration,dail
         </div>
         <div>
             <h4 className="font-epilogue font-semibold text-[14px] text-black break-all dark:text-white"> {cropName} </h4>
-            <p className="mt-[4px] font-epilogue font-normal text-[12px] text-black  dark:text-[#808191] ">{cropPrice}</p>
+            <p className="mt-[4px] font-epilogue font-normal text-[12px] text-black  dark:text-[#808191]">{currencyFormatter(cropPrice)}</p>
         </div>
     </div>
 </div>

@@ -14,11 +14,10 @@ import { NumberFormat } from "react-number-format";
 
 function Checkout() {
   const items = useSelector(selectBasketItems);
-  console.log(items)
   const basketTotal = useSelector(selectBasketTotal);
   const {userData} = useSelector((state) => state.authReducers.Authentication);
   const publicKey = 'pk_test_640d50dd050ee5699907f210fd4fc6463f021d89';
-
+ console.log('inside checkout',items)
 
   const router = useRouter();
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState({});
@@ -93,7 +92,7 @@ const handleSubmit = (e) => {
 <Head>
   <title>wifarhm |checkout </title>
 </Head>
-<div className="w-full min-h-screen relative bg-cusgray pb-10">
+<div className="w-full min-h-screen relative bg-cusgray  pt-20 pb-10">
 
   <div className="max-w-6xl mx-auto  px-5">
     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-x-4">
@@ -103,10 +102,10 @@ const handleSubmit = (e) => {
             <h1 className="font-semibold text-lg md:text-xl mb-1">
             plant any crop from the confort of your phone
             </h1>
-            {/* <p className="text-xs mb-1 text-gray-100">
-              Non member receive free-shipping for purchases Rp 1,500,000
+            <p className="text-xs mb-1 text-gray-100">
+              Non member receive free-shipping for purchases NGN 1,500,000
               or more
-            </p> */}
+            </p>
           </div>
           <div className="rounded-xl bg-white px-5 pt-5 mt-5 shadow-lg overflow-hidden">
             <p>Your Basket ({items.length})</p>
@@ -164,52 +163,39 @@ const handleSubmit = (e) => {
             DO YOU HAVE PROMO CODE?
           </div>
 
-          <div className="text-sm pt-1 font-semibold pb-2 border-b border-cusblack flex justify-between place-items-center">
+          <div className="text-lg pt-1 font-bold pb-2 border-b border-cusblack flex justify-between place-items-center">
             <p className="">SUBTOTAL</p>
 
-            {currencyFormatter(items.cropPrice * items.quantity)}
+            {currencyFormatter(basketTotal)}
 
           </div>
 
           <div className="my-3 border-b border-cusblack pb-2">
-            {/* {items.map((item, idx) => (
+            {items.map((item, idx) => (
               <div
                 key={idx}
-                className="flex justify-between place-items-center text-sm mb-1"
+                className="flex justify-between font-semibold text-lg  place-items-center text-sm mb-1"
               >
-                <p className="pr-3">{item.name}</p>
-                <NumberFormat
-                  value={item.price * item.quantity}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"Rp"}
-                  renderText={(value, props) => <p {...props}>{value}</p>}
-                />
+                <p className=" font-semibold text-lg pr-3">{item.cropName}</p>
+
+                            {currencyFormatter(item.cropPrice * item.quantity)}
+
               </div>
-            ))} */}
+            ))}
             <div className="flex justify-between place-items-center text-sm mb-1">
               <p>TAX</p>
               <p>FREE</p>
             </div>
           </div>
 
-          <div className="flex justify-between place-items-center font-semibold">
+          <div className="flex text-lg font-bold justify-between place-items-center font-semibold">
             <p>TOTAL</p>
-            {/* <NumberFormat
-              value={items.reduce(
-                (val, item) => val + item.price * item.quantity,
-                0
-              )}
-              displayType={"text"}
-              thousandSeparator={true}
-              prefix={"Rp"}
-              renderText={(value, props) => <p {...props}>{value}</p>}
-            />
-          </div> */}
+            {currencyFormatter(basketTotal)}
+          </div> 
 
           {/* <button
             disabled={!items.length}
-            onClick={createCheckoutSession}
+            // onClick={createCheckoutSession}
             className="py-2 px-3 disabled:cursor-not-allowed text-white w-full mt-6 rounded-lg bg-cusblack "
           >
             {!loading ? (
@@ -238,9 +224,17 @@ const handleSubmit = (e) => {
               />
             )}
           </button> */}
+
+                    <Button
+                    noIcon
+                    // loading={loading}
+                    title="Checkout"
+                    width="w-full"
+                   onClick={handleSubmit}
+                  />
         </div>
       </div>
-    </div>
+ 
   </div>
 </div>
 </div>

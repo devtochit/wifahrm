@@ -2,36 +2,39 @@ import React, { useEffect, useState } from "react";
 import NumberFormat from "react-number-format";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
-// import ProductCard from "../../components/productcard";
+import ProductCard from '../../../components/FarmCard/FarmCard';
 import Head from "next/head";
 import { currencyFormatter } from "../../../utils";
 import { CropData } from '../../../utils/data'
 import Image from "next/image";
+import { useDispatch, useSelector } from 'react-redux';
+import CountBox from '../../FarmCard/Countbox'
 
 
 
 
 
 
-function MarketDetails({ cropPrice, cropName,cropCategory,cropData,handleSubmit }) {
+function MarketDetails({ cropPrice, cropName,cropCategory,remainingDays,cropEstimatedDuration,dailyInterestRate,cropData,handleSubmit }) {
   const [selectedSize, setSelectedSize] = useState(0);
   const dispatch = useDispatch();
   const [imgSelected, setImgSelected] = useState(0);
+  const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
+   console.log('inside market details data',cropData)
 
 //   if (!dataItem || !dataAlso) return <NotFound />;
 
   return (
     <>
       <Head>
-        {/* <title>{dataItem.name}</title> */}
+        <title>{data.cropName}</title>
       </Head>
-      <div className="bg-cusgray min-h-screen pb-10">
+      <div className="min-h-screen pb-10">
 
-        <div className="max-w-4xl mx-auto min-h-screen pt-16">
+        <div className="max-w-5xl mx-auto min-h-screen pt-10">
           <div className="flex justify-between place-items-center py-4 px-1 mb-4">
-            <Link href="/shop">
-              <div className="w-9 h-9 shadow-lg bg-white text-cusblack hover:bg-cusblack hover:text-white duration-200 cursor-pointer rounded-full flex justify-center place-items-center">
+            <Link href="/dashboard/products">
+              <div className="w-14 h-14 shadow-lg bg-white text-cusblack hover:bg-cusblack hover:text-white duration-200 cursor-pointer rounded-full flex justify-center place-items-center">
                 <svg
                   className="w-4 h-4 "
                   fill="none"
@@ -77,7 +80,7 @@ function MarketDetails({ cropPrice, cropName,cropCategory,cropData,handleSubmit 
                 ))}
               </div> */}
             </div>
-            <div className="detail px-2 md:px-0 mt-3 md:mt-0 md:ml-6 py-2 md:w-2/3">
+            <div className="detail font-medium   px-2 md:px-0 mt-3 md:mt-0 md:ml-6 py-2 md:w-2/3">
               <p className="flex place-items-center text-sm text-gray-400">
                 { cropCategory}
                 <span className="mx-1">
@@ -99,31 +102,19 @@ function MarketDetails({ cropPrice, cropName,cropCategory,cropData,handleSubmit 
               <h1 className="text-3xl text-cusblack font-medium my-3">
                 {cropName}
               </h1>
-               {currencyFormatter(cropPrice)}
+             <div className='mb-2'>   {currencyFormatter(cropPrice)} </div>
 
-              <div className="sizes text-sm text-gray-400">
-                <p className="mb-2">Select size</p>
+              <div className="sizes text-sm flex-wrap text-justify  pr-6 text-gray-400">
+                <p className="mb-1">Description</p>
+                <p>Asia and have been cultivated for thousands of years. Apples are a popular fruit around the world and are commonly eaten raw or cooked, as well as used to make juice, cider, and other products. They are also a good source of fiber, vitamins, and antioxidants. </p>
                 <div className="flex">
-                  {/* {dataItem.prop[0].size.map((size, idx) => (
-                    <button
-                      onClick={() => setSelectedSize(idx)}
-                      key={idx}
-                      className={`${
-                        selectedSize === idx
-                          ? `bg-cusblack text-white`
-                          : `text-cusblack border border-cusblack`
-                      } mr-2 duration-200 flex place-items-center justify-center rounded-full w-12 h-12 cursor-pointer hover:bg-cusblack hover:text-white`}
-                    >
-                      {size}
-                    </button>
-                  ))} */}
+
                 </div>
               </div>
+
               <div className="buttoncart flex mt-5 w-full">
-                <button
-                  onClick={()=>{handleSubmit(cropData)}}
-                  className="w-4/5 md:w-3/5 bg-cusblack overflow-hidden py-4 text-white rounded-lg text-sm active:bg-gray-800 duration-100"
-                >
+                <button onClick={()=>{handleSubmit(cropData)}}
+                className="w-4/5 md:w-3/5 bg-cusblack overflow-hidden py-4 text-white rounded-lg text-sm active:bg-gray-800 duration-100">
                   <motion.span
                     initial={{ y: -100 }}
                     animate={{ y: 0 }}
@@ -145,17 +136,30 @@ function MarketDetails({ cropPrice, cropName,cropCategory,cropData,handleSubmit 
 
               </div>
             </div>
+            <div className=' flex flex-col gap-4 '> 
+                    <CountBox title="Days Left" value={cropEstimatedDuration} />
+                    <CountBox title={`generated `} value={cropEstimatedDuration} />
+                    <CountBox title=" Valuation" value={dailyInterestRate} />
+            </div>
           </div>
 
           <div className="text-cusblack p-2 md:px-10 md:py-6 mt-14 bg-white md:rounded-2xl shadow-lg">
             <p className="mb-4 font-medium text-lg">You may also like:</p>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-4 gap-y-6">
-              {/* {dataAlso
-                .filter((it, idx) => it.name != dataItem.name)
-                .map((data, idx) => {
-                  if (idx < 4)
-                    return <ProductCard key={data.slug} item={data} />;
-                })} */}
+              {data
+                .filter((it, idx) => it.cropName != cropData.cropName)
+                .map((data, idx) => (
+
+                    <Link key={idx} href={`/dashboard/products/${data.id}`} >
+                    <ProductCard
+                     key={idx}
+                    cropCategory={data.cropCategory}
+                    cropName={data.cropName}
+                    cropPrice={data.cropPrice}
+                    datePlanted={data.datePlanted}
+                      />
+                    </Link>
+                    ))}
             </div>
           </div>
 

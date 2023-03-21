@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { currencyFormatter } from "../../../utils";
+import Image from "next/image";
 
 function BasketProduct({ items, id }) {
   console.log('hey im inside backetpr',id)
@@ -40,7 +41,7 @@ function BasketProduct({ items, id }) {
             initial={{ scale: 1.5, x: 50, y: -50, opacity: 0 }}
             animate={{ scale: 1, x: 0, y: 0, opacity: 1 }}
           >
-            <img
+            <Image
               className="w-full md:w-32 h-32 object-cover rounded-xl"
               // src={items.prop[0].image[0]}
               alt=""
@@ -48,7 +49,7 @@ function BasketProduct({ items, id }) {
           </motion.div>
           <div className="ml-3 flex flex-col text-black justify-between py-2">
             <p className="font-medium ">{items[0].cropName}</p>
-            <ul className="text-xs md:text-sm leading-relaxed text-black">
+            <ul className="text-lg font-medium md:text-sm leading-relaxed text-black">
               <li>ID: {items[0].id}</li>
               <li>Amount: {items[0].cropPrice}</li>
               <li>Category: {items[0].cropCategory}</li>
@@ -58,24 +59,13 @@ function BasketProduct({ items, id }) {
           </div>
         </div>
       </Link>
-      <div className="flex flex-col justify-between py-1">
-        {/* <NumberFormat
-          value={items.cropPrice}
-          className="font-semibold text-cusblack text-right"
-          displayType={"number"}
-          thousandSeparator={true}
-          prefix={"NGN"}
-          renderText={(value, props) => (
-            <h1 className="font-semibold text-cusblack text-right" {...props}>
-              {value}
-            </h1>
-          )}
-        /> */}
+      <div className="flex flex-col text-lg font-bold  justify-between py-1">
+
              {currencyFormatter(items[0].cropPrice)}
-        <div className="flex ml-auto text-cusblack mt-1 md:mt-0">
+        <div className="flex gap-2 ml-auto text-cusblack mt-1 md:mt-0">
           <button
             onClick={minusCrop}
-            className="border-2  border-black active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100"
+            className="border-4  border-x-green-500 border-y-lime-800          active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100"
           >
             <svg
               className="w-4 h-4"
@@ -94,10 +84,10 @@ function BasketProduct({ items, id }) {
           </button>
           <button
             onClick={AddCrop}
-            className="border-2 border-black active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100 mx-1"
+            className="border-4  border-x-green-500 border-y-lime-800    active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100 mx-1"
           >
             <svg
-              className="w-4 h-4"
+              className="w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -113,7 +103,7 @@ function BasketProduct({ items, id }) {
           </button>
           <button
             onClick={removeItemFromBasket}
-            className="border-2 border-black active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100 text-xs px-2 font-medium"
+            className="border-4  border-x-green-500 border-y-lime-800    active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100 text-xs px-2 font-medium"
           >
             REMOVE
           </button>

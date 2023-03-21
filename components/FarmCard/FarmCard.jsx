@@ -4,6 +4,7 @@ import { daysLeft } from '../../utils/index';
 import { CropData } from '../../utils/data'
 import Image from 'next/image'
 import Button from "../../components/Dashboard/components/Button";
+import { currencyFormatter } from "../../utils";
 
 
 function FundCard({ cropCategory, cropName, cropPrice, datePlanted, dailyInterestRate,handleSubmit,product }) {
@@ -23,7 +24,7 @@ function FundCard({ cropCategory, cropName, cropPrice, datePlanted, dailyInteres
 
                 <div className="flex justify-between flex-wrap mt-[11px] gap-2">
                     <div className="flex flex-col">
-                        <h4 className="font-epilogue font-semibold text-[14px] leading-[22px]">{cropPrice}</h4>
+                        <h4 className="font-epilogue font-semibold text-[14px] leading-[22px]">{currencyFormatter(cropPrice)}</h4>
                         <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] sm:max-w-[120px] truncate">Raised of {dailyInterestRate}</p>
                     </div>
                     <div className="flex flex-col">

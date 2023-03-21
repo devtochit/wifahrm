@@ -21,15 +21,15 @@ const Navbar = () => {
   const closeNav = () => setNav(nav);
 
   const [color, setColor] = useState(false);
-  const changeColor = () => {
-    if (window.scrollY >= 100) {
-      setColor(true);
-    } else {
-      setColor(false);
-    }
-  };
+  // const changeColor = () => {
+  //   if (window.scrollY >= 100) {
+  //     setColor(true);
+  //   } else {
+  //     setColor(false);
+  //   }
+  // };
 
-  window.addEventListener("scroll", changeColor);
+  // window.addEventListener("scroll", changeColor);
 
 
 

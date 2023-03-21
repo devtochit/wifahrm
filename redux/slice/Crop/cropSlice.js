@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   items: [],
@@ -34,7 +33,6 @@ const CropSlice = createSlice({
     },
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
-      // console.log({ id, quantity })
       const index = state.items.findIndex((item) => item.id === id);
       if (index >= 0) {
         state.items[index].quantity += 1
@@ -45,7 +43,6 @@ const CropSlice = createSlice({
 
     minusQuantity: (state, action) => {
       const { id, quantity } = action.payload;
-      // console.log({ id, quantity })
       const index = state.items.findIndex((item) => item.id === id);
       if (index >= 0) {
         state.items[index].quantity -= 1
@@ -79,12 +76,13 @@ export const selectBasketItemsWithId = (state, id) => {
   return state.cropReducers.CropSlice.items.filter((item) => item.id === id);
 };
 
-export const selectBasketTotal = (state) => state.cropReducers.CropSlice.items.reduce((total, item) => (total += item.amount), 0);
+export const selectBasketTotal = (state) => {
+  return state.cropReducers.CropSlice.items
+  .reduce((total, item) => {
+    return total + (item.cropPrice * item.quantity);
+  }, 0);
+};
 
 
-// export const selectBasketTotal = (state) => {
-//   // state.cropReducers.items.reduce((total, item) => (total += item.amount), 0);
-
-// }
 
 export default CropSlice.reducer;

@@ -27,7 +27,7 @@ const Product = () => {
   return (
     <Layout>
 
-      <div className="navbar  flex flex-row justify-end px-12">
+      <div className="navbar  pt-20 flex flex-row justify-end px-12">
         <div className="dropdown dropdown-start w-80 ">
           <Select
             placeholder="All product Avalable"

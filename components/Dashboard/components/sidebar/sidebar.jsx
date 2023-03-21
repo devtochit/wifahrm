@@ -15,7 +15,7 @@ const Sidebar = () => {
       icon: <Home size={32}    color="#37d67a" variant="TwoTone" />,
     },
     profile: {
-      title: "Product",
+      title: "Market Place",
       path: "/dashboard/products",
       icon: <Tree size={32} color="#37d67a" variant="TwoTone"/>,
     },
@@ -71,10 +71,7 @@ const Sidebar = () => {
             ))}
           </div>
         </div>
-        {/* <div className="pb-3 w-full space-y-2">
-          <SidebarItem {...items.profile} />
-          <SidebarItem {...items.settings} />
-        </div> */}
+
       </div>
       <div className="xs:hidden fixed bottom-0 h-16 w-full bg-primary/80 backdrop-blur-md z-20">
         <div className="flex items-center justify-center gap-20 font-bold h-full">

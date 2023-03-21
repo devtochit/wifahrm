@@ -2,17 +2,17 @@ import { useState, useEffect, useRef } from 'react'
 
 import Footer from '../Dashboard/Footer'
 import Sidebar from '../Dashboard/Sidebar'
-import Toolbar from '../Dashboard/Toolbar'
+import Toolbar from '../Dashboard/components/Toolbar'
 
 
 
 
 
 const Layout = ({children}) => {
-  const [collapsed, setCollapsed] = useState(false)
+  // const [collapsed, setCollapsed] = useState(false)
 
   const toggleRef = useRef(null)
-  const sidebarRef = useRef(null)
+  // const sidebarRef = useRef(null)
 
   useEffect(() => {
     const handleClick = event => {
@@ -24,26 +24,26 @@ const Layout = ({children}) => {
       }
     }
 
-    const mediaQuery = window.matchMedia('(max-width: 639px)')
+    // const mediaQuery = window.matchMedia('(max-width: 639px)')
 
-    if (mediaQuery.matches) {
-      window.addEventListener('click', handleClick)
-    }
+    // if (mediaQuery.matches) {
+    //   window.addEventListener('click', handleClick)
+    // }
 
-    return () => window.removeEventListener('click', handleClick)
+    // return () => window.removeEventListener('click', handleClick)
   }, [])
 
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed)
-  }
+  // const toggleCollapsed = () => {
+  //   setCollapsed(!collapsed)
+  // }
 
   return (
     <>
     
         <div className='flex'>
-          <Sidebar collapsed={collapsed} ref={sidebarRef} />
+          <Sidebar />
           <div className='w-full overflow-y-hidden'>
-            <Toolbar toggleCollapsed={toggleCollapsed} ref={toggleRef} />
+            <Toolbar />
             <main className="w-screen sm:w-auto sm:px-12 lg:py-6 lg:px-6">
               {children}
             </main>

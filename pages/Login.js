@@ -17,43 +17,29 @@ const Login = () => {
   const router = useRouter()
   const { loading, isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
  
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push("/dashboard");
+    }
+  }, [isLoggedIn]);
 
-  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-  //   const { userName, userPassword } = values;
-  //   try {
-  //     const result = await signIn('credentials', {
-  //       username: userName,
-  //       userPassword: userPassword,
-  //       redirect: false,
-  //       callbackUrl: 'http://localhost:3000/dashboar'
 
-  //     });
   
-  //     if (result?.error) {
-  //       // handle login error
-  //       console.error(result.error);
-  //     } else {
-  //       // login successful
-  //       console.log(result);
-      
-  //     }
-  //   } catch (error) {
-  //     // handle any other errors
-  //     console.error(error);
-  //   }
-  //   setSubmitting(false);
-  //   resetForm();
-  // };
-  
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  const handleSubmit = async (values, e,{ setSubmitting, resetForm }) => {
+    e.preventDefault();
     const { userName,  userPassword } = values;
     await dispatch(login({ userName, userPassword } ));
-    console.log(values)
+    // router.push("/dashboard");
+
     setSubmitting(false);
     resetForm()
 };
 
 
+
+if (isLoggedIn) {
+  return <div>You are already logged in!</div>;
+}
 
 
 
