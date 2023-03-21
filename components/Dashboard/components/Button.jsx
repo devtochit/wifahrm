@@ -1,8 +1,9 @@
 
   
-  function Button({ title, onClick, width, loading, padding, noIcon }) {
+  function Button({ type, title, onClick, width, loading, padding, noIcon }) {
     return (
       <button
+      type={type}
         className={`ease group relative z-30 box-border inline-flex ${
           width ? width : "w-auto"
         } ${padding} cursor-pointer items-center justify-center overflow-hidden rounded bg-green-600 bg-gradient-to-r from-green-500 to-lime-800 px-8 py-3 font-extrabold text-lg text-white transition-all duration-300 focus:outline-none`}

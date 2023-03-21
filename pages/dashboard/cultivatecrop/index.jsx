@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 import { ShoppingCartIcon } from "@heroicons/react/outline";
 import { addToBasket } from "../../../redux/slice/Crop/cropSlice";
 import * as Yup from 'yup';
-
+import currencyFormatter from '../../../utils/index'
 
 
 const validationSchema = Yup.object().shape({
@@ -17,9 +17,6 @@ const validationSchema = Yup.object().shape({
     .required('Category is required'),
   name: Yup.string()
     .required('Crop name is required'),
-  amount: Yup.number()
-    .min(1, 'Amount must be at least 1')
-    .required('Amount is required'),
 });
 const cropCategories = [
     "Select a category",
@@ -32,44 +29,51 @@ const cropCategories = [
 
   const cropNames = {
     Vegetables: [
-      "Select a crop",
-      "Tomatoes",
-      "Carrots",
-      "Peppers",
-      "Lettuce",
-      "Spinach",
+      { name: "Select a crop", price: null },
+      { name: "Tomatoes", price: 2.99 },
+      { name: "Carrots", price: 1.99 },
+      { name: "Peppers", price: 3.49 },
+      { name: "Lettuce", price: 1.79 },
+      { name: "Spinach", price: 2.49 },
     ],
     Fruits: [
-      "Select a crop",
-      "Apples",
-      "Bananas",
-      "Oranges",
-      "Grapes",
-      "Strawberries",
+      { name: "Select a crop", price: null },
+      { name: "Apples", price: 1.99 },
+      { name: "Bananas", price: 0.79 },
+      { name: "Oranges", price: 2.49 },
+      { name: "Grapes", price: 3.99 },
+      { name: "Strawberries", price: 4.99 },
     ],
     Herbs: [
-      "Select a crop",
-      "Basil",
-      "Parsley",
-      "Thyme",
-      "Oregano",
-      "Rosemary",
+      { name: "Select a crop", price: null },
+      { name: "Basil", price: 2.99 },
+      { name: "Parsley", price: 1.49 },
+      { name: "Thyme", price: 3.99 },
+      { name: "Oregano", price: 2.79 },
+      { name: "Rosemary", price: 3.49 },
     ],
     Grains: [
-      "Select a crop",
-      "Rice",
-      "Wheat",
-      "Barley",
-      "Oats",
-      "Corn",
+      { name: "Select a crop", price: null },
+      { name: "Rice", price: 4.99 },
+      { name: "Wheat", price: 3.49 },
+      { name: "Barley", price: 2.99 },
+      { name: "Oats", price: 1.99 },
+      { name: "Corn", price: 3.99 },
     ],
-    Nuts: ["Select a crop", "Almonds", "Cashews", "Pecans", "Walnuts"],
+    Nuts: [
+      { name: "Select a crop", price: null },
+      { name: "Almonds", price: 8.99 },
+      { name: "Cashews", price: 9.99 },
+      { name: "Pecans", price: 11.99 },
+      { name: "Walnuts", price: 7.99 },
+    ],
   };
+  
+  
 
   const initialValues = {
     category: "",
     name: "",
-    cropPrice: 0,
   };
 
 
@@ -78,6 +82,8 @@ const  CultivateCrops = ()=>{
     const dispatch = useDispatch();
     const [availableCrops, setAvailableCrops] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState([]);
+    const [selectedCropPrice, setSelectedCropPrice] = useState(null);
+
 
     const handleCategoryChange = (event) => {
         const category = event.target.value;
@@ -87,16 +93,33 @@ const  CultivateCrops = ()=>{
 
       const handleCropChange = (event, setFieldValue) => {
         setFieldValue("name", event.target.value);
+        setSelectedCropPrice(cropNames[selectedCategory].find(crop => crop.name === event.target.value).price);
       };
+      
 
+  
+      const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+        const { category, name } = values;
+        const cropName = name;
+        const cropCategory = category;
+        const cropPrice = selectedCropPrice
 
-        const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-      dispatch(addToBasket(values));
-      toast.success(`${values.name} added to basket`, { position: "top-center", });
-            // console.log(values)
-            setSubmitting(false);
-            resetForm()
-        };
+      
+        setSubmitting(true); // Set isSubmitting to true to show loading indicator
+      
+        try {
+          dispatch(addToBasket({ cropName, cropCategory,cropPrice }));
+          toast.success(`${name} added to basket`, { position: "top-center" });
+        } catch (error) {
+          console.error("Error adding item to basket: ", error);
+          toast.error("Failed to add item to basket", { position: "top-center" });
+        }
+      
+        setSubmitting(false); // Set isSubmitting back to false after action is complete
+        resetForm();
+      };
+      
+      
 
 
 
@@ -137,8 +160,8 @@ return(
           value={selectedCategory}
           className="block w-full max-w-3xl h-10 border-green-500 border-2  rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
 
-          {cropCategories.map((category) => (
-            <option key={category} value={category}>
+          {cropCategories.map((category,index) => (
+            <option key={index} value={category}>
               {category}
             </option>
           ))}
@@ -158,25 +181,33 @@ return(
           value={values.name}
           className="block w-full max-w-3xl h-10 border-green-500 border-2  rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
 
-          {availableCrops.map((crop) => (
-            <option key={crop} value={crop}>
-              {crop}
-            </option>
-          ))}
+              {availableCrops.map((crop, index) => (
+                <option key={index} value={crop.name}>
+                  {crop.name}
+                </option>
+              ))}
+
         </select>
         {errors.name && touched.name && (
           <div className="text-red-500">{errors.name}</div>
         )}
       </div>
 
-      <div className= "flex flex-wrap flex-row w-full gap-[20px] ">
+      {/* <div className= "flex flex-wrap flex-row w-full gap-[20px] ">
         <label htmlFor="cropPrice">Amount:</label>
         <Field type="number" name="amount"
           className='py-[15px] sm:px-[25px] outline-none w-full  border-[1px] border-green-500 bg-transparent font-epilogue text-green-500 font-black text-[14px] placeholder:text-green-500 rounded-[10px] sm:min-w-[300px]'/>
         {errors.amount && touched.amount && (
           <div className="text-red-500">{errors.amount}</div>
         )}
+      </div> */}
+
+      <div className="flex flex-wrap gap-[20px]">
+  <label htmlFor="cropPrice" className="text-center text-lg">Price:</label>
+  <div className="block w-full max-w-3xl h-10 bg-white border-green-500 border-2 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
+  {selectedCropPrice ? `$${selectedCropPrice.toFixed(2)}` : ''}
       </div>
+</div>
 
 
 
@@ -190,12 +221,13 @@ return(
 
                     <Button
                       noIcon
-                      // loading={loading}
+                      loading={isSubmitting}
                       title="Submit your order"
                       width="w-full"
                     //   onClick={createCheckoutSession}
                     disabled={isSubmitting}
-                    type="submit"
+                    type={"submit"}
+                    
                     />
           </div>
        </Form>
