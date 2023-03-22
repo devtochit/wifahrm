@@ -29,51 +29,53 @@ const cropCategories = [
 
   const cropNames = {
     Vegetables: [
-      { name: "Select a crop", price: null },
-      { name: "Tomatoes", price: 2.99 },
-      { name: "Carrots", price: 1.99 },
-      { name: "Peppers", price: 3.49 },
-      { name: "Lettuce", price: 1.79 },
-      { name: "Spinach", price: 2.49 },
+      { id: 1, name: "Select a crop", price: null },
+      { id: 2, name: "Tomatoes", price: 2.99 },
+      { id: 3, name: "Carrots", price: 1.99 },
+      { id: 4, name: "Peppers", price: 3.49 },
+      { id: 5, name: "Lettuce", price: 1.79 },
+      { id: 6, name: "Spinach", price: 2.49 },
     ],
     Fruits: [
-      { name: "Select a crop", price: null },
-      { name: "Apples", price: 1.99 },
-      { name: "Bananas", price: 0.79 },
-      { name: "Oranges", price: 2.49 },
-      { name: "Grapes", price: 3.99 },
-      { name: "Strawberries", price: 4.99 },
+      { id: 7, name: "Select a crop", price: null },
+      { id: 8, name: "Apples", price: 1.99 },
+      { id: 9, name: "Bananas", price: 0.79 },
+      { id: 10, name: "Oranges", price: 2.49 },
+      { id: 11, name: "Grapes", price: 3.99 },
+      { id: 12, name: "Strawberries", price: 4.99 },
     ],
     Herbs: [
-      { name: "Select a crop", price: null },
-      { name: "Basil", price: 2.99 },
-      { name: "Parsley", price: 1.49 },
-      { name: "Thyme", price: 3.99 },
-      { name: "Oregano", price: 2.79 },
-      { name: "Rosemary", price: 3.49 },
+      { id: 13, name: "Select a crop", price: null },
+      { id: 14, name: "Basil", price: 2.99 },
+      { id: 15, name: "Parsley", price: 1.49 },
+      { id: 16, name: "Thyme", price: 3.99 },
+      { id: 17, name: "Oregano", price: 2.79 },
+      { id: 18, name: "Rosemary", price: 3.49 },
     ],
     Grains: [
-      { name: "Select a crop", price: null },
-      { name: "Rice", price: 4.99 },
-      { name: "Wheat", price: 3.49 },
-      { name: "Barley", price: 2.99 },
-      { name: "Oats", price: 1.99 },
-      { name: "Corn", price: 3.99 },
+      { id: 19, name: "Select a crop", price: null },
+      { id: 20, name: "Rice", price: 4.99 },
+      { id: 21, name: "Wheat", price: 3.49 },
+      { id: 22, name: "Barley", price: 2.99 },
+      { id: 23, name: "Oats", price: 1.99 },
+      { id: 24, name: "Corn", price: 3.99 },
     ],
     Nuts: [
-      { name: "Select a crop", price: null },
-      { name: "Almonds", price: 8.99 },
-      { name: "Cashews", price: 9.99 },
-      { name: "Pecans", price: 11.99 },
-      { name: "Walnuts", price: 7.99 },
+      { id: 25, name: "Select a crop", price: null },
+      { id: 26, name: "Almonds", price: 8.99 },
+      { id: 27, name: "Cashews", price: 9.99 },
+      { id: 28, name: "Pecans", price: 11.99 },
+      { id: 29, name: "Walnuts", price: 7.99 },
     ],
   };
+  
   
   
 
   const initialValues = {
     category: "",
     name: "",
+    id: null
   };
 
 
@@ -83,6 +85,7 @@ const  CultivateCrops = ()=>{
     const [availableCrops, setAvailableCrops] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState([]);
     const [selectedCropPrice, setSelectedCropPrice] = useState(null);
+    const [selectedId, setSelectedId] = useState(null);
 
 
     const handleCategoryChange = (event) => {
@@ -93,9 +96,13 @@ const  CultivateCrops = ()=>{
 
       const handleCropChange = (event, setFieldValue) => {
         setFieldValue("name", event.target.value);
-        setSelectedCropPrice(cropNames[selectedCategory].find(crop => crop.name === event.target.value).price);
+        const selectedCrop = cropNames[selectedCategory].find(crop => crop.name === event.target.value);
+        setSelectedCropPrice(selectedCrop.price);
+        setSelectedId(selectedCrop.id);
+
       };
       
+
 
   
       const handleSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -103,12 +110,13 @@ const  CultivateCrops = ()=>{
         const cropName = name;
         const cropCategory = category;
         const cropPrice = selectedCropPrice
+        const id  = selectedId
 
       
         setSubmitting(true); // Set isSubmitting to true to show loading indicator
       
         try {
-          dispatch(addToBasket({ cropName, cropCategory,cropPrice }));
+          dispatch(addToBasket({id, cropName, cropCategory,cropPrice }));
           toast.success(`${name} added to basket`, { position: "top-center" });
         } catch (error) {
           console.error("Error adding item to basket: ", error);
@@ -182,7 +190,7 @@ return(
           className="block w-full max-w-3xl h-10 border-green-500 border-2  rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm">
 
               {availableCrops.map((crop, index) => (
-                <option key={index} value={crop.name}>
+                <option key={crop.id} value={crop.name}>
                   {crop.name}
                 </option>
               ))}
