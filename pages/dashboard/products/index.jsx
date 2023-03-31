@@ -1,5 +1,5 @@
 import Layout from '../../../components/Dashboard/Layout';
-import ProductCard from '../../../components/FarmCard/FarmCard';
+import ProductCard from '../../../components/Dashboard/FarmCard/ProductCard';
 import Select from 'react-select';
 import Link from 'next/link';
 import { getMarketData } from '../../../redux/slice/marketplace/marketplaceSlice';
@@ -47,6 +47,8 @@ const Product = () => {
                 <Link key={index} href={`/dashboard/products/${product.id}`}>
               <ProductCard
                 key={product.id}
+                imageUrl = {product.imageUrl}
+                description = {product.description}
                 cropCategory={product.cropCategory}
                 cropName={product.cropName}
                 cropPrice={product.cropPrice}

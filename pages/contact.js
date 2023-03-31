@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import Contact from "../components/Contact";
+import Footer from "../components/HomePage/Footer";
+import Navbar from "../components/HomePage/Navbar";
+import Contact from "../components/HomePage/Contact";
 import styles from "../styles/Contact-page.module.css"
 
 const contact = () => {

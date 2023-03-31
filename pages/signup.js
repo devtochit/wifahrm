@@ -1,8 +1,7 @@
 import React from "react";
-import DonateBanner from "../components/DonateBanner";
-import DonateForm from "../components/SignForm";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import DonateForm from "../components/HomePage/SignForm";
+import Footer from "../components/HomePage/Footer";
+import Navbar from "../components/HomePage/Navbar";
 
 const donate = () => {
   return (

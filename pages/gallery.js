@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Banner from "../components/Banner";
-import Footer from "../components/Footer";
+import Navbar from "../components/HomePage/Navbar";
+// import Banner from "../components/HomePage/Banner";
+import Footer from "../components/HomePage/Footer";
 import styles from "../styles/Gallery-page.module.css";
-import GalleryBanner from "../components/GalleryBanner";
-import Collections from "../components/Collections";
+import GalleryBanner from "../components/HomePage/GalleryBanner";
+import Collections from "../components/HomePage/Collections";
 
 const gallery = () => {
   return (

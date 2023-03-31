@@ -2,11 +2,11 @@ import Head from 'next/head'
 import StatsBoard from '../../components/Dashboard/StatsBoard'
 import QuickAction from '../../components/Dashboard/QuickAction'
 import Countdown from '../../components/Dashboard/Countdown'
-import ClientsFeed from '../../components/Dashboard/ClientsFeed'
-import BestSellers from '../../components/Dashboard/BestSellers'
-import LineChart from '../../components/Charts/LineChart'
-import BarChart from '../../components/Charts/BarChart'
-import Layout from '../../components/Dashboard/Layout'
+// import ClientsFeed from '../../components/Dashboard/ClientsFeed'
+// import BestSellers from '../../components/Dashboard/BestSellers'
+// import LineChart from '../../components/Charts/LineChart'
+// import BarChart from '../../components/Charts/BarChart'
+import Layout from '../../components/Dashboard/shared/components/Dashboard'
 
 
 const Dashboard = ()=> (
@@ -14,9 +14,9 @@ const Dashboard = ()=> (
     <Head>
       <title> Dashboard</title>
     </Head>
-    <h1 className='text-xl font-bold mt-20 pb-4'>Dashboard</h1>
+    <h1 className='text-xl font-bold  pb-4'>Dashboard</h1>
     
-    <div className='w-full min-h-main mt-20 p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded' >
+    <div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded' >
 			 <StatsBoard /> 
 			 <div className="grid lg:grid-cols-[1fr_auto] my-12 gap-y-12 gap-x-8">
 				<div className="lg:col-start-2">
@@ -28,14 +28,14 @@ const Dashboard = ()=> (
     
 			 <div className="flex flex-col lg:row-start-1 lg:row-end-3 min-w-0 gap-y-12">
 					<div className="h-72">
-						<LineChart />
+						{/* <LineChart /> */}
 					</div>
 					<div className="flex">
 						{/* <div className="h-72 w-full mb-6">
 							<BarChart />
 						</div> */}
 					</div>
-					<BestSellers />
+					{/* <BestSellers /> */}
 				</div>
 					<div className="">
 					{/* <ClientsFeed /> */}

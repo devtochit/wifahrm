@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "../styles/About-page.module.css";
-import Navbar from "../components/Navbar";
-import Banner from "../components/Banner";
-import Footer from "../components/Footer";
-import AboutLite from "../components/AboutLite";
-import Mission from "../components/Mission";
-import Stats from "../components/Stats";
+import Navbar from "../components/HomePage/Navbar";
+import Banner from "../components/HomePage/Banner";
+import Footer from "../components/HomePage/Footer";
+import AboutLite from "../components/HomePage/AboutLite";
+import Mission from "../components/HomePage/Mission";
+import Stats from "../components/HomePage/Stats";
 
 const about = () => {
   return (

@@ -1,12 +1,12 @@
 import styles from "../styles/Home.module.css";
-import Navbar from "../components/Navbar"
-import Banner from "../components/Banner";
-import InfoCard from "../components/InfoCard";
-import About from "../components/About";
-import Services from "../components/Services";
-import Gallery from "../components/Gallery";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
+import Navbar from "../components/HomePage/Navbar"
+import Banner from "../components/HomePage/Banner";
+import InfoCard from "../components/HomePage/InfoCard";
+// import About from "../components/About";
+import Services from "../components/HomePage/Services";
+import Gallery from "../components/HomePage/Gallery";
+import Contact from "../components/HomePage/Contact";
+import Footer from "../components/HomePage/Footer";
 
 export default function Home() {
   return (

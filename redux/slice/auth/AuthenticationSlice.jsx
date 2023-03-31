@@ -56,7 +56,7 @@ registrationReceived: (state, action) => {
 },
 registrationRequestFailed: (state, action) => {
   state.loading = false;
-  state.error = action.payload.response.userData.message.error;
+  state.error = action.payload.message;
 },
 },
 });

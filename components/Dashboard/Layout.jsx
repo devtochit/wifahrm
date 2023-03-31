@@ -40,7 +40,7 @@ const Layout = ({children}) => {
   return (
     <>
     
-        <div className='flex'>
+    <div className='flex'>
           <Sidebar />
           <div className='w-full overflow-y-hidden'>
             <Toolbar />
