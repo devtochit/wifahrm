@@ -31,7 +31,7 @@ function FundCard({ cropCategory,imageUrl,description, cropName, cropPrice, date
 
                 <div className="flex justify-between flex-wrap mt-[11px] gap-2">
                     <div className="flex flex-col">
-                        <h4 className="font-epilogue font-semibold text-[14px] leading-[22px]">{currencyFormatter(cropPrice)}</h4>
+                        <h4 className="font-epilogue font-semibold text-[14px] leading-[22px]">{currencyFormatter(cropPrice)}  </h4>
                         <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] sm:max-w-[120px] truncate">Raised of {dailyInterestRate}</p>
                     </div>
                     <div className="flex flex-col">
