@@ -2,21 +2,23 @@ import Head from "next/head";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import React, { useEffect, useState ,Fragment} from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../../components/Dashboard/components/Button";
-import { selectBasketItems, selectBasketTotal,plusItem,minusItem } from "../../../redux/slice/Crop/cropSlice";
+import { selectBasketItems, selectBasketTotal, plusItem, minusItem, AddCropToFarmLand } from "../../../redux/slice/Crop/cropSlice";
 import CheckoutProduct from "../../../components/Dashboard/components/BasketProduct";
 import Layout from "../../../components/Dashboard/Layout";
 import { usePaystackPayment } from "react-paystack";
 import { currencyFormatter } from "../../../utils";
 import Image from "next/image";
-import { NumberFormat } from "react-number-format";
+
+
 
 function Checkout() {
   const items = useSelector(selectBasketItems);
   const basketTotal = useSelector(selectBasketTotal);
   const {userData} = useSelector((state) => state.authReducers.Authentication);
   const publicKey = 'pk_test_640d50dd050ee5699907f210fd4fc6463f021d89';
+  const dispatch = useDispatch()
  console.log('inside checkout',items)
 
   const router = useRouter();
@@ -30,7 +32,7 @@ function Checkout() {
     }, {});
     setGroupedItemsInBasket(groupedItems);
   }, [items]);
-
+  console.log(' checking checking', groupedItemsInBasket)
     const config = {
       // reference: (new Date()).getTime().toString(),
       email: 'uzomaesse@gmail.com',
@@ -50,6 +52,7 @@ const initializePayment = usePaystackPayment(config);
 
 const onSuccess = (reference) => {
   router.push("/dashboard/success");
+  dispatch(AddCropToFarmLand)
 
   // Use the Paystack API to retrieve the metadata associated with the payment
   // fetch(`https://api.paystack.co/transaction/verify/${reference}`, {

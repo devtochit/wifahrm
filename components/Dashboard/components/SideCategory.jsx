@@ -27,7 +27,7 @@ function SideCategory({ typesData }) {
               className="font-semibold text-cusblack cursor-pointer"
             //   onClick={() => dispatch(selectCategory(type.name))}
             >
-              {category.cropCategory}
+              {/* {category.cropCategory} */}
             </button>
           </li>
         {/* ))} */}

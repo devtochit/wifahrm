@@ -9,6 +9,7 @@ import { currencyFormatter } from "../../../utils";
 import Image from "next/image";
 
 function BasketProduct({ items, id }) {
+  
   console.log('hey im inside backetpr',id)
   const dispatch = useDispatch();
 
@@ -43,14 +44,16 @@ function BasketProduct({ items, id }) {
           >
             <Image
               className="w-full md:w-32 h-32 object-cover rounded-xl"
-              // src={items.prop[0].image[0]}
-              alt=""
+              src={'https://i.ibb.co/YcBTgZN/jonathan-niederhoffer-K0-XJWUN1-Fz-A-unsplash.jpg'}
+              height={700}
+              width={700}
+              alt="hhh"
             />
           </motion.div>
           <div className="ml-3 flex flex-col text-black justify-between py-2">
             <p className="font-medium ">{items[0].cropName}</p>
             <ul className="text-lg font-medium md:text-sm leading-relaxed text-black">
-              <li>ID: {items[0].id}</li>
+              <li>ID: {items[0].cropId}</li>
               <li>Amount: {items[0].cropPrice}</li>
               <li>Category: {items[0].cropCategory}</li>
               <li>Quantity: {items[0].quantity}</li>
