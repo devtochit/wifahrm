@@ -14,7 +14,7 @@ const Sidebar = () => {
       },
       marketplace: {
         title: "Market Place",
-        path: "/dashboard/products",
+        path: "/dashboard/shop",
         icon: <Tree size={32} color="#37d67a" variant="TwoTone"/>,
       },
       // settings: {

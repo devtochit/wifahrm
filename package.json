@@ -37,6 +37,7 @@
     "gsap": "^3.11.0",
     "iconsax-react": "^0.0.8",
     "next": "latest",
+    "react-responsive-carousel": "^3.2.20",
     "next-auth": "^4.20.1",
     "react": "^18.2.0",
     "react-countup": "^6.4.0",

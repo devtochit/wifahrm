@@ -1,22 +1,23 @@
 import React, { useState } from "react";
+import ShopCarousel from "./shopCarousel";
 // import Header from "./header";
-// import ShopCarousel from "./shopcarousel";
-// import SideCategory from "./sidecategory";
+import SideCategory from "./SideCategory";
 // import TopCategory from "./topcategory";
+
 
 function Layout({ children, categories, types, setSort }) {
   const [open, setOpen] = useState(false);
-  const [grid, setGrid] = useState(4);
+  const [grid, setGrid] = useState(3);
   const [sortOpen, setSortOpen] = useState(false);
   return (
     <div className="w-full min-h-screen bg-cusgray pb-10">
-      {/* <Header /> */}
+    
       <button
         onClick={() => setOpen(!open)}
         className="w-12 h-12 rounded-full bg-white fixed z-30 drop-shadow-2xl lg:hidden flex justify-center place-items-center bottom-0 left-0 m-5"
       >
         <svg
-          className="w-6 text-cusblack h-6"
+          className="w-10 text-cusblack h-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -32,17 +33,17 @@ function Layout({ children, categories, types, setSort }) {
       </button>
       <div className="max-w-6xl mx-auto pt-14 md:px-0">
         {/* <TopCategory categories={categories} /> */}
-        <div className="grid grid-cols-4 gap-x-6">
+        <div className="grid grid-cols-4 gap-x-2">
           <div
             onClick={() => setOpen(!open)}
             className={`${
               open ? `fixed` : `hidden`
             } lg:static lg:inline bg-gray-400 lg:bg-cusgray h-screen bg-opacity-30 z-20 flex w-full justify-center place-items-center top-0 lg:p-4`}
           >
-            {/* <SideCategory typesData={types} /> */}
+            <SideCategory />
           </div>
           <div className="col-span-4 md:col-span-4 lg:col-span-3 flex flex-col py-4 mx-2 md:mx-0">
-            {/* <ShopCarousel /> */}
+            <ShopCarousel />
             <div className="rounded-2xl overflow-hidden shadow-lg w-full bg-white mt-6 px-5 py-4">
               <div className="mb-3">
                 <div className="flex justify-between place-items-center text-gray-600 text-sm relative">
@@ -52,7 +53,7 @@ function Layout({ children, categories, types, setSort }) {
                       className="p-1 relative flex justify-center items-center rounded-full hover:bg-gray-100 active:bg-gray-200 cursor-pointer duration-200"
                     >
                       <svg
-                        className="w-5 h-5 "
+                        className="w-8 h-8 "
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -71,7 +72,7 @@ function Layout({ children, categories, types, setSort }) {
                       className="p-1 relative flex justify-center items-center rounded-full hover:bg-gray-100 active:bg-gray-200 cursor-pointer duration-200"
                     >
                       <svg
-                        className="w-5 h-5"
+                        className="w-8 h-8"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -86,12 +87,15 @@ function Layout({ children, categories, types, setSort }) {
                       </svg>
                     </button>
                   </div>
+
+
+                  
                   <button
                     onClick={() => setSortOpen(!sortOpen)}
                     className="flex place-items-center hover:bg-gray-100 py-1 px-2 rounded-md active:bg-gray-200"
                   >
                     <svg
-                      className="w-5 h-5 mr-1"
+                      className="w-8 h-8 mr-1"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -106,7 +110,7 @@ function Layout({ children, categories, types, setSort }) {
                     </svg>
                     Sort
                     <svg
-                      className="w-4 h-4 ml-1"
+                      className="w-8 h-8 ml-1"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

@@ -2,11 +2,13 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Router from "next/router";
+import { currencyFormatter } from "../../../utils";
 
-function ProductCard({ cropCategory,imageUrl,description, cropName, cropPrice,handleSubmit,product }) {
 
+function ProductCard({ cropCategory,description, cropName, cropPrice,handleSubmit,product }) {
+//  console.log(product.imageUrl)
     return (
-        <div className="rounded-xl cursor-pointer">
+        <div className="rounded-xl cursor-pointer bg-cusgray shadow-xl ">
             <div className="overflow-hidden cursor-default rounded-xl relative group">
                 <motion.div
                     initial={{ scale: 1.3, x: 50, opacity: 0 }}
@@ -18,11 +20,12 @@ function ProductCard({ cropCategory,imageUrl,description, cropName, cropPrice,ha
                         width={700}
                         objectFit="cover"
                         loading="lazy"
-                        src={imageUrl }
-                        alt=""
-                        className="rounded-xl w-full h-full bg-cusgray"
+                        src={'https://i.ibb.co/YcBTgZN/jonathan-niederhoffer-K0-XJWUN1-Fz-A-unsplash.jpg'}
+                        alt={cropName}
+                        className="rounded-xl w-full h-full"
                     />
                 </motion.div>
+
                 <div className="hidden absolute rounded-xl h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center z-10">
                     <div className="flex overflow-hidden cursor-pointer">
                         <button
@@ -51,9 +54,9 @@ function ProductCard({ cropCategory,imageUrl,description, cropName, cropPrice,ha
                 // onClick={() => Router.push("/product/" + item.slug)}
                 className="px-2 py-2"
             >
-                <p className="text-sm line-clamp-1">{cropCategory}</p>
-                <p className="text-xs my-2 text-gray-400">{cropName}</p>
-                    <div className="text-sm font-semibold text-cusblack"> {currencyFormatter(cropPrice)}</div>
+                <p className="text-base line-clamp-1">{cropCategory}</p>
+                <p className="text-base my-2 font-black ">{cropName}</p>
+                    <div className="text-xl font-bold text-green-900"> {currencyFormatter(cropPrice)}</div>
             </div>
         </div>
     );

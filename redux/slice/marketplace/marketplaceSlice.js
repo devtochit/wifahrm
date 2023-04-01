@@ -4,6 +4,7 @@ import { retrieveUserDetails } from "../../../utils/helperFunctions/userDataHand
 
 const initialState = {
   MarketData: [],
+  category:[],
   loading: false,
 };
 
@@ -17,8 +18,10 @@ const getMarketSlice = createSlice({
     },
     getMarketReceived: (state, action) => {
       state.loading = false;
+      state.category = action.payload.data;
       state.MarketData = action.payload;
-      // console.log('inside state market', state.MarketData)
+
+
     },
     getMarketRequestFailed: (state, action) => {
       state.loading = false;
@@ -31,6 +34,8 @@ const { getMarketRequested, getMarketReceived, getMarketRequestFailed } =
   getMarketSlice.actions;
 
 export default getMarketSlice.reducer;
+
+
 
 export const getMarketData = () => async (dispatch) => {
   try {

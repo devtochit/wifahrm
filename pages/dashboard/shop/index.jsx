@@ -3,24 +3,21 @@ import CardSkeleton from "../../../components/Dashboard/components/LoadingCard";
 import Layout from "../../../components/Dashboard/components/shopLayout";
 import ProductCard from "../../../components/Dashboard/FarmCard/productCard2";
 import Head from "next/head";
-import Layout from '../../../components/Dashboard/Layout';
 import Link from 'next/link';
 import { getMarketData } from '../../../redux/slice/marketplace/marketplaceSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { addToBasket } from '../../../redux/slice/Crop/cropSlice';
+import Dashboard from "../../../components/Dashboard/shared/components/Dashboard";
 
-
-
-
-
-
-function Category({ data, dataItems, dataTypes }) {
+function Category() {
     const [sort, setSort] = useState(0);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
-    console.log(data)
+    const { category } = useSelector((state) => state.marketReducers.getMarketSlice);
+
+
 
     useEffect(() => {
         console.log('useEffect called');
@@ -32,21 +29,25 @@ function Category({ data, dataItems, dataTypes }) {
         toast.success(`${values.cropName} added to basket`, { position: 'top-center' });
     };
 
-    //   const recent_category = useSelector(recentCategory);
-    //   const data_items = dataItems
+    //   const recent_category = category
+    //   const data_items = data
     //     .filter((item) => {
+    //         console.log('is it' ,item )
+
     //       if (recent_category.length > 0) {
-    //         return item.type.name == recent_category;
+    //         console.log(recent_category.length > 0)
+    //       console.log(item.cropCategory == recent_category.cropCategory )   
     //       } else {
     //         return true;
+    //         console.log('is it' ,true )
     //       }
     //     })
     //     .sort((a, b) => {
     //       if (sort === 1) {
-    //         return a.price - b.price;
+    //         return a.cropPrice - b.cropPrice;
     //       }
     //       if (sort === 2) {
-    //         return b.price - a.price;
+    //         return b.cropPrice - a.cropPrice;
     //       }
     //       return true;
     //     });
@@ -62,8 +63,9 @@ function Category({ data, dataItems, dataTypes }) {
 
     return (
         <>
+        <Dashboard> 
             <Head>
-                <title>wefootwear | Shop</title>
+                <title>Wifarm | Shop</title>
             </Head>
             <Layout categories={data} setSort={setSort} >
                 {!loading ? (
@@ -75,7 +77,7 @@ function Category({ data, dataItems, dataTypes }) {
                         
                      
                         data && data.map((product,index) => (
-                            <Link key={index} href={`/dashboard/products/${product.id}`}>
+                            <Link key={index} href={`/dashboard/shop/${product.id}`}>
                           <ProductCard
                             key={product.id}
                             imageUrl = {product.imageUrl}
@@ -84,6 +86,7 @@ function Category({ data, dataItems, dataTypes }) {
                             cropName={product.cropName}
                             cropPrice={product.cropPrice}
                             datePlanted={product.datePlanted}
+                            product={product}
                             handleSubmit={(event) => handleSubmit(event, product)}
                           />
                           </Link>
@@ -101,6 +104,7 @@ function Category({ data, dataItems, dataTypes }) {
                     </>
                 )}
             </Layout>
+            </Dashboard>
         </>
     );
 }
