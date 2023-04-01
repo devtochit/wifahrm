@@ -19,7 +19,6 @@ function Checkout() {
   const {userData} = useSelector((state) => state.authReducers.Authentication);
   const publicKey = 'pk_test_640d50dd050ee5699907f210fd4fc6463f021d89';
   const dispatch = useDispatch()
- console.log('inside checkout',items)
 
   const router = useRouter();
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState({});
@@ -51,8 +50,8 @@ function Checkout() {
 const initializePayment = usePaystackPayment(config);
 
 const onSuccess = (reference) => {
-  router.push("/dashboard/success");
-  dispatch(AddCropToFarmLand)
+  // router.push("/dashboard/success");
+  dispatch(AddCropToFarmLand(groupedItemsInBasket) )
 
   // Use the Paystack API to retrieve the metadata associated with the payment
   // fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
