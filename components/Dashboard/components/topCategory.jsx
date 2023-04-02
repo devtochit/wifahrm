@@ -25,7 +25,7 @@ function TopCategory({ categories }) {
                         <button
                             onClick={() => handleCategoryClick("")}
                             className={`${isActive
-                                ? `bg-cusblack text-bg-white shadow-lg `
+                                ? `bg-cusblack text-white shadow-lg `
                                 : `bg-white text-cusblack`
                                 } py-2.5 px-6 rounded-3xl text-xs mr-3 mb-2 md:mb-0`}
                         >
@@ -37,7 +37,7 @@ function TopCategory({ categories }) {
                             key={cat}
                             onClick={() => handleCategoryClick(cat)}
                             className={`${isActive
-                                ? `bg-cusblack text-bg-white shadow-lg `
+                                ? `bg-cusblack text-white shadow-lg `
                                 : `bg-white text-cusblack`
                                 } py-2.5 px-6 rounded-3xl text-xs mr-3 mb-2 md:mb-0`}
                         >
