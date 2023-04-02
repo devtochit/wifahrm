@@ -23,9 +23,9 @@ function TopCategory({ categories }) {
                 <div className="category overflow-x-auto flex flex-wrap place-items-center py-2">
                     <Link href={`/shop`}>
                         <button
-                            onClick={dispatch(selectCategory(''))}
-                            className={`${isActive == `/shop`
-                                ? `bg-cusblack text-cusblack shadow-lg `
+                            onClick={() => handleCategoryClick("")}
+                            className={`${isActive
+                                ? `bg-cusblack text-white shadow-lg `
                                 : `bg-white text-cusblack`
                                 } py-2.5 px-6 rounded-3xl text-xs mr-3 mb-2 md:mb-0`}
                         >
@@ -36,8 +36,8 @@ function TopCategory({ categories }) {
                         <button
                             key={cat}
                             onClick={() => handleCategoryClick(cat)}
-                            className={`${isActive == `/shop/${cat.slug}`
-                                ? `bg-cusblack text-cusblack shadow-lg `
+                            className={`${isActive
+                                ? `bg-cusblack text-white shadow-lg `
                                 : `bg-white text-cusblack`
                                 } py-2.5 px-6 rounded-3xl text-xs mr-3 mb-2 md:mb-0`}
                         >

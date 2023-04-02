@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useState,useEffect } from "react";
 import { motion } from "framer-motion";
-import Layout from '../../../components/Dashboard/Layout';
 import Basket from "../../../components/Dashboard/components/bracket"
 import Button from "../../../components/Dashboard/components/Button";
 import toast from "react-hot-toast";
@@ -11,6 +10,7 @@ import { addToBasket } from "../../../redux/slice/Crop/cropSlice";
 import * as Yup from 'yup';
 import currencyFormatter from '../../../utils/index'
 import { useRouter } from "next/router";
+import Dashboard from "../../../components/Dashboard/shared/components/Dashboard";
 
 
 const withAuth = (Component) => {
@@ -155,7 +155,8 @@ const  CultivateCrops = ()=>{
 
 
 return(
-  <Layout>
+  <Dashboard
+  >
   <div className='w-full h-full flex flex-row items-center justify-center lg:px-32 py-4 gap-5 flex-wrap'>
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -267,7 +268,7 @@ return(
    </motion.div>
     <Basket/>
    </div>
-   </Layout>
+  </Dashboard>
 )
 }
 export default withAuth(CultivateCrops);
