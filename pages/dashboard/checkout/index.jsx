@@ -10,6 +10,8 @@ import Layout from "../../../components/Dashboard/Layout";
 import { usePaystackPayment } from "react-paystack";
 import { currencyFormatter } from "../../../utils";
 import Image from "next/image";
+import Dashboard from "../../../components/Dashboard/shared/components/Dashboard";
+
 
 const withAuth = (Component) => {
 	const Auth = (props) => {
@@ -108,7 +110,7 @@ const handleSubmit = (e) => {
 
 
   return (
-    <Layout>
+    <Dashboard>
 
 <Head>
   <title>wifarhm |checkout </title>
@@ -259,7 +261,7 @@ const handleSubmit = (e) => {
   </div>
 </div>
 </div>
-    </Layout>
+    </Dashboard>
   );
 }
 

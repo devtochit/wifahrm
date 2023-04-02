@@ -5,6 +5,8 @@ import { selectBasketItems, selectBasketTotal,deleteFromBasket } from "../../../
 import { useRouter } from "next/router";
 import { useState,useEffect } from "react";
 import { currencyFormatter } from "../../../utils";
+import Dashbaord from '../../../components/Dashboard/shared/components/Dashboard'
+
 
 const withAuth = (Component) => {
   const Auth = (props) => {
@@ -55,7 +57,7 @@ function Success() {
 
 
   return (
-    <Layout>
+    <Dashbaord>
       <div className="min-h-screen overflow-hidden bg-[#E7ECEE]">
         <Head>
           <title>Payment Successful</title>
@@ -119,7 +121,7 @@ function Success() {
           </div>
         </main>
       </div>
-    </Layout>
+    </Dashbaord>
   );
 }
 
