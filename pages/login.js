@@ -15,25 +15,49 @@ import { signIn } from 'next-auth/react';
 const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter()
+  // const [error , setErrors] =useState('')
   const { loading, isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
  
-  useEffect(() => {
-    if (isLoggedIn) {
-      router.push("/dashboard");
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     router.push("/dashboard");
+  //   }
+  // }, [isLoggedIn,router]);
+
+  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  //   const status = await signIn('credentials', {
+  //       redirect: false,
+  //       email: values.email,
+  //       password: values.password,
+  //       callbackUrl: "/"
+  //   })
+
+  const handleSubmit = async (values, { setSubmitting, resetForm, setErrors }) => {
+    const result = await signIn("credentials", {
+        redirect: false,
+        username: values.userName,
+        password: values.userPassword,
+        callbackUrl: "/"
+    });
+
+    if (result?.error) {
+        setErrors({ auth: result.error });
+    } else {
+        setSubmitting(false);
+        resetForm();
     }
-  }, [isLoggedIn,router]);
-
+};
 
   
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    event.preventDefault();
-    const { userName, userPassword } = values;
-    await dispatch(login({ userName, userPassword }));
-    // router.push("/dashboard");
+  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  //   event.preventDefault();
+  //   const { userName, userPassword } = values;
+  //   await dispatch(signIn({ userName, userPassword }));
+  //   // router.push("/dashboard");
   
-    setSubmitting(false);
-    resetForm();
-  };
+  //   setSubmitting(false);
+  //   resetForm();
+  // };
   
 
 
