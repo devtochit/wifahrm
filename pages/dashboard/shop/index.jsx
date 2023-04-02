@@ -56,10 +56,10 @@ function Shop() {
         toast.success(`${values.cropName} added to basket`, { position: 'top-center' });
     };
 
-    const categories = Array.from(new Set(data.map((product) => product.cropCategory)));
+    const categories = data ? Array.from(new Set(data.map((product) => product.cropCategory))) : [];
 
-    const filteredData = data.filter((product) => category === "" || product.cropCategory === category);
-    console.log('hello shop', filteredData)
+    const filteredData = data ? data.filter((product) => category === "" || product.cropCategory === category) : [];
+    
 
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000);
@@ -67,7 +67,7 @@ function Shop() {
 
 
 
-    const productCards = data.map((product) => (
+    const productCards = data?.map((product) => (
         <ProductCard
             key={product.id}
             imageUrl={product.imageUrl}
