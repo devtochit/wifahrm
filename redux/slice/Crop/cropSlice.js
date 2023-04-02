@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
+  addcroptofarm: [],
+  loading: false
 };
 
 export const addItemToCart = (cartItems, cartItemToAdd,) => {
@@ -56,12 +58,32 @@ const CropSlice = createSlice({
       state.items = state.items.filter((item) => item.id !== action.payload.id);
       console.log(state.items)
     },
+    addCroptoFarm: (state, action) => {
+      state.addcroptofarm = action.payload;
+    },
+    addcroptofarmRequested: (state, action) => {
+      state.loading = true;
+    },
+
+    addcroptofarmReceived: (state, action) => {
+      console.log("Payload received:", action.payload);
+      state.loading = false;
+    },
+
+    addcroptofarmRequestFailed: (state, action) => {
+      state.loading = false;
+      // state.error = action.payload.response.userData.error;
+    },
   },
 });
 
 export const {
   setCropCategory,
   setCropName,
+  addCroptoFarm,
+  addcroptofarmRequested,
+  addcroptofarmReceived,
+  addcroptofarmRequestFailed,
   setCropAmount,
   addToBasket,
   minusQuantity,
@@ -69,6 +91,23 @@ export const {
   removeFromBasket,
   deleteFromBasket,
 } = CropSlice.actions;
+
+
+
+export const AddCropToFarmLand = (values) => (dispatch) => {
+  console.log('data', values)
+  dispatch(
+    apiCallBegan({
+      url: "api/crop/addcroptofarm/",
+      method: "post",
+      data: values,
+      onStart: addcroptofarmRequested.type,
+      onSuccess: addcroptofarmReceived.type,
+      onError: addcroptofarmRequestFailed.type,
+    })
+  );
+};
+
 
 export const selectBasketItems = (state) => state.cropReducers.CropSlice.items
 

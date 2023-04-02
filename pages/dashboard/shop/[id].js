@@ -7,7 +7,7 @@ import Basket from '../../../components/Dashboard/components/bracket';
 import { addToBasket } from '../../../redux/slice/Crop/cropSlice';
 import toast from 'react-hot-toast';
 import { useEffect } from 'react';
-
+import Dashboard from "../../../components/Dashboard/shared/components/Dashboard";
 
 
 const withAuth = (Component) => {
@@ -32,6 +32,10 @@ const withAuth = (Component) => {
 };
 
 const CropDetails = () => {
+
+
+
+  const router = useRouter()
   const dispatch = useDispatch();
   const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
   const { id } = router.query;
@@ -50,30 +54,32 @@ const CropDetails = () => {
   if (!cropData) {
     return <div>Loading...</div>;
   }
-
+  
+  
   return (
-    <Layout>
+    <Dashboard>
       <Basket />
       <>
         <div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded'>
           <MarketplaceDetails
-            key={cropData.id}
+          key={cropData.id}
             cropCategory={cropData.cropCategory}
+            imageUrl={cropData.imageUrl}
             cropEstimatedDuration={cropData.cropEstimatedDuration}
             cropName={cropData.cropName}
+            description={cropData.description}
             cropPrice={cropData.cropPrice}
-            // description={cropData.description}
-            dailyInterestRate={cropData.dailyInterestRate}
+             dailyInterestRate={cropData.dailyInterestRate}
             datePlanted={cropData.datePlanted}
             lifeCycleYieldRate={cropData.lifeCycleYieldRate}
             monthlyInterestRate={cropData.monthlyInterestRate}
             cropData={cropData}
             handleSubmit={handleSubmit}
-          />
+            />
         </div>
       </>
-    </Layout>
-  );
-};
+    </Dashboard>
+  )
+}
 
-export default withAuth(CropDetails);
+export default CropDetails;

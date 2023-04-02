@@ -41,8 +41,7 @@ const Navbar = () => {
     return (
         <div
             className={clsx(
-                "z-50  h-20  backdrop-blur-md sticky top-0 duration-200",
-                isScrolled && "bg-primary/80"
+                "z-50  h-20  backdrop-blur-md sticky top-0 duration-200"
             )}
         >
                {/* <div>
@@ -71,10 +70,10 @@ const Navbar = () => {
           </h3>
         </div>
         <div className="profile flex items-center gap-4 place-items-center">
-          <Link href="/dashboard/products">
-            <div className="w-8 relative flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
+          <Link href="/dashboard/shop">
+            <div className="w-10 relative flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
               <svg
-                className="w-24 h-24 text-cusblack m-auto"
+                className="w-10 h-10 text-cusblack m-auto"
                 fill="#F2F5F6"
                 stroke="#37d67a"
                 viewBox="0 0 24 24"
@@ -91,10 +90,10 @@ const Navbar = () => {
           </Link>
           <div
             onClick={() => router.push("/dashboard/checkout")}
-            className="w-8 relative flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200"
+            className="w-10 relative flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200"
           >
            <svg
-                className="w-16 h-16 text-cusblack m-auto"
+                className="w-10 h-10 text-cusblack m-auto"
                 fill="#F2F5F6"
                 stroke="#37d67a"
               viewBox="0 0 24 24"
@@ -117,10 +116,12 @@ const Navbar = () => {
             ) : (
               ""
             )}
+
+         
+
           </div>
 
-                {/* <UserDropdownAvatar /> */}
-
+           <div className=' flex items-center mt-2'>     <UserDropdownAvatar /> </div>
         </div>
       </div>
 

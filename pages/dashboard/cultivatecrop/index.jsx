@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useState,useEffect } from "react";
 import { motion } from "framer-motion";
@@ -10,7 +10,29 @@ import { ShoppingCartIcon } from "@heroicons/react/outline";
 import { addToBasket } from "../../../redux/slice/Crop/cropSlice";
 import * as Yup from 'yup';
 import currencyFormatter from '../../../utils/index'
+import { useRouter } from "next/router";
 
+
+const withAuth = (Component) => {
+	const Auth = (props) => {
+		const { isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
+		const router = useRouter();
+
+		useEffect(() => {
+			if (!isLoggedIn) {
+				router.replace('/login');
+			}
+		}, [isLoggedIn, router]);
+
+			if (!isLoggedIn) {
+				return null; // or return a loading indicator
+			}
+
+		return <Component {...props} />;
+	};
+
+	return Auth;
+};
 
 const validationSchema = Yup.object().shape({
   category: Yup.string()
@@ -248,4 +270,4 @@ return(
    </Layout>
 )
 }
-export default CultivateCrops;
+export default withAuth(CultivateCrops);

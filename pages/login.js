@@ -15,30 +15,68 @@ import { signIn } from 'next-auth/react';
 const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter()
-  const { loading, isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
- 
-  useEffect(() => {
-    if (isLoggedIn) {
-      router.push("/dashboard");
+  // const [error , setErrors] =useState('')
+  const {  isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
+  const [loading, setLoading] = useState(false)
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     router.push("/dashboard");
+  //   }
+  // }, [isLoggedIn,router]);
+
+  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  //   const status = await signIn('credentials', {
+  //       redirect: false,
+  //       email: values.email,
+  //       password: values.password,
+  //       callbackUrl: "/"
+  //   })
+
+//   const handleSubmit = async (values, { setSubmitting, resetForm, setErrors }) => {
+//     const result = await signIn("credentials", {
+//         redirect: false,
+//         username: values.userName,
+//         password: values.userPassword,
+//         callbackUrl: "/"
+//     });
+
+//     if (result?.error) {
+//         setErrors({ auth: result.error });
+//     } else {
+//         setSubmitting(false);
+//         resetForm();
+//     }
+// };
+
+  
+const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  const { userName, userPassword } = values;
+  try {
+    const response = await dispatch(login({ userName, userPassword }));
+    if (response.error) {
+      setError(response.error);
+      setLoading(false);
+    } else {
+      // setCookiesetCookiesetCookie(null, 'auth_token', response.data.auth_token, {
+      //   maxAge: 60 * 60 * 24, // 1 day
+      //   path: '/',
+      // });
+      // router.push('/dashboard');
     }
-  }, [isLoggedIn,router]);
+  } catch (error) {
+    setError('An error occurred');
+    setLoading(false);
+  }
+  setSubmitting(false);
+  resetForm();
+};
 
-
-  
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    event.preventDefault();
-    const { userName, userPassword } = values;
-    await dispatch(login({ userName, userPassword }));
-    // router.push("/dashboard");
-  
-    setSubmitting(false);
-    resetForm();
-  };
   
 
 
 if (isLoggedIn) {
-  return <div>You are already logged in!</div>;
+  router.push('/dashboard');
 }
 
 

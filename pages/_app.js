@@ -8,7 +8,7 @@ import store, { persistor } from '../redux/configureStore'
 import { PersistGate } from "redux-persist/integration/react";
 import "../styles/global.css";
 import { Toaster } from "react-hot-toast";
-// import { SessionProvider } from "next-auth/react"
+import { SessionProvider } from "next-auth/react"
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, router }) {
   // set a timeout for the preloader to show
@@ -36,9 +36,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, router }) {
         <Provider store={store}>
           {/* <PersistGate loading={null} persistor={persistor}> */}
           <Toaster />
-          {/* <SessionProvider session={session}> */}
+          <SessionProvider session={session}>
             <Component {...pageProps} />
-          {/* </SessionProvider> */}
+          </SessionProvider>
           {/* </PersistGate> */}
         </Provider>
       </motion.div>

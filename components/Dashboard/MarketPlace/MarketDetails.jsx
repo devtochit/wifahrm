@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
-import NumberFormat from "react-number-format";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import ProductCard from '../../../components/FarmCard/FarmCard';
 import Head from "next/head";
 import { currencyFormatter } from "../../../utils";
 import { CropData } from '../../../utils/data'
 import Image from "next/image";
 import { useDispatch, useSelector } from 'react-redux';
-import CountBox from '../../FarmCard/Countbox'
+import CountBox from '../FarmCard/Countbox'
+import ProductCard from "../FarmCard/productCard2";
 
 
 
 
 
 
-function MarketDetails({ cropPrice, cropName,cropCategory,remainingDays,cropEstimatedDuration,dailyInterestRate,cropData,handleSubmit }) {
+function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategory, remainingDays, cropEstimatedDuration, dailyInterestRate, cropData, handleSubmit }) {
   const [selectedSize, setSelectedSize] = useState(0);
   const dispatch = useDispatch();
   const [imgSelected, setImgSelected] = useState(0);
@@ -31,7 +30,7 @@ function MarketDetails({ cropPrice, cropName,cropCategory,remainingDays,cropEsti
       </Head>
       <div className="min-h-screen pb-10">
 
-        <div className="max-w-5xl mx-auto min-h-screen pt-10">
+        <div className="max-w-5xl mx-auto min-h-screen ">
           <div className="flex justify-between place-items-center py-4 px-1 mb-4">
             <Link href="/dashboard/products">
               <div className="w-14 h-14 shadow-lg bg-white text-cusblack hover:bg-cusblack hover:text-white duration-200 cursor-pointer rounded-full flex justify-center place-items-center">
@@ -51,17 +50,21 @@ function MarketDetails({ cropPrice, cropName,cropCategory,remainingDays,cropEsti
                 </svg>
               </div>
             </Link>
-            <h4 className="text-cusblack text-md">Product Details</h4>
+            <h4 className="text-cusblack text-lg">Product Details</h4>
             <div className="w-8"></div>
           </div>
 
           <div className="w-full bg-white md:rounded-2xl shadow-lg md:py-8 md:px-10 md:flex overflow-hidden">
             <div className="photo md:w-1/3">
               <div>
-                < Image src={CropData[5].imageSrc}
-                  className=" h-60 object-cover w-full md:rounded-2xl"
-                  // src={dataItem.prop[0].image[imgSelected]}
-                  alt=""
+                < Image 
+                 width={1000}
+                 height={1000}
+                  src={imageUrl}
+                        className=" lg:h-72 h-60 object-cover w-full md:rounded-2xl"
+                  alt={cropName}
+                  unoptimized // added this prop
+
                 />
               </div>
               {/* <div className="px-2 md:px-0 flex mt-4">
@@ -105,20 +108,20 @@ function MarketDetails({ cropPrice, cropName,cropCategory,remainingDays,cropEsti
              <div className='mb-2'>   {currencyFormatter(cropPrice)} </div>
 
               <div className="sizes text-sm flex-wrap text-justify  pr-6 text-gray-400">
-                <p className="mb-1">Description</p>
-                <p>Asia and have been cultivated for thousands of years. Apples are a popular fruit around the world and are commonly eaten raw or cooked, as well as used to make juice, cider, and other products. They are also a good source of fiber, vitamins, and antioxidants. </p>
+                <p className="mb-1 font-black text-lg ">Description</p>
+                <p> {description} </p>
                 <div className="flex">
 
                 </div>
               </div>
 
-              <div className="buttoncart flex mt-5 w-full">
+              <div className="buttoncart flex items-center mt-10 w-full">
                 <button onClick={()=>{handleSubmit(cropData)}}
                 className="w-4/5 md:w-3/5 bg-cusblack overflow-hidden py-4 text-white rounded-lg text-sm active:bg-gray-800 duration-100">
                   <motion.span
                     initial={{ y: -100 }}
                     animate={{ y: 0 }}
-                    className="flex justify-center place-items-center overflow-hidden"
+                    className="flex justify-center items-center place-items-center overflow-hidden"
                   >
                     Add to basket
                     <span>
@@ -136,7 +139,7 @@ function MarketDetails({ cropPrice, cropName,cropCategory,remainingDays,cropEsti
 
               </div>
             </div>
-            <div className=' flex flex-col gap-4 '> 
+            <div className=' flex lg:flex-col lg:ml-0  ml-8 lg:mt-0 mt-5 lg:gap-4 gap-10 items-center '> 
                     <CountBox title="Days Left" value={cropEstimatedDuration} />
                     <CountBox title={`generated `} value={cropEstimatedDuration} />
                     <CountBox title=" Valuation" value={dailyInterestRate} />
@@ -147,21 +150,21 @@ function MarketDetails({ cropPrice, cropName,cropCategory,remainingDays,cropEsti
             <p className="mb-4 font-medium text-lg">You may also like:</p>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-4 gap-y-6">
               {data
-                .filter((it, idx) => it.cropName != cropData.cropName)
+                .filter((it, idx) => idx < 5 && it.cropName !== cropData.cropName)
                 .map((data, idx) => (
-
-                    <Link key={idx} href={`/dashboard/products/${data.id}`} >
+                  <Link key={idx} href={`/dashboard/shop/${data.id}`}>
                     <ProductCard
-                     key={idx}
-                    cropCategory={data.cropCategory}
-                    cropName={data.cropName}
-                    cropPrice={data.cropPrice}
-                    datePlanted={data.datePlanted}
-                      />
-                    </Link>
-                    ))}
+                      key={idx}
+                      cropCategory={data.cropCategory}
+                      cropName={data.cropName}
+                      cropPrice={data.cropPrice}
+                      datePlanted={data.datePlanted}
+                    />
+                  </Link>
+                ))}
             </div>
           </div>
+
 
         </div>
       </div>

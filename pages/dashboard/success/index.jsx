@@ -6,6 +6,27 @@ import { useRouter } from "next/router";
 import { useState,useEffect } from "react";
 import { currencyFormatter } from "../../../utils";
 
+const withAuth = (Component) => {
+  const Auth = (props) => {
+    const { isLoggedIn } = useSelector((state) => state.authReducers.Authentication);
+    const router = useRouter();
+
+    useEffect(() => {
+      if (!isLoggedIn) {
+        router.replace('/login');
+      }
+    }, [isLoggedIn, router]);
+
+    if (!isLoggedIn) {
+      return null; // or return a loading indicator
+    }
+
+    return <Component {...props} />;
+  };
+
+  return Auth;
+};
+
 function Success() {
   const dispatch = useDispatch();
   const items = useSelector(selectBasketItems);
@@ -102,4 +123,4 @@ function Success() {
   );
 }
 
-export default Success;
+export default withAuth(Success);
