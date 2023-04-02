@@ -1,7 +1,8 @@
 import React from "react";
 import NumberFormat from "react-number-format";
 import { useDispatch } from "react-redux";
-import { removeFromBasket, updateQuantity, minusQuantity } from "../../../redux/slice/Crop/cropSlice";
+import { minusQuantity, removeFromBasket, updateQuantity,  } from "../../../redux/slice/Crop/cropSlice";
+
 import { motion } from "framer-motion";
 import Link from "next/link";
 import toast from "react-hot-toast";

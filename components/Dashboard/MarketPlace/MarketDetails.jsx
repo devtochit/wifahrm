@@ -14,7 +14,7 @@ import ProductCard from "../FarmCard/productCard2";
 
 
 
-function MarketDetails({ cropPrice, description, cropName,cropCategory,remainingDays,cropEstimatedDuration,dailyInterestRate,cropData,handleSubmit }) {
+function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategory, remainingDays, cropEstimatedDuration, dailyInterestRate, cropData, handleSubmit }) {
   const [selectedSize, setSelectedSize] = useState(0);
   const dispatch = useDispatch();
   const [imgSelected, setImgSelected] = useState(0);
@@ -60,9 +60,11 @@ function MarketDetails({ cropPrice, description, cropName,cropCategory,remaining
                 < Image 
                  width={1000}
                  height={1000}
-                        src={'https://i.ibb.co/YcBTgZN/jonathan-niederhoffer-K0-XJWUN1-Fz-A-unsplash.jpg'}
+                  src={imageUrl}
                         className=" lg:h-72 h-60 object-cover w-full md:rounded-2xl"
                   alt={cropName}
+                  unoptimized // added this prop
+
                 />
               </div>
               {/* <div className="px-2 md:px-0 flex mt-4">
@@ -137,7 +139,7 @@ function MarketDetails({ cropPrice, description, cropName,cropCategory,remaining
 
               </div>
             </div>
-            <div className=' flex lg:flex-col lg:mt-0 mt-5 gap-4 '> 
+            <div className=' flex lg:flex-col lg:ml-0  ml-8 lg:mt-0 mt-5 lg:gap-4 gap-10 items-center '> 
                     <CountBox title="Days Left" value={cropEstimatedDuration} />
                     <CountBox title={`generated `} value={cropEstimatedDuration} />
                     <CountBox title=" Valuation" value={dailyInterestRate} />
@@ -148,22 +150,21 @@ function MarketDetails({ cropPrice, description, cropName,cropCategory,remaining
             <p className="mb-4 font-medium text-lg">You may also like:</p>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-4 gap-y-6">
               {data
-                .filter((it, idx) => it.cropName != cropData.cropName)
-                .map((data, idx) => { 
-                  if (idx < 4)
-                  console.log(idx > 4 )
-                   return(
-                   <Link key={idx} href={`/dashboard/shop/${data.id}`} >
-                   <ProductCard
-                    key={idx}
-                   cropCategory={data.cropCategory}
-                   cropName={data.cropName}
-                   cropPrice={data.cropPrice} datePlanted={data.datePlanted}/>
-                   </Link>
- )
-                })}
+                .filter((it, idx) => idx < 5 && it.cropName !== cropData.cropName)
+                .map((data, idx) => (
+                  <Link key={idx} href={`/dashboard/shop/${data.id}`}>
+                    <ProductCard
+                      key={idx}
+                      cropCategory={data.cropCategory}
+                      cropName={data.cropName}
+                      cropPrice={data.cropPrice}
+                      datePlanted={data.datePlanted}
+                    />
+                  </Link>
+                ))}
             </div>
           </div>
+
 
         </div>
       </div>

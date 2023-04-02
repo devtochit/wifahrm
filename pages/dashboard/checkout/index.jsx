@@ -11,7 +11,26 @@ import { usePaystackPayment } from "react-paystack";
 import { currencyFormatter } from "../../../utils";
 import Image from "next/image";
 
+const withAuth = (Component) => {
+	const Auth = (props) => {
+		const { isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
+		const router = useRouter();
 
+		useEffect(() => {
+			if (!isLoggedIn) {
+				router.replace('/login');
+			}
+		}, [isLoggedIn, router]);
+
+			if (!isLoggedIn) {
+				return null; // or return a loading indicator
+			}
+
+		return <Component {...props} />;
+	};
+
+	return Auth;
+};
 
 function Checkout() {
   const items = useSelector(selectBasketItems);
@@ -244,4 +263,4 @@ const handleSubmit = (e) => {
   );
 }
 
-export default Checkout;
+export default withAuth(Checkout)

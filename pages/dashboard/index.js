@@ -7,43 +7,68 @@ import Countdown from '../../components/Dashboard/Countdown'
 // import LineChart from '../../components/Charts/LineChart'
 // import BarChart from '../../components/Charts/BarChart'
 import Layout from '../../components/Dashboard/shared/components/Dashboard'
+import { useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+
+const withAuth = (Component) => {
+	const Auth = (props) => {
+		const { isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
+		const router = useRouter();
+
+		useEffect(() => {
+			if (!isLoggedIn) {
+				router.replace('/login');
+			}
+		}, [isLoggedIn, router]);
+
+			if (!isLoggedIn) {
+				return null; // or return a loading indicator
+			}
+
+		return <Component {...props} />;
+	};
+
+	return Auth;
+};
 
 
-const Dashboard = ()=> (
-  <Layout >
-    <Head>
-      <title> Dashboard</title>
-    </Head>
-    <h1 className='text-xl font-bold  pb-4'>Dashboard</h1>
-    
-    <div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded' >
-			 <StatsBoard /> 
-			 <div className="grid lg:grid-cols-[1fr_auto] my-12 gap-y-12 gap-x-8">
-				<div className="lg:col-start-2">
-					<div className="flex flex-col xs:flex-row flex-wrap justify-between lg:max-w-[18rem] gap-12">
-						<QuickAction />
-						<Countdown />
-					</div> 
-				</div>
-    
-			 <div className="flex flex-col lg:row-start-1 lg:row-end-3 min-w-0 gap-y-12">
-					<div className="h-72">
-						{/* <LineChart /> */}
+const Dashboard = () => {
+	return (
+		<Layout>
+			<Head>
+				<title>Dashboard</title>
+			</Head>
+			<h1 className='text-xl font-bold  pb-4'>Dashboard</h1>
+
+			<div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded' >
+				<StatsBoard />
+				<div className="grid lg:grid-cols-[1fr_auto] my-12 gap-y-12 gap-x-8">
+					<div className="lg:col-start-2">
+						<div className="flex flex-col xs:flex-row flex-wrap justify-between lg:max-w-[18rem] gap-12">
+							<QuickAction />
+							<Countdown />
+						</div>
 					</div>
-					<div className="flex">
-						{/* <div className="h-72 w-full mb-6">
-							<BarChart />
-						</div> */}
+
+					<div className="flex flex-col lg:row-start-1 lg:row-end-3 min-w-0 gap-y-12">
+						<div className="h-72">
+							{/* <LineChart /> */}
+						</div>
+						<div className="flex">
+							{/* <div className="h-72 w-full mb-6">
+                  <BarChart />
+              </div> */}
+						</div>
+						{/* <BestSellers /> */}
 					</div>
-					{/* <BestSellers /> */}
-				</div>
 					<div className="">
-					{/* <ClientsFeed /> */}
-				</div> 
-			</div> 
-		</div>
+						{/* <ClientsFeed /> */}
+					</div>
+				</div>
+			</div>
+		</Layout>
+	)
+}
 
-  </Layout>
-)
-
-export default Dashboard
+export default withAuth(Dashboard);

@@ -9,13 +9,40 @@ import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { addToBasket } from '../../../redux/slice/Crop/cropSlice';
 import Dashboard from "../../../components/Dashboard/shared/components/Dashboard";
+import { useRouter } from "next/router";
 
-function Category() {
+
+
+
+const withAuth = (Component) => {
+    const Auth = (props) => {
+        const { isLoggedIn } = useSelector((state) => state.authReducers.Authentication);
+        const router = useRouter();
+
+        useEffect(() => {
+            if (!isLoggedIn) {
+                router.replace('/login');
+            }
+        }, [isLoggedIn, router]);
+
+        if (!isLoggedIn) {
+            return null; // or return a loading indicator
+        }
+
+        return <Component {...props} />;
+    };
+
+    return Auth;
+};
+
+
+function Shop() {
     const [sort, setSort] = useState(0);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
     const { category } = useSelector((state) => state.marketReducers.getMarketSlice);
+
 
 
 
@@ -29,37 +56,31 @@ function Category() {
         toast.success(`${values.cropName} added to basket`, { position: 'top-center' });
     };
 
-    //   const recent_category = category
-    //   const data_items = data
-    //     .filter((item) => {
-    //         console.log('is it' ,item )
+    const categories = Array.from(new Set(data.map((product) => product.cropCategory)));
 
-    //       if (recent_category.length > 0) {
-    //         console.log(recent_category.length > 0)
-    //       console.log(item.cropCategory == recent_category.cropCategory )   
-    //       } else {
-    //         return true;
-    //         console.log('is it' ,true )
-    //       }
-    //     })
-    //     .sort((a, b) => {
-    //       if (sort === 1) {
-    //         return a.cropPrice - b.cropPrice;
-    //       }
-    //       if (sort === 2) {
-    //         return b.cropPrice - a.cropPrice;
-    //       }
-    //       return true;
-    //     });
-
+    const filteredData = data.filter((product) => category === "" || product.cropCategory === category);
+    console.log('hello shop', filteredData)
 
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000);
     }, []);
 
 
- 
 
+    const productCards = data.map((product) => (
+        <ProductCard
+            key={product.id}
+            imageUrl={product.imageUrl}
+            description={product.description}
+            cropCategory={product.cropCategory}
+            cropName={product.cropName}
+            cropPrice={product.cropPrice}
+            datePlanted={product.datePlanted}
+            product={product}
+            handleSubmit={(event) => handleSubmit(event, product)}
+        />
+
+    ));
 
     return (
         <>
@@ -67,46 +88,42 @@ function Category() {
             <Head>
                 <title>Wifarm | Shop</title>
             </Head>
-            <Layout categories={data} setSort={setSort} >
+                <Layout categories={categories} setSort={setSort}>
                 {!loading ? (
-                    data?.length < 1 ? (
-                        <p className="col-span-full mx-auto text-sm text-gray-400">
-                            No item found
-                        </p>
+                        filteredData.length > 0 ? (
+                            filteredData.map((product, index) => (
+                                <Link key={index} href={`/dashboard/shop/${product.id}`}>
+                                    <ProductCard
+                                        key={product.id}
+                imageUrl={product.imageUrl}
+                description={product.description}
+                cropCategory={product.cropCategory}
+                cropName={product.cropName}
+                cropPrice={product.cropPrice}
+                datePlanted={product.datePlanted}
+                product={product}
+                handleSubmit={(event) => handleSubmit(event, product)}
+            />
+        </Link>
+    ))
+                        ) : (
+                            productCards
+                        )
                     ) : (
-                        
-                     
-                        data && data.map((product,index) => (
-                            <Link key={index} href={`/dashboard/shop/${product.id}`}>
-                          <ProductCard
-                            key={product.id}
-                            imageUrl = {product.imageUrl}
-                            description = {product.description}
-                            cropCategory={product.cropCategory}
-                            cropName={product.cropName}
-                            cropPrice={product.cropPrice}
-                            datePlanted={product.datePlanted}
-                            product={product}
-                            handleSubmit={(event) => handleSubmit(event, product)}
-                          />
-                          </Link>
-                        ))
+                        <>
+                            <CardSkeleton />
+                            <CardSkeleton />
+                            <CardSkeleton />
+                            <CardSkeleton />
+                            <CardSkeleton />
+                        </>
+                    )}
 
+                </Layout>
 
-                    )
-                ) : (
-                    <>
-                        <CardSkeleton />
-                        <CardSkeleton />
-                        <CardSkeleton />
-                        <CardSkeleton />
-                        <CardSkeleton />
-                    </>
-                )}
-            </Layout>
             </Dashboard>
         </>
     );
 }
 
-export default Category;
+export default withAuth(Shop);

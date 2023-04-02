@@ -5,8 +5,8 @@ import Router from "next/router";
 import { currencyFormatter } from "../../../utils";
 
 
-function ProductCard({ cropCategory,description, cropName, cropPrice,handleSubmit,product }) {
-//  console.log(product.imageUrl)
+function ProductCard({ cropCategory, description, cropName, imageUrl, cropPrice, handleSubmit, product }) {
+
     return (
         <div className="rounded-xl cursor-pointer bg-cusgray shadow-xl ">
             <div className="overflow-hidden cursor-default rounded-xl relative group">
@@ -16,20 +16,22 @@ function ProductCard({ cropCategory,description, cropName, cropPrice,handleSubmi
                     transition={{ delay: 0.2 }}
                 >
                     <Image
-                        height={700}
-                        width={700}
-                        objectFit="cover"
-                        loading="lazy"
-                        src={'https://i.ibb.co/YcBTgZN/jonathan-niederhoffer-K0-XJWUN1-Fz-A-unsplash.jpg'}
+                        src={imageUrl}
                         alt={cropName}
                         className="rounded-xl w-full h-full"
+                        loading="lazy"
+                        height={700}
+                        style={{ width: "500px" }}
+                        width={700}
+                        objectFit="cover"
+                        unoptimized // added this prop
                     />
+
                 </motion.div>
 
                 <div className="hidden absolute rounded-xl h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center z-10">
                     <div className="flex overflow-hidden cursor-pointer">
                         <button
-                            // onClick={() => dispatch(addToWishlist(item))}
                             className="p-2 bg-white hover:bg-gray-100 active:bg-gray-200 rounded-lg"
                         >
                             <svg

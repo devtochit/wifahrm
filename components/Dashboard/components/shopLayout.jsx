@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import ShopCarousel from "./shopCarousel";
-// import Header from "./header";
 import SideCategory from "./SideCategory";
-// import TopCategory from "./topcategory";
+import TopCategory from "./topCategory";
 
 
-function Layout({ children, categories, types, setSort }) {
+function Layout({ children, categories, setSort }) {
   const [open, setOpen] = useState(false);
   const [grid, setGrid] = useState(3);
   const [sortOpen, setSortOpen] = useState(false);
@@ -32,7 +31,7 @@ function Layout({ children, categories, types, setSort }) {
         </svg>
       </button>
       <div className="max-w-6xl mx-auto pt-14 md:px-0">
-        {/* <TopCategory categories={categories} /> */}
+        <TopCategory categories={categories} />
         <div className="grid grid-cols-4 gap-x-2">
           <div
             onClick={() => setOpen(!open)}
@@ -40,7 +39,7 @@ function Layout({ children, categories, types, setSort }) {
               open ? `fixed` : `hidden`
             } lg:static lg:inline bg-gray-400 lg:bg-cusgray h-screen bg-opacity-30 z-20 flex w-full justify-center place-items-center top-0 lg:p-4`}
           >
-            <SideCategory />
+            <SideCategory categories={categories} />
           </div>
           <div className="col-span-4 md:col-span-4 lg:col-span-3 flex flex-col py-4 mx-2 md:mx-0">
             <ShopCarousel />

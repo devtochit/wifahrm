@@ -7,7 +7,28 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { addToBasket } from '../../../redux/slice/Crop/cropSlice';
+import { useRouter } from 'next/router';
 
+const withAuth = (Component) => {
+  const Auth = (props) => {
+    const { isLoggedIn } = useSelector((state) => state.authReducers.Authentication);
+    const router = useRouter();
+
+    useEffect(() => {
+      if (!isLoggedIn) {
+        router.replace('/login');
+      }
+    }, [isLoggedIn, router]);
+
+    if (!isLoggedIn) {
+      return null; // or return a loading indicator
+    }
+
+    return <Component {...props} />;
+  };
+
+  return Auth;
+};
 
 const Product = () => {
   const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
@@ -64,4 +85,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default withAuth(Product);

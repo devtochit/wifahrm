@@ -9,10 +9,29 @@ import toast from 'react-hot-toast';
 import { useEffect } from 'react';
 
 
-export default function CropDetails() {
 
+const withAuth = (Component) => {
+  const Auth = (props) => {
+    const { isLoggedIn } = useSelector((state) => state.authReducers.Authentication);
+    const router = useRouter();
 
-  const router = useRouter()
+    useEffect(() => {
+      if (!isLoggedIn) {
+        router.replace('/login');
+      }
+    }, [isLoggedIn, router]);
+
+    if (!isLoggedIn) {
+      return null; // or return a loading indicator
+    }
+
+    return <Component {...props} />;
+  };
+
+  return Auth;
+};
+
+const CropDetails = () => {
   const dispatch = useDispatch();
   const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
   const { id } = router.query;
@@ -31,15 +50,14 @@ export default function CropDetails() {
   if (!cropData) {
     return <div>Loading...</div>;
   }
-  
-  
+
   return (
     <Layout>
       <Basket />
       <>
         <div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded'>
           <MarketplaceDetails
-          key={cropData.id}
+            key={cropData.id}
             cropCategory={cropData.cropCategory}
             cropEstimatedDuration={cropData.cropEstimatedDuration}
             cropName={cropData.cropName}
@@ -51,9 +69,11 @@ export default function CropDetails() {
             monthlyInterestRate={cropData.monthlyInterestRate}
             cropData={cropData}
             handleSubmit={handleSubmit}
-            />
+          />
         </div>
       </>
     </Layout>
-  )
-}
+  );
+};
+
+export default withAuth(CropDetails);

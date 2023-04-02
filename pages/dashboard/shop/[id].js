@@ -10,7 +10,29 @@ import { useEffect } from 'react';
 import Dashboard from "../../../components/Dashboard/shared/components/Dashboard";
 
 
-export default function ShopDetails() {
+const withAuth = (Component) => {
+  const Auth = (props) => {
+    const { isLoggedIn } = useSelector((state) => state.authReducers.Authentication);
+    const router = useRouter();
+
+    useEffect(() => {
+      if (!isLoggedIn) {
+        router.replace('/login');
+      }
+    }, [isLoggedIn, router]);
+
+    if (!isLoggedIn) {
+      return null; // or return a loading indicator
+    }
+
+    return <Component {...props} />;
+  };
+
+  return Auth;
+};
+
+const CropDetails = () => {
+
 
 
   const router = useRouter()
@@ -42,6 +64,7 @@ export default function ShopDetails() {
           <MarketplaceDetails
           key={cropData.id}
             cropCategory={cropData.cropCategory}
+            imageUrl={cropData.imageUrl}
             cropEstimatedDuration={cropData.cropEstimatedDuration}
             cropName={cropData.cropName}
             description={cropData.description}
@@ -58,3 +81,5 @@ export default function ShopDetails() {
     </Dashboard>
   )
 }
+
+export default CropDetails;
