@@ -21,7 +21,7 @@ function TopCategory({ categories }) {
         <div className="navbot bg-cusgray z-30 w-full px-1 md:px-0">
             <div className=" mx-auto md:flex place-items-center max-w-6xl">
                 <div className="category overflow-x-auto flex flex-wrap place-items-center py-2">
-                    <Link href={`/shop`}>
+                    <Link href={`dashboard/shop`}>
                         <button
                             onClick={() => handleCategoryClick("")}
                             className={`${isActive
