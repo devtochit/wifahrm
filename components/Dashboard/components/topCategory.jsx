@@ -16,7 +16,7 @@ function TopCategory({ categories }) {
         setIsActive(asPath);
     }, [asPath]);
 
-    const [isActive, setIsActive] = useState("/shop");
+    const [isActive, setIsActive] = useState("dashboard/shop");
     return (
         <div className="navbot bg-cusgray z-30 w-full px-1 md:px-0">
             <div className=" mx-auto md:flex place-items-center max-w-6xl">
