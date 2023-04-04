@@ -31,7 +31,7 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
 
         <div className="max-w-5xl mx-auto min-h-screen ">
           <div className="flex justify-between place-items-center py-4 px-1 mb-4">
-            <Link href="/dashboard/products">
+            <Link href="/dashboard/shop">
               <div className="w-14 h-14 shadow-lg bg-white text-cusblack hover:bg-cusblack hover:text-white duration-200 cursor-pointer rounded-full flex justify-center place-items-center">
                 <svg
                   className="w-4 h-4 "
