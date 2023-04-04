@@ -10,19 +10,21 @@ function ProductCard({ id, cropCategory, description, cropName, imageUrl, cropPr
 
     return (
         <Link href={`/dashboard/shop/${id}`} className="rounded-xl cursor-pointer bg-cusgray shadow-xl ">
-            <div className="overflow-hidden cursor-default rounded-xl relative group h-[200px]">
+            <div className="overflow-hidden cursor-default rounded-xl relative group h-[100px] md:h-[150px] lg:h-[200px]">
                 <motion.div
                     initial={{ scale: 1.3, x: 50, opacity: 0 }}
                     animate={{ scale: 1, x: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
+                    className="h-full"
                 >
                     <Image
                         src={imageUrl}
                         alt={cropName}
-                        className="rounded-xl"
+                        className="h-full object-cover"
                         loading="lazy"
-                        height={200}
-                        width={300}
+                        width={500}
+                        height={300}
+
                     />
 
                 </motion.div>
