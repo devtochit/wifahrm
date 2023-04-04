@@ -3,7 +3,7 @@ import clsx from "clsx";
 import SearchBar from "./searchbar/SearchBar";
 import { useRouter } from "next/router";
 
-import UserDropdownAvatar from "../../../../user/components/UserDropdown";
+// import UserDropdownAvatar from "../../../../user/components/UserDropdown";
 import { useSelector } from "react-redux";
 import { selectBasketItems } from "../../../../../../redux/slice/Crop/cropSlice";
 import MenuNav from "../../../../components/menunav";
@@ -121,7 +121,7 @@ const Navbar = () => {
 
             </div>
 
-            <div className=' flex items-center mt-2'>     <UserDropdownAvatar /> </div>
+            {/* <div className=' flex items-center mt-2'>     <UserDropdownAvatar /> </div> */}
           </div>
         </div>
 

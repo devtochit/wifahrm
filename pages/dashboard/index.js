@@ -50,8 +50,12 @@ const Dashboard = () => {
 				<div className="grid lg:grid-cols-[1fr_auto] my-12 gap-y-12 gap-x-8">
 					<div className="lg:col-start-2">
 						<div className="flex flex-col xs:flex-row flex-wrap justify-between lg:max-w-[18rem] gap-12">
-							<QuickAction />
-							<Countdown />
+							<div className='rounded-3xl bg-primary/10 dark:bg-gray-600 lg:col-start-3 lg:row-start-1 w-72'>
+						<Notification />
+					</div>
+					<QuickAction />
+					<Countdown />
+
 						</div>
 					</div>
 
@@ -67,9 +71,7 @@ const Dashboard = () => {
 
 					</div>
 
-					<div className='rounded-3xl bg-primary/10 dark:bg-gray-600 lg:col-start-3 lg:row-start-1 w-72'>
-						<Notification />
-					</div>
+				
 				</div>
 			</div>
 		</Layout>

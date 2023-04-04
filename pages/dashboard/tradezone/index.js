@@ -71,6 +71,7 @@ const TradeZone = () => {
           {
             plantedcropsList.map((item) => (
               <TradeZoneDetails
+                key={item.cropName}
                 marketCropid={item.marketCropId}
                 quantityPlanted={item.quantityPlanted}
                 cropName={item.cropName}
