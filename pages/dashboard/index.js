@@ -5,12 +5,15 @@ import Countdown from '../../components/Dashboard/Countdown'
 import Notification from "../../components/Dashboard/Notification"
 // import ClientsFeed from '../../components/Dashboard/ClientsFeed'
 // import BestSellers from '../../components/Dashboard/BestSellers'
-// import LineChart from '../../components/Charts/LineChart'
+import LineChart from '../../components/Charts/LineChart'
 // import BarChart from '../../components/Charts/BarChart'
 import Layout from '../../components/Dashboard/shared/components/Dashboard'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import CropPlanted from '../../components/Dashboard/CropPlanted/CropPlanted'
+
+
 
 const withAuth = (Component) => {
 	const Auth = (props) => {
@@ -54,14 +57,10 @@ const Dashboard = () => {
 
 					<div className="flex flex-col lg:row-start-1 lg:row-end-3 min-w-0 gap-y-12">
 						<div className="h-72">
-							{/* <LineChart /> */}
+							<LineChart />
 						</div>
-						<div className="flex">
-							{/* <div className="h-72 w-full mb-6">
-                  <BarChart />
-              </div> */}
-						</div>
-						{/* <BestSellers /> */}
+
+						<CropPlanted />
 					</div>
 					<div className="">
 						{/* <ClientsFeed /> */}
@@ -77,4 +76,4 @@ const Dashboard = () => {
 	)
 }
 
-export default withAuth(Dashboard);
+export default Dashboard;

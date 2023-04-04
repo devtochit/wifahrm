@@ -142,42 +142,15 @@ export const CropData = [
 ];
 
 
-export const cropsList = [
+export const plantedcropsList = [
     {
-      amountPlanted: 10,
-      cropActualDuration: 14,
-      cropCategory: "Vegetables",
-      cropEstimatedDuration: 14,
-      cropId: 1,
-      cropName: "Tomatoes",
-      dailyInterestRate: 0.1,
-      estimatedYeildRate: 0.8,
-      farms: ["Farm A"],
-      harvestDate: "2023-02-",
-      harvested: false,
-      monthlyInterestRate: 0.05,
-      plantDate: "2023-02-1",
-      planted: true,
-      price: 5.0
+        marketCropId: 1,
+        quantityPlanted: 5,
+         imageUrl:"https://i.ibb.co/CbNjhWL/tomanto-1.png",
+         cropName:'yam',
+         cropCategory:'fruits'
     },
-    // {
-    //   amountPlanted: 20,
-    //   cropActualDuration: 28,
-    //   cropCategory: "Fruits",
-    //   cropEstimatedDuration: 28,
-    //   cropId: 2,
-    //   cropName: "Apples",
-    //   dailyInterestRate: 0.2,
-    //   estimatedYeildRate: 0.6,
-    //   farms: ["Farm A", "Farm B"],
-    //   harvestDate: "2023-03",
-    //   harvested: false,
-    //   monthlyInterestRate: 0.1,
-    //   plantDate: "2023-02-14T23:59:59.999Z",
-    //   planted: true,
-    //   price: 7.5
-    // },
-    // // Add more crops here
+
   ];
   
  
