@@ -1,11 +1,10 @@
 import { useRef, useState, useEffect, useMemo } from "react";
 import TableHeader from "./TableHeader";
-import "./table.less";
-import UserRow from "../table/users/UserRow";
 import TableSearch from "./TableSearch";
 import AddButton from "./actions/AddButton";
-
-const Table = ({ headers, items, users }) => {
+import TableRow from "../../../../CropPlanted/components/table/tableRow";
+const Table = ({ headers, items, plantedcrop }) => {
+    console.log(items)
     const [isAllChecked, setAllChecked] = useState(false);
     const [search, setSearch] = useState("");
 
@@ -41,10 +40,11 @@ const Table = ({ headers, items, users }) => {
         setSearch(value);
     };
 
+    const values = Object.entries(items)    
     const getItems = () => {
-        if (!search.trim()) return items;
+        if (!search.trim()) return values;
 
-        let filtered = items.filter((u) => {
+        let filtered = values.filter((u) => {
             return Object.keys(u).some((key) => {
                 if (typeof u[key] === "string") {
                     return u[key].toLowerCase().includes(search);
@@ -62,32 +62,36 @@ const Table = ({ headers, items, users }) => {
                 {/* <AddButton /> */}
             </div>
             <div className="overflow-x-auto w-full overflow-hidden">
-                <table className="table w-full">
-                    {/* <!-- head --> */}
+                <table className=" w-full">
+                    {/* head */}
                     <TableHeader
                         header
                         headers={headers}
                         handleCheckbox={selectAll}
+                        className="bg-primary text-primary-t capitalize p-4"
                     />
                     <tbody>
-                        {/* <!-- row 1 --> */}
+                        {/* row 1 */}
                         {getItems().map(
                             (item, index) =>
-                                users && <UserRow key={index} user={item} />
+                                plantedcrop && <TableRow key={index} plantedCrops={item} />
                         )}
                     </tbody>
-                    {/* <!-- foot --> */}
-                    <tfoot>
+                    {/* foot */}
+                    <tfoot className="border-t-2">
                         <tr>
-                            <th></th>
+                            <th className="sticky left-0 z-10 h-full"></th>
                             {headers.map((h, index) => (
-                                <th key={index}>{h}</th>
+                                <th key={index} className="text-darker-t uppercase text-xs text-start p-4">
+                                    {h}
+                                </th>
                             ))}
                             <th></th>
                         </tr>
                     </tfoot>
                 </table>
             </div>
+
         </div>
     );
 };

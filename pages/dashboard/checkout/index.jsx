@@ -44,6 +44,18 @@ function Checkout() {
   const router = useRouter();
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState({});
   const [loading, setLoading] = useState(false);
+  const keys = Object.keys(groupedItemsInBasket);
+  const values = Object.values(groupedItemsInBasket);
+
+  if (keys.length > 0 && values.length > 0) {
+    const cropstoAdd = values.map((item) => {
+      const cropId = item[0].cropId;
+      const quantityPlanted = item[0].quantityPlanted;
+      return { cropId, quantityPlanted }
+
+    });
+    console.log(cropstoAdd);
+  }
 
   useEffect(() => {
     const groupedItems = items.reduce((results, item) => {
@@ -52,7 +64,7 @@ function Checkout() {
     }, {});
     setGroupedItemsInBasket(groupedItems);
   }, [items]);
-  console.log(' checking checking', groupedItemsInBasket)
+
     const config = {
       // reference: (new Date()).getTime().toString(),
       email: 'uzomaesse@gmail.com',
@@ -68,32 +80,29 @@ function Checkout() {
       }
     };
 
-const initializePayment = usePaystackPayment(config);
-
+  const initializePayment = usePaystackPayment(config);
 const onSuccess = (reference) => {
-  // router.push("/dashboard/success");
-  dispatch(AddCropToFarmLand(groupedItemsInBasket) )
+  if (keys.length > 0 && values.length > 0) {
+    const cropsToAdd = values.map((item) => {
+      const cropId = item[0].cropId;
+      const quantityPlanted = item[0].quantityPlanted;
+      return { marketCropId: cropId, quantityPlanted };
+    });
 
-  // Use the Paystack API to retrieve the metadata associated with the payment
-  // fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
-  //   headers: {
-  //     Authorization: `Bearer ${'sk_test_6fc36fbe4814c6ffd3f12a8816be2337e8decb9a'}`
-  //   }
-  // })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     const metadata = data.data.metadata;
-  //     const cardItem = metadata.cardItem;
-  //     const userId = metadata.userId;
-  //     // Do something with the card item and user ID
-  //     alert(`Payment successful with reference: ${reference}. Card item: ${cardItem}. User ID: ${userId}`);
+    const farmId = 20;
+    const reqId = "1234";
 
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //     alert('An error occurred while verifying payment');
-  //   });
+    const payload = {
+      cropsList: cropsToAdd,
+      farmId,
+      reqId
+    };
+
+    dispatch(AddCropToFarmLand(payload));
+  }
 };
+
+
 
 
 const onClose = () => {
@@ -115,7 +124,9 @@ const handleSubmit = (e) => {
 <Head>
   <title>wifarhm |checkout </title>
 </Head>
-<div className="w-full min-h-screen relative bg-cusgray  pt-20 pb-10">
+<div 
+ suppressHydrationWarning
+className="w-full min-h-screen relative bg-cusgray  pt-20 pb-10">
 
   <div className="max-w-6xl mx-auto  px-5">
     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-x-4">
@@ -265,4 +276,4 @@ const handleSubmit = (e) => {
   );
 }
 
-export default withAuth(Checkout)
+export default Checkout

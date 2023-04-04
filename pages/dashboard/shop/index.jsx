@@ -126,4 +126,4 @@ function Shop() {
     );
 }
 
-export default withAuth(Shop);
+export default Shop;

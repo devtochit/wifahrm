@@ -3,7 +3,7 @@ import clsx from "clsx";
 import SearchBar from "./searchbar/SearchBar";
 import { useRouter } from "next/router";
 
-import UserDropdownAvatar from "../../../../user/components/UserDropdown";
+import UserDropdownAvatar from "../../../../CropPlanted/components/CropPlatedList";
 import { useSelector } from "react-redux";
 import { selectBasketItems } from "../../../../../../redux/slice/Crop/cropSlice";
 import MenuNav from "../../../../components/menunav";
@@ -111,7 +111,7 @@ const Navbar = () => {
                 className={`flex
                 } absolute text-base font-semibold justify-center text-white text-center w-5 h-5 bg-cusblack rounded-full bottom-0 right-0`}
               >
-                {items.reduce((a, item) => a + item.quantity, 0)}
+                    {items.reduce((a, item) => a + item.quantityPlanted, 0)}
               </div>
             ) : (
               ""
@@ -125,7 +125,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <MenuNav handleOpen={handleOpen} isOpen={isOpen} />
+          {/* <MenuNav handleOpen={handleOpen} isOpen={isOpen} /> */}
     </nav>
             {/* <div className="relative flex items-center text-left">
             </div> */}
