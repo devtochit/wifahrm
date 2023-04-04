@@ -13,6 +13,8 @@ const Notification = () => {
         <div>
             <h2 className="text-lg font-bold py-4 px-6 border-b border-primary/20">Notification</h2>
             {NotificationData.map((item) => <NotificationCard key={item.id} item={item} />)}
+            {/* Bottom Bar: Might be useful */}
+            <div className="text-lg font-bold p-6"></div>
         </div>
     )
 }
