@@ -11,6 +11,8 @@ import { usePaystackPayment } from "react-paystack";
 import { currencyFormatter } from "../../../utils";
 import Image from "next/image";
 import Dashboard from "../../../components/Dashboard/shared/components/Dashboard";
+import { getfarmbycustomerid } from "../../../redux/slice/marketplace/marketplaceSlice";
+import { retrieveUserDetails } from "../../../utils/helperFunctions/userDataHandlers";
 
 
 const withAuth = (Component) => {
@@ -51,10 +53,11 @@ function Checkout() {
     const cropstoAdd = values.map((item) => {
       const cropId = item[0].cropId;
       const quantityPlanted = item[0].quantityPlanted;
-      return { cropId, quantityPlanted }
+      // console.log('inside the basket ', item);
+
+      // return { cropId, quantityPlanted }
 
     });
-    console.log(cropstoAdd);
   }
 
   useEffect(() => {
@@ -79,6 +82,9 @@ function Checkout() {
         userId: 1
       }
     };
+  useEffect(() => { 
+    dispatch(getfarmbycustomerid())
+  },[])
 
   const initializePayment = usePaystackPayment(config);
 const onSuccess = (reference) => {
