@@ -53,8 +53,6 @@ const Sidebar = () => {
                         <SidebarItem {...items.cultivatecrop} />
                         <SidebarItem {...items.tradeZone} />
                         <SidebarItem {...items.analysis} />
-
-
                     </div>
                 </div>
 
