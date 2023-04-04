@@ -125,4 +125,4 @@ function Success() {
   );
 }
 
-export default withAuth(Success);
+export default Success;

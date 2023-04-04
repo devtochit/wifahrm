@@ -19,7 +19,6 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
   const dispatch = useDispatch();
   const [imgSelected, setImgSelected] = useState(0);
   const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
-   console.log('inside market details data',cropData)
 
 //   if (!dataItem || !dataAlso) return <NotFound />;
 
@@ -155,6 +154,7 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
                   <Link key={idx} href={`/dashboard/shop/${data.id}`}>
                     <ProductCard
                       key={idx}
+                      imageUrl={data.imageUrl}
                       cropCategory={data.cropCategory}
                       cropName={data.cropName}
                       cropPrice={data.cropPrice}

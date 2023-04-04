@@ -2,7 +2,7 @@ import Modal from "../../../shared/components/ui/modals/Modal";
 import { Dialog } from "@headlessui/react";
 import { LogOut } from "react-feather";
 
-const LogoutModal = ({ openNow, onClose }) => {
+const TradeNowModal = ({ openNow, onClose }) => {
     const onLogoutButton = () => {
         console.log("logging out...");
         onClose();
@@ -14,7 +14,7 @@ const LogoutModal = ({ openNow, onClose }) => {
                 as="h3"
                 className="text-lg font-bold leading-6 text-red-400 flex items-center"
             >
-                <LogOut size={22} className="mr-2" /> Logging out
+                <LogOut size={22} className="mr-2" /> Trade Now 
             </Dialog.Title>
             <div className="mt-2">
                 <p className="text-sm text-darker-t">
@@ -38,4 +38,4 @@ const LogoutModal = ({ openNow, onClose }) => {
     );
 };
 
-export default LogoutModal;
+export default TradeNowModal;

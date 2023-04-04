@@ -4,6 +4,11 @@ import { retrieveUserDetails } from "../../../utils/helperFunctions/userDataHand
 
 const initialState = {
   MarketData: [],
+  plantedCrop: [{
+    cropId: "2214261",
+    quantityPlanted: 4,
+    imageUrl:"https://i.ibb.co/CbNjhWL/tomanto-1.png"
+  }],
   category: '',
   loading: false,
 };

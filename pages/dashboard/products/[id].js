@@ -43,7 +43,7 @@ const CropDetails = () => {
   }, [dispatch]);
 
   const handleSubmit = (values) => {
-    console.log("added basket",values)
+  
     dispatch(addToBasket(values));
     toast.success(`${values.cropName} added to basket`, { position: 'top-center' });
   };
