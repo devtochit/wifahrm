@@ -9,7 +9,7 @@ function Layout({ children, categories, setSort }) {
   const [grid, setGrid] = useState(4);
   const [sortOpen, setSortOpen] = useState(false);
   return (
-    <div className="w-full min-h-screen bg-cusgray pb-10">
+    <div className="w-full min-h-screen bg-cusgray rounded-xl">
 
       <button
         onClick={() => setOpen(!open)}
@@ -30,7 +30,7 @@ function Layout({ children, categories, setSort }) {
           />
         </svg>
       </button>
-      <div className="max-w-6xl 2xl:max-w-7xl mx-auto pt-14 md:px-0">
+      <div className="max-w-6xl 2xl:max-w-7xl mx-auto py-6 md:px-4">
         <TopCategory categories={categories} />
         <div className="grid grid-cols-4 gap-x-2">
           <div

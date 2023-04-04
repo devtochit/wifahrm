@@ -20,11 +20,11 @@ function TopCategory({ categories }) {
     return (
         <div className="navbot bg-cusgray z-30 w-full px-1 md:px-0">
             <div className=" mx-auto md:flex place-items-center max-w-6xl2xl:max-w-7xl">
-                <div className="category overflow-x-auto flex flex-wrap place-items-center py-2">
+                <div className="category overflow-x-auto flex flex-wrap gap-2 place-items-center py-2">
 
                     <button
                         onClick={() => handleCategoryClick("")}
-                        className={`bg-cusblack text-white shadow-lg  py-2.5 px-6 rounded-3xl text-xs mr-3 mb-2 md:mb-0`}
+                        className={`bg-cusblack text-white shadow-lg py-2.5 px-6 rounded-3xl text-xs`}
                     >
                         All items
                     </button>
@@ -36,7 +36,7 @@ function TopCategory({ categories }) {
                             className={`${isActive
                                 ? `bg-cusblack text-white shadow-lg `
                                 : `bg-white text-cusblack`
-                                } py-2.5 px-6 rounded-3xl text-xs mr-3 mb-2 md:mb-0`}
+                                } py-2.5 px-6 rounded-3xl text-xs`}
                         >
                             {cat}
                         </button>
