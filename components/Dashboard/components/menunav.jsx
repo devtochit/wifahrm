@@ -37,7 +37,7 @@ function MenuNav({ handleOpen, isOpen }) {
               dashbaord
             </li>
           </Link>
-          <Link href="/dashboard/products">
+          <Link href="/dashboard/shop">
             <li className="mb-2 hover:underline mx-4 rounded-xl cursor-pointer">
               Marketplace
             </li>
