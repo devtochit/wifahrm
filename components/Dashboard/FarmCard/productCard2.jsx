@@ -6,10 +6,10 @@ import { currencyFormatter } from "../../../utils";
 import Link from "next/link";
 
 
-function ProductCard({ cropCategory, description, cropName, imageUrl, cropPrice, handleSubmit, product }) {
+function ProductCard({ id, cropCategory, description, cropName, imageUrl, cropPrice, handleSubmit, product }) {
 
     return (
-        <Link href={`/dashboard/shop/${product.id}`} className="rounded-xl cursor-pointer bg-cusgray shadow-xl ">
+        <Link href={`/dashboard/shop/${id}`} className="rounded-xl cursor-pointer bg-cusgray shadow-xl ">
             <div className="overflow-hidden cursor-default rounded-xl relative group h-[200px]">
                 <motion.div
                     initial={{ scale: 1.3, x: 50, opacity: 0 }}
@@ -22,7 +22,7 @@ function ProductCard({ cropCategory, description, cropName, imageUrl, cropPrice,
                         className="rounded-xl"
                         loading="lazy"
                         height={200}
-                        width={400}
+                        width={300}
                     />
 
                 </motion.div>
