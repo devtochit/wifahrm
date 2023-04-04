@@ -55,14 +55,15 @@ const TableRow = ({ plantedCrops }) => {
                 <CrudDropdown
                     element={
                         <div className="btn btn-ghost btn-xs cursor-pointer">
-                            <span className="text-xs font-bold">
-                                <MoreVertical size={20} />
+                            <span className="text-base font-bold">
+                                <MoreVertical size={25} />
                             </span>
                         </div>
                     }
                     ontradenowClick={() => settradenowModalOpen(true)}
                 />
                 <TradeNowModal
+                    plantedCrops={plantedCrops}
                     openNow={istradeNowModalOpen}
                     onClose={() => settradenowModalOpen(false)}
                 ></TradeNowModal>

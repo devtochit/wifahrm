@@ -154,6 +154,7 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
                   <Link key={idx} href={`/dashboard/shop/${data.id}`}>
                     <ProductCard
                       key={idx}
+                      id={data.id}
                       imageUrl={data.imageUrl}
                       cropCategory={data.cropCategory}
                       cropName={data.cropName}

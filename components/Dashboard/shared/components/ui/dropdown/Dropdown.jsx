@@ -11,9 +11,9 @@ const Dropdown = ({ element, children, showChevron }) => {
                     {element}
                     {showChevron && (
                         <ChevronDown
-                            className="-mr-1 ml-2 h-5 w-5"
+                            className="-mr-1 ml-2 h-6 w-6"
                             aria-hidden="true"
-                            size={20}
+                            size={60}
                         />
                     )}
                 </Menu.Button>

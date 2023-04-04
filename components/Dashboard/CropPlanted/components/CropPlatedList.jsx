@@ -6,7 +6,7 @@ const cropPlantedList = ({ plantedcrop }) => {
         <Table
             plantedcrop={plantedcrop}
             users
-            headers={["name", "quanity", "cropId"]}
+            headers={["Cropname", "Cropquantity", "CropId"]}
             items={plantedcrop}
         />
     );
