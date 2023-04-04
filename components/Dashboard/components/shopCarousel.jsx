@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -25,25 +26,35 @@ function ShopCarousel() {
         className="rounded-2xl overflow-hidden shop shadow-lg"
       >
         <div className="relative">
-          <img
+          <Image
             className=" bg-white h-24 object-cover md:h-64 w-full pointer-events-none"
             loading="lazy"
             src="https://i.ibb.co/mGyjGfy/chuttersnap-z-QWu-Vl-P-b-NI-unsplash.jpg"
-          />
-        </div>
-        <div>
-          <img
-            className=" bg-white h-24 object-cover md:h-64 w-full"
-            loading="lazy"
-            src="https://i.ibb.co/YcBTgZN/jonathan-niederhoffer-K0-XJWUN1-Fz-A-unsplash.jpg"
+            alt=""
+            width={700}
+            height={300}
 
           />
         </div>
         <div>
-          <img
+          <Image
+            className=" bg-white h-24 object-cover md:h-64 w-full"
+            loading="lazy"
+            src="https://i.ibb.co/YcBTgZN/jonathan-niederhoffer-K0-XJWUN1-Fz-A-unsplash.jpg"
+            alt=""
+            width={700}
+            height={300}
+
+          />
+        </div>
+        <div>
+          <Image
             className=" bg-white h-24 object-cover md:h-64 w-full"
             loading="lazy"
             src="https://i.ibb.co/zGFWmjp/james-yarema-P2-X7-NDx-GP0-unsplash-1.jpg"
+            alt=""
+            width={700}
+            height={300}
           />
         </div>
       </Carousel>

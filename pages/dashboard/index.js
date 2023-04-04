@@ -2,6 +2,7 @@ import Head from 'next/head'
 import StatsBoard from '../../components/Dashboard/StatsBoard'
 import QuickAction from '../../components/Dashboard/QuickAction'
 import Countdown from '../../components/Dashboard/Countdown'
+import Notification from "../../components/Dashboard/Notification"
 // import ClientsFeed from '../../components/Dashboard/ClientsFeed'
 // import BestSellers from '../../components/Dashboard/BestSellers'
 // import LineChart from '../../components/Charts/LineChart'
@@ -22,9 +23,9 @@ const withAuth = (Component) => {
 			}
 		}, [isLoggedIn, router]);
 
-			if (!isLoggedIn) {
-				return null; // or return a loading indicator
-			}
+		if (!isLoggedIn) {
+			return null; // or return a loading indicator
+		}
 
 		return <Component {...props} />;
 	};
@@ -64,6 +65,11 @@ const Dashboard = () => {
 					</div>
 					<div className="">
 						{/* <ClientsFeed /> */}
+
+					</div>
+
+					<div className='rounded-3xl bg-primary/10 dark:bg-gray-600 lg:col-start-3 lg:row-start-1 w-72'>
+						<Notification />
 					</div>
 				</div>
 			</div>

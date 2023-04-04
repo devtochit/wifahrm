@@ -6,11 +6,11 @@ import TopCategory from "./topCategory";
 
 function Layout({ children, categories, setSort }) {
   const [open, setOpen] = useState(false);
-  const [grid, setGrid] = useState(3);
+  const [grid, setGrid] = useState(4);
   const [sortOpen, setSortOpen] = useState(false);
   return (
     <div className="w-full min-h-screen bg-cusgray pb-10">
-    
+
       <button
         onClick={() => setOpen(!open)}
         className="w-12 h-12 rounded-full bg-white fixed z-30 drop-shadow-2xl lg:hidden flex justify-center place-items-center bottom-0 left-0 m-5"
@@ -30,14 +30,13 @@ function Layout({ children, categories, setSort }) {
           />
         </svg>
       </button>
-      <div className="max-w-6xl mx-auto pt-14 md:px-0">
+      <div className="max-w-6xl 2xl:max-w-7xl mx-auto pt-14 md:px-0">
         <TopCategory categories={categories} />
         <div className="grid grid-cols-4 gap-x-2">
           <div
             onClick={() => setOpen(!open)}
-            className={`${
-              open ? `fixed` : `hidden`
-            } lg:static lg:inline bg-gray-400 lg:bg-cusgray h-screen bg-opacity-30 z-20 flex w-full justify-center place-items-center top-0 lg:p-4`}
+            className={`${open ? `fixed` : `hidden`
+              } lg:static lg:inline bg-gray-400 lg:bg-cusgray h-screen bg-opacity-30 z-20 flex w-full justify-center place-items-center top-0 lg:p-4`}
           >
             <SideCategory categories={categories} />
           </div>
@@ -88,7 +87,7 @@ function Layout({ children, categories, setSort }) {
                   </div>
 
 
-                  
+
                   <button
                     onClick={() => setSortOpen(!sortOpen)}
                     className="flex place-items-center hover:bg-gray-100 py-1 px-2 rounded-md active:bg-gray-200"
@@ -125,9 +124,8 @@ function Layout({ children, categories, setSort }) {
                   </button>
 
                   <div
-                    className={`${
-                      sortOpen ? "absolute" : "hidden"
-                    } top-7 shadow-lg rounded-md text-sm right-0 bg-white text-gray-500 z-20 px-2 py-2`}
+                    className={`${sortOpen ? "absolute" : "hidden"
+                      } top-7 shadow-lg rounded-md text-sm right-0 bg-white text-gray-500 z-20 px-2 py-2`}
                   >
                     <ul>
                       <li className="py-1 px-2 rounded-sm hover:bg-gray-100 active:bg-gray-200">

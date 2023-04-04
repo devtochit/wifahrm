@@ -3,32 +3,33 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Router from "next/router";
 import { currencyFormatter } from "../../../utils";
+import Link from "next/link";
 
 
-function ProductCard({ cropCategory, description, cropName, imageUrl, cropPrice, handleSubmit, product }) {
+function ProductCard({ id, cropCategory, description, cropName, imageUrl, cropPrice, handleSubmit, product }) {
 
     return (
-        <div className="rounded-xl cursor-pointer bg-cusgray shadow-xl ">
-            <div className="overflow-hidden cursor-default rounded-xl relative group">
+        <Link href={`/dashboard/shop/${id}`} className="rounded-xl cursor-pointer bg-cusgray shadow-xl ">
+            <div className="overflow-hidden cursor-default rounded-xl relative group h-[100px] md:h-[150px] lg:h-[200px]">
                 <motion.div
                     initial={{ scale: 1.3, x: 50, opacity: 0 }}
                     animate={{ scale: 1, x: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
+                    className="h-full"
                 >
                     <Image
                         src={imageUrl}
                         alt={cropName}
-                        className="rounded-xl w-full h-full"
+                        className="h-full object-cover"
                         loading="lazy"
-                        height={700}
-                        style={{ width: "500px" }}
-                        width={700}
-                        objectFit="cover"
-                        unoptimized // added this prop
+                        width={500}
+                        height={300}
+
                     />
 
                 </motion.div>
 
+                {/* Like Button */}
                 <div className="hidden absolute rounded-xl h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center z-10">
                     <div className="flex overflow-hidden cursor-pointer">
                         <button
@@ -58,9 +59,10 @@ function ProductCard({ cropCategory, description, cropName, imageUrl, cropPrice,
             >
                 <p className="text-base line-clamp-1">{cropCategory}</p>
                 <p className="text-base my-2 font-black ">{cropName}</p>
-                    <div className="text-xl font-bold text-green-900"> {currencyFormatter(cropPrice)}</div>
+                <div className="text-xl font-bold text-green-900"> {currencyFormatter(cropPrice)}</div>
             </div>
-        </div>
+
+        </Link>
     );
 }
 

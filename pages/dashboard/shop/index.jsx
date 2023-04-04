@@ -59,7 +59,7 @@ function Shop() {
     const categories = data ? Array.from(new Set(data.map((product) => product.cropCategory))) : [];
 
     const filteredData = data ? data.filter((product) => category === "" || product.cropCategory === category) : [];
-    
+
 
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000);
@@ -84,28 +84,29 @@ function Shop() {
 
     return (
         <>
-        <Dashboard> 
-            <Head>
-                <title>Wifarm | Shop</title>
-            </Head>
+            <Dashboard>
+                <Head>
+                    <title>Wifarm | Shop</title>
+                </Head>
                 <Layout categories={categories} setSort={setSort}>
-                {!loading ? (
+                    {!loading ? (
                         filteredData.length > 0 ? (
-                            filteredData.map((product, index) => (
-                                <Link key={index} href={`/dashboard/shop/${product.id}`}>
-                                    <ProductCard
-                                        key={product.id}
-                imageUrl={product.imageUrl}
-                description={product.description}
-                cropCategory={product.cropCategory}
-                cropName={product.cropName}
-                cropPrice={product.cropPrice}
-                datePlanted={product.datePlanted}
-                product={product}
-                handleSubmit={(event) => handleSubmit(event, product)}
-            />
-        </Link>
-    ))
+                            filteredData.map((product, index) => {
+                                // The first product returns "string" instead of real data so I had to add this condition to prevent it from returning
+                                if (index !== 0) return <ProductCard
+                                    key={index}
+                                    imageUrl={product.imageUrl}
+                                    description={product.description}
+                                    cropCategory={product.cropCategory}
+                                    cropName={product.cropName}
+                                    cropPrice={product.cropPrice}
+                                    datePlanted={product.datePlanted}
+                                    product={product}
+                                    handleSubmit={(event) => handleSubmit(event, product)}
+                                />
+
+                            }
+                            )
                         ) : (
                             productCards
                         )
@@ -121,7 +122,7 @@ function Shop() {
 
                 </Layout>
 
-            </Dashboard>
+            </Dashboard >
         </>
     );
 }
