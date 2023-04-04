@@ -17,21 +17,22 @@ const Sidebar = () => {
             path: "/dashboard/shop",
             icon: <Tree size={32} color="#37d67a" variant="TwoTone" />,
         },
-        // settings: {
-        //   title: "Create",
-        //   path: "/dashboard/createfarm",
-        //   icon: <Wind2 size={26} color="#37d67a" variant="TwoTone"/>,
-        // },
+
         cultivatecrop: {
             title: "Cultivate ",
             path: "/dashboard/cultivatecrop",
             icon: <AddSquare size={32} color="#37d67a" variant="TwoTone" />,
         },
-        // products: {
-        //   title: "Checkout",
-        //   path: "/dashboard/checkout",
-        //   icon: <ReceiptItem size={32}  color="#37d67a" variant="TwoTone"/>,
-        // },
+        tradeZone: {
+            title: "tradezone",
+            path: "/dashboard/tradezone",
+            icon: <ReceiptItem size={32} color="#37d67a" variant="TwoTone" />,
+        },
+        analysis: {
+            title: "analysis",
+            path: "/dashboard/analysis",
+            icon: <Wind2 size={26} color="#37d67a" variant="TwoTone" />,
+        },
     };
 
     return (
@@ -50,7 +51,9 @@ const Sidebar = () => {
                         <SidebarItem {...items.home} />
                         <SidebarItem {...items.marketplace} />
                         <SidebarItem {...items.cultivatecrop} />
-                        {/* <SidebarItem {...items.AddCrop} /> */}
+                        <SidebarItem {...items.tradeZone} />
+                        <SidebarItem {...items.analysis} />
+
 
                     </div>
                 </div>

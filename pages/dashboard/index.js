@@ -5,12 +5,15 @@ import Countdown from '../../components/Dashboard/Countdown'
 import Notification from "../../components/Dashboard/Notification"
 // import ClientsFeed from '../../components/Dashboard/ClientsFeed'
 // import BestSellers from '../../components/Dashboard/BestSellers'
-// import LineChart from '../../components/Charts/LineChart'
+import LineChart from '../../components/Charts/LineChart'
 // import BarChart from '../../components/Charts/BarChart'
 import Layout from '../../components/Dashboard/shared/components/Dashboard'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import CropPlanted from '../../components/Dashboard/CropPlanted/CropPlanted'
+
+
 
 const withAuth = (Component) => {
 	const Auth = (props) => {
@@ -47,34 +50,32 @@ const Dashboard = () => {
 				<div className="grid lg:grid-cols-[1fr_auto] my-12 gap-y-12 gap-x-8">
 					<div className="lg:col-start-2">
 						<div className="flex flex-col xs:flex-row flex-wrap justify-between lg:max-w-[18rem] gap-12">
-							<QuickAction />
-							<Countdown />
+							<div className='rounded-3xl bg-primary/10 dark:bg-gray-600 lg:col-start-3 lg:row-start-1 w-72'>
+						<Notification />
+					</div>
+					<QuickAction />
+					<Countdown />
+
 						</div>
 					</div>
 
 					<div className="flex flex-col lg:row-start-1 lg:row-end-3 min-w-0 gap-y-12">
 						<div className="h-72">
-							{/* <LineChart /> */}
+							<LineChart />
 						</div>
-						<div className="flex">
-							{/* <div className="h-72 w-full mb-6">
-                  <BarChart />
-              </div> */}
-						</div>
-						{/* <BestSellers /> */}
+
+						<CropPlanted />
 					</div>
 					<div className="">
 						{/* <ClientsFeed /> */}
 
 					</div>
 
-					<div className='rounded-3xl bg-primary/10 dark:bg-gray-600 lg:col-start-3 lg:row-start-1 w-72'>
-						<Notification />
-					</div>
+				
 				</div>
 			</div>
 		</Layout>
 	)
 }
 
-export default withAuth(Dashboard);
+export default Dashboard;

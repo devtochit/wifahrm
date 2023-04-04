@@ -271,4 +271,4 @@ return(
   </Dashboard>
 )
 }
-export default withAuth(CultivateCrops);
+export default CultivateCrops;

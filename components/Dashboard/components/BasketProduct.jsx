@@ -10,8 +10,7 @@ import { currencyFormatter } from "../../../utils";
 import Image from "next/image";
 
 function BasketProduct({ items, id }) {
-  
-  console.log('hey im inside backetpr',id)
+
   const dispatch = useDispatch();
 
   const removeItemFromBasket = () => {
@@ -22,12 +21,12 @@ function BasketProduct({ items, id }) {
   };
 
   const minusCrop = () => {
-    if (items[0].quantity > 1)     dispatch(minusQuantity({id:items[0].id,quantity:items[0].quantity}));
+    if (items[0].quantityPlanted > 1) dispatch(minusQuantity({ id: items[0].id, quantity: items[0].quantityPlanted }));
 
   };
 
   const AddCrop = () => {
-    dispatch(updateQuantity({id:items[0].id,quantity:items[0].quantity}));
+    dispatch(updateQuantity({ id: items[0].id, quantity: items[0].quantitquantityPlantedyPlanted }));
   };
 
 
@@ -57,7 +56,7 @@ function BasketProduct({ items, id }) {
               <li>ID: {items[0].cropId}</li>
               <li>Amount: {items[0].cropPrice}</li>
               <li>Category: {items[0].cropCategory}</li>
-              <li>Quantity: {items[0].quantity}</li>
+              <li>Quantity: {items[0].quantityPlanted}</li>
               {/* <li>Amount: {items[0J].amount }</li> */}
             </ul>
           </div>
