@@ -33,8 +33,6 @@ const withAuth = (Component) => {
 
 const CropDetails = () => {
 
-
-
   const router = useRouter()
   const dispatch = useDispatch();
   const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
@@ -47,35 +45,35 @@ const CropDetails = () => {
   }, [dispatch]);
 
   const handleSubmit = (values) => {
-    console.log("added basket",values)
+    console.log("added basket", values)
     dispatch(addToBasket(values));
     toast.success(`${values.cropName} added to basket`, { position: 'top-center' });
   };
   if (!cropData) {
     return <div>Loading...</div>;
   }
-  
-  
+
+
   return (
     <Dashboard>
       <Basket />
       <>
         <div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded'>
           <MarketplaceDetails
-          key={cropData.id}
+            key={cropData.id}
             cropCategory={cropData.cropCategory}
             imageUrl={cropData.imageUrl}
             cropEstimatedDuration={cropData.cropEstimatedDuration}
             cropName={cropData.cropName}
             description={cropData.description}
             cropPrice={cropData.cropPrice}
-             dailyInterestRate={cropData.dailyInterestRate}
+            dailyInterestRate={cropData.dailyInterestRate}
             datePlanted={cropData.datePlanted}
             lifeCycleYieldRate={cropData.lifeCycleYieldRate}
             monthlyInterestRate={cropData.monthlyInterestRate}
             cropData={cropData}
             handleSubmit={handleSubmit}
-            />
+          />
         </div>
       </>
     </Dashboard>
