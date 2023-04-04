@@ -21,7 +21,7 @@ function Countdown({ date = '2022-07-13', to = 8 }) {
 			<h2 className="text-lg font-bold mb-3">Reminder</h2>
 			<div className="ds-stack w-full">
 				<div className="rounded-3xl p-6 text-center bg-[#27855a] dark:bg-neutral/70 text-primary-content dark:text-neutral-content">
-					<p className="font-semibold text-white text-md">Next Havest </p>
+					<p className="font-semibold text-white text-md">Next Harvest </p>
 					<div className="grid grid-flow-col gap-2 mt-4 mb-2 auto-cols-max justify-evenly">
 						<div className="flex flex-col text-white">
 							<span className="ds-countdown font-mono font-bold text-2xl bg-[#d6f3e6]  rounded-xl py-3 px-2 bg-white/10 dark:bg-neutral-focus">
