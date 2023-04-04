@@ -47,9 +47,9 @@ function MenuNav({ handleOpen, isOpen }) {
               cultivate Crop
             </li>
           </Link>
-          <Link href="/dashboard">
+          <Link href="/dashboard/tradezone">
             <li className="mb-2 hover:underline mx-4 rounded-xl cursor-pointer">
-              Our Store
+              Trade Zone
             </li>
           </Link>
         </ul>
