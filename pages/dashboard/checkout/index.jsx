@@ -68,17 +68,17 @@ function Checkout() {
     return dispatch(getCropsPlanted(farmId));
   };
 
-  const getCropsPlantedMemoized = useCallback(
-    () => {
-      const farmId = customerdata.farmId;
-      dispatch(getCropsPlanted(farmId));
-    },
-    [dispatch, customerdata.farmId]
-  );
+  // const getCropsPlantedMemoized = useCallback(
+  //   () => {
+  //     const farmId = customerdata.farmId;
+  //     dispatch(getCropsPlanted(farmId));
+  //   },
+  //   [dispatch, customerdata.farmId]
+  // );
 
-  useEffect(() => {
-    getCropsPlantedMemoized();
-  }, [getCropsPlantedMemoized]);
+  // useEffect(() => {
+  //   getCropsPlantedMemoized();
+  // }, [getCropsPlantedMemoized]);
 
 
   useEffect(() => {
