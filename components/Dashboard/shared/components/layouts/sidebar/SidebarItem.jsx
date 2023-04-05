@@ -26,12 +26,12 @@ const SidebarItem = ({ title, path, icon }) => {
         <Link
             href={path}
             className={clsx(
-                "flex justify-center gap-3 lg:justify-start p-3 hover:bg-secondary/20 cursor-pointer rounded-md select-none duration-200 text-primary-t/80 w-full",
+                "flex gap-3 p-2 hover:bg-secondary/20 cursor-pointer rounded-md select-none duration-200 text-primary-t/80 lg:w-full",
                 isActive && "!bg-secondary !text-primary-t"
             )}
         >
-            <i className="h-max">{icon}</i>
-            <p className="text-xl font-bold hidden lg:block w-max">
+            <i>{icon}</i>
+            <p className="font-bold hidden lg:block w-max">
                 {title}
             </p>
         </Link>
