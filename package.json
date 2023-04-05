@@ -58,7 +58,6 @@
     "react-use-draggable-scroll": "^0.4.7",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
-    "uuid": "^9.0.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

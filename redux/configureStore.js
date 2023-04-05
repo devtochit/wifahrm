@@ -5,15 +5,15 @@ import reducer from "./rootReducer";
 import logger from "./middleware/logger";
 import api from "./middleware/api";
 
-const persistConfig = {
-    key: "root",
-    storage,
-};
+// const persistConfig = {
+//     key: "root",
+//     storage,
+// };
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+// const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = configureStore({
-    reducer: persistedReducer,
+    reducer: reducer,
     middleware: [
         ...getDefaultMiddleware({
             serializableCheck: {
@@ -25,6 +25,6 @@ const store = configureStore({
     ],
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);
 
 export default store;

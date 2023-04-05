@@ -11,11 +11,16 @@ import { usePaystackPayment } from "react-paystack";
 import { currencyFormatter } from "../../../utils";
 import Image from "next/image";
 import Dashboard from "../../../components/Dashboard/shared/components/Dashboard";
+import { getCropsPlanted, getfarmbycustomerid } from "../../../redux/slice/marketplace/marketplaceSlice";
+import { retrieveUserDetails } from "../../../utils/helperFunctions/userDataHandlers";
 
 
 const withAuth = (Component) => {
 	const Auth = (props) => {
 		const { isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
+
+
+
 		const router = useRouter();
 
 		useEffect(() => {
@@ -38,6 +43,7 @@ function Checkout() {
   const items = useSelector(selectBasketItems);
   const basketTotal = useSelector(selectBasketTotal);
   const {userData} = useSelector((state) => state.authReducers.Authentication);
+  const { customerdata } = useSelector((state) => state.marketReducers.getMarketSlice);
   const publicKey = 'pk_test_640d50dd050ee5699907f210fd4fc6463f021d89';
   const dispatch = useDispatch()
 
@@ -49,13 +55,31 @@ function Checkout() {
 
   if (keys.length > 0 && values.length > 0) {
     const cropstoAdd = values.map((item) => {
+
       const cropId = item[0].cropId;
       const quantityPlanted = item[0].quantityPlanted;
-      return { cropId, quantityPlanted }
+      // console.log('inside the basket ', item);
+
+      // return { cropId, quantityPlanted }
 
     });
-    console.log(cropstoAdd);
   }
+  const getPlantedCrops = (farmId) => {
+    return dispatch(getCropsPlanted(farmId));
+  };
+
+  // const getCropsPlantedMemoized = useCallback(
+  //   () => {
+  //     const farmId = customerdata.farmId;
+  //     dispatch(getCropsPlanted(farmId));
+  //   },
+  //   [dispatch, customerdata.farmId]
+  // );
+
+  // useEffect(() => {
+  //   getCropsPlantedMemoized();
+  // }, [getCropsPlantedMemoized]);
+
 
   useEffect(() => {
     const groupedItems = items.reduce((results, item) => {
@@ -80,24 +104,32 @@ function Checkout() {
       }
     };
 
+  useEffect(() => {
+    console.log('useEffect called');
+    dispatch(getfarmbycustomerid())
+}, [dispatch]);
+
+
+
   const initializePayment = usePaystackPayment(config);
 const onSuccess = (reference) => {
   if (keys.length > 0 && values.length > 0) {
     const cropsToAdd = values.map((item) => {
-      const cropId = item[0].cropId;
+      const cropId = item[0].id;
       const quantityPlanted = item[0].quantityPlanted;
-      return { marketCropId: cropId, quantityPlanted };
+      const cropName = item[0].cropName
+      return {cropName, marketCropId: cropId, quantityPlanted };
     });
 
-    const farmId = 20;
-    const reqId = "1234";
+    const farmId = customerdata.farmId;
+    const reqId = "";
 
     const payload = {
       cropsList: cropsToAdd,
       farmId,
       reqId
     };
-
+    // console.log(payload)
     dispatch(AddCropToFarmLand(payload));
   }
 };
@@ -124,7 +156,7 @@ const handleSubmit = (e) => {
 <Head>
   <title>wifarhm |checkout </title>
 </Head>
-<div 
+<div
  suppressHydrationWarning
 className="w-full min-h-screen relative bg-cusgray  pt-20 pb-10">
 
@@ -225,7 +257,7 @@ className="w-full min-h-screen relative bg-cusgray  pt-20 pb-10">
           <div className="flex text-lg font-bold justify-between place-items-center font-semibold">
             <p>TOTAL</p>
             {currencyFormatter(basketTotal)}
-          </div> 
+          </div>
 
           {/* <button
             disabled={!items.length}
@@ -268,7 +300,7 @@ className="w-full min-h-screen relative bg-cusgray  pt-20 pb-10">
                   />
         </div>
       </div>
- 
+
   </div>
 </div>
 </div>

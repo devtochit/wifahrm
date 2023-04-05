@@ -27,7 +27,9 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
       <Head>
         <title>{data.cropName}</title>
       </Head>
-      <div className="min-h-screen pb-10">
+      <div
+        suppressHydrationWarning
+      className="min-h-screen pb-10">
 
         <div className="max-w-5xl mx-auto min-h-screen ">
           <div className="flex justify-between place-items-center py-4 px-1 mb-4">
@@ -56,7 +58,7 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
           <div className="w-full bg-white md:rounded-2xl shadow-lg md:py-8 md:px-10 md:flex overflow-hidden">
             <div className="photo md:w-1/3">
               <div>
-                < Image 
+                < Image
                  width={1000}
                  height={1000}
                   src={imageUrl}
@@ -138,7 +140,7 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
 
               </div>
             </div>
-            <div className=' flex lg:flex-col lg:ml-0  ml-8 lg:mt-0 mt-5 lg:gap-4 gap-10 items-center '> 
+            <div className=' flex lg:flex-col lg:ml-0  ml-8 lg:mt-0 mt-5 lg:gap-4 gap-10 items-center '>
                     <CountBox title="Days Left" value={cropEstimatedDuration} />
                     <CountBox title={`generated `} value={cropEstimatedDuration} />
                     <CountBox title=" Valuation" value={dailyInterestRate} />
