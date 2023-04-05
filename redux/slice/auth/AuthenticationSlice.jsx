@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "../../apiActions";
+import swal from 'sweetalert';
 
 import {
 retrieveUserDetails,
@@ -27,12 +28,13 @@ state.loading = true;
 },
 
 loginReceived: (state, action) => {
-  console.log("Payload received:", action.payload);
   state.loading = false;
   state.isLoggedIn = true;
   storeUserDetails(JSON.stringify(action.payload));
   state.userData = action.payload.data.user;
   localStorage.setItem("userDetails", JSON.stringify(action.payload));
+  console.log("LoginPayload received:", action.payload);
+
 },
 
 loginRequestFailed: (state, action) => {
@@ -104,6 +106,28 @@ export const login = (loginDetails) => (dispatch) => {
       })
     );
   };
+
+
+// export const login = (loginDetails, history) => (dispatch) => {
+//   dispatch(
+//     apiCallBegan({
+//       url: 'auth/login/',
+//       method: 'post',
+//       data: loginDetails,
+//       onStart: loginRequested.type,
+//       onSuccess: (response) => {
+//         dispatch(loginReceived(response.data));
+//         swal('Success', 'Login successful', 'success');
+//         history.push('/');
+//       },
+//       onError: (error) => {
+//         dispatch(loginRequestFailed());
+//         swal('Failed', error?.response?.data?.message, 'error');
+//         console.log(error);
+//       },
+//     })
+//   );
+// };
 
 
 

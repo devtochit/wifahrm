@@ -18,7 +18,8 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
   const [selectedSize, setSelectedSize] = useState(0);
   const dispatch = useDispatch();
   const [imgSelected, setImgSelected] = useState(0);
-  const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
+  const { MarketData } = useSelector((state) => state.marketReducers.getMarketSlice);
+  const data = MarketData || [];
 
 //   if (!dataItem || !dataAlso) return <NotFound />;
 
@@ -58,15 +59,17 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
           <div className="w-full bg-white md:rounded-2xl shadow-lg md:py-8 md:px-10 md:flex overflow-hidden">
             <div className="photo md:w-1/3">
               <div>
-                < Image
-                 width={1000}
-                 height={1000}
-                  src={imageUrl}
-                        className=" lg:h-72 h-60 object-cover w-full md:rounded-2xl"
-                  alt={cropName}
-                  unoptimized // added this prop
-
-                />
+              {imageUrl ? (
+                        <Image
+                          src={imageUrl}
+                          alt={cropName}
+                          className="h-full object-cover"
+                          loading="lazy"
+                          width={500}
+                          height={300}
+                          unoptimized
+                        />
+                      ) : null}
               </div>
               {/* <div className="px-2 md:px-0 flex mt-4">
                 {dataItem.prop[0].image.map((img, idx) => (

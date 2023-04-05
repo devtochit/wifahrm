@@ -35,7 +35,9 @@ const CropDetails = () => {
 
   const router = useRouter()
   const dispatch = useDispatch();
-  const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
+  const { MarketData } = useSelector((state) => state.marketReducers.getMarketSlice);
+  console.log(MarketData)
+  const data = MarketData || [];
   const { id } = router.query;
 
   const cropData = data?.find((crop) => crop.id === parseInt(id));

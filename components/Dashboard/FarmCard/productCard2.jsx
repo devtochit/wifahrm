@@ -16,15 +16,17 @@ function ProductCard({ id, cropCategory, description, cropName, imageUrl, cropPr
                     transition={{ delay: 0.2 }}
                     className="h-full"
                 >
-                    <Image
-                        src={imageUrl}
-                        alt={cropName}
-                        className="h-full object-cover"
-                        loading="lazy"
-                        width={500}
-                        height={300}
-                         unoptimized
-                    />
+{imageUrl ? (
+  <Image
+    src={imageUrl}
+    alt={cropName}
+    className="h-full object-cover"
+    loading="lazy"
+    width={500}
+    height={300}
+    unoptimized
+  />
+) : null}
 
                 </motion.div>
 

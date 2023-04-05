@@ -37,7 +37,7 @@ function Shop() {
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const { MarketData } = useSelector((state) => state.marketReducers.getMarketSlice);
-    const data = MarketData.data || [];
+    const data = MarketData || [];
     const category = MarketData.category || "";
 
     useEffect(() => {
