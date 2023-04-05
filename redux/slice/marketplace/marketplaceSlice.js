@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "../../apiActions";
 import { retrieveUserDetails } from "../../../utils/helperFunctions/userDataHandlers";
 import axios from 'axios';
+import { useSelector } from "react-redux";
 
 
 const initialState = {
@@ -40,6 +41,18 @@ const marketplaceSlice = createSlice({
       state.loading = false;
       console.log("getfarmbycustomeridFailed", action.payload);
     },
+    getplantedcropsRequested: (state, action) => {
+      state.loading = true;
+    },
+    getplantedcropsReceived: (state, action) => {
+      state.loading = false;
+      state.customerdata = action.payload.data;
+      console.log(state.customerdata)
+    },
+    getplantedcropsFailed: (state, action) => {
+      state.loading = false;
+      console.log("getfarmbycustomeridFailed", action.payload);
+    },
     selectCategory: (state, action) => {
       state.category = action.payload;
     },
@@ -47,6 +60,9 @@ const marketplaceSlice = createSlice({
 });
 
 export const {
+  getplantedcropsRequested,
+  getplantedcropsReceived,
+  getplantedcropsFailed,
   getfarmbycustomeridRequested,
   getfarmbycustomeridReceived,
   getfarmbycustomeridFailed,
@@ -86,6 +102,31 @@ export const {
 //   }
 // };
 
+
+
+export const getCropsPlanted = (farmId) => async (dispatch) => {
+  try {
+    const getToken = await retrieveUserDetails();
+    if (!getToken || !getToken.data || !getToken.data.jwtToken) {
+      throw new Error("Unable to retrieve user JWT token");
+    }
+    const token = getToken.data.jwtToken;
+
+    dispatch(
+      apiCallBegan({
+        url: `crop/getplantedcrops?farmId=${farmId}`,
+        extraHeaders: 'Bearer ' + token,
+        method: "get",
+        onStart: getplantedcropsRequested.type,
+        onSuccess: getplantedcropsReceived.type,
+        onError: getplantedcropsFailed.type,
+      })
+    );
+  } catch (error) {
+    console.error("An error occurred while fetching crops:", error);
+    dispatch(getplantedcropsFailed(error.message));
+  }
+};
 
 export const getfarmbycustomerid = () => async (dispatch) => {
   try {

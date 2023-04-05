@@ -98,6 +98,35 @@ export const {
 
 
 
+export const getfarmbycustomerid = () => async (dispatch) => {
+  try {
+    const getToken = await retrieveUserDetails();
+    if (getToken && getToken.data.jwtToken) {
+      const token = getToken.data.jwtToken;
+     const customerIdd = getToken.data.user.userId
+     console.log(token,customerIdd)
+
+      dispatch(
+        apiCallBegan({
+          url:`farm/getfarmbycustomerid?customerId=${customerIdd}`,
+          extraHeaders: { "jwtToken": token },
+          method: "get",
+          onStart: getfarmbycustomeridRequested.type,
+          onSuccess: getfarmbycustomeridReceived.type,
+          onError: getfarmbycustomeridFailed.type,
+        })
+      );
+    } else {
+      const error = new Error("Unable to retrieve user customerId");
+      console.error(error);
+      dispatch(getfarmbycustomeridFailed(error.message));
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching user profile:", error);
+    dispatch(getfarmbycustomeridFailed(error.message));
+  }
+};
+
 export const AddCropToFarmLand = (values) => async (dispatch) => {
   try {
     const getToken = await retrieveUserDetails();
@@ -107,7 +136,7 @@ export const AddCropToFarmLand = (values) => async (dispatch) => {
         url: "/crop/addcropstofarm",
         method: "post",
         data: values,
-        extraheaders: "jwtToken" + token,
+        extraheaders:'Bearer ' + token,
         onStart: addcroptofarmRequested.type,
         onSuccess: addcroptofarmReceived.type,
         onError: addcroptofarmRequestFailed.type,
