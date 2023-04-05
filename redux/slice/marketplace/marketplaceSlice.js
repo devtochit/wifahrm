@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 const initialState = {
-  customerid:'',
+  customerdata: '',
   MarketData: [],
   category: '',
   loading: false,
@@ -22,6 +22,7 @@ const marketplaceSlice = createSlice({
     getMarketReceived: (state, action) => {
       state.loading = false;
       state.MarketData = action.payload;
+      console.log(state.customerdata)
     },
     getMarketRequestFailed: (state, action) => {
       state.loading = false;
@@ -32,14 +33,13 @@ const marketplaceSlice = createSlice({
     },
     getfarmbycustomeridReceived: (state, action) => {
       state.loading = false;
-      state.customerid = action.payload;
-      console.log("getfarmbycustomeridReceived", action.payload);
+      state.customerdata = action.payload.data;
+      console.log(state.customerdata)
     },
     getfarmbycustomeridFailed: (state, action) => {
       state.loading = false;
       console.log("getfarmbycustomeridFailed", action.payload);
     },
-
     selectCategory: (state, action) => {
       state.category = action.payload;
     },
@@ -64,7 +64,7 @@ export const {
 //       const token = getToken.data.jwtToken;
 //      const customerIdd = getToken.data.user.userId
 //      console.log(token,customerIdd)
-     
+
 //       dispatch(
 //         apiCallBegan({
 //           url:`farm/getfarmbycustomerid?customerId=${customerIdd}`,
@@ -93,13 +93,11 @@ export const getfarmbycustomerid = () => async (dispatch) => {
     if (getToken && getToken.data.jwtToken) {
       const token = getToken.data.jwtToken;
       const customerIdd = getToken.data.user.userId;
-      console.log(token, customerIdd);
 
       const response = await axios.get(`https://wifarmapi-production.up.railway.app/farm/getfarmbycustomerid?customerId=${customerIdd}`, {
         headers: {
-          'jwtToken': token,
-           "content-type": "application/json",
-
+          'Authorization': 'Bearer ' + token,
+          //  "content-type": "application/json",
         }
       });
 

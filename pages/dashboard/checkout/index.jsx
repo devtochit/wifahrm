@@ -18,6 +18,10 @@ import { retrieveUserDetails } from "../../../utils/helperFunctions/userDataHand
 const withAuth = (Component) => {
 	const Auth = (props) => {
 		const { isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
+    const { customerdata } = useSelector((state) => state.marketReducers.getMarketSlice);
+    console.log(customerdata)
+
+
 		const router = useRouter();
 
 		useEffect(() => {
@@ -82,9 +86,11 @@ function Checkout() {
         userId: 1
       }
     };
-  useEffect(() => { 
+
+  useEffect(() => {
+    console.log('useEffect called');
     dispatch(getfarmbycustomerid())
-  },[])
+}, [dispatch]);
 
   const initializePayment = usePaystackPayment(config);
 const onSuccess = (reference) => {
@@ -130,7 +136,7 @@ const handleSubmit = (e) => {
 <Head>
   <title>wifarhm |checkout </title>
 </Head>
-<div 
+<div
  suppressHydrationWarning
 className="w-full min-h-screen relative bg-cusgray  pt-20 pb-10">
 
@@ -231,7 +237,7 @@ className="w-full min-h-screen relative bg-cusgray  pt-20 pb-10">
           <div className="flex text-lg font-bold justify-between place-items-center font-semibold">
             <p>TOTAL</p>
             {currencyFormatter(basketTotal)}
-          </div> 
+          </div>
 
           {/* <button
             disabled={!items.length}
@@ -274,7 +280,7 @@ className="w-full min-h-screen relative bg-cusgray  pt-20 pb-10">
                   />
         </div>
       </div>
- 
+
   </div>
 </div>
 </div>

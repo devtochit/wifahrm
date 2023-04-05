@@ -32,7 +32,6 @@ const CropSlice = createSlice({
   reducers: {
     addToBasket: (state, action) => {
       state.items = addItemToCart(state.items, action.payload,);
-      console.log('inside cropslice', state.items)
     },
     deleteFromBasket: (state, action) => {
       state.items = [];
@@ -99,20 +98,20 @@ export const {
 
 
 
-export const AddCropToFarmLand = (values) =>  async(dispatch) => {
+export const AddCropToFarmLand = (values) => async (dispatch) => {
   try {
     const getToken = await retrieveUserDetails();
     if (getToken && getToken.data.jwtToken) {
       const token = getToken.data.jwtToken;
-      dispatch( apiCallBegan({
-          url: "/crop/addcropstofarm",
-          method: "post",
-          data: values,
-          extraheaders: "jwtToken" + token,
-          onStart: addcroptofarmRequested.type,
-          onSuccess: addcroptofarmReceived.type,
-          onError: addcroptofarmRequestFailed.type,
-        }));
+      dispatch(apiCallBegan({
+        url: "/crop/addcropstofarm",
+        method: "post",
+        data: values,
+        extraheaders: "jwtToken" + token,
+        onStart: addcroptofarmRequested.type,
+        onSuccess: addcroptofarmReceived.type,
+        onError: addcroptofarmRequestFailed.type,
+      }));
     } else {
       const error = new Error("Unable to retrieve user token");
       console.error(error);
@@ -134,9 +133,9 @@ export const selectBasketItemsWithId = (state, id) => {
 
 export const selectBasketTotal = (state) => {
   return state.cropReducers.CropSlice.items
-  .reduce((total, item) => {
-    return total + (item.cropPrice * item.quantityPlanted);
-  }, 0);
+    .reduce((total, item) => {
+      return total + (item.cropPrice * item.quantityPlanted);
+    }, 0);
 };
 
 
