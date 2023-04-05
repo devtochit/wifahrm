@@ -67,14 +67,14 @@ function Checkout() {
   const getPlantedCrops = (farmId) => {
     return dispatch(getCropsPlanted(farmId));
   };
-  
+
   // useEffect(() => {
   //   console.log('useEffect getCropsPlanted');
   //   const farmId = customerdata.farmId; // or get the farmId from some other source
   //   return dispatch(getCropsPlanted(farmId));
 
   // }, [dispatch]);
-  
+
 
   useEffect(() => {
     const groupedItems = items.reduce((results, item) => {
@@ -112,7 +112,8 @@ const onSuccess = (reference) => {
     const cropsToAdd = values.map((item) => {
       const cropId = item[0].id;
       const quantityPlanted = item[0].quantityPlanted;
-      return { marketCropId: cropId, quantityPlanted };
+      const cropName = item[0].cropName
+      return {cropName, marketCropId: cropId, quantityPlanted };
     });
 
     const farmId = customerdata.farmId;
