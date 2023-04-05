@@ -11,9 +11,6 @@ import { addToBasket } from '../../../redux/slice/Crop/cropSlice';
 import Dashboard from "../../../components/Dashboard/shared/components/Dashboard";
 import { useRouter } from "next/router";
 
-
-
-
 const withAuth = (Component) => {
     const Auth = (props) => {
         const { isLoggedIn } = useSelector((state) => state.authReducers.Authentication);
@@ -35,16 +32,13 @@ const withAuth = (Component) => {
     return Auth;
 };
 
-
 function Shop() {
     const [sort, setSort] = useState(0);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
-    const { data } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
-    const { category } = useSelector((state) => state.marketReducers.getMarketSlice);
-
-
-
+    const { MarketData } = useSelector((state) => state.marketReducers.getMarketSlice);
+    const data = MarketData.data || [];
+    const category = MarketData.category || "";
 
     useEffect(() => {
         console.log('useEffect called');
@@ -60,12 +54,9 @@ function Shop() {
 
     const filteredData = data ? data.filter((product) => category === "" || product.cropCategory === category) : [];
 
-
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000);
     }, []);
-
-
 
     const productCards = data?.map((product) => (
         <ProductCard
@@ -80,7 +71,6 @@ function Shop() {
             product={product}
             handleSubmit={(event) => handleSubmit(event, product)}
         />
-
     ));
 
     return (
@@ -94,27 +84,29 @@ function Shop() {
                         filteredData.length > 0 ? (
                             filteredData.map((product, index) => {
                                 // The first product returns "string" instead of real data so I had to add this condition to prevent it from returning
-                                if (index !== 0) return <ProductCard
-                                    key={index}
-                                    id={product.id}
-                                    imageUrl={product.imageUrl}
-                                    description={product.description}
-                                    cropCategory={product.cropCategory}
-                                    cropName={product.cropName}
-                                    cropPrice={product.cropPrice}
-                                    datePlanted={product.datePlanted}
-                                    product={product}
-                                    handleSubmit={(event) => handleSubmit(event, product)}
-                                />
-
-                            }
-                            )
+                                if (index !== 0) {
+                                    return (
+                                        <ProductCard
+                                            key={index}
+                                            id={product.id}
+                                            imageUrl={product.imageUrl}
+                                            description={product.description}
+                                            cropCategory={product.cropCategory}
+                                            cropName={product.cropName}
+                                            cropPrice={product.cropPrice}
+                                            datePlanted={product.datePlanted}
+                                            product={product}
+                                            handleSubmit={(event) => handleSubmit(event, product)}
+                                        />
+                                    );
+                                }
+                                return null;
+                            })
                         ) : (
                             productCards
                         )
                     ) : (
                         <>
-                            <CardSkeleton />
                             <CardSkeleton />
                             <CardSkeleton />
                             <CardSkeleton />
