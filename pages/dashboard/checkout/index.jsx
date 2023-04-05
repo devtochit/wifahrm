@@ -68,12 +68,17 @@ function Checkout() {
     return dispatch(getCropsPlanted(farmId));
   };
 
-  // useEffect(() => {
-  //   console.log('useEffect getCropsPlanted');
-  //   const farmId = customerdata.farmId; // or get the farmId from some other source
-  //   return dispatch(getCropsPlanted(farmId));
+  const getCropsPlantedMemoized = useCallback(
+    () => {
+      const farmId = customerdata.farmId;
+      dispatch(getCropsPlanted(farmId));
+    },
+    [dispatch, customerdata.farmId]
+  );
 
-  // }, [dispatch]);
+  useEffect(() => {
+    getCropsPlantedMemoized();
+  }, [getCropsPlantedMemoized]);
 
 
   useEffect(() => {
