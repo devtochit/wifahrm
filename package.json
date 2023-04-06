@@ -43,6 +43,7 @@
     "react-countup": "^6.4.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
+    "sweetalert": "^2.1.2",
     "react-hot-toast": "^2.4.0",
     "react-icon": "^1.0.0",
     "react-icons": "^4.3.1",
@@ -58,7 +59,6 @@
     "react-use-draggable-scroll": "^0.4.7",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
-    "uuid": "^9.0.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

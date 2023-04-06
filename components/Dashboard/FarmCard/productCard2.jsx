@@ -7,7 +7,6 @@ import Link from "next/link";
 
 
 function ProductCard({ id, cropCategory, description, cropName, imageUrl, cropPrice, handleSubmit, product }) {
-   console.log('hey inside product card', id)
     return (
         <Link href={`/dashboard/shop/${id}`} className="rounded-xl cursor-pointer bg-cusgray shadow-xl ">
             <div className="overflow-hidden cursor-default rounded-xl relative group h-[100px] md:h-[150px] lg:h-[200px]">
@@ -17,15 +16,17 @@ function ProductCard({ id, cropCategory, description, cropName, imageUrl, cropPr
                     transition={{ delay: 0.2 }}
                     className="h-full"
                 >
-                    <Image
-                        src={imageUrl}
-                        alt={cropName}
-                        className="h-full object-cover"
-                        loading="lazy"
-                        width={500}
-                        height={300}
-                         unoptimized
-                    />
+{imageUrl ? (
+  <Image
+    src={imageUrl}
+    alt={cropName}
+    className="h-full object-cover"
+    loading="lazy"
+    width={500}
+    height={300}
+    unoptimized
+  />
+) : null}
 
                 </motion.div>
 

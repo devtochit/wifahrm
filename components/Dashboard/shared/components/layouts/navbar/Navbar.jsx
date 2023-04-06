@@ -106,7 +106,18 @@ const Navbar = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </button> */}
+
+              {items.length > 0 ? (
+                <div
+                  className={`flex
+                } absolute text-base font-semibold justify-center text-white text-center w-5 h-5 bg-cusblack rounded-full bottom-0 right-0`}
+                >
+                  {items.reduce((a, item) => a + item.quantityPlanted, 0)}
+                </div>
+              ) : (
+                ""
+              )}
+
 
 
           </div>
