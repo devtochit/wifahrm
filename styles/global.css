@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,200;1,300&display=swap");
+
 @layer components {
     .ds-btn {
         --btn-text-case: none;
         --rounded-btn: 0.6875em;
+    }
+
+    * {
+        font-family: "Nunito";
     }
 
     .ds-btn-pastel {
@@ -20,6 +26,19 @@
 
     .ds-table-dark :where(tbody th, tbody td) {
         /* @apply dark: bg-neutral/50 */
+    }
+
+    .header-link {
+        @apply cursor-pointer text-sm font-light text-[#e5e5e5] transition duration-[.4s] hover: text-[#b3b3b3];
+    }
+
+    .bannerBtn {
+        @apply cursor-pointer border-0 outline-0 bg-slate-300 rounded-md text-black py-1 px-3 flex items-center text-xs md: text-lg mt-2 hover:opacity-75 transition duration-[.4s];
+    }
+
+    .input {
+        @apply w-full rounded bg-black/40 text-white px-2 py-3.5 placeholder-[#fff] font-[300] text-sm outline-none;
+
     }
 }
 

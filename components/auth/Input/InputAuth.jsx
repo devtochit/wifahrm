@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { Field } from 'formik';
-import style from './InputAuth.module.css';
 
 const InputAuth = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div className={`${props.styleContainer}`}>
       <div className={`relative font-Rubik`}>
-        <label className={style['input-label']} htmlFor={props.id}>
+        <label className=' text-gray-500 text-sm' htmlFor={props.id}>
           {props.label}
         </label>
         <Field
@@ -18,20 +17,20 @@ const InputAuth = (props) => {
           type={props.type === 'password' ? (showPassword === false ? 'password' : 'text') : props.type}
           name={props.name}
           value={props.value}
-          className={`${style['input-auth']} ${props.className}`}
+          className={`w-full box-border appearance-none outline-none border-b pb-2 border-gray-400  ${props.className}`}
           placeholder={props.placeholder}
           min={props.min}
           max={props.max}
         />
         <span
-          className={`${style['label-effect']} ${props.children ? '!border-red-500' : ''} ${props.labelEffect}`}
+          className={` absolute bottom-0 left-0 w-0 transition-all duration-300; ${props.children ? '!border-red-500' : ''} ${props.labelEffect}`}
         ></span>
         {props.type === 'password' && (
           <img
             onClick={() => setShowPassword(!showPassword)}
-            className={`${style['input-icon-password']}`}
-            src="/assets/icon/eye.png"
-            alt="icon-password"
+            className={`absolute right-2 top-8`}
+            // src="/assets/icon/eye.png"
+            // alt="icon-password"
           />
         )}
       </div>
