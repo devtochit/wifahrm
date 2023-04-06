@@ -118,14 +118,10 @@ const Navbar = () => {
                 ""
               )}
 
-
+              */}
 
           </div>
-
-
-
         </div>
-
 
         {/* <MenuNav handleOpen={handleOpen} isOpen={isOpen} /> */}
       </nav>
