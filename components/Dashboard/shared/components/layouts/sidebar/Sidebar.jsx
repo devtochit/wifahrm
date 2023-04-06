@@ -57,11 +57,13 @@ const Sidebar = () => {
                 </div>
 
             </div>
-            <div className="xs:hidden fixed bottom-0 h-16 w-full bg-primary/80 backdrop-blur-md z-20">
-                <div className="flex items-center justify-center gap-10 font-bold h-full">
+            <div className="xs:hidden fixed left-0 bottom-0 h-16 w-full p-4 bg-primary/80 backdrop-blur-md z-20">
+                <div className="flex items-center justify-between font-bold ">
                     <SidebarItem {...items.home} />
                     <SidebarItem {...items.marketplace} />
                     <SidebarItem {...items.cultivatecrop} />
+                    <SidebarItem {...items.tradeZone} />
+                    <SidebarItem {...items.analysis} />
                     {/* <SidebarItem {...items.AddCrop} /> */}
                 </div>
             </div>

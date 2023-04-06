@@ -93,7 +93,7 @@ const Navbar = () => {
               {/* <div className=' flex items-center mt-2'>     <UserDropdownAvatar /> </div> */}
             </div>
 
-            <button onClick={handleOpen} className="burger md:hidden p-2">
+            {/* <button onClick={handleOpen} className="burger xs:hidden p-2">
               <svg
                 className="w-7 h-7 text-cusblack"
                 fill="currentColor"
@@ -106,10 +106,8 @@ const Navbar = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </button>
-            {/* <h3 className="text-md mr-2 font-semibold ml-3 text-cusblack">
+            </button> */}
 
-              </h3> */}
 
           </div>
 
@@ -118,7 +116,7 @@ const Navbar = () => {
         </div>
 
 
-        <MenuNav handleOpen={handleOpen} isOpen={isOpen} />
+        {/* <MenuNav handleOpen={handleOpen} isOpen={isOpen} /> */}
       </nav>
       {/* <div className="relative flex items-center text-left">
             </div> */}

@@ -3,14 +3,14 @@ import Navbar from "../components/layouts/navbar/Navbar";
 
 const Dashboard = ({ children }) => {
     return (
-        <div className="grid grid-cols-1 xs:grid-cols-12 gap-6 p-4 md:p-6 ">
-            <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 xs:grid-cols-16 gap-4 p-2 pl-4 xs:p-6 h-screen overflow-auto xs:h-auto">
+            <div className="xs:col-span-1 lg:col-span-3">
                 <Sidebar />
             </div>
 
-            <div className="xs:col-span-11 lg:col-span-10">
+            <div className="xs:col-span-15 lg:col-span-13">
                 <Navbar />
-                <main className="lg:py-6">
+                <main className="my-4 lg:py-6 w-full min-h-main mx-auto p-4 sm:p-6 bg-cusgray rounded-xl">
                     {children}
                 </main>
             </div>

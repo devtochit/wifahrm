@@ -20,7 +20,7 @@ function Countdown({ date = '2022-07-13', to = 8 }) {
 		<div className="flex-1 pb-6">
 			<h2 className="text-lg font-bold mb-3">Reminder</h2>
 			<div className="ds-stack w-full">
-				<div className="rounded-3xl p-6 text-center bg-[#27855a] dark:bg-neutral/70 text-primary-content dark:text-neutral-content">
+				<div className="rounded-xl p-6 text-center bg-primary dark:bg-neutral/70 text-primary-content dark:text-neutral-content">
 					<p className="font-semibold text-white text-md">Next Harvest </p>
 					<div className="flex flex-wrap gap-2 mt-4 mb-2 justify-between">
 						<div className="flex flex-col text-white">
@@ -50,8 +50,8 @@ function Countdown({ date = '2022-07-13', to = 8 }) {
 					</div>
 					<progress className="ds-progress ds-progress-success w-full" value="40" max="100"></progress>
 				</div>
-				<div className="rounded-3xl p-6 bg-primary dark:bg-neutral/70"></div>
-				<div className="rounded-3xl p-6 bg-primary dark:bg-neutral/70"></div>
+				{/* <div className="rounded-3xl p-6 bg-primary dark:bg-neutral/70"></div>
+				<div className="rounded-3xl p-6 bg-primary dark:bg-neutral/70"></div> */}
 			</div>
 		</div>
 	)
