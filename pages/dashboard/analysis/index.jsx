@@ -11,7 +11,7 @@ const Analysis = () => {
             </Head>
             <main>
                 <h2 className='text-lg font-bold mb-3'>Analysis</h2>
-                <div className="flex flex-col gap-12 min-h-[900px] w-full">
+                <div className="grid gap-8 min-h-[900px]">
                     <BarChart />
                     <LineChart />
                 </div>

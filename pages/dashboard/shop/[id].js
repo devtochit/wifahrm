@@ -59,25 +59,23 @@ const CropDetails = () => {
   return (
     <Dashboard>
       <Basket />
-      <>
-        <div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded'>
-          <MarketplaceDetails
-            key={cropData.id}
-            cropCategory={cropData.cropCategory}
-            imageUrl={cropData.imageUrl}
-            cropEstimatedDuration={cropData.cropEstimatedDuration}
-            cropName={cropData.cropName}
-            description={cropData.description}
-            cropPrice={cropData.cropPrice}
-            dailyInterestRate={cropData.dailyInterestRate}
-            datePlanted={cropData.datePlanted}
-            lifeCycleYieldRate={cropData.lifeCycleYieldRate}
-            monthlyInterestRate={cropData.monthlyInterestRate}
-            cropData={cropData}
-            handleSubmit={handleSubmit}
-          />
-        </div>
-      </>
+      <div>
+        <MarketplaceDetails
+          key={cropData.id}
+          cropCategory={cropData.cropCategory}
+          imageUrl={cropData.imageUrl}
+          cropEstimatedDuration={cropData.cropEstimatedDuration}
+          cropName={cropData.cropName}
+          description={cropData.description}
+          cropPrice={cropData.cropPrice}
+          dailyInterestRate={cropData.dailyInterestRate}
+          datePlanted={cropData.datePlanted}
+          lifeCycleYieldRate={cropData.lifeCycleYieldRate}
+          monthlyInterestRate={cropData.monthlyInterestRate}
+          cropData={cropData}
+          handleSubmit={handleSubmit}
+        />
+      </div>
     </Dashboard>
   )
 }

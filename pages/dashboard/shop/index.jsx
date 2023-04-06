@@ -83,24 +83,22 @@ function Shop() {
                     {!loading ? (
                         filteredData.length > 0 ? (
                             filteredData.map((product, index) => {
-                                // The first product returns "string" instead of real data so I had to add this condition to prevent it from returning
-                                if (index !== 0) {
-                                    return (
-                                        <ProductCard
-                                            key={index}
-                                            id={product.id}
-                                            imageUrl={product.imageUrl}
-                                            description={product.description}
-                                            cropCategory={product.cropCategory}
-                                            cropName={product.cropName}
-                                            cropPrice={product.cropPrice}
-                                            datePlanted={product.datePlanted}
-                                            product={product}
-                                            handleSubmit={(event) => handleSubmit(event, product)}
-                                        />
-                                    );
-                                }
-                                return null;
+
+                                return (
+                                    <ProductCard
+                                        key={index}
+                                        id={product.id}
+                                        imageUrl={product.imageUrl}
+                                        description={product.description}
+                                        cropCategory={product.cropCategory}
+                                        cropName={product.cropName}
+                                        cropPrice={product.cropPrice}
+                                        datePlanted={product.datePlanted}
+                                        product={product}
+                                        handleSubmit={(event) => handleSubmit(event, product)}
+                                    />
+                                );
+
                             })
                         ) : (
                             productCards

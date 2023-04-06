@@ -21,7 +21,7 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
   const { MarketData } = useSelector((state) => state.marketReducers.getMarketSlice);
   const data = MarketData || [];
 
-//   if (!dataItem || !dataAlso) return <NotFound />;
+  //   if (!dataItem || !dataAlso) return <NotFound />;
 
   return (
     <>
@@ -30,12 +30,12 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
       </Head>
       <div
         suppressHydrationWarning
-      className="min-h-screen pb-10">
+        className="min-h-screen pb-10">
 
-        <div className="max-w-5xl mx-auto min-h-screen ">
+        <div className="">
           <div className="flex justify-between place-items-center py-4 px-1 mb-4">
             <Link href="/dashboard/shop">
-              <div className="w-14 h-14 shadow-lg bg-white text-cusblack hover:bg-cusblack hover:text-white duration-200 cursor-pointer rounded-full flex justify-center place-items-center">
+              <div className="w-10 h-10 shadow-lg bg-white text-cusblack hover:bg-cusblack hover:bg-white/60 duration-200 cursor-pointer rounded-full flex justify-center place-items-center">
                 <svg
                   className="w-4 h-4 "
                   fill="none"
@@ -56,20 +56,20 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
             <div className="w-8"></div>
           </div>
 
-          <div className="w-full bg-white md:rounded-2xl shadow-lg md:py-8 md:px-10 md:flex overflow-hidden">
+          <div className="w-full bg-white md:rounded-2xl shadow-lg p-4 pb-12 md:p-8 flex flex-col gap-8 md:gap-5 md:flex-row">
             <div className="photo md:w-1/3">
               <div>
-              {imageUrl ? (
-                        <Image
-                          src={imageUrl}
-                          alt={cropName}
-                          className="h-full object-cover"
-                          loading="lazy"
-                          width={500}
-                          height={300}
-                          unoptimized
-                        />
-                      ) : null}
+                {imageUrl ? (
+                  <Image
+                    src={imageUrl}
+                    alt={cropName}
+                    className="h-full object-cover"
+                    loading="lazy"
+                    width={500}
+                    height={300}
+                    unoptimized
+                  />
+                ) : null}
               </div>
               {/* <div className="px-2 md:px-0 flex mt-4">
                 {dataItem.prop[0].image.map((img, idx) => (
@@ -87,9 +87,9 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
                 ))}
               </div> */}
             </div>
-            <div className="detail font-medium   px-2 md:px-0 mt-3 md:mt-0 md:ml-6 py-2 md:w-2/3">
+            <div className="detail font-medium  md:w-2/3">
               <p className="flex place-items-center text-sm text-gray-400">
-                { cropCategory}
+                {cropCategory}
                 <span className="mx-1">
                   <svg
                     className="w-4 h-4"
@@ -109,7 +109,7 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
               <h1 className="text-3xl text-cusblack font-medium my-3">
                 {cropName}
               </h1>
-             <div className='mb-2'>   {currencyFormatter(cropPrice)} </div>
+              <div className='mb-2'>   {currencyFormatter(cropPrice)} </div>
 
               <div className="sizes text-sm flex-wrap text-justify  pr-6 text-gray-400">
                 <p className="mb-1 font-black text-lg ">Description</p>
@@ -119,9 +119,9 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
                 </div>
               </div>
 
-              <div className="buttoncart flex items-center mt-10 w-full">
-                <button onClick={()=>{handleSubmit(cropData)}}
-                className="w-4/5 md:w-3/5 bg-cusblack overflow-hidden py-4 text-white rounded-lg text-sm active:bg-gray-800 duration-100">
+              <div className="buttoncart flex items-center mt-2 w-full">
+                <button onClick={() => { handleSubmit(cropData) }}
+                  className="w-full xs:w-[200px] bg-cusblack overflow-hidden py-4 text-white rounded-lg text-sm active:bg-gray-800 duration-100">
                   <motion.span
                     initial={{ y: -100 }}
                     animate={{ y: 0 }}
@@ -143,10 +143,10 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
 
               </div>
             </div>
-            <div className=' flex lg:flex-col lg:ml-0  ml-8 lg:mt-0 mt-5 lg:gap-4 gap-10 items-center '>
-                    <CountBox title="Days Left" value={cropEstimatedDuration} />
-                    <CountBox title={`generated `} value={cropEstimatedDuration} />
-                    <CountBox title=" Valuation" value={dailyInterestRate} />
+            <div className=' flex flex-col xs:flex-row md:flex-col justify-between gap-4 items-center w-full max-w-sm md:w-auto mx-auto md:m-o'>
+              <CountBox title="Days Left" value={cropEstimatedDuration} />
+              <CountBox title={`Generated `} value={cropEstimatedDuration} />
+              <CountBox title=" Valuation" value={dailyInterestRate} />
             </div>
           </div>
 
