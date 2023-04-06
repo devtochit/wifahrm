@@ -43,6 +43,7 @@
     "react-countup": "^6.4.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
+    "sweetalert": "^2.1.2",
     "react-hot-toast": "^2.4.0",
     "react-icon": "^1.0.0",
     "react-icons": "^4.3.1",

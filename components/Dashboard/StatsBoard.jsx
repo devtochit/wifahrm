@@ -21,7 +21,7 @@ function Stats({ title, subtitle, value, percent, color, icon }) {
 
 function StatsBoard() {
 	return (
-		<div>
+		<>
 			<h2 className="text-lg font-bold mb-3">Statistics</h2>
 			<div className="flex flex-col xs:flex-row flex-wrap bg-[#d6f3e6] dark:bg-neutral/50 rounded-3xl gap-8 p-6 justify-between">
 				<Stats
@@ -49,7 +49,7 @@ function StatsBoard() {
 					icon={<TrendDown />}
 				/>
 			</div>
-		</div>
+		</>
 	)
 }
 

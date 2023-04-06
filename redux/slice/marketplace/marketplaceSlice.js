@@ -22,8 +22,7 @@ const marketplaceSlice = createSlice({
     },
     getMarketReceived: (state, action) => {
       state.loading = false;
-      state.MarketData = action.payload;
-      console.log(state.customerdata)
+      state.MarketData = action.payload.data;
     },
     getMarketRequestFailed: (state, action) => {
       state.loading = false;
@@ -47,7 +46,6 @@ const marketplaceSlice = createSlice({
     getplantedcropsReceived: (state, action) => {
       state.loading = false;
       state.customerdata = action.payload.data;
-      console.log(state.customerdata)
     },
     getplantedcropsFailed: (state, action) => {
       state.loading = false;

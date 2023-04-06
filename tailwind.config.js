@@ -16,6 +16,10 @@ module.exports = {
 			center: true,
 		},
 		extend: {
+			backgroundImage: {
+				"gradient-to-b":
+					"linear-gradient(to bottom,rgba(20,20,20,0) 0,rgba(20,20,20,.15) 15%,rgba(20,20,20,.35) 29%,rgba(20,20,20,.58) 44%,#141414 68%,#141414 100%);",
+			},
 			fontFamily: {
 				sans: ['Outfit', ...defaultTheme.fontFamily.sans],
 			},
@@ -51,7 +55,17 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ['var(--font-inter)', ...fontFamily.sans]
+			},
+			gridTemplateColumns: {
+				'16': 'repeat(16, minmax(0, 1fr))',
+			},
+			gridColumn: {
+				'span-13': 'span 13 / span 13',
+				'span-14': 'span 14 / span 14',
+				'span-15': 'span 15 / span 15',
+
 			}
+
 		},
 	},
 	daisyui: {

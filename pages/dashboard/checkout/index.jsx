@@ -244,7 +244,7 @@ className="w-full min-h-screen relative bg-cusgray  pt-20 pb-10">
               >
                 <p className=" font-semibold text-lg pr-3">{item.cropName}</p>
 
-                            {currencyFormatter(item.cropPrice * item.quantity)}
+                            {currencyFormatter(item.cropPrice * item.quantityPlanted)}
 
               </div>
             ))}

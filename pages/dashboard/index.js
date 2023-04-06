@@ -6,12 +6,13 @@ import Notification from "../../components/Dashboard/Notification"
 // import ClientsFeed from '../../components/Dashboard/ClientsFeed'
 // import BestSellers from '../../components/Dashboard/BestSellers'
 import LineChart from '../../components/Charts/LineChart'
-// import BarChart from '../../components/Charts/BarChart'
+import BarChart from '../../components/Charts/BarChart'
 import Layout from '../../components/Dashboard/shared/components/Dashboard'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import CropPlanted from '../../components/Dashboard/CropPlanted/CropPlanted'
+
 
 
 
@@ -43,38 +44,34 @@ const Dashboard = () => {
 			<Head>
 				<title>Dashboard</title>
 			</Head>
-			<h1 className='text-xl font-bold  pb-4'>Dashboard</h1>
 
-			<div className='w-full min-h-main  p-4 sm:p-6 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded' >
-				<StatsBoard />
-				<div className="grid lg:grid-cols-[1fr_auto] my-12 gap-y-12 gap-x-8">
-					<div className="lg:col-start-2">
-						<div className="flex flex-col xs:flex-row flex-wrap justify-between lg:max-w-[18rem] gap-12">
-							<div className='rounded-3xl bg-primary/10 dark:bg-gray-600 lg:col-start-3 lg:row-start-1 w-72'>
-								<Notification />
-							</div>
-							<QuickAction />
-							<Countdown />
-
-						</div>
+			<div className='grid grid-cols-1 lg:grid-cols-6 gap-8' >
+				<div className='lg:col-span-6'>
+					<StatsBoard />
+				</div>
+				<div className="flex flex-col lg:col-span-4 gap-8">
+					<div className='rounded-3xl bg-primary/10 dark:bg-gray-600'>
+						<Notification />
 					</div>
-
-					<div className="flex flex-col lg:row-start-1 lg:row-end-3 min-w-0 gap-y-12">
-						<div className="h-72">
-							<LineChart />
-						</div>
-
-						<CropPlanted />
-					</div>
-					<div className="">
-						{/* <ClientsFeed /> */}
-
-					</div>
-
 
 				</div>
+
+				<div className="flex flex-col gap-8 lg:col-span-2">
+
+					<div className="grid xs:grid-cols-2 gap-8 lg:grid-cols-1">
+						<QuickAction />
+						<Countdown />
+					</div>
+
+				</div>
+				<div className='lg:col-span-4'>
+					<CropPlanted />
+				</div>
+
+
+
 			</div>
-		</Layout>
+		</Layout >
 	)
 }
 
