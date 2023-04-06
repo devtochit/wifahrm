@@ -93,7 +93,7 @@ const Navbar = () => {
               {/* <div className=' flex items-center mt-2'>     <UserDropdownAvatar /> </div> */}
             </div>
 
-            {/* <button onClick={handleOpen} className="burger xs:hidden p-2">
+             {/* <button onClick={handleOpen} className="burger xs:hidden p-2">
               <svg
                 className="w-7 h-7 text-cusblack"
                 fill="currentColor"
@@ -118,15 +118,14 @@ const Navbar = () => {
                 ""
               )}
 
-              */}
+  </button> */}
 
           </div>
         </div>
 
         {/* <MenuNav handleOpen={handleOpen} isOpen={isOpen} /> */}
       </nav>
-      {/* <div className="relative flex items-center text-left">
-            </div> */}
+
 
     </div>
   );
