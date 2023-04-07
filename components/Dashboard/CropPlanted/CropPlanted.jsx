@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import LoadingSpinner from "../../../components/Dashboard/shared/components/ui/loading/LoadingSpinner";
 import dynamic from "next/dynamic";
 import { getCropsPlanted, getfarmbycustomerid } from "../../../redux/slice/marketplace/marketplaceSlice";
+  import PlantedList from "./components/CropPlatedList";
 
-
-const ProductList = dynamic(
-  () => import("./components/CropPlatedList"),
-  { loading: () => <LoadingSpinner className="mt-20" /> }
-);
+// const ProductList = dynamic(
+//   () => import("./components/CropPlatedList"),
+//   { loading: () => <LoadingSpinner className="mt-20" /> }
+// );
 
 const CropPlanted = () => {
   const dispatch = useDispatch()
@@ -50,7 +50,7 @@ useEffect(() => {
           <LoadingSpinner className="mt-20" />
         ) : (
           <>
-              <ProductList  plantedcrop={plantedCrops} />
+              <PlantedList  plantedcrop={plantedCrops} />
 
           </>
         )}
