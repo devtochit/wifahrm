@@ -19,6 +19,7 @@ import CropPlanted from '../../components/Dashboard/CropPlanted/CropPlanted'
 const withAuth = (Component) => {
 	const Auth = (props) => {
 		const { isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
+
 		const router = useRouter();
 
 		useEffect(() => {
@@ -41,36 +42,35 @@ const withAuth = (Component) => {
 const Dashboard = () => {
 	return (
 		<Layout>
-			<Head>
-				<title>Dashboard</title>
-			</Head>
+			<>
+				<Head>
+					<title>Dashboard</title>
+				</Head>
 
-			<div className='grid grid-cols-1 lg:grid-cols-6 gap-8' >
-				<div className='lg:col-span-6'>
-					<StatsBoard />
-				</div>
-				<div className="flex flex-col lg:col-span-4 gap-8">
-					<div className='rounded-3xl bg-primary/10 dark:bg-gray-600'>
-						<Notification />
+				<div className='grid grid-cols-1 lg:grid-cols-6 gap-8' >
+					<div className='lg:col-span-6'>
+						<StatsBoard />
+					</div>
+					<div className="flex flex-col lg:col-span-4 gap-8">
+						<div className='rounded-3xl bg-primary/10 dark:bg-gray-600'>
+							<Notification />
+						</div>
+
 					</div>
 
-				</div>
+					<div className="flex flex-col gap-8 lg:col-span-2">
 
-				<div className="flex flex-col gap-8 lg:col-span-2">
+						<div className="grid xs:grid-cols-2 gap-8 lg:grid-cols-1">
+							<QuickAction />
+							<Countdown />
+						</div>
 
-					<div className="grid xs:grid-cols-2 gap-8 lg:grid-cols-1">
-						<QuickAction />
-						<Countdown />
 					</div>
-
 				</div>
-				<div className='lg:col-span-4'>
+				<div className='lg:col-span-5'>
 					<CropPlanted />
 				</div>
-
-
-
-			</div>
+			</>
 		</Layout >
 	)
 }

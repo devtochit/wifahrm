@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const initialState = {
   customerdata: '',
+  plantedCrops: [],
   MarketData: [],
   category: '',
   loading: false,
@@ -26,7 +27,7 @@ const marketplaceSlice = createSlice({
     },
     getMarketRequestFailed: (state, action) => {
       state.loading = false;
-      console.log("getMarketRequestFailed", action.payload);
+      // console.log("getMarketRequestFailed", action.payload);
     },
     getfarmbycustomeridRequested: (state, action) => {
       state.loading = true;
@@ -34,22 +35,23 @@ const marketplaceSlice = createSlice({
     getfarmbycustomeridReceived: (state, action) => {
       state.loading = false;
       state.customerdata = action.payload.data;
-      console.log(state.customerdata)
+      // console.log(state.customerdata)
     },
     getfarmbycustomeridFailed: (state, action) => {
       state.loading = false;
-      console.log("getfarmbycustomeridFailed", action.payload);
+      // console.log("getfarmbycustomeridFailed", action.payload);
     },
     getplantedcropsRequested: (state, action) => {
       state.loading = true;
     },
     getplantedcropsReceived: (state, action) => {
       state.loading = false;
-      state.customerdata = action.payload.data;
+      state.plantedCrops = action.payload.data;
+      console.log('inside marketplace', state.plantedCrops)
     },
     getplantedcropsFailed: (state, action) => {
       state.loading = false;
-      console.log("getfarmbycustomeridFailed", action.payload);
+      // console.log("getfarmbycustomeridFailed", action.payload);
     },
     selectCategory: (state, action) => {
       state.category = action.payload;
@@ -100,28 +102,55 @@ export const {
 //   }
 // };
 
+// export const getCropsPlanted = (farmId) => async (dispatch) => {
+//   try {
+//     const getToken = await retrieveUserDetails();
+//     if (getToken && getToken.data.jwtToken) {
+//       const token = getToken.data.jwtToken;
+//       dispatch(
+//         apiCallBegan({
+//           url: `crop/getplantedcrops?farmId=${farmId}`,
+//           extraHeaders: 'Bearer ' + token,
+//           method: "get",
+//           onStart: getplantedcropsRequested.type,
+//           onSuccess: getplantedcropsReceived.type,
+//           onError: getplantedcropsFailed.type,
+//         })
+//       );
+//     } else {
+//       const error = new Error("Unable to retrieve user token");
+//       console.error(error);
+//       dispatch(getplantedcropsFailed(error.message));
+//     }
+//   } catch (error) {
+//     console.error("An error occurred while fetching user profile:", error);
+//     dispatch(getplantedcropsFailed(error.message));
+//   }
+// };
 
 
-export const getCropsPlanted = (farmId) => async (dispatch) => {
+
+
+export const getCropsPlanted = (prams) => async (dispatch) => {
   try {
     const getToken = await retrieveUserDetails();
-    if (!getToken || !getToken.data || !getToken.data.jwtToken) {
-      throw new Error("Unable to retrieve user JWT token");
-    }
-    const token = getToken.data.jwtToken;
+    if (getToken && getToken.data.jwtToken) {
+      const token = getToken.data.jwtToken;
 
-    dispatch(
-      apiCallBegan({
-        url: `crop/getplantedcrops?farmId=${farmId}`,
-        extraHeaders: 'Bearer ' + token,
-        method: "get",
-        onStart: getplantedcropsRequested.type,
-        onSuccess: getplantedcropsReceived.type,
-        onError: getplantedcropsFailed.type,
-      })
-    );
+      const response = await axios.get(`https://wifarmapi-production.up.railway.app/crop/getplantedcrops?farmId=${prams}`, {
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        }
+      });
+
+      dispatch(getplantedcropsReceived(response.data));
+    } else {
+      const error = new Error("Unable to retrieve user customerId");
+      console.error(error);
+      dispatch(getplantedcropsFailed(error.message));
+    }
   } catch (error) {
-    console.error("An error occurred while fetching crops:", error);
+    console.error("An error occurred while fetching user profile:", error);
     dispatch(getplantedcropsFailed(error.message));
   }
 };

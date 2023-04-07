@@ -4,6 +4,7 @@ import { retrieveUserDetails } from "../../../utils/helperFunctions/userDataHand
 
 const initialState = {
   items: [],
+  plantedCrops: [],
   addcroptofarm: [],
   loading: false,
 
@@ -59,7 +60,6 @@ const CropSlice = createSlice({
     removeFromBasket: (state, action) => {
       console.log(action.payload)
       state.items = state.items.filter((item) => item.id !== action.payload.id);
-      console.log(state.items)
     },
     addCroptoFarm: (state, action) => {
       state.addcroptofarm = action.payload;
@@ -69,6 +69,7 @@ const CropSlice = createSlice({
     },
 
     addcroptofarmReceived: (state, action) => {
+      state.plantedCrops = action.payload
       console.log("Payload received:", action.payload);
       state.loading = false;
     },
@@ -76,7 +77,6 @@ const CropSlice = createSlice({
     addcroptofarmRequestFailed: (state, action) => {
       state.loading = false;
       state.error = action.payload;
-      console.log(action.payload)
     },
   },
 });
@@ -103,12 +103,12 @@ export const getfarmbycustomerid = () => async (dispatch) => {
     const getToken = await retrieveUserDetails();
     if (getToken && getToken.data.jwtToken) {
       const token = getToken.data.jwtToken;
-     const customerIdd = getToken.data.user.userId
-     console.log(token,customerIdd)
+      const customerIdd = getToken.data.user.userId
+      console.log(token, customerIdd)
 
       dispatch(
         apiCallBegan({
-          url:`farm/getfarmbycustomerid?customerId=${customerIdd}`,
+          url: `farm/getfarmbycustomerid?customerId=${customerIdd}`,
           extraHeaders: { "jwtToken": token },
           method: "get",
           onStart: getfarmbycustomeridRequested.type,
@@ -136,7 +136,7 @@ export const AddCropToFarmLand = (values) => async (dispatch) => {
         url: "/crop/addcropstofarm",
         method: "post",
         data: values,
-        extraheaders:'Bearer ' + token,
+        extraheaders: 'Bearer ' + token,
         onStart: addcroptofarmRequested.type,
         onSuccess: addcroptofarmReceived.type,
         onError: addcroptofarmRequestFailed.type,

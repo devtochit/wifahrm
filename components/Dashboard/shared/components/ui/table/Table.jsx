@@ -2,9 +2,18 @@ import { useRef, useState, useEffect, useMemo } from "react";
 import TableHeader from "./TableHeader";
 import TableSearch from "./TableSearch";
 import AddButton from "./actions/AddButton";
-import TableRow from "../../../../CropPlanted/components/table/tableRow";
+import PlantedTableRow from "../../../../CropPlanted/components/table/PlantedTableRow";
+import LoadingSpinner from "../loading/LoadingSpinner";
+
 const Table = ({ headers, items, plantedcrop }) => {
-    console.log(items)
+    console.log(plantedcrop,items)
+
+    const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+}, []);
+
     const [isAllChecked, setAllChecked] = useState(false);
     const [search, setSearch] = useState("");
 
@@ -40,11 +49,10 @@ const Table = ({ headers, items, plantedcrop }) => {
         setSearch(value);
     };
 
-    const values = Object.entries(items)    
     const getItems = () => {
-        if (!search.trim()) return values;
+        if (!search.trim()) return items;
 
-        let filtered = values.filter((u) => {
+        let filtered = items?.filter((u) => {
             return Object.keys(u).some((key) => {
                 if (typeof u[key] === "string") {
                     return u[key].toLowerCase().includes(search);
@@ -62,36 +70,40 @@ const Table = ({ headers, items, plantedcrop }) => {
                 {/* <AddButton /> */}
             </div>
             <div className="overflow-x-auto w-full overflow-hidden">
-                <table className=" w-full">
-                    {/* head */}
+                <table className="table w-full">
+                    {/* <!-- head --> */}
                     <TableHeader
                         header
                         headers={headers}
                         handleCheckbox={selectAll}
-                        className="bg-primary text-primary-t capitalize p-4"
+                        allCheckedRef={allCheckedRef}
                     />
                     <tbody>
-                        {/* row 1 */}
-                        {getItems().map(
-                            (item, index) =>
-                                plantedcrop && <TableRow key={index} plantedCrops={item} />
+                        {/* <!-- row 1 --> */}
+                        {loading? (
+                            <tr>
+                                <td colSpan={headers.length + 1} className="text-center">
+                                    <LoadingSpinner />
+                                </td>
+                            </tr>
+                        ) : (
+                            getItems()?.map((item, index) => (
+                                <PlantedTableRow key={index}  plantedCrop={item} />
+                            ))
                         )}
                     </tbody>
-                    {/* foot */}
-                    <tfoot className="border-t-2">
+                    {/* <!-- foot --> */}
+                    <tfoot>
                         <tr>
-                            <th className="sticky left-0 z-10 h-full"></th>
-                            {headers.map((h, index) => (
-                                <th key={index} className="text-darker-t uppercase text-xs text-start p-4">
-                                    {h}
-                                </th>
-                            ))}
+                            <th></th>
+                            {/* {headers.map((h, index) => (
+                                <th key={index}>{h}</th>
+                            ))} */}
                             <th></th>
                         </tr>
                     </tfoot>
                 </table>
             </div>
-
         </div>
     );
 };

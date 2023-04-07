@@ -39,9 +39,8 @@ const TradeZone = () => {
 
   const router = useRouter()
   const dispatch = useDispatch();
-  const { category, plantedCrop } = useSelector((state) => state.marketReducers.getMarketSlice);
+  const { category, } = useSelector((state) => state.marketReducers.getMarketSlice);
 
-  console.log('why are undefined ?', plantedcropsList)
 
   //   const { id } = router.query;
 

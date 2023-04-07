@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
-import React, { useEffect, useState ,Fragment} from "react";
+import React, { useEffect, useState ,Fragment, useCallback} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../../components/Dashboard/components/Button";
 import { selectBasketItems, selectBasketTotal, plusItem, minusItem, AddCropToFarmLand } from "../../../redux/slice/Crop/cropSlice";
@@ -44,6 +44,7 @@ function Checkout() {
   const basketTotal = useSelector(selectBasketTotal);
   const {userData} = useSelector((state) => state.authReducers.Authentication);
   const { customerdata } = useSelector((state) => state.marketReducers.getMarketSlice);
+  console.log(customerdata)
   const publicKey = 'pk_test_640d50dd050ee5699907f210fd4fc6463f021d89';
   const dispatch = useDispatch()
 
@@ -68,18 +69,19 @@ function Checkout() {
     return dispatch(getCropsPlanted(farmId));
   };
 
-  // const getCropsPlantedMemoized = useCallback(
-  //   () => {
-  //     const farmId = customerdata.farmId;
-  //     dispatch(getCropsPlanted(farmId));
-  //   },
-  //   [dispatch, customerdata.farmId]
-  // );
 
-  // useEffect(() => {
-  //   getCropsPlantedMemoized();
-  // }, [getCropsPlantedMemoized]);
+  const getCropsPlantedMemoized = useCallback(() => {
+    const farmId = customerdata.farmId;
+    console.log('get planted crops', farmId);
 
+    dispatch(getCropsPlanted(farmId));
+  }, [customerdata.farmId, dispatch]);
+
+  useEffect(() => {
+    if (customerdata.farmId) {
+      getCropsPlantedMemoized();
+    }
+  }, [customerdata.farmId, getCropsPlantedMemoized]);
 
   useEffect(() => {
     const groupedItems = items.reduce((results, item) => {

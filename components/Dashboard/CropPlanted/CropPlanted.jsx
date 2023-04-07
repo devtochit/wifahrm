@@ -1,19 +1,42 @@
-import { useEffect,useState } from "react";
+import { useCallback, useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import LoadingSpinner from "../../../components/Dashboard/shared/components/ui/loading/LoadingSpinner";
 import dynamic from "next/dynamic";
-
-import { plantedcropsList } from '../../../utils/data';
-
+import { getCropsPlanted, getfarmbycustomerid } from "../../../redux/slice/marketplace/marketplaceSlice";
 
 
 const ProductList = dynamic(
   () => import("./components/CropPlatedList"),
   { loading: () => <LoadingSpinner className="mt-20" /> }
 );
-const CropPlanted = () => {
 
+const CropPlanted = () => {
+  const dispatch = useDispatch()
+  const { customerdata ,plantedCrops} = useSelector((state) => state.marketReducers.getMarketSlice);
+  // console.log('inside dashboard home ', plantedCrops)
+
+  console.log(customerdata)
   const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    console.log('useEffect called');
+    dispatch(getfarmbycustomerid())
+}, [dispatch]);
+
+const getCropsPlantedMemoized = useCallback(() => {
+  const farmId = customerdata.farmId;
+  // console.log('get planted crops', farmId);
+
+  dispatch(getCropsPlanted(farmId));
+}, [customerdata.farmId, dispatch]);
+
+useEffect(() => {
+  if (customerdata.farmId) {
+    getCropsPlantedMemoized();
+  }
+}, [customerdata.farmId, getCropsPlantedMemoized]);
+
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
@@ -27,9 +50,8 @@ const CropPlanted = () => {
           <LoadingSpinner className="mt-20" />
         ) : (
           <>
-            {plantedcropsList.map((item) => (
-              <ProductList key={item.cropName} plantedcrop={item} />
-            ))}
+              <ProductList  plantedcrop={plantedCrops} />
+
           </>
         )}
 

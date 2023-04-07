@@ -1,15 +1,33 @@
 import { useState } from "react";
 import { MoreVertical } from "react-feather";
-import CrudDropdown from "../../..//shared/components/ui/dropdown/CrudDropdown";
+import CrudDropdown from "../../../shared/components/ui/dropdown/CrudDropdown";
 import TradeNowModal from "../modals/TradeNowModal";
 
 
-const TableRow = ({ plantedCrops }) => {
-     plantedCrops.map((key,items)=>(
-        console.log('inside tabel row',items)
+const PlantedTableRow = ({ plantedCrop }) => {
 
-     ))
-  
+    // {
+    //     "cropId": 1,
+    //     "cropCategory": "Vegetables",
+    //     "farmId": 1,
+    //     "cropName": "Tomatoes",
+    //     "userId": "7096",
+    //     "cropEstimatedDurationInDays": 1000,
+    //     "cropActualDuration": null,
+    //     "plantDate": null,
+    //     "purchaseDate": null,
+    //     "amountPlanted": 2,
+    //     "minSquareMeter": 1000,
+    //     "purchasePrice": 4500,
+    //     "harvestDate": null,
+    //     "accruedAmount": 0,
+    //     "principalAmount": 0,
+    //     "monthlyInterestRate": 1000,
+    //     "estimatedYeildRate": 1000,
+    //     "planted": false,
+    //     "harvested": false
+    // }
+
     const [istradeNowModalOpen, settradenowModalOpen] = useState(false);
 
 
@@ -30,27 +48,29 @@ const TableRow = ({ plantedCrops }) => {
             <td>
                 <div className="flex items-center space-x-3">
                     <div className="avatar cursor-pointer">
-                        <div className="mask mask-squircle w-12 h-12">
+                        {/* <div className="mask mask-squircle w-12 h-12">
                              <img
                                 src={plantedCrops|| "/git.jpg"}
                                 alt="user avatar"
-                            /> 
-                        </div>
+                            />
+                        </div> */}
+                                                <div className="text-sm opacity-50">{plantedCrop.farmId}</div>
+
                     </div>
                     <div>
                         <div className="font-bold"> </div>
-                        <div className="text-sm opacity-50">{plantedCrops.cropCategory}</div>
+                        <div className="text-sm opacity-50">{plantedCrop.cropCategory}</div>
                     </div>
                 </div>
             </td>
             <td>
-                <span className="text-sm">{plantedCrops.cropName}</span>
+                <span className="text-sm">{plantedCrop.cropName}</span>
                 <br />
                 <div className="badge bg-accent/50 badge-sm p-3 mt-2">
-                    <span className="text-primary-t">{plantedCrops.quantityPlanted}</span>
+                    <span className="text-primary-t">{plantedCrop.amountPlanted}</span>
                 </div>
             </td>
-            <td>{plantedCrops.marketCropId}</td>
+            <td>{plantedCrop.cropEstimatedDurationInDays}</td>
             <th>
                 <CrudDropdown
                     element={
@@ -63,14 +83,14 @@ const TableRow = ({ plantedCrops }) => {
                     ontradenowClick={() => settradenowModalOpen(true)}
                 />
                 <TradeNowModal
-                    plantedCrops={plantedCrops}
+                    plantedCrops={plantedCrop}
                     openNow={istradeNowModalOpen}
                     onClose={() => settradenowModalOpen(false)}
                 ></TradeNowModal>
-             
+
             </th>
         </tr>
     );
 };
 
-export default TableRow;
+export default PlantedTableRow;
