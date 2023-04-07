@@ -67,7 +67,6 @@ function MarketDetails({ cropPrice, description, imageUrl, cropName, cropCategor
                     loading="lazy"
                     width={500}
                     height={300}
-                    unoptimized
                   />
                 ) : null}
               </div>

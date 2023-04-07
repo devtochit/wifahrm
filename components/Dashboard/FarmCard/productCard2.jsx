@@ -24,7 +24,6 @@ function ProductCard({ id, cropCategory, description, cropName, imageUrl, cropPr
     loading="lazy"
     width={500}
     height={300}
-    unoptimized
   />
 ) : null}
 

@@ -4,7 +4,7 @@ import TableSearch from "./TableSearch";
 import AddButton from "./actions/AddButton";
 import PlantedTableRow from "../../../../CropPlanted/components/table/PlantedTableRow";
 import LoadingSpinner from "../loading/LoadingSpinner";
-
+import  style from './Table.module.css'
 const Table = ({ headers, items, plantedcrop }) => {
     console.log(plantedcrop,items)
 
@@ -70,19 +70,21 @@ const Table = ({ headers, items, plantedcrop }) => {
                 {/* <AddButton /> */}
             </div>
             <div className="overflow-x-auto w-full overflow-hidden">
-                <table className="table w-full">
+                <table className={style.table}>
                     {/* <!-- head --> */}
                     <TableHeader
                         header
                         headers={headers}
                         handleCheckbox={selectAll}
                         allCheckedRef={allCheckedRef}
+                        className="bg-primary text-primary-t capitalize sticky lg:text-lg bg-black text-smtext-smtext-sm left-0 z-10 h-full"
+
                     />
-                    <tbody>
+                    <tbody className="">
                         {/* <!-- row 1 --> */}
                         {loading? (
                             <tr>
-                                <td colSpan={headers.length + 1} className="text-center">
+                                <td colSpan={headers.length + 1} className="">
                                     <LoadingSpinner />
                                 </td>
                             </tr>
@@ -92,16 +94,18 @@ const Table = ({ headers, items, plantedcrop }) => {
                             ))
                         )}
                     </tbody>
-                    {/* <!-- foot --> */}
-                    <tfoot>
+                    <tfoot className="border-t-2">
                         <tr>
-                            <th></th>
-                            {/* {headers.map((h, index) => (
-                                <th key={index}>{h}</th>
-                            ))} */}
+                            <th className="sticky left-0 z-10 h-full"></th>
+                            {headers.map((h, index) => (
+                                <th key={index} className="text-darker-t uppercase text-xs text-start p-4">
+                                    {h}
+                                </th>
+                            ))}
                             <th></th>
                         </tr>
                     </tfoot>
+
                 </table>
             </div>
         </div>

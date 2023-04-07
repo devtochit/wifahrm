@@ -1,0 +1,95 @@
+.table {
+  width: 100%;
+  table-layout: fixed;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1000px, 1fr));
+  grid-auto-rows: minmax(50px, auto);
+  grid-gap: 1rem; */
+  /* grid-auto-flow: column; */
+}
+
+
+.table th,
+.table td {
+  /* background-color: #007bff;  */
+  color: #000; /* white */
+  text-transform: capitalize;
+  padding: 1rem;
+  /* border: 15px solid #fff; */
+}
+
+.table th button {
+  background-color: #6c757d; /* gray */
+  color: #fff; /* white */
+  padding: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.table th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  height: 100%;
+}
+
+.table thead,
+.table tfoot {
+  color: #343a40; /* dark gray */
+}
+
+.table thead th,
+.table tfoot th {
+  color: #343a40; /* dark gray */
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  text-align: start;
+}
+
+.table thead th:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table thead {
+  border-bottom: 2px solid;
+}
+
+.table tfoot {
+  border-top: 2px solid;
+}
+
+@media screen and (max-width: 767px) {
+  .table {
+    width:100%;
+    height:100%;
+  }
+  .table td,
+  .table th {
+font-size:10px
+  }
+  .table td:first-child,
+  .table th:first-child {
+
+  }
+  .table td:last-child,
+  .table th:last-child {
+    margin-bottom:100px
+  }
+  .table tfoot {
+    display:none
+  }
+
+  .table thead th,
+.table tfoot th {
+  gap:10rem;
+  /* display:flex; */
+  color: #343a40; /* dark gray */
+  text-transform: uppercase;
+  font-size: 0.4rem;
+  text-align: start;
+}
+
+}
