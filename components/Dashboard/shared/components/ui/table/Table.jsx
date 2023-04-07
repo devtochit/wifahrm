@@ -90,7 +90,7 @@ const Table = ({ headers, items, plantedcrop }) => {
                             </tr>
                         ) : (
                             getItems()?.map((item, index) => (
-                                <PlantedTableRow kekeykeyy={index}  plantedCrop={item} />
+                                <PlantedTableRow key={index}  plantedCrop={item} />
                             ))
                         )}
                     </tbody>
