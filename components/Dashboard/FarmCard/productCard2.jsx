@@ -59,7 +59,7 @@ function ProductCard({ id, cropCategory, description, cropName, imageUrl, cropPr
             >
                 <p className="text-base line-clamp-1">{cropCategory}</p>
                 <p className="text-base my-2 font-black ">{cropName}</p>
-                <div className="text-xl font-bold text-green-900"> {currencyFormatter(cropPrice)}</div>
+                <div className="lg:text-xl text-base  font-bold text-green-900"> {currencyFormatter(cropPrice)}</div>
             </div>
 
         </Link>
