@@ -55,13 +55,12 @@ function ProductCard({ id, cropCategory, description, cropName, imageUrl, cropPr
             </div>
             <div
                 // onClick={() => Router.push("/product/" + item.slug)}
-                className=""
+                className=" px-1 py-2"
             >
-                <p className="text-base line-clamp-1">{cropCategory}</p>
+                <p className="text-sm line-clamp-1">{cropCategory}</p>
                 <p className="text-base my-2 font-black ">{cropName}</p>
                 <div className="lg:text-xl text-base  font-bold text-green-900"> {currencyFormatter(cropPrice)}</div>
             </div>
-
         </Link>
     );
 }

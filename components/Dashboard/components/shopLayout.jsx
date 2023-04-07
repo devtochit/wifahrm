@@ -19,9 +19,9 @@ function Layout({ children, categories, setSort }) {
         >
           <SideCategory categories={categories} />
         </div>
-        <div className="col-span-4 md:col-span-4 lg:col-span-3 flex flex-col py-4 mx-2 md:mx-0">
+        <div className="col-span-4 md:col-span-4 lg:col-span-3 flex flex-col py-4  md:mx-0">
           <ShopCarousel />
-          <div className="rounded-2xl overflow-hidden shadow-lg w-full bg-white mt-6 px-5 py-4">
+          <div className="rounded-2xl overflow-hidden shadow-lg w-full bg-white mt-6 px-3 py-4 bg-cusblack">
             <div className="mb-3">
               <div className="flex justify-between place-items-center text-gray-600 text-sm relative">
                 <div className="flex">
@@ -145,7 +145,7 @@ function Layout({ children, categories, setSort }) {
               </div>
             </div>
             <div
-              className={`grid grid-cols-2 md:grid-cols-${grid} lg:grid-cols-${grid} gap-x-4 gap-y-6`}
+              className={`grid grid-cols-2 md:grid-cols-${grid} lg:grid-cols-${grid} gap-x-5 gap-y-6`}
             >
               {children}
             </div>
