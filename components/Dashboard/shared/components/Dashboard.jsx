@@ -8,7 +8,7 @@ const Dashboard = ({ children }) => {
                 <Sidebar />
             </div>
 
-            <div className="xs:col-span-15 lg:col-span-13">
+            <div className="xs:col-span-15 xs:ml-4 md:m-0 lg:col-span-13">
                 <Navbar />
                 <main className="my-4 lg:py-6 w-full min-h-main mx-auto p-4 sm:p-6 bg-cusgray rounded-xl">
                     {children}

@@ -38,6 +38,7 @@ const Navbar = () => {
     setItems(data);
   }, [data]);
 
+
   return (
     <div>
       {/* <div>
@@ -85,7 +86,7 @@ const Navbar = () => {
                   <div
                     className="h-5 w-5 absolute text-xs grid place-content-center font-semibold  text-white bg-cusblack rounded-full bottom-0 right-0"
                   >
-                    {items.reduce((a, item) => a + item.quantity, 0)}
+                    {items.reduce((a, item) => a + item.quantityPlanted, 0)}
                   </div>
                 )}
               </Link>
@@ -93,32 +94,35 @@ const Navbar = () => {
               {/* <div className=' flex items-center mt-2'>     <UserDropdownAvatar /> </div> */}
             </div>
 
-             {/* <button onClick={handleOpen} className="burger xs:hidden p-2">
-              <svg
-                className="w-7 h-7 text-cusblack"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                  clipRule="evenodd"
-                />
-              </svg>
 
-              {items.length > 0 ? (
-                <div
-                  className={`flex
-                } absolute text-base font-semibold justify-center text-white text-center w-5 h-5 bg-cusblack rounded-full bottom-0 right-0`}
+            {/*
+              <button onClick={handleOpen} className="burger xs:hidden p-2">
+                <svg
+                  className="w-7 h-7 text-cusblack"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  {items.reduce((a, item) => a + item.quantityPlanted, 0)}
-                </div>
-              ) : (
-                ""
-              )}
+                  <path
+                    fillRule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
 
-  </button> */}
+                {items.length > 0 ? (
+                  <div
+                    className={`flex
+                  } absolute text-base font-semibold justify-center text-white text-center w-5 h-5 bg-cusblack rounded-full bottom-0 right-0`}
+                  >
+                    {items.reduce((a, item) => a + item.quantityPlanted, 0)}
+                  </div>
+                ) : (
+                  ""
+                )}
+              </button>
+              */}
+
 
           </div>
         </div>
