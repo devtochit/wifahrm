@@ -86,7 +86,7 @@ const Navbar = () => {
                   <div
                     className="h-5 w-5 absolute text-xs grid place-content-center font-semibold  text-white bg-cusblack rounded-full bottom-0 right-0"
                   >
-                    {items.reduce((a, item) => a + item.quantity, 0)}
+                    {items.reduce((a, item) => a + item.quantityPlanted, 0)}
                   </div>
                 )}
               </Link>
@@ -95,7 +95,7 @@ const Navbar = () => {
             </div>
 
 
-            {/* 
+            {/*
               <button onClick={handleOpen} className="burger xs:hidden p-2">
                 <svg
                   className="w-7 h-7 text-cusblack"
@@ -120,7 +120,7 @@ const Navbar = () => {
                 ) : (
                   ""
                 )}
-              </button>  
+              </button>
               */}
 
 
