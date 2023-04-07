@@ -55,7 +55,7 @@ function ProductCard({ id, cropCategory, description, cropName, imageUrl, cropPr
             </div>
             <div
                 // onClick={() => Router.push("/product/" + item.slug)}
-                className="px-2 py-2"
+                className=""
             >
                 <p className="text-base line-clamp-1">{cropCategory}</p>
                 <p className="text-base my-2 font-black ">{cropName}</p>
