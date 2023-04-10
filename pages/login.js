@@ -1,247 +1,116 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import styles from '../styles/Sign.module.css'
+/* eslint-disable @next/next/no-img-element */
+import { useRouter } from 'next/router'
+import Head from 'next/head'
+import Link from 'next/link'
+//Imported react-hot-toast ============>
+import toast from 'react-hot-toast'
+//Imported Formik ============>
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/router";
+import { useFormik } from 'formik'
+import { loginSchema } from '../utils/scemas'
+//Imported Schemas ============>
+import { login } from "../redux/slice/auth/AuthenticationSlice";
 import Navbar from "../components/HomePage/Navbar";
 import Footer from "../components/HomePage/Footer";
-import Link from "next/link";
-import { login } from "../redux/slice/auth/AuthenticationSlice";
-import { signIn } from 'next-auth/react';
-
+import Image from 'next/image'
 
 const Login = () => {
   const dispatch = useDispatch();
-  const router = useRouter()
-  // const [error , setErrors] =useState('')
-  const {  isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
-  const [loading, setLoading] = useState(false)
 
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     router.push("/dashboard");
-  //   }
-  // }, [isLoggedIn,router]);
-
-  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-  //   const status = await signIn('credentials', {
-  //       redirect: false,
-  //       email: values.email,
-  //       password: values.password,
-  //       callbackUrl: "/"
-  //   })
-
-//   const handleSubmit = async (values, { setSubmitting, resetForm, setErrors }) => {
-//     const result = await signIn("credentials", {
-//         redirect: false,
-//         username: values.userName,
-//         password: values.userPassword,
-//         callbackUrl: "/"
-//     });
-
-//     if (result?.error) {
-//         setErrors({ auth: result.error });
-//     } else {
-//         setSubmitting(false);
-//         resetForm();
-//     }
-// };
-
-
-const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-  const { userName, userPassword } = values;
-  try {
-    const response = await dispatch(login({ userName, userPassword }));
-    if (response.error) {
-      setError(response.error);
-      setLoading(false);
-    } else {
-      // setCookiesetCookiesetCookie(null, 'auth_token', response.data.auth_token, {
-      //   maxAge: 60 * 60 * 24, // 1 day
-      //   path: '/',
-      // });
-      // router.push('/dashboard');
-    }
-  } catch (error) {
-    setError('An error occurred');
-    setLoading(false);
+  const router = useRouter();
+  const initialValues = {
+    userName: "",
+    userPassword: "",
   }
-  setSubmitting(false);
-  resetForm();
-};
 
-
-
-
-if (isLoggedIn) {
-  router.push('/dashboard');
-}
-
+  const { values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, resetForm } = useFormik({
+    initialValues: initialValues,
+    validationSchema: loginSchema,
+    onSubmit: async (values, { setSubmitting, resetForm: formikResetForm }) => {
+      const { userName, userPassword } = values;
+      try {
+        const response = await dispatch(login({ userName, userPassword }));
+        if (response) {
+        } else {
+          toast.success(`Logged in successfully! `, { position: "bottom-center" });
+          formikResetForm();
+          router.push('/dashboard');
+        }
+      } catch (error) {
+        toast.error(response.error);
+      } finally {
+        setSubmitting(false);
+      }
+    }
+  });
 
 
   return (
     <>
       <Navbar />
-      <section className="relative flex flex-wrap lg:h-screen lg:items-center">
-        <div className="w-full px-4 py-12 sm:px-6 gap-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-lg text-center">
-            <h1 className="text-2xl font-bold sm:text-3xl">Get started today!</h1>
-
-            <p className="mt-4 text-gray-500 text-xl">
-              Welcome to Wifahrm
-            </p>
+      <div className=' overflow-hidden relative flex h-screen w-screen flex-col bg-black/60 md:items-center md:justify-center md:bg-black/60 lg:px-4  px-[10px]'>
+        <Head>
+          <title>Wifahrm - Login</title>
+        </Head>
+        <Image
+          src="https://i.ibb.co/5GrS5Wx/anaya-katlego-CXKk4z-U7an-E-unsplash.jpg"
+          height={1000}
+          width={1000}
+          layout='responsive'
+          className="-z-20  opacity-50 sm:!inline object-contain md:relative"
+          alt="farm-img"
+        />
+        {/* <img
+        src="https://rb.gy/ulxxee"
+        className="absolute left-4 top-4 cursor-pointer
+                 object-contain md:left-10 md:top-6"
+        width={150}
+        height={150}
+        alt=''
+      /> */}
+        <form onSubmit={handleSubmit} className='absolute mt-24 space-y-8 rounded bg-black/80 py-10 px-6 md:mt-0 md:max-w-md md:px-14 z-30'>
+          <h3 className='text-4xl text-white font-semibold'>Signin</h3>
+          <div className='space-y-4'>
+            <label className='inline-block text-white w-full' htmlFor="userName">
+              <input
+                name='userName'
+                value={values.userName}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                className={`input ${errors.userName && touched.userName && "border-2 border-red-900"}`}
+                type="text"
+                placeholder='Please enter a username...'
+                id='userName'
+              />
+              <p className="text-red-500 font-semibold text-xs mt-1">{errors.userName && touched.userName && errors.userName}</p>
+            </label>
+            <label className='inline-block w-full' htmlFor="userPassword">
+              <input
+                name='userPassword'
+                value={values.userPassword}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                className={`input ${errors.userPassword && touched.userPassword && "border border-red-600"}`}
+                type="password"
+                placeholder='Please enter a Password...'
+                id="userPassword"
+              />
+              <p className="text-red-500 font-semibold text-xs mt-1">{errors.userPassword && touched.userPassword && errors.userPassword}</p>
+            </label>
+          </div>
+          <div className="flex">
+            <Link href={'/signUp'} className='font-bold text-white hover:underline'>Create new account ?</Link>
           </div>
 
-          <Formik
-            initialValues={{
-              userName: '',
-              userPassword: '',
-            }}
-            validate={(values) => {
-              const errors = {};
 
-              if (!values.userName) {
-                errors.userName = 'Required';
-              }
-              if (!values.userPassword) {
-                errors.userPassword = 'Required';
-              }
-
-              return errors;
-            }}
-            onSubmit={handleSubmit}
-          >
-            {({ isSubmitting }) => (
-
-              <Form action="" className="mx-auto mt-8 mb-0 max-w-md space-y-4">
-                <div>
-                  <label htmlFor="email" className="sr-only text-lg"> Username</label>
-                  <div className="relative">
-                    <Field
-
-                      className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12  text-sm shadow-sm"
-                      type="text"
-                      name="userName"
-                      placeholder="Username" />
-
-                    <ErrorMessage
-                      className=" text-error mt-1 text-lg"
-                      name="userName"
-                      component="div"
-                    />
-
-                    <span className="absolute inset-y-0 right-4 inline-flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-gray-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          sstrokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="password" className="sr-only text-lg">Password</label>
-                  <div className="relative">
-
-                    <Field
-                      className="w-full  border-gray-200 bg-white  rounded-lg p-4 pr-12 text-sm shadow-sm"
-                      type="password"
-                      name="userPassword"
-                      placeholder="Password"
-
-                    />
-
-                    <ErrorMessage
-                      className="text-sm text-error mt-1"
-                      name="userPassword"
-                      component="div"
-                    />
-
-                    <span className="absolute inset-y-0 right-4 inline-flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-gray-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          sstrokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          sstrokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-
-
-
-
-
-                <div className="flex items-center justify-between">
-                  <p className=" text-gray-500 text-base">
-                    No account?
-                    <Link href="/signup" className="underline text-base ml-2" >
-
-                      Sign Up
-
-                    </Link>
-                  </p>
-
-                  <button
-                    type="submit"
-                    className="ml-3 inline-block rounded-lg bg-[#017d3f] px-5 py-3  font-medium text-white text-lg"
-                    disabled={isSubmitting}>
-                    Sign in
-                  </button>
-
-                </div>
-              </Form>
-            )}
-          </Formik>
-
-        </div>
-
-
-        <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
-          <Image
-            alt="Welcome"
-            src="https://images.unsplash.com/photo-1630450202872-e0829c9d6172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-            className="absolute inset-0 h-full w-full object-cover"
-            layout='fill'
-          />
-        </div>
-        {/* {showModal && <LoginModal  />} */}
-      </section>
+          <button type='submit'
+            disabled={isSubmitting || !!errors.email || !!errors.userPassword}
+            className={`${isSubmitting || !!errors.email || !!errors.userPassword ? "opacity-70))" : ""} w-full cursor-pointer items-center justify-center overflow-hidden rounded bg-green-600 bg-gradient-to-r from-green-500 to-lime-800 px-8 py-3 font-extrabold text-lg text-white transition-all duration-300 focus:outline-none`}>Login</button>
+        </form >
+      </div >
       <Footer />
     </>
+  )
+}
 
-  );
-};
-
-export default Login;
-
-
-
-
-
+export default Login

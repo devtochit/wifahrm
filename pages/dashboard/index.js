@@ -12,31 +12,7 @@ import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import CropPlanted from '../../components/Dashboard/CropPlanted/CropPlanted'
-
-
-
-
-const withAuth = (Component) => {
-	const Auth = (props) => {
-		const { isLoggedIn, userData } = useSelector((state) => state.authReducers.Authentication);
-
-		const router = useRouter();
-
-		useEffect(() => {
-			if (!isLoggedIn) {
-				router.replace('/login');
-			}
-		}, [isLoggedIn, router]);
-
-		if (!isLoggedIn) {
-			return null; // or return a loading indicator
-		}
-
-		return <Component {...props} />;
-	};
-
-	return Auth;
-};
+import protectRoute from '../../components/hoc/protectedroute'
 
 
 const Dashboard = () => {
@@ -75,4 +51,4 @@ const Dashboard = () => {
 	)
 }
 
-export default Dashboard;
+export default protectRoute(Dashboard);

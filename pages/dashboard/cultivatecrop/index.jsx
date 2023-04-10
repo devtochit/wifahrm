@@ -139,7 +139,7 @@ const CultivateCrops = () => {
 
     try {
       dispatch(addToBasket({ id, cropName, cropCategory, cropPrice }));
-      toast.success(`${name} added to basket`, { position: "top-center" });
+      toast.success(`${name} added to basket`, { position: "top-center" } );
     } catch (error) {
       console.error("Error adding item to basket: ", error);
       toast.error("Failed to add item to basket", { position: "top-center" });
