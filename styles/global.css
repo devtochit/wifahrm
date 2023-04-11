@@ -18,10 +18,10 @@
     }
 
 
-
+    /*
     * {
         font-family: "Nunito";
-    }
+    } */
 
     .ds-btn-pastel {
         @apply ds-btn-ghost;

@@ -1,11 +1,8 @@
 import Modal from "../../../shared/components/ui/modals/Modal";
 import { Dialog } from "@headlessui/react";
-import { Trade } from "iconsax-react";
-import Button from "../../../components/Button";
+import { LogOut } from "react-feather";
 
-const TradeNowModal = ({ openNow, onClose ,plantedCrops}) => {
-      console.log('inside TradeNowModal', plantedCrops)
-
+const LogoutModal = ({ openNow, onClose }) => {
     const onLogoutButton = () => {
         console.log("logging out...");
         onClose();
@@ -15,31 +12,30 @@ const TradeNowModal = ({ openNow, onClose ,plantedCrops}) => {
         <Modal openNow={openNow} onClose={onClose}>
             <Dialog.Title
                 as="h3"
-                className="text-lg font-bold leading-6 text-green-400 flex items-center"
+                className="text-lg font-bold leading-6 text-red-400 flex items-center"
             >
-                <Trade size="32"  color="#37d67a" variant="Bold"/> Trade Now
+                <LogOut size={22} className="mr-2" /> Logging out
             </Dialog.Title>
             <div className="mt-2">
-                <p className="text-sm text-white">
-                    You you will rediredted to the  tradezone to proceed with your transaction.
+                <p className="text-sm text-darker-t">
+                    You will be logged out of this account.
                 </p>
-                <p className="text-sm text-white">
+                <p className="text-sm text-darker-t">
                     Are you sure you want to continue?
                 </p>
             </div>
 
             <div className="mt-4">
-                <Button
-                   title=' Trade Now'
+                <button
                     type="button"
                     className="inline-flex justify-center rounded-md border border-transparent bg-lighter/80 px-4 py-2 text-sm font-medium text-red-400 hover:bg-lighter focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                     onClick={() => onLogoutButton()}
-               />
-
-
+                >
+                    Yes, Logout!
+                </button>
             </div>
         </Modal>
     );
 };
 
-export default TradeNowModal;
+export default LogoutModal;

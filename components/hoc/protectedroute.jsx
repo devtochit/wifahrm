@@ -19,7 +19,7 @@ const protectedRoute = (Component) => {
     }, [isClient, isLoggedIn, router]);
 
     if (!isClient || !isLoggedIn) {
-      return null; // or return a loading indicator
+      return null;
     }
 
     return <Component {...props} />;

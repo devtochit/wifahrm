@@ -29,8 +29,8 @@ const PlantedTableRow = ({ plantedCrop }) => {
         </div>
       </td>
       <td>
-        <div className="badge bg-accent/50 badge-lg p-3 mt-2">
-          <span className="text-black">{plantedCrop.Quantity}</span>
+        <div className=" pl-10 ">
+          <span className=" ">{plantedCrop.amountPlanted}</span>
         </div>
       </td>
       <td>{plantedCrop.cropEstimatedDurationInDays}</td>

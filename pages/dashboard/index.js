@@ -51,4 +51,4 @@ const Dashboard = () => {
 	)
 }
 
-export default protectRoute(Dashboard);
+export default Dashboard;

@@ -28,7 +28,7 @@ const Dropdown = ({ element, children, showChevron }) => {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className=" bg-cusblack overflow-hidden absolute right-0 z-20 mt-2 lg:w-56 w-26 origin-top-right divide-y divide-white/5 rounded-md bg-gray shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <Menu.Items className=" bg-cusblack/80 overflow-hidden absolute right-0 z-20 mt-2 lg:w-56 w-26 origin-top-right divide-y divide-white/5 rounded-md bg-gray shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="pt-0">
                     {children}
                 </div>
