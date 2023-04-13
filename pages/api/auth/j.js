@@ -1,6 +1,5 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from "next-auth/providers/credentials"
-import { loginReceived, loginRequested, loginRequestFailed, logUserOut } from '../../../redux/slice/auth/AuthenticationSlice';
 import apiCallBegan from '../../../redux/apiActions';
 const { randomBytes } = require('crypto');
 const axios = require('axios');
@@ -19,11 +18,11 @@ export default NextAuth({
         console.log('credentials:', credentials);
         const { username, userPassword } = credentials;
         const payload = { username, userPassword };
-      
+
         try {
           // Call your backend API to perform authentication using axios
           const response = await axios.post("https://wifarmapi-production.up.railway.app/auth/login", payload);
-                             
+
           // If authentication is successful, return the user data
           const userData = response.data.user;
           localStorage.setItem('userDetails', JSON.stringify(response.data));
@@ -35,7 +34,7 @@ export default NextAuth({
           throw new Error(errorMessage);
         }
       }
-      
+
     }),
   ],
   callbacks: {

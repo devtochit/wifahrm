@@ -24,7 +24,7 @@ const withAuth = (Component) => {
     }, [isLoggedIn, router]);
 
     if (!isLoggedIn) {
-      return null; // or return a loading indicator
+      return null;
     }
 
     return <Component {...props} />;

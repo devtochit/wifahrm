@@ -4,7 +4,7 @@ import { retrieveUserDetails } from "../../../utils/helperFunctions/userDataHand
 
 const initialState = {
   items: [],
-  plantedCrops: [],
+  tradeCrop: {},
   addcroptofarm: [],
   loading: false,
 
@@ -22,7 +22,6 @@ export const addItemToCart = (cartItems, cartItemToAdd,) => {
         : cartItem
     );
   }
-
   return [...cartItems, { ...cartItemToAdd, quantityPlanted: 1, }];
 };
 
@@ -34,6 +33,28 @@ const CropSlice = createSlice({
     addToBasket: (state, action) => {
       state.items = addItemToCart(state.items, action.payload,);
     },
+    addCropToTrade: (state, action) => {
+
+      state.tradeCrop = {
+        ...action.payload,
+        remainingAmountPlanted: action.payload.amountPlanted
+      };
+      console.log("addCropToTrade:", state.tradeCrop);
+    },
+    updateTradeCrop: (state, action) => {
+      const amountTraded = action.payload.amountTraded;
+      let remainingAmountPlanted = state.tradeCrop.remainingAmountPlanted - amountTraded;
+
+      // Make sure remainingAmountPlanted is non-negative
+      remainingAmountPlanted = Math.max(remainingAmountPlanted, 0);
+
+      state.tradeCrop = {
+        ...state.tradeCrop,
+        amountTraded: amountTraded,
+        remainingAmountPlanted: remainingAmountPlanted
+      };
+    },
+
     deleteFromBasket: (state, action) => {
       state.items = [];
     },
@@ -83,6 +104,8 @@ const CropSlice = createSlice({
 
 export const {
   setCropCategory,
+  updateTradeCrop,
+  addCropToTrade,
   setCropName,
   addCroptoFarm,
   addcroptofarmRequested,
@@ -98,34 +121,34 @@ export const {
 
 
 
-export const getfarmbycustomerid = () => async (dispatch) => {
-  try {
-    const getToken = await retrieveUserDetails();
-    if (getToken && getToken.data.jwtToken) {
-      const token = getToken.data.jwtToken;
-      const customerIdd = getToken.data.user.userId
-      console.log(token, customerIdd)
+// export const getfarmbycustomerid = () => async (dispatch) => {
+//   try {
+//     const getToken = await retrieveUserDetails();
+//     if (getToken && getToken.data.jwtToken) {
+//       const token = getToken.data.jwtToken;
+//       const customerIdd = getToken.data.user.userId
+//       console.log(token, customerIdd)
 
-      dispatch(
-        apiCallBegan({
-          url: `farm/getfarmbycustomerid?customerId=${customerIdd}`,
-          extraHeaders: { "jwtToken": token },
-          method: "get",
-          onStart: getfarmbycustomeridRequested.type,
-          onSuccess: getfarmbycustomeridReceived.type,
-          onError: getfarmbycustomeridFailed.type,
-        })
-      );
-    } else {
-      const error = new Error("Unable to retrieve user customerId");
-      console.error(error);
-      dispatch(getfarmbycustomeridFailed(error.message));
-    }
-  } catch (error) {
-    console.error("An error occurred while fetching user profile:", error);
-    dispatch(getfarmbycustomeridFailed(error.message));
-  }
-};
+//       dispatch(
+//         apiCallBegan({
+//           url: `farm/getfarmbycustomerid?customerId=${customerIdd}`,
+//           extraHeaders: { "jwtToken": token },
+//           method: "get",
+//           onStart: getfarmbycustomeridRequested.type,
+//           onSuccess: getfarmbycustomeridReceived.type,
+//           onError: getfarmbycustomeridFailed.type,
+//         })
+//       );
+//     } else {
+//       const error = new Error("Unable to retrieve user customerId");
+//       console.error(error);
+//       dispatch(getfarmbycustomeridFailed(error.message));
+//     }
+//   } catch (error) {
+//     console.error("An error occurred while fetching user profile:", error);
+//     dispatch(getfarmbycustomeridFailed(error.message));
+//   }
+// };
 
 export const AddCropToFarmLand = (values) => async (dispatch) => {
   try {

@@ -7,6 +7,8 @@ import Image from "next/image";
 import { useDispatch, useSelector } from 'react-redux';
 import CountBox from '../FarmCard/Countbox'
 import ProductCard from "../FarmCard/productCard2";
+import Select from 'react-select';
+import { updateTradeCrop } from "../../../redux/slice/Crop/cropSlice";
 
 
 
@@ -15,6 +17,9 @@ import ProductCard from "../FarmCard/productCard2";
 
 function TradeZoneDetails({ quantityPlanted, imageUrl, cropName, cropCategory }) {
     const { data, loading } = useSelector((state) => state.marketReducers.getMarketSlice.MarketData);
+    const { tradeCrop } = useSelector((state) => state.cropReducers.CropSlice);
+    const dispatch = useDispatch();
+    console.log('inside the tradezone component', tradeCrop)
 
 
     return (
@@ -26,7 +31,7 @@ function TradeZoneDetails({ quantityPlanted, imageUrl, cropName, cropCategory })
 
                 <div className="max-w-5xl mx-auto min-h-screen ">
                     <div className="flex justify-between place-items-center py-4 px-1 mb-4">
-                        <Link href="/dashboard/TradeZoneDetails">
+                        <Link href="/dashboard">
                             <div className="w-14 h-14 shadow-lg bg-white text-cusblack hover:bg-cusblack hover:text-white duration-200 cursor-pointer rounded-full flex justify-center place-items-center">
                                 <svg
                                     className="w-4 h-4 "
@@ -54,10 +59,10 @@ function TradeZoneDetails({ quantityPlanted, imageUrl, cropName, cropCategory })
                                 < Image
                                     width={1000}
                                     height={1000}
-                                    src={imageUrl}
+                                    src={'https://i.ibb.co/ZTwjykC/kelly-sikkema-6vud-IBHw-Le8-unsplash.jpg'}
                                     className=" lg:h-72 h-60 object-cover w-full md:rounded-2xl"
-                                    alt={cropName}
-                                    unoptimized // added this prop
+                                    alt={tradeCrop.cropName}
+
 
                                 />
                             </div>
@@ -65,7 +70,7 @@ function TradeZoneDetails({ quantityPlanted, imageUrl, cropName, cropCategory })
                         </div>
                         <div className="detail font-medium   px-2 md:px-0 mt-3 md:mt-0 md:ml-6 py-2 md:w-2/3">
                             <p className="flex place-items-center text-sm text-gray-400">
-                                {cropCategory}
+                                {tradeCrop.cropCategory}
                                 <span className="mx-1">
                                     <svg
                                         className="w-4 h-4"
@@ -80,16 +85,23 @@ function TradeZoneDetails({ quantityPlanted, imageUrl, cropName, cropCategory })
                                         />
                                     </svg>
                                 </span>
-                                {cropCategory}
+                                {tradeCrop.cropCategory}
                             </p>
                             <h1 className="text-3xl text-cusblack font-medium my-3">
-                                {cropName} 
+                                {tradeCrop.cropName}
                             </h1>
                             <div className='mb-2'>   price</div>
 
                             <div className="sizes text-sm flex-wrap text-justify  pr-6 text-gray-400">
-                                <p className="mb-1 font-black text-lg ">Description</p>
-                                <p> Description </p>
+                                <p className="mb-1 font-black text-lg ">Quantity:</p>
+                                <Select
+  className=" overflow-ellipsis z-10 over"
+  options={Array.from({ length: tradeCrop.remainingAmountPlanted }, (_, index) => ({ value: index + 1, label: `${index + 1}` }))}
+  value={{ value: tradeCrop.amountTraded, label: tradeCrop.amountTraded }}
+  onChange={(selectedOption) => dispatch(updateTradeCrop({ ...tradeCrop, amountTraded: parseInt(selectedOption.value) }))}
+  styles={{ container: (provided) => ({ ...provided, width: '100%' }) }}
+/>
+
                                 <div className="flex">
 
                                 </div>

@@ -27,7 +27,6 @@ const marketplaceSlice = createSlice({
     },
     getMarketRequestFailed: (state, action) => {
       state.loading = false;
-      // console.log("getMarketRequestFailed", action.payload);
     },
     getfarmbycustomeridRequested: (state, action) => {
       state.loading = true;
