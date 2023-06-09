@@ -88,13 +88,13 @@ const InfoCard = () => {
             className={styles.card__one__image}
           />
           <div className={styles.rhs__content}>
-            <motion.p variants={textVariants}>
+            <motion.p >
               At WiFahrm we only ensure the cultivation of
               quality produce as we understand the major role agriculture plays
               in our lives.
             </motion.p>
 
-            <motion.button variants={textVariants} className={styles.btn}>
+            <motion.button  className={styles.btn}>
               View Products
             </motion.button>
           </div>
@@ -120,8 +120,8 @@ const InfoCard = () => {
               alt="image"
             />
 
-            <motion.h1 variants={textVariants}>5</motion.h1>
-            <motion.p variants={textVariants}>
+            <motion.h1 >5</motion.h1>
+            <motion.p >
               Fresh Produce Since <br /> 2023.
             </motion.p>
           </motion.div>

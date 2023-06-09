@@ -20,7 +20,6 @@ const CropPlanted = () => {
 
 
   useEffect(() => {
-    console.log('useEffect called');
     dispatch(getfarmbycustomerid())
 }, [dispatch]);
 

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "../../apiActions";
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 
 import {
 retrieveUserDetails,

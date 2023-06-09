@@ -26,7 +26,7 @@ const SignUp = () => {
     })
     return (
         <div className='  relative flex h-screen w-full  flex-col
-        bg-black/60 md:items-center md:justify-center md:bg-black/60'>
+        bg-black md:items-center md:justify-center md:bg-black/60'>
             <Head>
                 <title>Wifarm - SignUp</title>
             </Head>
@@ -35,14 +35,7 @@ const SignUp = () => {
                 className="-z-10 !hidden opacity-50 sm:!inline object-cover md:relative"
                 alt=""
             />
-            {/* <img
-                src="https://rb.gy/ulxxee"
-                className="absolute left-4 top-4 cursor-pointer
-                 object-contain md:left-10 md:top-6"
-                width={150}
-                height={150}
-                alt=''
-            /> */}
+   
             <form
                 onSubmit={handleSubmit}
                 className='absolute w-full  mt-24 space-y-8 rounded bg-black/80 py-10 px-6 md:mt-0 md:max-w-md md:px-14 z-30'>

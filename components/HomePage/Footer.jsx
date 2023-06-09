@@ -55,8 +55,8 @@ const Footer = () => {
     <div className={styles.wrapper}>
       <div className={styles.inner}>
         <motion.div
-          initial="offscreen"
-          whileInView="onscreen"
+          // initial="offscreen"
+          // whileInView="onscreen"
           // transition={{ staggerChildren: 0.5 }}
           className={styles.footer__logo}
         >
@@ -68,15 +68,15 @@ const Footer = () => {
             width={100}
             height={100}
           />
-          <motion.h1 variants={textVariants}>
+          <motion.h1>
           WiFahrm&apos;s <br />
 
           </motion.h1>
-          <motion.p variants={textVariants}>
+          <motion.p>
           WiFahrm promises the best of agricultural
             produce and quality livestock.
           </motion.p>
-          <motion.div variants={textVariants} className={styles.icon__ctn}>
+          <motion.div  className={styles.icon__ctn}>
             {/* <div className={styles.icons}>
               <Image
                 src="/svgs/ic-facebook-white.svg"
@@ -112,19 +112,19 @@ const Footer = () => {
           </motion.div>
         </motion.div>
         <motion.div
-          initial="offscreen"
-          whileInView="onscreen"
+          // initial="offscreen"
+          // whileInView="onscreen"
           // transition={{ staggerChildren: 0.5 }}
           className={styles.company}
         >
-          <motion.h1 variants={textVariants}>Company</motion.h1>
+          <h1 >Company</h1>
           <motion.div
             initial="offscreen"
             whileInView="onscreen"
             // transition={{ staggerChildren: 0.5 }}
             className={styles.lists}
           >
-            <motion.div variants={textVariants} className={styles.link}>
+            <motion.div  className={styles.link}>
               <span>
                 <Image
                   src="/svgs/ic-arrow-white.svg"
@@ -137,7 +137,7 @@ const Footer = () => {
               About Us
               </Link>
             </motion.div>
-            <motion.div variants={textVariants} className={styles.link}>
+            <motion.div  className={styles.link}>
               <span>
                 <Image
                   src="/svgs/ic-arrow-white.svg"
@@ -154,19 +154,19 @@ const Footer = () => {
         </motion.div>
 
         <motion.div
-          initial="offscreen"
-          whileInView="onscreen"
+          // initial="offscreen"
+          // whileInView="onscreen"
           // transition={{ staggerChildren: 0.5 }}
           className={styles.services__ctn}
         >
-          <motion.h1 variants={textVariants}>Services</motion.h1>
+          <motion.h1 >Services</motion.h1>
           <motion.div
-            initial="offscreen"
-            whileInView="onscreen"
-            transition={{ staggerChildren: 0.5 }}
+            // initial="offscreen"
+            // whileInView="onscreen"
+            // transition={{ staggerChildren: 0.5 }}
             className={styles.lists}
           >
-            <motion.div variants={textVariants} className={styles.link}>
+            <motion.div className={styles.link}>
               <span>
                 <Image
                   src="/svgs/ic-arrow-white.svg"
@@ -180,7 +180,7 @@ const Footer = () => {
               </Link>
             </motion.div>
 
-            <motion.div variants={textVariants} className={styles.link}>
+            <motion.div className={styles.link}>
               <span>
                 <Image
                   src="/svgs/ic-arrow-white.svg"
@@ -194,7 +194,7 @@ const Footer = () => {
               </Link>
             </motion.div>
 
-            <motion.div variants={textVariants} className={styles.link}>
+            <motion.div  className={styles.link}>
               <span>
                 <Image
                   src="/svgs/ic-arrow-white.svg"
@@ -208,7 +208,7 @@ const Footer = () => {
               </Link>
             </motion.div>
 
-            <motion.div variants={textVariants} className={styles.link}>
+            <motion.div className={styles.link}>
               <span>
                 <Image
                   src="/svgs/ic-arrow-white.svg"
@@ -227,19 +227,19 @@ const Footer = () => {
         </motion.div>
 
         <motion.div
-          initial="offscreen"
-          whileInView="onscreen"
+          // initial="offscreen"
+          // whileInView="onscreen"
           // transition={{ staggerChildren: 0.5 }}
           className={styles.contact__ctn}
         >
-          <motion.h1 variants={textVariants}>Contact</motion.h1>
+          <motion.h1 >Contact</motion.h1>
           <motion.div
-            initial="offscreen"
-            whileInView="onscreen"
-            transition={{ staggerChildren: 0.5 }}
+            // initial="offscreen"
+            // whileInView="onscreen"
+            // transition={{ staggerChildren: 0.5 }}
             className={styles.lists}
           >
-            <motion.div variants={textVariants} className={styles.link}>
+            <motion.div className={styles.link}>
               <span>
                 <Image
                   src="/svgs/ic-arrow-white.svg"
@@ -252,7 +252,7 @@ const Footer = () => {
                 FAQ
               </Link>
             </motion.div>
-            <motion.div variants={textVariants} className={styles.link}>
+            <motion.div  className={styles.link}>
               <span>
                 <Image
                   src="/svgs/ic-arrow-white.svg"
@@ -265,7 +265,7 @@ const Footer = () => {
               Support
               </Link>
             </motion.div>
-            <motion.div variants={textVariants} className={styles.link}>
+            <motion.div  className={styles.link}>
               <span>
                 <Image
                   src="/svgs/ic-arrow-white.svg"
@@ -278,7 +278,7 @@ const Footer = () => {
                 Privacy Policy
               </Link>
             </motion.div>
-            <motion.div variants={textVariants} className={styles.link}>
+            <motion.div   className={styles.link}>
               <span>
                 <Image
                   src="/svgs/ic-arrow-white.svg"

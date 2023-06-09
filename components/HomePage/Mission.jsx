@@ -92,7 +92,7 @@ const Mission = () => {
             transition={{ staggerChildren: 0.5 }}
             className={styles.vision__ctn}
           >
-            <motion.h4 variants={textVariants}>Vision</motion.h4>
+            <motion.h4 >Vision</motion.h4>
             <motion.header variants={containerVariants}>
               <Image
                 src="/svgs/ic-lemon.svg"
@@ -113,8 +113,8 @@ const Mission = () => {
                 alt="lemon"
               />
             </motion.header>
-            <motion.h1 variants={textVariants}>Our Vision</motion.h1>
-            <motion.p variants={textVariants}>
+            <motion.h1 >Our Vision</motion.h1>
+            <motion.p >
               To create a link for the access of improved breeds of various farm
               animals and crops unhindered to local farmers and to ensure the
               increase in bounty production, job and food security to the globe
@@ -127,7 +127,7 @@ const Mission = () => {
             transition={{ staggerChildren: 0.5 }}
             className={styles.vision__ctn}
           >
-            <motion.h4 variants={textVariants}>Mission</motion.h4>
+            <motion.h4 >Mission</motion.h4>
             <motion.header variants={containerVariants}>
               <Image
                 src="/svgs/ic-lemon.svg"
@@ -148,8 +148,8 @@ const Mission = () => {
                 alt="lemon"
               />
             </motion.header>
-            <motion.h1 variants={textVariants}>Our Mission</motion.h1>
-            <motion.p variants={textVariants}>
+            <motion.h1 >Our Mission</motion.h1>
+            <motion.p >
               We are set on coordinating the desire for the support of many like
               minded to ensure better yields in agriculture with ease for the
               locals through the proper channels to reach this goal.

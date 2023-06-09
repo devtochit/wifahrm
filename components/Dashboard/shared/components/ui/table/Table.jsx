@@ -6,7 +6,7 @@ import PlantedTableRow from "../../../../CropPlanted/components/table/PlantedTab
 import LoadingSpinner from "../loading/LoadingSpinner";
 import  style from './Table.module.css'
 const Table = ({ headers, items, plantedcrop }) => {
-    console.log(plantedcrop,items)
+
 
     const [loading, setLoading] = useState(true);
 

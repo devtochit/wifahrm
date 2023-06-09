@@ -85,7 +85,7 @@ const AboutLite = () => {
           transition={{ staggerChildren: 0.5 }}
           className={styles.about__content}
         >
-          <motion.h4 variants={textVariants}>ABOUT</motion.h4>
+          <motion.h4 >ABOUT</motion.h4>
           <motion.header
             initial="offscreen"
             whileInView="onscreen"
@@ -113,8 +113,8 @@ const AboutLite = () => {
               alt="lemon"
             />
           </motion.header>
-          <motion.h1 variants={textVariants}>Who We Are</motion.h1>
-          <motion.p variants={textVariants}>
+          <motion.h1 >Who We Are</motion.h1>
+          <motion.p >
             For decades we have dedicated ourselves to the production of quality
             produce. We are known around the country for the excellent servces
             we always offer to our customers, the countless recomendations from
@@ -133,7 +133,7 @@ const AboutLite = () => {
               initial="offscreen"
               whileInView="onscreen"
               transition={{ staggerChildren: 0.5 }}
-              variants={textVariants}
+              
               className={styles.stats}
             >
               <motion.img
@@ -143,14 +143,14 @@ const AboutLite = () => {
                 height={128}
                 alt="fresh_produce"
               />
-              <motion.h1 variants={textVariants}>4130</motion.h1>
-              <motion.p variants={textVariants}>Fresh Produce</motion.p>
+              <motion.h1 >4130</motion.h1>
+              <motion.p >Fresh Produce</motion.p>
             </motion.div>
             <motion.div
               initial="offscreen"
               whileInView="onscreen"
               transition={{ staggerChildren: 0.5 }}
-              variants={textVariants}
+              
               className={styles.stats}
             >
               <motion.img
@@ -160,8 +160,8 @@ const AboutLite = () => {
                 height={128}
                 alt="diary_cow"
               />
-              <motion.h1 variants={textVariants}>13000</motion.h1>
-              <motion.p variants={textVariants}>Farm Animals</motion.p>
+              <motion.h1 >13000</motion.h1>
+              <motion.p >Farm Animals</motion.p>
             </motion.div>
           </motion.div>
         </motion.div>

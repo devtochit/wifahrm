@@ -31,12 +31,9 @@ const Contact = () => {
     <div className={styles.wrapper}>
       <div className={styles.inner}>
         <motion.header
-          initial="offscreen"
-          whileInView="onscreen"
-          transition={{ staggerChildren: 0.5 }}
-          className={styles.header}
+                className={styles.header}
         >
-          <motion.h4 variants={textVariants}>Contact us</motion.h4>
+          <motion.h4>Contact us</motion.h4>
           <div className={styles.lemon__ctn}>
             <Image
               src="/svgs/ic-lemon.svg"
@@ -57,7 +54,7 @@ const Contact = () => {
               alt="lemon"
             />
           </div>
-          <motion.h1 variants={textVariants}>
+          <motion.h1>
             We Want To Hear From You
           </motion.h1>
         </motion.header>
@@ -68,8 +65,8 @@ const Contact = () => {
             transition={{ staggerChildren: 0.5 }}
             className={styles.lhs}
           >
-            <motion.h1 variants={textVariants}>Get In Touch With Us</motion.h1>
-            <motion.div variants={textVariants} className={styles.icon__ctn}>
+            <motion.h1>Get In Touch With Us</motion.h1>
+            <motion.div className={styles.icon__ctn}>
               {/* <div className={styles.icons}>
                   <Image
                     src="/svgs/ic-facebook.svg"
@@ -122,8 +119,8 @@ const Contact = () => {
                 whileInView="onscreen"
                 // transition={{ staggerChildren: 0.5 }}
               >
-                <motion.h1 variants={textVariants}>Send A Message</motion.h1>
-                <motion.p variants={textVariants}>
+                <motion.h1>Send A Message</motion.h1>
+                <motion.p>
                   We will respond in no time at all.
                 </motion.p>
               </motion.header>
@@ -135,21 +132,21 @@ const Contact = () => {
                 className={styles.inputs__ctn}
               >
                 {/* <motion.input
-                  variants={textVariants}
+                 
                   type="text"
                   name="name"
                   id="name"
                   placeholder="Name*"
                 />
                 <motion.input
-                  variants={textVariants}
+                 
                   type="email"
                   name="email"
                   id="email"
                   placeholder="Email*"
                 />
                 <motion.textarea
-                  variants={textVariants}
+                 
                   name="message"
                   id="message"
                   cols="30"
@@ -157,7 +154,7 @@ const Contact = () => {
                   placeholder="Message"
                 ></motion.textarea>
 
-                <motion.button variants={textVariants} type="submit">
+                <motion.button type="submit">
                   Send A Message
                 </motion.button> */}
               </motion.div>

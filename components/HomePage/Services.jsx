@@ -50,12 +50,12 @@ const Services = () => {
     <div className={styles.wrapper}>
       <div className={styles.inner}>
         <motion.header
-          initial="offscreen"
-          whileInView="onscreen"
-          transition={{ staggerChildren: 0.5 }}
+          // initial="offscreen"
+          // whileInView="onscreen"
+          // transition={{ staggerChildren: 0.5 }}
           className={styles.header}
         >
-          <motion.h4 variants={textVariants}>Services</motion.h4>
+          <motion.h4 >Services</motion.h4>
           <div className={styles.lemon__ctn}>
             <Image
               src="/svgs/ic-lemon.svg"
@@ -76,7 +76,7 @@ const Services = () => {
               alt="lemon"
             />
           </div>
-          <motion.h1 variants={textVariants}>What We Offer</motion.h1>
+          <motion.h1 >What We Offer</motion.h1>
         </motion.header>
 
         <motion.section
@@ -92,10 +92,10 @@ const Services = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>
+              <motion.h3 >
               Farm management
               </motion.h3>
-              <motion.p variants={textVariants}>
+              <motion.p >
               You own the farm, we manage it for you  
               </motion.p>
             </motion.div>
@@ -117,8 +117,8 @@ const Services = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>Farm land ownership</motion.h3>
-              <motion.p variants={textVariants}>
+              <motion.h3 >Farm land ownership</motion.h3>
+              <motion.p >
               Own a farm space remotely and cultivate any crop you want on it.
               </motion.p>
             </motion.div>
@@ -140,8 +140,8 @@ const Services = () => {
               transition={{ staggerChildren: 0.5 }}
               className={styles.card__text}
             >
-              <motion.h3 variants={textVariants}>Ownership</motion.h3>
-              <motion.p variants={textVariants}>
+              <motion.h3 >Ownership</motion.h3>
+              <motion.p >
               Own a farm space remotely and cultivate any crop you want on it.
 
               </motion.p>

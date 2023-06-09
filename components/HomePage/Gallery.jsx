@@ -54,12 +54,10 @@ const Gallery = () => {
     <div className={styles.wrapper}>
       <div className={styles.inner}>
         <motion.header
-          initial="offscreen"
-          whileInView="onscreen"
-          transition={{ staggerChildren: 0.5 }}
+    
           className={styles.header}
         >
-          <motion.h4 variants={textVariants}>Gallery</motion.h4>
+          <motion.h4 >Gallery</motion.h4>
           <div className={styles.lemon__ctn}>
             <Image
               src="/svgs/ic-lemon.svg"
@@ -80,7 +78,7 @@ const Gallery = () => {
               alt="lemon"
             />
           </div>
-          <motion.h1 variants={textVariants}>View Our Farm</motion.h1>
+          <motion.h1 >View Our Farm</motion.h1>
         </motion.header>
 
         <div className={styles.grid__ctn}>

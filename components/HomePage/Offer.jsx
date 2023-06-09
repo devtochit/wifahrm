@@ -8,7 +8,7 @@ const Offer = () => {
   const textVariants = {
     offscreen: {
       opacity: 0,
-      y: -100,
+      y: 0,
       transition: {
         type: "tween",
         bounce: 0.4,
@@ -53,7 +53,7 @@ const Offer = () => {
   const containerVariants = {
     offscreen: {
       opacity: 0,
-      x: -100,
+      x: 0,
       transition: {
         type: "tween",
         bounce: 0.4,
@@ -75,20 +75,17 @@ const Offer = () => {
   return (
     <div className={styles.wrapper}>
       <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        transition={{ staggerChildren: 0.5 }}
+  
         className={styles.inner}
       >
         <motion.header
-          initial="offscreen"
-          whileInView="onscreen"
-          transition={{ staggerChildren: 0.5 }}
+          // initial="offscreen"
+          // whileInView="onscreen"
+          // transition={{ staggerChildren: 0.5 }}
           className={styles.header}
         >
-          <motion.h4 variants={textVariants}>Services</motion.h4>
+          <motion.h4 >Services</motion.h4>
           <motion.div
-            variants={containerVariants}
             className={styles.lemon__ctn}
           >
             <Image
@@ -110,8 +107,10 @@ const Offer = () => {
               alt="lemon"
             />
           </motion.div>
-          <motion.h1 variants={textVariants}>What We Offer</motion.h1>
+          <motion.h1 >What We Offer</motion.h1>
         </motion.header>
+
+
         <motion.div
           initial="offscreen"
           whileInView="onscreen"

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import StatsBoard from '../../components/Dashboard/StatsBoard'
 import QuickAction from '../../components/Dashboard/QuickAction'
-import Countdown from '../../components/Dashboard/Countdown'
+// import Countdown from '../../components/Dashboard/Countdown'
 import Notification from "../../components/Dashboard/Notification"
 // import ClientsFeed from '../../components/Dashboard/ClientsFeed'
 // import BestSellers from '../../components/Dashboard/BestSellers'
@@ -13,7 +13,10 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import CropPlanted from '../../components/Dashboard/CropPlanted/CropPlanted'
 import protectRoute from '../../components/hoc/protectedroute'
-
+import dynamic from 'next/dynamic';
+const Countdown = dynamic(() => import('../../components/Dashboard/Countdown'), {
+	ssr: false
+  });
 
 const Dashboard = () => {
 	return (

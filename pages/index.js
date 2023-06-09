@@ -2,7 +2,6 @@ import styles from "../styles/Home.module.css";
 import Navbar from "../components/HomePage/Navbar"
 import Banner from "../components/HomePage/Banner";
 import InfoCard from "../components/HomePage/InfoCard";
-// import About from "../components/About";
 import Services from "../components/HomePage/Services";
 import Gallery from "../components/HomePage/Gallery";
 import Contact from "../components/HomePage/Contact";
@@ -17,13 +16,13 @@ export default function Home() {
         <div style={{ }}>
           <InfoCard />
         </div>
-        {/* <About /> */}
-        <Services />
-        <Gallery />
+ 
+   <Services />   
+       <Gallery />
            <div> 
              <Contact />
              </div>
-        <Footer /> 
+        <Footer />  
       </main>
     </div>
   );
