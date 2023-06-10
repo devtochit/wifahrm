@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Dropdown from "../../../ui/dropdown/Dropdown";
 import { MoreVertical } from "react-feather";
 
@@ -18,10 +19,13 @@ const UserRow = ({ user }) => {
                 <div className="flex items-center space-x-3">
                     <div className="avatar cursor-pointer">
                         <div className="mask mask-squircle w-12 h-12">
-                            <img
+                            <Image
+
                                 src={user.avatar || "/git.jpg"}
                                 alt="user avatar"
                                 className="hover:scale-110"
+                                height={10}
+                                width={10}
                             />
                         </div>
                     </div>
